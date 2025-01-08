@@ -770,25 +770,25 @@ Required_Rules = [
                 left_side=[value("Knight_Sword"),value("Hard_Armor"),value("Potion"),value("Charmstone_Purchase"),value("Ladder_Boots"),value("Marine_Boots"),value("Shield_Magic_Shop"),
                            value("Shell_Shield"),value("Steel_Armor")],
                 rule_type="count",
-                right_side=("==",1,"==",27)
-        ),
+                right_side=("==",27,"==",1)
+        )
 
 ### Ensure late game you can get the health stuff for final battle. ###
-        Rule(
-                description="Hi_Potion_Logic",
-                left_side=[value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),value("Knight_Shield"),value("Holy_Water"),
-                           value("Flame_Shield"),value("Flame_Armor"),value("Hi_Potion"),value("Elixer_Shop")],
-                rule_type="count",
-                right_side=("==",1,"==",46)
-        ),
-
-        Rule(
-                description="Elixer_Logic",
-                left_side=[value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),value("Knight_Shield"),value("Holy_Water"),
-                           value("Flame_Shield"),value("Flame_Armor"),value("Hi_Potion"),value("Elixer_Shop")],
-                rule_type="count",
-                right_side=("==",1,"==",47)
-        )
+#        Rule(
+#                description="Hi_Potion_Logic",
+#                left_side=[value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),value("Knight_Shield"),value("Holy_Water"),
+#                           value("Flame_Shield"),value("Flame_Armor"),value("Hi_Potion"),value("Elixer_Shop")],
+#                rule_type="count",
+#                right_side=("==",46,"==",1)
+#        ),
+#
+#        Rule(
+#                description="Elixer_Logic",
+#                left_side=[value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),value("Knight_Shield"),value("Holy_Water"),
+#                           value("Flame_Shield"),value("Flame_Armor"),value("Hi_Potion"),value("Elixer_Shop")],
+#                rule_type="count",
+#                right_side=("==",47,"==",1)
+#        )
 
 ]
 #64 is a heart, but it didn't increase my health.
