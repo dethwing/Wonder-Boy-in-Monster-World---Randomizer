@@ -771,25 +771,21 @@ Required_Rules = [
                            value("Shell_Shield"),value("Steel_Armor")],
                 rule_type="count",
                 right_side=("==",27,"==",1)
+        ),
+	Rule(
+                description="Hi-Potion Logic",
+                left_side=[value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),value("Knight_Shield"),value("Holy_Water"),
+                           value("Flame_Shield"),value("Flame_Armor"),value("Hi_Potion"),value("Elixer_Shop")],
+                rule_type="count",
+                right_side=("==",46,"==",1)
+        ),
+        Rule(
+                description="Elixer Logic",
+                left_side=[value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),value("Knight_Shield"),value("Holy_Water"),
+                           value("Flame_Shield"),value("Flame_Armor"),value("Hi_Potion"),value("Elixer_Shop")],
+                rule_type="count",
+                right_side=("==",42,"==",1)
         )
-
-### Ensure late game you can get the health stuff for final battle. ###
-#        Rule(
-#                description="Hi_Potion_Logic",
-#                left_side=[value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),value("Knight_Shield"),value("Holy_Water"),
-#                           value("Flame_Shield"),value("Flame_Armor"),value("Hi_Potion"),value("Elixer_Shop")],
-#                rule_type="count",
-#                right_side=("==",46,"==",1)
-#        ),
-#
-#        Rule(
-#                description="Elixer_Logic",
-#                left_side=[value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),value("Knight_Shield"),value("Holy_Water"),
-#                           value("Flame_Shield"),value("Flame_Armor"),value("Hi_Potion"),value("Elixer_Shop")],
-#                rule_type="count",
-#                right_side=("==",47,"==",1)
-#        )
-
 ]
 #64 is a heart, but it didn't increase my health.
 
