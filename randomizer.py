@@ -1271,12 +1271,12 @@ Optional_Rulesets = [
 				left_side=[value("leather_boots")],
 				rule_type="!=",
 				right_side=[
-                                            13,6,20,21,45,
-                                            12,2,27,32,33,34,
-                                            35,36,37,11,26,19,
-                                            1,42,18,25,10,31,
-                                            46,5,17,7,4,9,
-                                            15,24,25,16,8,41]
+                                            22,44,13,6,20,21,
+                                            45,12,2,27,32,36,
+                                            37,33,34,35,11,26,
+                                            19,1,42,18,25,10,
+                                            31,46,5,17,7,4,
+                                            9,15,24,23,16,8]
 
 			),
                         Rule(
@@ -1285,11 +1285,11 @@ Optional_Rulesets = [
 				rule_type="!=",
 				right_side=[
                                         
-                                            12,2,27,32,33,34,
-                                            35,36,37,11,26,19,
-                                            1,42,18,25,10,31,
-                                            46,5,17,7,4,9,
-                                            15,24,25,16,8,41]
+                                            45,12,2,27,32,36,
+                                            37,33,34,35,11,26,
+                                            19,1,42,18,25,10,
+                                            31,46,5,17,7,4,
+                                            9,15,24,23,16,8]
 
 			),
                         Rule(
@@ -1297,13 +1297,13 @@ Optional_Rulesets = [
 				left_side=[value("Knight_Sword"),value("Hard_Armor"),value("Charmstone_Purchase"),
                                            value("Potion"),value("Ladder_Boots")],
 				rule_type="!=",
-				right_side=[43,29,22,28,44,
+				right_side=[43,3,14,30,29,28,
 
                                             
-                                            35,36,37,11,26,19,
-                                            1,42,18,25,10,31,
-                                            46,5,17,7,4,9,
-                                            15,24,25,16,8,41]
+                                            37,33,34,35,11,26,
+                                            19,1,42,18,25,10,
+                                            31,46,5,17,7,4,
+                                            9,15,24,23,16,8]
 
 			),
                         Rule(
@@ -1311,26 +1311,26 @@ Optional_Rulesets = [
 				left_side=[value("Marine_Boots"),value("Shield_Magic_Shop"),
                                            value("Shell_Shield"),value("Steel_Armor")],
 				rule_type="!=",
-				right_side=[43,29,22,28,44,
-                                            13,6,20,21,45,
+				right_side=[43,3,14,30,29,28,
+                                            22,44,13,6,20,21,
 
-                                        
-                                            1,42,18,25,10,31,
-                                            46,5,17,7,4,9,
-                                            15,24,25,16,8,41]
+                                            
+                                            19,1,42,18,25,10,
+                                            31,46,5,17,7,4,
+                                            9,15,24,23,16,8]
 
 			),
                         Rule(
 				description="Fifth Area",
 				left_side=[value("excalibur"),value("steel_shield")],
 				rule_type="!=",
-				right_side=[43,29,22,28,44,
-                                            13,6,20,21,45,
-                                            12,2,27,32,33,34,
+				right_side=[43,3,14,30,29,28,
+                                            22,44,13,6,20,21,
+                                            45,12,2,27,32,36,
 
                                             
-                                            46,5,17,7,4,9,
-                                            15,24,25,16,8,41]
+                                            31,46,5,17,7,4,
+                                            9,15,24,23,16,8]
 
 			),
                         Rule(
@@ -1338,13 +1338,13 @@ Optional_Rulesets = [
 				left_side=[value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),
                                            value("Knight_Shield"),value("Holy_Water")],
 				rule_type="!=",
-				right_side=[43,29,22,28,44,
-                                            13,6,20,21,45,
-                                            12,2,27,32,33,34,
-                                            35,36,37,11,26,19,
+				right_side=[43,3,14,30,29,28,
+                                            22,44,13,6,20,21,
+                                            45,12,2,27,32,36,
+                                            37,33,34,35,11,26,
 
                                             
-                                            15,24,25,16,8,41]
+                                            9,15,24,23,16,8]
 
 			),
                         Rule(
@@ -1352,18 +1352,15 @@ Optional_Rulesets = [
 				left_side=[value("Flame_Shield"),value("Flame_Armor"),
                                            value("Hi_Potion"),value("Elixer_Shop")],
 				rule_type="!=",
-				right_side=[43,29,22,28,44,
-                                            13,6,20,21,45,
-                                            12,2,27,32,33,34,
-                                            35,36,37,11,26,19,
-                                            1,42,18,25,10,31
-
-
-                                            ]
+				right_side=[43,3,14,30,29,28,
+                                            22,44,13,6,20,21,
+                                            45,12,2,27,32,36,
+                                            37,33,34,35,11,26,
+                                            19,1,42,18,25,10
+                                            
+                                                            ]
 
 			),
-                        
-                ],
                 must_be_enabled=None,
 		must_be_disabled=None,
 	),
