@@ -12,25 +12,64 @@ You can find his work here : https://github.com/PaddyCo/mw3rando
 
 With that out of the way, here's what this randomizer does and does not do. [So Far].
 
-1. All shop items are randomized, and all are guaranteed to be different. In addition, they are price-scaled, so you can be relatively sure of buying things in progression. The reason the sprite looks weird is because they are changed so that shop will sell you an item, even if you had the base item. [Example: If you have leather boots, and the leather boots are set to Ladder Boots, it still won't sell it you. That's why I had to change it]. In addition, Marine boots are guaranteed to be in one of the 4 shops available to you from Purapill and Lillypad. The reason is that they are needed for the Quake check. More on that later. Finally, Hi Potion and Elixer will be somewhere in the last 2 shop areas [Chilldam and Begonia] so you can be sure of restocking your health before trying Biomeke [AKA impossible final boss].
-2. MOST chest items are randomized. This includes all Magic [Except for the all magic secret chest in the Pyramid], the Charmstone Chest, all Pygmys, keys, gems, fire urn, amulet, and axe. It also includes things like Oasis boots, Trident, and even Hard Shield! It does NOT include Heart Chests [If you switch one, you switch them all, and you'd be stuck on 3 hearts for the game!] and Money Chests [No luck finding them in code yet], and Elixer Chests [Same as Heart, they're all linked together]. 
-3. Items in chests are scaled by progression. For instance, of the first 3 "Free" checks [Myconid, Bat, Quake], you are guaranteed to get 3 of Trident/Bracelet/Oasis Boots/Lamp. And items progress from there.
-4. The bracelet check is NOT randomized, but you will probably get it before you talk to him. I have the address for it, but there's some complications I haven't worked out yet that prevents him from giving it you.
-5. The Ocarina check is NOT randomized. You MUST talk to Ellanora and Sonia to spawn it. Although I could randomize it, it won't spawn if you already have the ocarina, and that would make things messy. [To do?]
-6. The Legendary Sword check is NOT randomized. I haven't found the address yet. Unforunately, the value for LS is 0...which of course appears thousands of times in code.
-7. I made the executive decision to pull Charmstones from the pool. As Monk would say, You'll thank me later.
+1. All shop items are randomized. Non-Equippable Progression items (Keys, Gems, etc) have prices in the billions, so are not available. Equippable Progression items (Trident, Oasis Boots, Pygmy....) are available.
+
+      Forced Logic : All Shop Items are different. The Potion shop-item in Purapill and Lillpad is the same item, so it will appear twice.
+   
+      Forced Logic : Marine boots will appear by Lillypad at the latest. Needed for Quake chest.
+   
+      Forced Logic : Hi Potion and Elixer will be available. "Needed" for final boss.
+   
+      Optional Logic : Scale price by region, prevent certain items from appearing.
+   
+3. (Almost) all chests are randomized. Exceptions include: Heart Chests, All Money (Except for the left-most water), and the Pyramid Bonus-Magic Chest. This includes the Bat. Total Checks : 25.
+
+      Forced Logic : All chests are different. Exception: Elixer and some magic chests duplicate the same item as they are the same items.
+   
+      Forced Logic : Available items incldue 15 Progression Items (4*Pygmy, 3*Key, 2*Gem, Fire Urn, Lamp, Bracelet, Amulet, Trident, Oasis Boots)
+                     and 10 Non-Progression Items (All Magic except for Shield, Heart, Elixer, and non-Sword Legend Items)
+   
+      Forced Logic : Complicated, but in general, the fewer requirements for a check, the more likely it is to be progression.
+   
+      Optional Logic : None at this time.
+
+4. Elder (The first person you talk to) items are randomized. They can be anything in the game, except for Legend Sword as this breaks progression.
+   
+      Forced Logic : Both items are different.
+   
+      Optional Logic : Customize your start from fully random, or require equipment, spells, etc.
+
+5. "Go-Mode" requires 6 items --
+   
+      (a). Defeat the ice-bomber. Requires Bracelet and Both-Gems. The Axe is not required, nor do you need to open the chest. (Though you probably should....)
+   
+      (b). Have access to Begonia. Requires Oasis Boots (Or enough Health/Refills to skip them) and the Star-Key.
+   
+      (c). The Fire-Urn. The Old Axe is NOT required and is not in the pool.
+   
+      (d). After this, you can get the Legend Sword as normal, and enter the final area. 
+
+      If you talk to the Elder after using the Bracelet to enter Childam, the door back to Purapill will not spawn. You may need to walk back. 
 
 
    If you find any issues or logical progression problems, please reach out to me.
 
 Here's what you'll have to do to run the randomizer :
+
 (1). Run the SRM executable. 
+
 (2). Put the randomizer.py into the same folder as the SRM. 
+
 (3). Run the SRM and point it at the rom you'll be using. Make sure you're using USA version, not Japanese!
-(4). You shouldn't need any of the optional settings unless you're doing research on addresses. These are cheat-modes to let you get to certain areas easier and quicker.
+
+(4). Use the optinal settings to customize your experience. Be aware the more you use, the longer it will take to generate. It may also crash. If you receieve the message "Maybe it was a bad seed?" try again.
+
 (5). Open the output with your emulator. I use fusion, but it should work with any of them. 
-(6). It's possible the game will freeze on the title screen. [It did for me, but not for Artega]. If you have problems go to Options -> Set Config -> And click disable SRAM and Fix Checksums. 
-(7). Currently the Inn save functions do NOT save your game. Apologies, I don't know why that is. Make sure you save state after you save at an inn, so you don't lose your progress if you die!!!!
+
+(6). If you use Fusion (As I do) the game will freeze on the title screen. (It does not freeze on Retroarch. I do not have information about other emulators).
+     If you have problems go to Options -> Set Config -> And click disable SRAM and Fix Checksums.      
+     Note this will disable inn-saving, so be sure to use save-states when you rest at an inn to prevent you from losing your progress. 
+
 
 Have fun!
     
