@@ -20,14 +20,53 @@ Rom_Name = "Wonder Boy in Monster World (USA, Europe)"
 Rom_File_Format = "" # File format (nes, gba, etc.)
 Rom_Hash = None
 About_Page_Text = "Wonderful Monster Boy."
-Timeout = 5000
+Timeout = 60
 Slow_Mode = False
 
 Attributes = [
+        ### TESTING ###
+        
+        
         ###Quality of Life Stuff####
+        Attribute(
+                name="SRAM_1",
+                addresses=[0x1b2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[248]
+                ),
+        Attribute(
+                name="SRAM_2",
+                addresses=[0x1b3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="SRAM_3",
+                addresses=[0x1ba],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[3]
+                ),
+        Attribute(
+                name="SRAM_4",
+                addresses=[0x1bb],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[255]
+                ),
+        
         Attribute(
                 name="Openning_Text",
                 addresses=[0x1df29],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[0]
+                ),
+        Attribute(
+                name="Elanora_Text",
+                addresses=[0x1e63a],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[0]
@@ -38,7 +77,7 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[0]
-                ),
+                ),        
         Attribute(
                 name="bat_spawn",
                 addresses=[0x2ca05],
@@ -229,7 +268,7 @@ Attributes = [
                 is_little_endian=False,
                 possible_values=[96]
                 ),
-        ###Starter Stuff###
+        ###Elder###
         Attribute(
                 name="elder_elixer",
                 addresses=[0x1e07f],
@@ -583,7 +622,19 @@ Attributes = [
                                  43,44,45,46] 
                 ),
 
-        ### Sphere 0 Checks (3 Checks - 4 Prog.)###
+        ### Item Tier List ###
+        ### PROGRESSION - 15 ###
+        ### Tier 1 : Trident, Oasis, Bracelet, Lamp (133 - 154 - 177 - 186)                      - 4
+        ### Tier 2 : Pygmy, Keys, Gems, Amulet (135/143/151/159 - 179/180/181 - 182/183 - 178)   - 10
+        ### Tier 3 : Fire Urn (185)                                                              - 1
+
+        ### NON-PROGRESSION - 15 ###
+        ### Tier 1 : Legend Equipment (136/144/154)                    - 3
+        ### Tier 2 : Spells, Elixer (160/161/162/163/164/165 - 170)    - 7
+        ### Tier 3 : Heart, Charmstone (192 - 169)                     - 2
+        ### Tier 4 : Healing Items (172/173/174)                       - 3
+        
+                ### Sphere 0 Checks (3 Checks - 4 Prog.)###
         Attribute(
                 name="Firestorm",
                 addresses=[0xa752],
@@ -606,7 +657,7 @@ Attributes = [
                 possible_values=[133,154,177,186]
                 ),
 
-        ### Sphere 1 Checks (12 Checks - 14 Prog (No Urn) / 5 Spells / Elixer)###
+        ### Sphere 1 Checks (12 Checks - 14 Prog (No Urn))###
         Attribute(
                 name="Hard_Shield",
                 addresses=[0xA74E],
@@ -615,7 +666,7 @@ Attributes = [
                 possible_values=[133,154,    186,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 160]
+                                 160,172]
                 ),
         Attribute(
                 name="Trident",
@@ -625,10 +676,10 @@ Attributes = [
                 possible_values=[133,154,    186,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 161]
+                                 161,173]
                 ),
         ### Elixer Chest can be accessed in 3 places. One is Sphere 1, and two are Sphere 2. ###
-        ### I have chosen to treat it as a Sphere 1, though it can technically have it's only key###
+        ### I have chosen to treat it as a Sphere 1, though it can technically have it's own key###
         Attribute(
                 name="Elixer_Chests",
                 addresses=[0xA74C],
@@ -637,7 +688,7 @@ Attributes = [
                 possible_values=[133,154,177,186,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 162]
+                                 162,174]
                 ),
         Attribute(
                 name="First_Money",
@@ -647,7 +698,7 @@ Attributes = [
                 possible_values=[    154,177,186,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 163] 
+                                 163,169] 
                 ),
         Attribute(
                 name="Pygmy_Armor",
@@ -657,7 +708,7 @@ Attributes = [
                 possible_values=[    154,177,186,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 165]
+                                 164,170]
                 ),
         Attribute(
                 name="Pygmy_Sword",
@@ -667,7 +718,7 @@ Attributes = [
                 possible_values=[    154,177,186,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 170]
+                                 165,192]
                 ),
         Attribute(
                 name="Amulet",
@@ -677,7 +728,7 @@ Attributes = [
                 possible_values=[    154,177,186,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 160]
+                                 170,160]
                 ),
         Attribute(
                 name="Thunder",
@@ -687,7 +738,7 @@ Attributes = [
                 possible_values=[    154,177,186,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 161]
+                                 192,161]
                 ),
         Attribute(
                 name="Shield_Magic_Chest",
@@ -697,7 +748,7 @@ Attributes = [
                 possible_values=[133,    177,186,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 162]
+                                 169,162]
                 ),
         Attribute(
                 name="Pygmy_Boots",
@@ -707,7 +758,7 @@ Attributes = [
                 possible_values=[133,154,177,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 163]
+                                 172,163]
                 ),
         Attribute(
                 name="Blue_Gem",
@@ -717,7 +768,7 @@ Attributes = [
                 possible_values=[133,154,177,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 165]
+                                 173,164]
                 ),
         Attribute(
                 name="Gold_Gem",
@@ -727,11 +778,12 @@ Attributes = [
                 possible_values=[133,154,177,
                                  178,179,180,181,182,183,
                                  135,143,151,159,
-                                 170]
+                                 174,165]
                 ),
+        
 
-        ### Sphere 2 Checks (7 Checks - 15 Prog / 5 Spells / Elixer / 3 Legend)###
-        ### Deeper Checks (Oasis/Star/Power) are more likely to have Legend Equipment###
+        
+        ### Sphere 2 Checks (12 Checks - 15 Prog)###
         Attribute(
                 name="Oasis_Boots",
                 addresses=[0xA732],
@@ -741,7 +793,7 @@ Attributes = [
                                      179,180,181,182,183,
                                  135,143,151,159,
                                  185,
-                                 192,136]
+                                 160,172,136,144,154]
                 ),        
         Attribute(
                 name="Return",
@@ -752,7 +804,7 @@ Attributes = [
                                      179,180,181,182,183,
                                  135,143,151,159,
                                  185,
-                                 160,144]
+                                 161,173]
                 ),
         Attribute(
                 name="Sun_Key",
@@ -763,7 +815,7 @@ Attributes = [
                                  178,179,180,181,182,183,
                                  135,143,151,159,
                                  185,
-                                 161,162]
+                                 162,174]
                 ),
         Attribute(
                 name="Moon_Key",
@@ -774,7 +826,62 @@ Attributes = [
                                  178,    180,181,182,183,
                                  135,143,151,159,
                                  185,
-                                 163,164]
+                                 163,169]
+                ),
+        Attribute(
+                name="Secret_Pyramid_1",
+                addresses=[0xa76a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[133,    177,186,
+                                 178,    180,181,182,183,
+                                 135,143,151,159,
+                                 185,
+                                 164,192]
+                ),
+        Attribute(
+                name="Secret_Pyramid_2",
+                addresses=[0xa76c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[133,    177,186,
+                                 178,    180,181,182,183,
+                                 135,143,151,159,
+                                 185,
+                                 165,170]
+                ),
+        Attribute(
+                name="Secret_Pyramid_3",
+                addresses=[0xa76e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[133,    177,186,
+                                 178,    180,181,182,183,
+                                 135,143,151,159,
+                                 185,
+                                 160,161]
+                ),
+        Attribute(
+                name="Secret_Pyramid_4",
+                addresses=[0xa770],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[133,    177,186,
+                                 178,    180,181,182,183,
+                                 135,143,151,159,
+                                 185,
+                                 162,163]
+                ),
+        Attribute(
+                name="Secret_Pyramid_5",
+                addresses=[0xa772],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[133,    177,186,
+                                 178,    180,181,182,183,
+                                 135,143,151,159,
+                                 185,
+                                 164,165]
                 ),
         Attribute(
                 name="Star_Key",
@@ -785,7 +892,7 @@ Attributes = [
                                  178,    180,181,182,183,
                                  135,143,151,159,
                                  185,
-                                 152,192]
+                                 169,170,136,144,152]
                 ),
         Attribute(
                 name="Pygmy_Shield",
@@ -796,7 +903,7 @@ Attributes = [
                                  178,179,    181,182,183,
                                  135,143,151,159,
                                  185,
-                                 170,136]
+                                 192,172]
                 ),
         Attribute(
                 name="Power",
@@ -807,7 +914,7 @@ Attributes = [
                                  178,179,180,    182,183,
                                  135,143,151,159,
                                  185,
-                                 144,152]
+                                 173,174,136,144,152]
                 ),
 
         ### Sphere 3+ (3 Checks - Fire Urn and non essentials only)###        
@@ -817,8 +924,8 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[185,
-                                 160,161,162,163,165,
-                                 170,192,136,144,154]
+                                 160,161,162,163,164,165,169,
+                                 136,144,152]
                 ),
         
         
@@ -828,8 +935,8 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[185,
-                                 160,161,162,163,165,
-                                 170,192,136,144,154]
+                                 160,161,162,163,164,165,169,
+                                 136,144,152]
                 ),        
         Attribute(
                 name="Charmstone_Chest",
@@ -837,8 +944,8 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[185,
-                                 160,161,162,163,165,
-                                 170,192,136,144,154]
+                                 160,161,162,163,164,165,169,
+                                 136,144,152]
                 ),
 
 
@@ -874,7 +981,9 @@ Required_Rules = [
                            value("Blue_Gem"),value("Gold_Gem"),value("Thunder"),value("Return"),value("Power"),value("Shield_Magic_Chest"),
                            value("Old_Axe"),value("Fire_Urn"),value("Charmstone_Chest"),
                            value("Hard_Shield"),value("Trident"),value("Oasis_Boots"),value("Amulet"),
-                           value("Elixer_Chests"),value("First_Money")],
+                           value("Elixer_Chests"),value("First_Money")
+                          ,value("Secret_Pyramid_1"),value("Secret_Pyramid_2"),value("Secret_Pyramid_3"),value("Secret_Pyramid_4"),value("Secret_Pyramid_5")
+                           ],
                 rule_type="!=",
                 right_side=None
         ),
@@ -1361,7 +1470,7 @@ Optional_Rulesets = [
                                                             ]
 
 			),
-		],
+                ],
                 must_be_enabled=None,
 		must_be_disabled=None,
 	),
