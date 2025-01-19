@@ -22,7 +22,7 @@ With that out of the way, here's what this randomizer does and does not do. [So 
    
       Optional Logic : Scale price by region, prevent certain items from appearing.
    
-3. (Almost) all chests are randomized. Exceptions include: Heart Chests, All Money (Except for the left-most water), and the Pyramid Bonus-Magic Chest. This includes the Bat. Total Checks : 25.
+3. (Almost) all chests are randomized. Exceptions include: Heart Chests, All Money (Except for the left-most water). This includes the Bat. Total Checks : 30.
 
       Forced Logic : All chests are different. Exception: Elixer and some magic chests duplicate the same item as they are the same items.
    
@@ -65,11 +65,6 @@ Here's what you'll have to do to run the randomizer :
 (4). Use the optinal settings to customize your experience. Be aware the more you use, the longer it will take to generate. It may also crash. If you receieve the message "Maybe it was a bad seed?" try again.
 
 (5). Open the output with your emulator. I use fusion, but it should work with any of them. 
-
-(6). If you use Fusion (As I do) the game will freeze on the title screen. (It does not freeze on Retroarch. I do not have information about other emulators).
-     If you have problems go to Options -> Set Config -> And click disable SRAM and Fix Checksums.      
-     Note this will disable inn-saving, so be sure to use save-states when you rest at an inn to prevent you from losing your progress. 
-
 
 Have fun!
     
