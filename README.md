@@ -22,7 +22,7 @@ With that out of the way, here's what this randomizer does and does not do. [So 
    
       Optional Logic : Scale price by region, prevent certain items from appearing.
    
-3. (Almost) all chests are randomized. Exceptions include: Heart Chests, All Money (Except for the left-most water). This includes the Bat. Total Checks : 30.
+3. (Almost) all chests are randomized. Exceptions include: Heart Chests, Pyramid Money. This includes the Bat and Legend Sword. Total Checks : 42
 
       Forced Logic : All chests are different. Exception: Elixer and some magic chests duplicate the same item as they are the same items.
    
@@ -33,21 +33,23 @@ With that out of the way, here's what this randomizer does and does not do. [So 
    
       Optional Logic : None at this time.
 
-4. Elder (The first person you talk to) items are randomized. They can be anything in the game, except for Legend Sword as this breaks progression.
+4. Elder (The first person you talk to) items are randomized. They can be anything in the game.
    
       Forced Logic : Both items are different.
    
       Optional Logic : Customize your start from fully random, or require equipment, spells, etc.
 
-5. "Go-Mode" requires 6 items --
+5. "Go-Mode" requires 7 items --
    
       (a). Defeat the ice-bomber. Requires Bracelet and Both-Gems. The Axe is not required, nor do you need to open the chest. (Though you probably should....)
    
       (b). Have access to Begonia. Requires Oasis Boots (Or enough Health/Refills to skip them) and the Star-Key.
    
       (c). The Fire-Urn. The Old Axe is NOT required and is not in the pool.
+
+      (d). Legend Sword.
    
-      (d). After this, you can get the Legend Sword as normal, and enter the final area. 
+      (d). After this,talk to the blacksmith, so you can go to the final area. 
 
       If you talk to the Elder after using the Bracelet to enter Childam, the door back to Purapill will not spawn. You may need to walk back. 
 
