@@ -1,3 +1,17 @@
+Update : In the new version, you'll have to add the following line of code to the SRM just below: file = open(newRom, "r+b")
+
+for att in Attributes:
+				Shift_Up = ["Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
+					"Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
+					"Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
+					"Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
+					"Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5"]
+				flag = any (x == att.name for x in Shift_Up)
+				if flag:
+					att.value = att.value+128
+
+This allows the code to work properly. 
+
 # Wonder-Boy-in-Monster-World---Randomizer
 Randomizer for the Genesis Classic, Wonder Boy 5 (Monster World 3)
 
