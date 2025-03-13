@@ -1,17 +1,3 @@
-Update : In the new version, you'll have to add the following line of code to the SRM just below: file = open(newRom, "r+b")
-
-for att in Attributes:
-				Shift_Up = ["Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
-					"Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
-					"Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
-					"Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
-					"Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5"]
-				flag = any (x == att.name for x in Shift_Up)
-				if flag:
-					att.value = att.value+128
-
-This allows the code to work properly. 
-
 # Wonder-Boy-in-Monster-World---Randomizer
 Randomizer for the Genesis Classic, Wonder Boy 5 (Monster World 3)
 
@@ -20,67 +6,107 @@ First of all, I want to say huge thanks to both Mode8fx and PaddyCo for making t
 In case you don't know, Mode8fx created the program "Simple Randomizer Maker" which is incredibly easy to use. All you need is the hex addresses and values and the program does the rest.
 I've uploaded it as part of the repository, but you can also find it here : https://github.com/Mode8fx/SimpleRandomizerMaker
 
+Update : To make certain things work, I needed to directly edit the SRM file. So use the one listed here, rather than the other one. 
+
+
 In addition, I couldn't have made any progress without the ground work that PaddyCo laid out. He started this project over 4 years ago and provided me with the addresses for around 10 checks, along with all the values.
 Using his framework and a hex editor, I was able to deduce [MOST] of the remaining checks.
 You can find his work here : https://github.com/PaddyCo/mw3rando
 
+
 With that out of the way, here's what this randomizer does and does not do. [So Far].
 
-1. All shop items are randomized. Non-Equippable Progression items (Keys, Gems, etc) have prices in the billions, so are not available. Equippable Progression items (Trident, Oasis Boots, Pygmy....) are available.
+There are currently 67 objcets randomized in the "Pool". They are :
+(1). All 25 Shop Items. Non-Equippable items such as Keys cost billions of coins, and adjusting their prices causes the game to crash. So they cannot be found in Shops. All other equippable items can be found in shops.
+This includes Trident, Oasis Boots, Pygmy Items, Legend Items, and Spells. It does not include a Heart.
 
-      Forced Logic : All Shop Items are different. The Potion shop-item in Purapill and Lillpad is the same item, so it will appear twice.
-   
-      Forced Logic : Marine boots will appear by Lillypad at the latest. Needed for Quake chest.
-   
-      Forced Logic : Hi Potion and Elixer will be available. "Needed" for final boss.
-   
-      Optional Logic : Scale price by region, prevent certain items from appearing.
-   
-3. (Almost) all chests are randomized. Exceptions include: Heart Chests, Pyramid Money. This includes the Bat and Legend Sword. Total Checks : 42
+(2). The "Elder" items at the beginning of the game. These can be any item, except for a Heart.
 
-      Forced Logic : All chests are different. Exception: Elixer and some magic chests duplicate the same item as they are the same items.
-   
-      Forced Logic : Available items incldue 15 Progression Items (4*Pygmy, 3*Key, 2*Gem, Fire Urn, Lamp, Bracelet, Amulet, Trident, Oasis Boots)
-                     and 10 Non-Progression Items (All Magic except for Shield, Heart, Elixer, and non-Sword Legend Items)
-   
-      Forced Logic : Complicated, but in general, the fewer requirements for a check, the more likely it is to be progression.
-   
-      Optional Logic : None at this time.
+(3). The "Sonia" item, left in the cave. This can be any item, except for a heart.
 
-4. Elder (The first person you talk to) items are randomized. They can be anything in the game.
-   
-      Forced Logic : Both items are different.
-   
-      Optional Logic : Customize your start from fully random, or require equipment, spells, etc.
+(4). The "Blacksmith" item (Legend Sword in Vanilla). This can be any item, except for a heart. 
 
-5. "Go-Mode" requires 7 items --
+(5). 38 Chest items. This includes the Bat, even though it's not a Chest, it behaves like one. These can be any item, including Heart AND can even be random things like coins, small heart refils, and magic refil.
+This includes the 3 Legendary Chests in Nightmare Castle, the first Money Chest near Alsedo [The one that spews a pile of small bags] and the third Moeny Chest near Alsedo [The one near the Heart]. 
+
+The item pool consists of a corresponding 67 items, forcing each "Check" to be different. They are :
+
+(1). All equipment except for the starting items. -- 29
+
+(2). All Spells -- 6
+
+(3). Potions and Elixer -- 5
+
+(4). The Ocarina and Charmstone -- 2
+
+(5). Non-Equippable Progression Items (Lamp, Amulet, 3 Keys, 2 Gems, Fire Urn, Bracelet) -- 9
+
+(6). A Heart -- 1
+
+(7). Money, small heart, big heart, magic refil -- 15
+
+Some notes on Item Restrictions :
+
+(1). Ocarina must appear in the first 8 checks, by the Sonia Item.
+
+(2). Leather Boots must appear in the first 14 checks, before leaving Purapil. 
+
+(3). Return Magic, Trident, Oasis Boots, Bracelet, and Lamp (The most important Items) are never behind more than one progression item. (So they cannot be in the pyramid, or in Poseidon's Area for instance).
+
+(4). Amulet, Keys, and Gems are never behind more than TWO progression items. (So they cannot be Legend Sword, Blacksmith, or either Pygmy Check). 
+
+(5). The two pygmy checks (Fire-Urn and Charmstone) are restricted to increase the chances you'll need Pygmy items. It's roughly 50-50 you'll need to do one of them.
+
+8 other Chest items are randomized for fun, but will never have progression items in them. The two "Full-Heath" chests, and the 2nd Money-Chest Near Alsedo. These will have some random combination of money, small hearts, Heart, and even an extra Charmstone. 
+
+
+"Go-Mode" requires 7 items --
    
-      (a). Defeat the ice-bomber. Requires Bracelet and Both-Gems. The Axe is not required, nor do you need to open the chest. (Though you probably should....)
+      (a). Defeat the ice-bomber. Requires Bracelet and Both-Gems. The Old-Axe is not needed, nor is it in the Pool. 
    
       (b). Have access to Begonia. Requires Oasis Boots (Or enough Health/Refills to skip them) and the Star-Key.
    
-      (c). The Fire-Urn. The Old Axe is NOT required and is not in the pool.
+      (c). The Fire-Urn. Talk to the Blacksmith.
 
-      (d). Legend Sword.
+      (d). Legend Sword. (You technicallty don't need the other Legend Items, but good luck vs Biomeka without them! I personally would never try it without booth Legend Armor and Legend Shield). 
    
-      (d). After this,talk to the blacksmith, so you can go to the final area. 
+  
 
       If you talk to the Elder after using the Bracelet to enter Childam, the door back to Purapill will not spawn. You may need to walk back. 
 
 
    If you find any issues or logical progression problems, please reach out to me.
 
+
+In addition to the random elements, many Quality of Life improvements are in place. In general, all items are cheaper than they would be in Vanilla, so less grinding is needed. 
+
+Sonia's text synchs with her correpsonding item, so you can skip it if it's useless. The blacksmith's language is also synched, so you know what you're getting.
+
+There are THREE hints currently in the game. 
+
+At the top of purapill stairs, on the first screen, the lady to the left will hint about the "Sphinx Item". This is the CHARMSTONE chest.
+
+The lady on the right will hint about the "Poseidon item". This is the OASIS BOOTS chest.
+
+The wandering Dragon in Begonia will hint about the "Volcano item". This is the FIRE-URN chest. 
+
+As many text speed ups are in place as I could find. The following texts can be skipped by holding C and mashing A : The Intro, Ocarina playing, The Dwarf, The Sphinx, the Gems, the Ice Melting, and both Prince speaches.
+
+Be very careful when skipping the text with the Sphinx! I'm not responsible if you skip a question! :-P
+
 Here's what you'll have to do to run the randomizer :
 
-(1). Run the SRM executable. 
+(1). Put the randomizer.py into the same folder as the SRM and the other python scripts. 
 
-(2). Put the randomizer.py into the same folder as the SRM. 
+(2). Run the SRM executable. 
 
-(3). Run the SRM and point it at the rom you'll be using. Make sure you're using USA version, not Japanese!
+(3). Point it at the (Legally Aquired) rom you'll be using. Make sure you're using USA version, not Japanese! I cannot guarantee it will work the same [Though it might!]
 
-(4). Use the optinal settings to customize your experience. Be aware the more you use, the longer it will take to generate. It may also crash. If you receieve the message "Maybe it was a bad seed?" try again.
+(4). Be Patient. Sometimes it takes a while, sometime it crashes. It may also crash. If you receieve the message "Maybe it was a bad seed?" try again.
 
 (5). Open the output with your emulator. I use fusion, but it should work with any of them. 
+
+(6). In addition to the rom, the program will output a spoiler log, with key items written in english. If you want to know what the other numbers mean, let me know. 
 
 Have fun!
     
