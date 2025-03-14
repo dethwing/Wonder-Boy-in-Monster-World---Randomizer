@@ -17,6 +17,7 @@ You can find his work here : https://github.com/PaddyCo/mw3rando
 With that out of the way, here's what this randomizer does and does not do. [So Far].
 
 There are currently 67 objcets randomized in the "Pool". They are :
+
 (1). All 25 Shop Items. Non-Equippable items such as Keys cost billions of coins, and adjusting their prices causes the game to crash. So they cannot be found in Shops. All other equippable items can be found in shops.
 This includes Trident, Oasis Boots, Pygmy Items, Legend Items, and Spells. It does not include a Heart.
 
@@ -35,7 +36,7 @@ The item pool consists of a corresponding 67 items, forcing each "Check" to be d
 
 (2). All Spells -- 6
 
-(3). Potions and Elixer -- 5
+(3). Potions and Elixer -- 5 [Elixer and Hi-Potion can only appear in Shops. This so you can be properly equipped for the final battle]
 
 (4). The Ocarina and Charmstone -- 2
 
