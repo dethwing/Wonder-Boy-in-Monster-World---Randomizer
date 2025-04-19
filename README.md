@@ -16,7 +16,7 @@ You can find his work here : https://github.com/PaddyCo/mw3rando
 
 With that out of the way, here's what this randomizer does and does not do. [So Far].
 
-There are currently 67 objcets randomized in the "Pool". They are :
+There are currently 66 objcets randomized in the "Pool". They are :
 
 (1). All 25 Shop Items. Non-Equippable items such as Keys cost billions of coins, and adjusting their prices causes the game to crash. So they cannot be found in Shops. All other equippable items can be found in shops.
 This includes Trident, Oasis Boots, Pygmy Items, Legend Items, and Spells. It does not include a Heart.
@@ -27,10 +27,17 @@ This includes Trident, Oasis Boots, Pygmy Items, Legend Items, and Spells. It do
 
 (4). The "Blacksmith" item (Legend Sword in Vanilla). This can be any item, except for a heart. 
 
-(5). 38 Chest items. This includes the Bat, even though it's not a Chest, it behaves like one. These can be any item, including Heart AND can even be random things like coins, small heart refils, and magic refil.
-This includes the 3 Legendary Chests in Nightmare Castle, the first Money Chest near Alsedo [The one that spews a pile of small bags] and the third Moeny Chest near Alsedo [The one near the Heart]. 
+(5). 37 Chest items: 
+("Firestorm"),("Quake"),("bat_reward"),("Pygmy_Sword"),("Pygmy_Armor"),
+("Pygmy_Boots"),("Pygmy_Shield"),("Sun_Key"),("Moon_Key"),("Star_Key"),
+("Blue_Gem"),("Gold_Gem"),("Thunder"),("Return"),("Power"),
+("Shield_Magic_Chest"),("Old_Axe"),("Fire_Urn"),("Charmstone_Chest"),("Hard_Shield"),
+("Trident"),("Oasis_Boots"),("Amulet"),("Elixer_Chests"),("First_Money"),
+("Secret_Pyramid_1"),("Secret_Pyramid_2"),("Secret_Pyramid_3"),("Secret_Pyramid_4"),("Secret_Pyramid_5"),
+("Water_Money_Chest3_Item1"),("Water_Money_Chest3_Item2"),("Water_Money_Chest3_Item3"),("Water_Money_Chest3_Item4"),("Water_Money_Chest3_Item5"),
+("Full_Health_1"),("Full_Health_2"),
 
-The item pool consists of a corresponding 67 items, forcing each "Check" to be different. They are :
+The item pool consists of a corresponding 66 items, forcing each "Check" to be different. They are :
 
 (1). All equipment except for the starting items. -- 29
 
@@ -44,7 +51,7 @@ The item pool consists of a corresponding 67 items, forcing each "Check" to be d
 
 (6). A Heart -- 1
 
-(7). Money, small heart, big heart, magic refil -- 15
+(7). Money, small heart, big heart, magic refil -- 14
 
 Some notes on Item Restrictions :
 
@@ -56,9 +63,9 @@ Some notes on Item Restrictions :
 
 (4). Amulet, Keys, and Gems are never behind more than TWO progression items. (So they cannot be Legend Sword, Blacksmith, or either Pygmy Check). 
 
-(5). The two pygmy checks (Fire-Urn and Charmstone) are restricted to increase the chances you'll need Pygmy items. It's roughly 50-50 you'll need to do one of them.
+(5). The three pygmy checks (Fire-Urn and Charmstone and the 2nd Health) are restricted to increase the chances you'll need Pygmy items. It's roughly 50-50 you'll need to do one of them.
 
-8 other Chest items are randomized for fun, but will never have progression items in them. The two "Full-Heath" chests, and the 2nd Money-Chest Near Alsedo. These will have some random combination of money, small hearts, Heart, and even an extra Charmstone. 
+9 other Chest items are randomized for fun, but will never have progression items in them. The Legend Chests, and the 2nd Money-Chest Near Alsedo. These will have some random combination of money, small hearts, Heart, and even an extra Charmstone. 
 
 
 "Go-Mode" requires 7 items --
@@ -103,7 +110,7 @@ Here's what you'll have to do to run the randomizer :
 
 (3). Point it at the (Legally Aquired) rom you'll be using. Make sure you're using USA version, not Japanese! I cannot guarantee it will work the same [Though it might!]
 
-(4). Be Patient. Sometimes it takes a while, sometime it crashes. It may also crash. If you receieve the message "Maybe it was a bad seed?" try again.
+(4). Be Patient. Sometimes it takes a while, sometime it crashes. If you receieve the message "Maybe it was a bad seed?" try again. If it gets over 50,000 atttempts, I'd recomend trying again. 
 
 (5). Open the output with your emulator. I use fusion, but it should work with any of them. 
 
