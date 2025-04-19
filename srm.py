@@ -1,3438 +1,1137 @@
-        # This is a randomizer file for the Simple Randomizer Maker.
-# This file must be named randomizer.py in order to work.
-# For more information on what each variable means, see "Readme (Tutorial).md"
-# Version 1.1, Updated on 4/19 to fix bat dropping # 
+import sys
+from os import path, remove, mkdir
+import shutil
+from time import time
+from gatelib import *
+import binascii
 
-from classes import *
+# the same folder where this program is stored
+if getattr(sys, 'frozen', False):
+        mainFolder = path.dirname(sys.executable) # EXE (executable) file
+else:
+        mainFolder = path.dirname(path.realpath(__file__)) # PY (source) file
+sys.path.append(mainFolder)
+outputFolder = path.join(mainFolder, "output")
 
-def value(name):
-	for att in Attributes:
-		if att.name == name:
-			return att
-	print("This attribute does not exist: "+name)
-	return None
+# GUI imports
+try:
+        import Tkinter as tk
+        from Tkinter.filedialog import askopenfilename
+        from Tkinter import font as tkFont
+        from Tkinter.messagebox import showinfo, showerror
+except ImportError:
+        import tkinter as tk
+        from tkinter.filedialog import askopenfilename
+        from tkinter import font as tkFont
+        from tkinter.messagebox import showinfo, showerror
+try:
+        import ttk
+        py3 = False
+except ImportError:
+        import tkinter.ttk as ttk
+        py3 = True
 
+import classes
+try:
+        from randomizer import *
+except:
+        tk.Tk().withdraw()
+        showerror("Randomizer Not Found", "Valid randomizer file not found. Make sure it is named \"randomizer.py\" and does not contain any errors.")
+        sys.exit()
 
+stringLen = 5+ceil(len(Optional_Rulesets)/5.0)
 
-	
-########################
-# EDIT BELOW THIS LINE #
-########################
+timedOut = False
+numAllCombinations = 1
+currNumCombinations = 0
+currRomIndex = 0
+currRulesetPage = 0
 
-Program_Name = "Wonder Boy in Monster World (WBV or MWIII) - Randomizer"
-Rom_Name = "Wonder Boy in Monster World (USA, Europe)"
-Rom_File_Format = "" # File format (nes, gba, etc.)
-Rom_Hash = None
-About_Page_Text = "Wonderful Monster Boy."
-Timeout = 60
-Slow_Mode = False
+def main():
+        initRomInfoVars()
+        setDefaultRuleNum()
+        vp_start_gui()
 
-Attributes = [
-          
-        ### Sphere 0 Checks - 8 (Ocarina) ###
-        Attribute(
-                name="elder_elixer",
-                addresses=[0x1e07f],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                 40,41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58       
-                                 ]                                 
-                ),
-        Attribute(
-                name="elder_firestorm",
-                addresses=[0x1e08b],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                 40,41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58          
-                                 ] 
-                ),
+def initRomInfoVars():
+        global Rom_Name, Rom_File_Format, Rom_Hash
 
-        Attribute(
-                name="leather_boots",
-                addresses=[0x1e239],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                 40,41,42,43,44,45,46                                 
-                                 ] 
-                ),
-        Attribute(
-                name="medicine",
-                addresses=[0x1e292],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                 40,41,42,43,44,45,46                         
-                                 ] 
-                ),
-        Attribute(
-                name="small_spear",
-                addresses=[0x1e1c1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                 40,41,42,43,44,45,46                          
-                                 ] 
-                ),
-        Attribute(
-                name="chain_mail",
-                addresses=[0x1e1e5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                 40,41,42,43,44,45,46                           
-                                 ] 
-                ),
-        Attribute(
-                name="wood_shield",
-                addresses=[0x1e215],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                 40,41,42,43,44,45,46                        
-                                 ]  
-                ),
-        Attribute(
-                name="Ocarina_Reward",
-                addresses=[0x1e27c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                 40,41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58
-                                 ]  
-                ),
-
+        try:
+                if not isinstance(Rom_Name, list):
+                        Rom_Name = [Rom_Name]
+        except:
+                Rom_Name = ["ROM"]
+        try:
+                if not isinstance(Rom_File_Format, list):
+                        Rom_File_Format = [Rom_File_Format]
+        except:
+                Rom_File_Format = [""]
+        try:
+                if not isinstance(Rom_Hash, list):
+                        Rom_Hash = [Rom_Hash]
+        except:
+                Rom_Hash = [None]
         
-        ### Sphere 0.5 Checks - 12 (No Ocarina) ###
-        Attribute(
-                name="Firestorm",
-                addresses=[0xa752],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Knight_Sword",
-                addresses=[0x1e1b5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46                          
-                                 ] 
-                ),
-        Attribute(
-                name="Hard_Armor",
-                addresses=[0x1e1df],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46                         
-                                 ]
-                ),
-        Attribute(
-                name="Charmstone_Purchase",
-                addresses=[0x1e28c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46                          
-                                 ]
-                ),
-        Attribute(
-                name="Potion",
-                addresses=[0x1e298],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46                         
-                                 ]
-                ),
-        Attribute(
-                name="Ladder_Boots",
-                addresses=[0x1e233],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,29,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46                          
-                                 ]
-                ),
-        ### Remove Leather Boots (29) From Here ###
-        Attribute(
-                name="Marine_Boots",
-                addresses=[0x1e22d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46                         
-                                 ]
-                ),
-        Attribute(
-                name="Shield_Magic_Shop",
-                addresses=[0x1e251],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46                          
-                                 ]
-                ),
-        Attribute(
-                name="Shell_Shield",
-                addresses=[0x1e20f],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46                          
-                                 ]
-                ),
-        Attribute(
-                name="Steel_Armor",
-                addresses=[0x1e1d9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46                         
-                                 ]
-                ),
-        Attribute(
-                name="bat_reward",
-                addresses=[0x2ca09],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                     130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Full_Health_1",
-                addresses=[0xA75C],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Quake",
-                addresses=[0xA738],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),      
-        ### Sphere 1 Checks - 19 ###
+
+# The main randomize function.
+def randomize():
+        global sourceRoms
+        global currSeed, seedString
+        global endTime
+        global numAllCombinations, currNumCombinations
+        global Attributes, originalAttributes
+
+        for sr in sourceRoms:
+                if not path.isfile(sr.get()):
+                        return (False, "Invalid ROM input.")
+
+        numOfSeeds = int(numSeeds.get())
+        numSeedsGenerated = 0
+        for seedNum in range(numOfSeeds):
+                originalAttributes = copy.copy(Attributes)
+                if useSeed.get() == "1":
+                        seedString = seedInput.get()
+                        try:
+                                assert len(seedString) == stringLen
+                                assert verifySeed(seedString[:-5], [1]*len(optionalRulesetsList), 36)
+                        except:
+                                print("Invalid seed.")
+                                return (False, "Invalid seed.")
+                        decodedSeedVals = decodeSeed(seedString[:-5], [1]*len(optionalRulesetsList), 36)
+                        for i in range(len(optionalRulesetsList)):
+                                optionalRulesetsList[i] = (optionalRulesetsList[i][0], decodedSeedVals[i])
+                        currSeed = int(seedString, 36)
+                else:
+                        varArray = []
+                        maxValueArray = []
+                        for ruleset in optionalRulesetsList:
+                                varArray.append(ruleset[1])
+                                maxValueArray.append(1)
+                        settingsSeed = encodeSeed(varArray, maxValueArray, 36)[0]
+                        maxVal = int("ZZZZZ", 36)
+                        genSeed = random.randint(0, maxVal)
+                        currSeed = (settingsSeed*(maxVal+1)) + genSeed
+                        seedString = str(dec_to_base(currSeed, 36)).upper().zfill(stringLen)
+                myRules = copy.copy(Required_Rules)
+                for ruleset in optionalRulesetsList:
+                        if ruleset[1] == 1:
+                                for rule in getFromListByName(Optional_Rulesets, ruleset[0]).rules:
+                                        myRules.append(rule)
+                enabledRulesetsByName = [ruleset[0] for ruleset in optionalRulesetsList if ruleset[1] == 1]
+                for att in Attributes:
+                        lockFlag = False
+                        for rulesetGroup in att.lock_if_enabled:
+                                if arrayOverlap(rulesetGroup, enabledRulesetsByName) == len(rulesetGroup):
+                                        lockFlag = True
+                                        break
+                        if not lockFlag:
+                                if len(att.lock_unless_enabled) > 0:
+                                        lockFlag = True
+                                        for rulesetGroup in att.lock_unless_enabled:
+                                                if arrayOverlap(rulesetGroup, enabledRulesetsByName) == len(rulesetGroup):
+                                                        lockFlag = False
+                                                        break
+                        if lockFlag:
+                                with open(sourceRoms[att.addresses[0][1] - 1].get(), "rb") as tempFile:
+                                        tempFile.seek(att.addresses[0][0])
+                                        defaultValue = 0
+                                        for i in range(att.number_of_bytes):
+                                                defaultValue += ord(tempFile.read(1)) * (256**i) # little endian by default
+                                        if not att.is_little_endian:
+                                                defaultValue = swapEndianness(defaultValue, att.number_of_bytes)
+                                if not (defaultValue in att.possible_values):
+                                        att.possible_values.append(defaultValue)
+                                myRules.append(Rule(
+                                        description="Lock: "+att.name,
+                                        left_side=value(att.name),
+                                        rule_type="==",
+                                        right_side=defaultValue
+                                        ))
+                startTime = time()
+                endTime = startTime + Timeout
+                random.seed(currSeed)
+                random.shuffle(Attributes)
+                simplifiedRules = []
+                for rule in myRules:
+                        rule.simplifyRule(simplifiedRules)
+                myRules = simplifiedRules
+                myRules.sort(key=getNumCombinations)
+                setNumAllCombinations()
+                try:
+                        result = optimizeAttributes(myRules)
+                except:
+                        errorMessage = "At least one of your rules is bad (has no possible solution)."
+                        print(errorMessage)
+                        resetAttributesAndSeed()
+                        return (False, errorMessage)
+                if not result:
+                        errorMessage = "The program timed out (seed generation took longer than "+str(Timeout)+" seconds)."
+                        # \n\nEstimated time for current combination of rules: unknown."
+                        print(errorMessage)
+                        resetAttributesAndSeed()
+                        return (False, errorMessage)
+                # initialize Attributes
+                shuffleAllAttributes()
+                for rule in myRules:
+                        rule.relatedAttributes.sort(key=getShuffledAttributeNum)
+                print("Generating values...")
+                if not (shotgunApproach(myRules)
+                        or ((not Slow_Mode) and enforceRulesetBacktracking(myRules))
+                        or (Slow_Mode and enforceRulesetBruteForce(myRules))):
+                        errorMessage = ""
+                        if timedOut:
+                                errorMessage = "The program timed out (seed generation took longer than "+str(Timeout)+" seconds)."
+                                # The next line only works for brute force, not backtracking
+                                # \n\nEstimated time for current combination of rules given your computer's speed: up to "+str(round(numAllCombinations*Timeout/currNumCombinations, 1))+" seconds."
+                        elif useSeed.get() == "1":
+                                errorMessage = "Invalid seed."
+                        else:
+                                errorMessage = "No combination of values satisfies the given combination of rules. Maybe it's just a bad seed?"
+                        print(errorMessage)
+                        resetAttributesAndSeed()
+                        return (False, errorMessage)
+                generatedRom = generateRom()
+                resetAttributesAndSeed(True)                                  
+                if generateLog.get() == "1":
+                        generateTextLog()
+                for att in Attributes:
+                        att.resetToDefault()
+                if generatedRom[0]:
+                        numSeedsGenerated += 1
+                else:
+                        return generatedRom
+        resetAttributesAndSeed()
+        return (True, "Successfully generated "+str(numSeedsGenerated)+" seed"+("s." if numSeedsGenerated != 1 else "."))
+
+# Optimize attributes by checking each rule and attempting to remove any values that are guaranteed to fail.
+# For example, if the rule "value("A")>=5" is enabled, this will remove any value of "A"<5.
+def optimizeAttributes(ruleset):
+        global endTime, timedOut
+
+        setNumAllCombinations()
+        for rule in ruleset:
+                numRuleCombinations = getNumCombinations(rule)
+                # only optimize an attribute if it would take a negligible amount of time
+                if numRuleCombinations < 150000: # 150,000 combinations is what my 3.5 year old laptop checks in about half a second
+                        newPossibleValues = []
+                        for i in range(len(rule.relatedAttributes)):
+                                rule.relatedAttributes[i].resetToFirstValue()
+                                newPossibleValues.append([False] * len(rule.relatedAttributes[i].possible_values))
+                        nextValueSet = True
+                        while nextValueSet:
+                                if Timeout > 0 and time() > endTime:
+                                        timedOut = True
+                                        return False
+                                if rule.rulePasses(): # you could also check if all current values are True, then skip the rule check (but I think this would be less efficient)
+                                        for i in range(len(rule.relatedAttributes)):
+                                                newPossibleValues[i][rule.relatedAttributes[i].index] = True
+                                nextValueSet = False
+                                for i in range(len(rule.relatedAttributes)):
+                                        if rule.relatedAttributes[i].setToNextValue():
+                                                nextValueSet = True
+                                                break
+                        for i in range(len(rule.relatedAttributes)):
+                                newVals = []
+                                for j in range(len(rule.relatedAttributes[i].possible_values)):
+                                        if newPossibleValues[i][j] == True:
+                                                newVals.append(rule.relatedAttributes[i].possible_values[j])
+                                rule.relatedAttributes[i].possible_values = newVals
+                                rule.relatedAttributes[i].resetToFirstValue()
+        numAllCombinationsNew = 1
+        for att in Attributes:
+                numAllCombinationsNew *= len(att.possible_values)
+        try:
+                print(str(round((1-(numAllCombinationsNew/numAllCombinations))*100, 3))+"% reduction in seed generation time.")
+        except:
+                print("Something broke. Close the program, reopen, and try again.") # This shouldn't happen
+                return False
+        return True
+
+# Attempt 50 completely random combinations before attempting a normal approach.
+# This is useful for overcoming unlucky RNG without negatively affecting anything else.
+def shotgunApproach(ruleset):
+        ruleNum = 0
+        numAttempts = 0
+
+        while ruleNum < len(ruleset):
+                if not ruleset[ruleNum].rulePasses():
+                        shuffleAllAttributes()
+                        numAttempts += 1
+                        if numAttempts >= 50:
+                                return False
+                        ruleNum = 0
+                else:
+                        ruleNum += 1
+        return True
+
+# Backtracking constraint satisfaction across related Attributes only.
+def enforceRulesetBacktracking(ruleset):
+        global endTime, timedOut
+        global currNumCombinations
+
+        ruleNum = 0
+        currNumCombinations = 0
+
+        while ruleNum < len(ruleset):
+                passedCurrRuleBatch = True
+                for nestedRuleNum in range(ruleNum+1):
+                        if not ruleset[nestedRuleNum].rulePasses():
+                                passedCurrRuleBatch = False
+                                break
+                if not passedCurrRuleBatch:
+                        currNumRelated = len(ruleset[ruleNum].relatedAttributes) - 1
+                        while not ruleset[ruleNum].relatedAttributes[currNumRelated].setToNextValue():
+                                currNumRelated -= 1
+                                if currNumRelated < -100:
+                                        return False
+                else:
+                        ruleNum += 1
+                currNumCombinations += 1
+                print (currNumCombinations)
+        return True
+
+# Brute force constraint satisfaction across all Attributes.
+# May work marginally better than backtracking in rare situations (at best),
+# but is significantly slower to the point of sometimes being impractical.
+def enforceRulesetBruteForce(ruleset):
+        global endTime
+        global timedOut
+        global currNumCombinations
+
+        ruleNum = 0
+        currNumCombinations = 0
+
+        while ruleNum < len(ruleset):
+                if not ruleset[ruleNum].rulePasses():
+                        if Timeout > 0 and time() > endTime:
+                                timedOut = True
+                                return False
+                        nextValueSet = False
+                        for att in Attributes:
+                                if att.setToNextValue():
+                                        nextValueSet = True
+                                        break
+                        if not nextValueSet:
+                                return False
+                        ruleNum = 0
+                        currNumCombinations += 1
+                else:
+                        ruleNum += 1
+        return True
+
+# Generate a ROM using the determined Attribute values.
+def generateRom():
+        global sourceRoms
+        global seedString
+
+        allNewRoms = []
+        success = True
+        for i in range(len(sourceRoms)):
+                romName, romExt = path.splitext(path.basename(sourceRoms[i].get()))
+                newRom = path.join(outputFolder, romName+"-"+seedString+romExt)
+                allNewRoms.append(newRom)
+                if not path.isdir(outputFolder):
+                        mkdir(outputFolder)
+                shutil.copyfile(sourceRoms[i].get(), newRom)
+                try:
+                        file = open(newRom, "r+b")
+                        for att in Attributes:
+                                Shift_Up = ["Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
+                                        "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
+                                        "Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
+                                        "Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
+                                        "Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5",
+                                            "Full_Health_1","Full_Health_2",
+                                            "Legend_Shield","Legend_Armor","Legend_Boots",
+                                            "Water_Money_Chest3_Item1","Water_Money_Chest3_Item2","Water_Money_Chest3_Item3",
+                                            "Water_Money_Chest3_Item4","Water_Money_Chest3_Item5",
+                                            "Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
+                                            "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6"]
+                                flag = any (x == att.name for x in Shift_Up)
+                                if flag:
+                                        att.value = att.value+128
+                                        
+                                Double = ["Leather_Boots_Sprite","Medecine_Sprite","Small_Spear_Sprite","Chailmail_Sprite",
+                                          "Wood_Shield_Sprite","Excalibur_Sprite","SteelShield_Sprite","Knight_Sword_Sprite",
+                                          "Hard_Armor_Sprite","Potion_Sprite_Pura","Potion_Sprite_Pura2","Potion_Sprite_Pad",
+                                          "Charm_sprite","Charm_sprite_2","Ladder_Sprite","Shield_Sprite","Marine_Sprite"
+                                          ,"Steel_Armor_Sprite", "Shell_Shield_Sprite","Battle_Spear_Sprite","Knight_Armor_Sprite",
+                                          "Ceramic_Boots_Sprite","Knight_Shield_Sprite","HolyWater_Sprite","HolyWater_Sprite2",
+                                          "Flame_Shield_Sprite","Flame_Armor_Sprite","HiPotion_Sprite","Elixer_Sprite",
+                                          "Ocarina_Cave_Sprite"                                          ]
+                                flag2 = any (x == att.name for x in Double)
+                                if flag2:
+                                        att.value = att.value*2
+                                if att.value > 200:
+                                        att.value = att.value - 256
+                                for addressTuple in att.addresses:
+                                        address, fileNum = addressTuple
+                                        if fileNum-1 == i:
+                                                writeToAddress(file, address, att.value, att.number_of_bytes, att.is_little_endian)
+                        file.close()
+                        print("Succesfully generated ROM with seed "+seedString)
+                        # return (True, "")
+                except:
+                        file.close()
+                        success = False
+                        break
+        if not success:
+                print("Something went wrong. Deleting generated ROMs.")
+                for newRom in allNewRoms:
+                        remove(newRom)
+                return (False, "At least one ROM failed to generate.")
+        return (True, "")
+
+# Generate a text log containing the Attribute values.
+def generateTextLog():
+        global sourceRoms
+        global seedString
+
+        if len(Rom_Name) > 1:
+                start = "Log"
+        else:
+                start = path.splitext(path.basename(sourceRoms[0].get()))[0]
+        newLog = path.join(outputFolder, start+"-"+seedString+".txt")
+        file = open(newLog, "w")
+        file.writelines(Program_Name+"\nSeed: "+seedString+"\n\nValues:\n")
+        maxNameLen = max([len(att.name) for att in Attributes])
+        maxIntLen = max([len(str(att.value)) for att in Attributes])
+        maxHexLen = max([len(str(hex(att.value))) for att in Attributes])-2
         
-        ### 3 Lamp ###        
-        Attribute(
-                name="Hard_Shield",
-                addresses=[0xA74E],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Trident",
-                addresses=[0xA756],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),      
-        Attribute(
-                name="Elixer_Chests",
-                addresses=[0xA74C],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        
-        ### 5 Trident ###
-        Attribute(
-                name="First_Money",
-                addresses=[0xa75e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest3_Item1",
-                addresses=[0xa790],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest3_Item2",
-                addresses=[0xa792],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest3_Item3",
-                addresses=[0xa794],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),        
-        Attribute(
-                name="Water_Money_Chest3_Item4",
-                addresses=[0xa796],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest3_Item5",
-                addresses=[0xa798],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]                
-                ),
-        Attribute(
-                name="Pygmy_Armor",
-                addresses=[0xA72A],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Pygmy_Sword",
-                addresses=[0xA728],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Amulet",
-                addresses=[0xA754],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Thunder",
-                addresses=[0xA734],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
+        for att in Attributes:
+                nameStr = att.name.ljust(maxNameLen)
+                intStr = str(att.value).rjust(maxIntLen)
+                hexStr = "[0x"+str(hex(att.value))[2:].rjust(maxHexLen, "0").upper()+"]"
+                Text_String = ""
+                Chest = ["Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
+                                        "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
+                                        "Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
+                                        "Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
+                                        "Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5",
+                                            "Full_Health_1","Full_Health_2",
+                                            "Water_Money_Chest3_Item1","Water_Money_Chest3_Item2","Water_Money_Chest3_Item3",
+                                            "Water_Money_Chest3_Item4","Water_Money_Chest3_Item5"]
+                flag = any (x == att.name for x in Chest)
+                if flag:                                 
+                        if att.value == 128:
+                                Text_String  = "Legend Sword"
+                        if att.value == 133:
+                                Text_String  = "Trident"
+                        if att.value == 135:
+                                Text_String  = "Pygmy Sword"
+                        if att.value == 143:
+                                Text_String  = "Pygmy Armor"
+                        if att.value == 151:
+                                Text_String  = "Pygmy Shield"
+                        if att.value == 154:
+                                Text_String  = "Oasis Boots"
+                        if att.value == 155:
+                                Text_String  = "Marine Boots"
+                        if att.value == 159:
+                                Text_String  = "Pygmy Boots"
+                        if att.value == 177:
+                                Text_String  = "Lamp"
+                        if att.value == 178:
+                                Text_String  = "Amulet"
+                        if att.value == 179:
+                                Text_String  = "Sun-Key"
+                        if att.value == 180:
+                                Text_String  = "Moon-Key"
+                        if att.value == 181:
+                                Text_String  = "Star-Key"
+                        if att.value == 182:
+                                Text_String  = "Gold-Gem"
+                        if att.value == 183:
+                                Text_String  = "Blue-Gem"
+                        if att.value == 185:
+                                Text_String  = "Fire-Urn"
+                        if att.value == 186:
+                                Text_String  = "Bracelet"
+                        if att.value == 136:
+                                Text_String  = "Legend Armor"
+                        if att.value == 144:
+                                Text_String  = "Legend Shield"
+                        if att.value == 152:
+                                Text_String  = "Legend Boots"
+                        if att.value == 165:
+                                Text_String  = "Return Magic"
+                Shop = ["leather_boots","medicine","small_spear","chain_mail","wood_shield","Knight_Sword","Hard_Armor","Charmstone_Purchase",
+                        "Potion","Ladder_Boots","excalibur","steel_shield","Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
+                        "Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield","Flame_Armor","Hi_Potion",
+                        "Elixer_Shop","elder_elixer","elder_firestorm","Legend_Sword","Ocarina_Reward"]
+                flag2 = any (x == att.name for x in Shop)
+                if flag2:                        
+                        if att.value == 0:
+                                Text_String  = "Legend Sword"
+                        if att.value == 5:
+                                Text_String  = "Trident"
+                        if att.value == 7:
+                                Text_String  = "Pygmy Sword"
+                        if att.value == 15:
+                                Text_String  = "Pygmy Armor"
+                        if att.value == 23:
+                                Text_String  = "Pygmy Shield"
+                        if att.value == 26:
+                                Text_String  = "Oasis Boots"
+                        if att.value == 27:
+                                Text_String  = "Marine Boots"
+                        if att.value == 31:
+                                Text_String  = "Pygmy Boots"
+                        if att.value == 8:
+                                Text_String  = "Legend Armor"
+                        if att.value == 16:
+                                Text_String  = "Legend Shield"
+                        if att.value == 24:
+                                Text_String  = "Legend Boots"
+                        if att.value == 49:
+                                Text_String  = "Lamp"
+                        if att.value == 50:
+                                Text_String  = "Amulet"
+                        if att.value == 51:
+                                Text_String  = "Sun-Key"
+                        if att.value == 52:
+                                Text_String  = "Moon-Key"
+                        if att.value == 53:
+                                Text_String  = "Star-Key"
+                        if att.value == 54:
+                                Text_String  = "Gold-Gem"
+                        if att.value == 55:
+                                Text_String  = "Blue-Gem"
+                        if att.value == 57:
+                                Text_String  = "Fire-Urn"
+                        if att.value == 58:
+                                Text_String  = "Bracelet"
+                        if att.value == 37:
+                                Text_String  = "Return Magic"
+                        
+                file.writelines(nameStr+": "+intStr+" "+hexStr+" "+Text_String+"\n")
+        file.close()
 
-        ### 3 Oasis Boots ###        
-        Attribute(
-                name="Shield_Magic_Chest",
-                addresses=[0xA730],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="excalibur",
-                addresses=[0x1e1af],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46
-                                 ]
-                ),
-        Attribute(
-                name="steel_shield",
-                addresses=[0x1e203],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46
-                                 ]
-                ),     
+def shuffleAllAttributes():
+        for att in Attributes:
+                att.prepare()
 
-        ### 8 Bracelet ###
-        Attribute(
-                name="Ceramic_Boots",
-                addresses=[0x1e221],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46
-                                 ]
-                ),
-        Attribute(
-                name="Battle_Spear",
-                addresses=[0x1e1bb],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46
-                                 ]
-                ),
-        Attribute(
-                name="Knight_Armor",
-                addresses=[0x1e1d3],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46
-                                 ]
-                ),
-        Attribute(
-                name="Knight_Shield",
-                addresses=[0x1e1fd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46
-                                 ]
-                ),
-        Attribute(
-                name="Holy_Water",
-                addresses=[0x1e29e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46
-                                 ]
-                ),
-        Attribute(
-                name="Pygmy_Boots",
-                addresses=[0xA72E],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Blue_Gem",
-                addresses=[0xA744],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Gold_Gem",
-                addresses=[0xA746],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
+def resetAttributesAndSeed(printAttributes=False):
+        global Attributes
+        global originalAttributes
 
-        ### Sphere 2 Checks - 12 ###
+        Attributes.sort(key=getAttributeNum)
+        if printAttributes:
+                maxNameLen = max([len(att.name) for att in Attributes])
+                maxIntLen = max([len(str(att.value)) for att in Attributes])
+                maxHexLen = max([len(str(hex(att.value))) for att in Attributes])-2
+                for att in Attributes:
+                        nameStr = att.name.ljust(maxNameLen)
+                        intStr = str(att.value).rjust(maxIntLen)
+                        hexStr = "[0x"+str(hex(att.value))[2:].rjust(maxHexLen, "0").upper()+"]"
+                        print(nameStr+": "+intStr+" "+hexStr)
+        Attributes = copy.copy(originalAttributes)
+        random.seed(time())
+        resetRuleCounter()
 
-        ### From here, remove "Basic 4" (Trident,Oasis,Lamp,Bracelet) ###
-        ### Idea being that a key item shouldn't be behind TWO locks ###
-        ### Return is also removed, as it is needed to leave Ice Castle if you don't have both Gems ###
+def getNumCombinations(rule):
+        num = 1
+        for att in rule.relatedAttributes:
+                num *= len(att.possible_values)
+        return num
 
-        ### 2 Trident + Amulet ##
-        Attribute(
-                name="Oasis_Boots",
-                addresses=[0xA732],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                    51,52,53,54,55,   57,
-                                 64
-                                 ]
-                ),        
-        Attribute(
-                name="Return",
-                addresses=[0xA736],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                    51,52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
+def setNumAllCombinations():
+        global numAllCombinations
 
-        ### 1 Trident + Oasis ###
-        Attribute(
-                name="Sun_Key",
-                addresses=[0xA73C],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                 50,51,52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
+        numAllCombinations = 1
+        for att in Attributes:
+                numAllCombinations *= len(att.possible_values)
+        return numAllCombinations
 
-        ### 7 Oasis + Sun Key ###
-        Attribute(
-                name="Moon_Key",
-                addresses=[0xA73A],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                 50,   52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Secret_Pyramid_1",
-                addresses=[0xa76a],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                 50,   52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Secret_Pyramid_2",
-                addresses=[0xa76c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                 50,   52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Secret_Pyramid_3",
-                addresses=[0xa76e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                 50,   52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Secret_Pyramid_4",
-                addresses=[0xa770],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                 50,   52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Secret_Pyramid_5",
-                addresses=[0xa772],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                 50,   52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Star_Key",
-                addresses=[0xA73E],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                 50,   52,53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
+def getFromListByName(arr, name):
+        for a in arr:
+                if a.name == name:
+                        return a
 
-        ### 1 Oasis + Moon Key ###
-        Attribute(
-                name="Pygmy_Shield",
-                addresses=[0xA72C],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                 50,51,   53,54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
+def getAttributeNum(att):
+        return att.attributeNum
 
-        ### 1 Oasis + Star Key ###
-        Attribute(
-                name="Power",
-                addresses=[0xA750],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                 50,51,52,   54,55,   57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
+def getShuffledAttributeNum(att):
+        for i in range(len(Attributes)):
+                if att is Attributes[i]:
+                        return i
 
-        ### Sphere 3+ - 8 Checks ###
-        ### From here, remove Amulet, Keys, and Gems ###
-        Attribute(
-                name="Old_Axe",
-                addresses=[0xA758],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,   43,44,45,         
-                                                      57,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),               
-        Attribute(
-                name="Flame_Shield",
-                addresses=[0x1e1f7],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,42,43,44,45,46
-                                 ]
-                ),        
-        Attribute(
-                name="Flame_Armor",
-                addresses=[0x1e1cd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,42,43,44,45,46
-                                 ]
-                ),        
-        Attribute(
-                name="Hi_Potion",
-                addresses=[0x1e2a4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,42,43,44,45,46
-                                 ]
-                ),        
-        Attribute(
-                name="Elixer_Shop",
-                addresses=[0x1e25d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,
-                                    31,32,33,34,35,36,
-                                    41,42,43,44,45,46
-                                 ]
-                ),
+#######
+# GUI #
+#######
 
-        ### Remove Pygmy Items ###
-        Attribute(
-                name="Legend_Sword",
-                addresses=[0x1EE29],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6,    8, 9,
-                                 10,11,12,13,      16,17,18,19,
-                                 20,21,22,   24,25,   27,28,
-                                       32,33,34,35,36,
-                                    41,   43,44,45
-                                 ]
-                ),
+#! /usr/bin/env python
+#  -*- coding: utf-8 -*-
+#
+# GUI module initially created by PAGE version 5.4
+#  in conjunction with Tcl version 8.6
+#       platform: Windows NT
 
-        ### I've removed some items to increase the chance you'll need
-        ### the Pygmy Items. It's around 50% you'll need to do at least
-        ### one of these.
-        Attribute(
-                name="Full_Health_2",
-                addresses=[0xA724],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0,                     8, 
-                                                   16,17,18,19,
-                                 20,21,22,   24, 
-                                       32,      35,36,
-                                    41,   43,44,45, 
-                                                      57,
-                                 64
-                                 ]
-                ),
-        Attribute(
-                name="Fire_Urn",
-                addresses=[0xA75A],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0,                     8, 
-                                                   16,17,18,19,
-                                 20,21,22,   24, 
-                                       32,      35,36,
-                                    41,   43,44,45,
-                                                      57,
-                                 64
-                                 ]
-                ),        
-        Attribute(
-                name="Charmstone_Chest",
-                addresses=[0xA740],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0,                     8, 
-                                                   16,17,18,19,
-                                 20,21,22,   24, 
-                                       32,      35,36,
-                                    41,   43,44,45, 
-                                                      57,
-                                 64
-                                 ]
-                ),
+def vp_start_gui():
+        '''Starting point when module is the main routine.'''
+        global val, w, root
+        root = tk.Tk()
+        # 1.7 seems to be default scaling
+        # size = root.winfo_screenheight()
+        # sizeRatio = 1080/1440
+        # root.tk.call('tk', 'scaling', 2.0*sizeRatio)
+        set_Tk_var()
+        top = TopLevel(root)
+        init(root, top)
+        root.mainloop()
 
-        #### Non - Pool Items ###
-        Attribute(
-                name="Legend_Boots",
-                addresses=[0xA742],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),        
-        Attribute(
-                name="Legend_Shield",
-                addresses=[0xA74A],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),        
-        Attribute(
-                name="Legend_Armor",
-                addresses=[0xA748],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),        
-        Attribute(
-                name="Water_Money_Chest2_Item1",
-                addresses=[0xa784],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest2_Item2",
-                addresses=[0xa786],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),        
-        Attribute(
-                name="Water_Money_Chest2_Item3",
-                addresses=[0xa788],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest2_Item4",
-                addresses=[0xa78a],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest2_Item5",
-                addresses=[0xa78c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest2_Item6",
-                addresses=[0xa78e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),  
-        ###Prices####
-        Attribute(
-                name="Medecine_Price",
-                addresses=[0x1e5d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=5,
-		max_value=5,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LeatherBoots_Price",
-                addresses=[0x1e25],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=15,
-		max_value=15,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Wood_Shield_Price",
-                addresses=[0x1e09],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=25,
-		max_value=25,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Ladder_Price",
-                addresses=[0x1e21],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=25,
-		max_value=25,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Potion_Price",
-                addresses=[0x1e61],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=25,
-		max_value=25,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Chain_Price",
-                addresses=[0x1de5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=30,
-		max_value=30,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="SmallSpear_Price",
-                addresses=[0x1dc9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=40,
-		max_value=40,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="HardShield_Price",
-                addresses=[0x1e01],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=70,
-		max_value=70,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="ShellShield_Price",
-                addresses=[0x1e05],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=100,
-		max_value=100,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="HolyWater_Price",
-                addresses=[0x1e65],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=100,
-		max_value=100,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="HardArmor_Price",
-                addresses=[0x1de1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=100,
-		max_value=100,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Knight_Sword_Price",
-                addresses=[0x1db9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=120,
-		max_value=120,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Firestorm_Price1",
-                addresses=[0x1e30],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Firestorm_Price2",
-                addresses=[0x1e31],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=200,
-		max_value=200,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Quake_Price1",
-                addresses=[0x1e34],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Quake_Price2",
-                addresses=[0x1e35],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=200,
-		max_value=200,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Thunder_Price1",
-                addresses=[0x1e38],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Thunder_Price2",
-                addresses=[0x1e39],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=200,
-		max_value=200,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Power_Price1",
-                addresses=[0x1e3c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Power_Price2",
-                addresses=[0x1e3d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=200,
-		max_value=200,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Shield_Price1",
-                addresses=[0x1e40],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Shield_Price2",
-                addresses=[0x1e41],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=200,
-		max_value=200,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Return_Price1",
-                addresses=[0x1e44],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Return_Price2",
-                addresses=[0x1e45],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=200,
-		max_value=200,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Marine_Price1",
-                addresses=[0x1e1c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Marine_Price2",
-                addresses=[0x1e1d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=150,
-		max_value=150,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="SteelArmor_Price1",
-                addresses=[0x1ddc],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=1,
-		max_value=1,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="SteelArmor_Price2",
-                addresses=[0x1ddd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=144,
-		max_value=144,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Oasis_Price1",
-                addresses=[0x1e18],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=1,
-		max_value=1,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Oasis_Price2",
-                addresses=[0x1e19],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=44,
-		max_value=44,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="SteelShield_Price1",
-                addresses=[0x1dfc],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=1,
-		max_value=1,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="SteelShield_Price2",
-                addresses=[0x1dfd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=244,
-		max_value=244,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Ocarina_Price1",
-                addresses=[0x1e50],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Ocarina_Price2",
-                addresses=[0x1e51],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=30,
-		max_value=30,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Excalibur_Price1",
-                addresses=[0x1db4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=2,
-		max_value=2,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Excalibur_Price2",
-                addresses=[0x1db5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=88,
-		max_value=88,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Elixer_Price1",
-                addresses=[0x1e58],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=9,
-		max_value=9,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Elixer_Price2",
-                addresses=[0x1e59],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=196,
-		max_value=196,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Knight_Shield_Price1",
-                addresses=[0x1df8],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=7,
-		max_value=7,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Knight_Shield_Price2",
-                addresses=[0x1df9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=208,
-		max_value=208,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Ceramic_Price1",
-                addresses=[0x1e14],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=7,
-		max_value=7,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Ceramic_Price2",
-                addresses=[0x1e15],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=208,
-		max_value=208,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Trident_Price1",
-                addresses=[0x1dc4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Trident_Price2",
-                addresses=[0x1dc5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=250,
-		max_value=250,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="KnightArmor_Price1",
-                addresses=[0x1dd8],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=11,
-		max_value=11,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="KnightArmor_Price2",
-                addresses=[0x1dd9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=184,
-		max_value=184,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmyBoots_Price1",
-                addresses=[0x1e2c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=3,
-		max_value=3,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmyBoots_Price2",
-                addresses=[0x1e2d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=32,
-		max_value=32,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="HiPotion_Price1",
-                addresses=[0x1e68],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=11,
-		max_value=11,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="HiPotion_Price2",
-                addresses=[0x1e69],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=184,
-		max_value=184,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="FlameShield_Price1",
-                addresses=[0x1df4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=11,
-		max_value=11,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="FlameShield_Price2",
-                addresses=[0x1df5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=184,
-		max_value=184,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmySword_Price1",
-                addresses=[0x1dcc],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=3,
-		max_value=3,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmySword_Price2",
-                addresses=[0x1dcd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=32,
-		max_value=32,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="BattleSpear_Price1",
-                addresses=[0x1dc0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=15,
-		max_value=15,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="BattleSpear_Price2",
-                addresses=[0x1dc1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=160,
-		max_value=160,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="FlameArmor_Price1",
-                addresses=[0x1dd4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=17,
-		max_value=17,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="FlameArmor_Price2",
-                addresses=[0x1dd5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=148,
-		max_value=148,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmyArmor_Price1",
-                addresses=[0x1dec],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=3,
-		max_value=3,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmyArmor_Price2",
-                addresses=[0x1ded],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=32,
-		max_value=32,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendBoots_Price1",
-                addresses=[0x1e10],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=19,
-		max_value=19,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendBoots_Price2",
-                addresses=[0x1e11],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=136,
-		max_value=136,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmyShield_Price1",
-                addresses=[0x1e0c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=3,
-		max_value=3,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmyShield_Price2",
-                addresses=[0x1e0d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=32,
-		max_value=32,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendSword_Price1",
-                addresses=[0x1db0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=29,
-		max_value=29,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendSword_Price2",
-                addresses=[0x1db1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=76,
-		max_value=76,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendShield_Price1",
-                addresses=[0x1df0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=19,
-		max_value=19,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendShield_Price2",
-                addresses=[0x1df1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=136,
-		max_value=136,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendArmor_Price1",
-                addresses=[0x1dd0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=19,
-		max_value=19,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendArmor_Price2",
-                addresses=[0x1dd1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=136,
-		max_value=136,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Charmstone_Price1",
-                addresses=[0x1e53],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Charmstone_Price2",
-                addresses=[0x1e54],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=50,
-		max_value=50,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Charmstone_Price3",
-                addresses=[0x1e55],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=200,
-		max_value=200,
-		min_max_interval=1,
-                ),
-     
-        ###Quality of Life Stuff####
-        Attribute(
-                name="Openning_Text_Speed",
-                addresses=[0x1df28],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8]
-                ),
-        Attribute(
-                name="Ocarina_Reward_Speed",
-                addresses=[0x1e264],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8] 
-                ),
-        Attribute(
-                name="Ocarina_Speed1",
-                addresses=[0x2b91],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[0]
-                ),
-        Attribute(
-                name="Ocarina_Speed2",
-                addresses=[0x2bab],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[0]
-                ),
-        Attribute(
-                name="Ocarina_Speed3",
-                addresses=[0x2be7],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[0]
-                ),
-        Attribute(
-                name="Ocarina_Speed4",
-                addresses=[0x2bc6],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[0]
-                ),        
-        Attribute(
-                name="Sphinx_Text_Speed",
-                addresses=[0x20086],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8]
-                ),
-        Attribute(
-                name="Sphinx_Text_Speed2",
-                addresses=[0x21427],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8]
-                ),
-        Attribute(
-                name="Dwarf_Text_Speed",
-                addresses=[0x2114A],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8]
-                ),
-        Attribute(
-                name="Gem_Speed_1",
-                addresses=[0x20E35],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8]
-                ),
-        Attribute(
-                name="Gem_Speed_2",
-                addresses=[0x20DD0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8]
-                ),
-        Attribute(
-                name="Prince_Speech_Speed_1",
-                addresses=[0x20C13],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8] 
-                ),
-        Attribute(
-                name="Prince_Speech_Speed_2",
-                addresses=[0x20CC7],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8] 
-                ),
-        Attribute(
-                name="Prince_Speech_Speed_3",
-                addresses=[0x20CFE],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8] 
-                ),
-        Attribute(
-                name="Ice_Speed_1",
-                addresses=[0x205E9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8] 
-                ),
-        Attribute(
-                name="Ice_Speed_2",
-                addresses=[0x2060A],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[8] 
-                ),
-        Attribute(
-                name="SRAM_1",
-                addresses=[0x1b2],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[248]
-                ),
-        Attribute(
-                name="SRAM_2",
-                addresses=[0x1b3],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="SRAM_3",
-                addresses=[0x1ba],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[3]
-                ),
-        Attribute(
-                name="SRAM_4",
-                addresses=[0x1bb],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[255]
-                ),        
-        Attribute(
-                name="Ocarina_Sonia_Check",
-                addresses=[0x1e5a7],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[39]                
-                ),
-        Attribute(
-                name="Ocarina_Cave_Sprite",
-                addresses=[0x27946],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1                
-                ),
-        Attribute(
-                name="bat_spawn",
-                addresses=[0x2ca05],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[39]
-                ),
-        Attribute(
-                name="First_Money_Control",
-                addresses=[0xa75f],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[0] 
-                ),
-        Attribute(
-                name="Legend_Sword_Control",
-                addresses=[0x1ece4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[39] 
-                ),
-        ###Sprites####
-        Attribute(
-                name="Leather_Boots_Sprite",
-                addresses=[0x22b08],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Medecine_Sprite",
-                addresses=[0x22b62],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Small_Spear_Sprite",
-                addresses=[0x22b36],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Chailmail_Sprite",
-                addresses=[0x22b3c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Wood_Shield_Sprite",
-                addresses=[0x22b42],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Excalibur_Sprite",
-                addresses=[0x22b8a],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="SteelShield_Sprite",
-                addresses=[0x22b84],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Knight_Sword_Sprite",
-                addresses=[0x22B94],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Hard_Armor_Sprite",
-                addresses=[0x22B9A],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Potion_Sprite_Pura",
-                addresses=[0x22BDC],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Potion_Sprite_Pura2",
-                addresses=[0x22BF4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),        
-        Attribute(
-                name="HolyWater_Sprite2",
-                addresses=[0x22BEE],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Charm_sprite",
-                addresses=[0x22BE2],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Charm_sprite_2",
-                addresses=[0x22BFA],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Ladder_Sprite",
-                addresses=[0x22BD6],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Marine_Sprite",
-                addresses=[0x22C62],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Shield_Sprite",
-                addresses=[0x22C68],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Potion_Sprite_Pad",
-                addresses=[0x22C6E],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),  
-        Attribute(
-                name="Steel_Armor_Sprite",
-                addresses=[0x22C4E],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Shell_Shield_Sprite",
-                addresses=[0x22C48],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Battle_Spear_Sprite",
-                addresses=[0x22d08],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Knight_Armor_Sprite",
-                addresses=[0x22d0e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Ceramic_Boots_Sprite",
-                addresses=[0x22CF4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Knight_Shield_Sprite",
-                addresses=[0x22D14],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="HolyWater_Sprite",
-                addresses=[0x22CEE],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),        
-        Attribute(
-                name="Flame_Shield_Sprite",
-                addresses=[0x22C92],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Flame_Armor_Sprite",
-                addresses=[0x22C8C],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="HiPotion_Sprite",
-                addresses=[0x22CAC],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Elixer_Sprite",
-                addresses=[0x22CA6],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        #### Text Changes ####
-        Attribute(
-                name="Blacksmith_1",
-                addresses=[0x1ED6C],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[11]
-                ),
-        Attribute(
-                name="Blacksmith_2",
-                addresses=[0x1ED6D],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[10]
-                ),
-        Attribute(
-                name="Blacksmith_ITEM",
-                addresses=[0x1ED6E],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Blacksmith_3",
-                addresses=[0x1ED6F],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[12] 
-                ),
-        Attribute(
-                name="Blacksmith_4",
-                addresses=[0x1ED70],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[2] 
-                ),
-        Attribute(
-                name="Blacksmith_5",
-                addresses=[0x1ED71],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[33] 
-                ),
-        Attribute(
-                name="Blacksmith_6",
-                addresses=[0x1ED72],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Blacksmith_7",
-                addresses=[0x1ED73],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Blacksmith_8",
-                addresses=[0x1ED74],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Blacksmith_9",
-                addresses=[0x1ED75],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Blacksmith_10",
-                addresses=[0x1ED76],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Blacksmith_11",
-                addresses=[0x1ED77],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Blacksmith_12",
-                addresses=[0x1ED78],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Blacksmith_13",
-                addresses=[0x1ED79],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Blacksmith_14",
-                addresses=[0x1ED7a],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Blacksmith_15",
-                addresses=[0x1ED7b],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_1",
-                addresses=[0x1EE0E],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[11]
-                ),
-        Attribute(
-                name="Legend_Sword_Text_2",
-                addresses=[0x1EE0F],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[10]
-                ),
-        Attribute(
-                name="Legend_Item",
-                addresses=[0x1EE10],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Legend_Sword_Text_3",
-                addresses=[0x1EE11],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[12] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_4",
-                addresses=[0x1EE12],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[2] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_5",
-                addresses=[0x1EE13],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_6",
-                addresses=[0x1EE14],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[105] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_7",
-                addresses=[0x1EE15],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[115] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_8",
-                addresses=[0x1EE16],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_9",
-                addresses=[0x1EE17],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[100] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_10",
-                addresses=[0x1EE18],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[111] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_11",
-                addresses=[0x1EE19],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[110] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_12",
-                addresses=[0x1EE1A],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[101] 
-                ),
-        Attribute(
-                name="Legend_Sword_Text_13",
-                addresses=[0x1EE1B],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[33] 
-                ),
-        Attribute(
-                name="Ocarina_Text",
-                addresses=[0x1e277],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1 
-                ),    
-        Attribute(
-                name="Poss_Hint_Text1",
-                addresses=[0x20ADb],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[80]
-                ),
-        Attribute(
-                name="Poss_Hint_Text2",
-                addresses=[0x20ADc],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[111]
-                ),
-        Attribute(
-                name="Poss_Hint_Text3",
-                addresses=[0x20ADd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[115]
-                ),
-        Attribute(
-                name="Poss_Hint_Text4",
-                addresses=[0x20ADe],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[101]
-                ),
-        Attribute(
-                name="Poss_Hint_Text5",
-                addresses=[0x20ADf],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[105]
-                ),
-        Attribute(
-                name="Poss_Hint_Text6",
-                addresses=[0x20Ae0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[100]
-                ),
-        Attribute(
-                name="Poss_Hint_Text7",
-                addresses=[0x20Ae1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[111]
-                ),
-        Attribute(
-                name="Poss_Hint_Text8",
-                addresses=[0x20Ae2],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[110]
-                ),
-        Attribute(
-                name="Poss_Hint_Text9",
-                addresses=[0x20Ae3],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Poss_Hint_Text10",
-                addresses=[0x20Ae4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[104]
-                ),
-        Attribute(
-                name="Poss_Hint_Text11",
-                addresses=[0x20Ae5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[97]
-                ),
-        Attribute(
-                name="Poss_Hint_Text12",
-                addresses=[0x20Ae6],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[115]
-                ),
-        Attribute(
-                name="Poss_Hint_Text13",
-                addresses=[0x20Ae7],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Poss_Hint_Text14",
-                addresses=[0x20Ae8],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[11]
-                ),
-        Attribute(
-                name="Poss_Hint_Text15",
-                addresses=[0x20Ae9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[10]
-                ),
-        Attribute(
-                name="POSS_HINT",
-                addresses=[0x20Aea],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Poss_Hint_Text16",
-                addresses=[0x20Aeb],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[12]
-                ),
-        Attribute(
-                name="Poss_Hint_Text17",
-                addresses=[0x20Aec],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[2]
-                ),
-        Attribute(
-                name="Poss_Hint_Text18",
-                addresses=[0x20Aed],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[5]
-                ),
-        Attribute(
-                name="Poss_Hint_Text19",
-                addresses=[0x20Aee],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[0]
-                ),        
-        Attribute(
-                name="Sphinx_Hint_Text1",
-                addresses=[0x20ac9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[104]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text2",
-                addresses=[0x20aca],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[97]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text3",
-                addresses=[0x20acb],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[115]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text4",
-                addresses=[0x20acc],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text5",
-                addresses=[0x20acd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[97]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text6",
-                addresses=[0x20ace],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text7",
-                addresses=[0x20acf],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[11]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text8",
-                addresses=[0x20ad0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[10]
-                ),
-        Attribute(
-                name="SPHINX_HINT",
-                addresses=[0x20ad1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text10",
-                addresses=[0x20ad2],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[12]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text11",
-                addresses=[0x20ad3],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[2]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text12",
-                addresses=[0x20ad4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text13",
-                addresses=[0x20ad5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Sphinx_Hint_Text14",
-                addresses=[0x20ad6],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-       Attribute(
-                name="Fire_Urn_Text_1",
-                addresses=[0x2041e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[11]
-                ),
-        Attribute(
-                name="Fire_Urn_Text_2",
-                addresses=[0x2041f],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[10]
-                ),
-        Attribute(
-                name="Fire_Urn_Text",
-                addresses=[0x20420],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Fire_Urn_Text_3",
-                addresses=[0x20421],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[12] 
-                ),
-        Attribute(
-                name="Fire_Urn_Text_4",
-                addresses=[0x20422],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[2] 
-                ),
-        Attribute(
-                name="Fire_Urn_Text_5",
-                addresses=[0x20423],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Fire_Urn_Text_6",
-                addresses=[0x20424],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Fire_Urn_Text_7",
-                addresses=[0x20425],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),        
-        Attribute(
-                name="Sonia_Text1",
-                addresses=[0x1e731],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[73]
-                ),
-        Attribute(
-                name="Sonia_Text2",
-                addresses=[0x1e732],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Sonia_Text3",
-                addresses=[0x1e733],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[108]
-                ),
-        Attribute(
-                name="Sonia_Text4",
-                addresses=[0x1e734],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[111]
-                ),
-        Attribute(
-                name="Sonia_Text5",
-                addresses=[0x1e735],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[115]
-                ),
-        Attribute(
-                name="Sonia_Text6",
-                addresses=[0x1e736],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[116]
-                ),
-        Attribute(
-                name="Sonia_Text7",
-                addresses=[0x1e737],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Sonia_Text8",
-                addresses=[0x1e738],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[109]
-                ),
-        Attribute(
-                name="Sonia_Text9",
-                addresses=[0x1e739],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[121]
-                ),
-        Attribute(
-                name="Sonia_Text10",
-                addresses=[0x1e73a],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Sonia_Text11",
-                addresses=[0x1e73b],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[11]
-                ),
-        Attribute(
-                name="Sonia_Text12",
-                addresses=[0x1e73c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[10]
-                ),
-        Attribute(
-                name="Sonia_Item",
-                addresses=[0x1e73d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1
-                ),
-        Attribute(
-                name="Sonia_Text14",
-                addresses=[0x1e73e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[12] 
-                ),
-        Attribute(
-                name="Sonia_Text15",
-                addresses=[0x1e73f],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[2] 
-                ),
-        Attribute(
-                name="Sonia_Text16",
-                addresses=[0x1e740],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Sonia_Text17",
-                addresses=[0x1e741],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[105] 
-                ),
-        Attribute(
-                name="Sonia_Text18",
-                addresses=[0x1e742],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[110] 
-                ),
-        Attribute(
-                name="Sonia_Text19",
-                addresses=[0x1e743],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Sonia_Text20",
-                addresses=[0x1e744],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[116] 
-                ),
-        Attribute(
-                name="Sonia_Text21",
-                addresses=[0x1e745],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[104] 
-                ),
-        Attribute(
-                name="Sonia_Text22",
-                addresses=[0x1e746],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[101] 
-                ),
-        Attribute(
-                name="Sonia_Text23",
-                addresses=[0x1e747],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32] 
-                ),
-        Attribute(
-                name="Sonia_Text24",
-                addresses=[0x1e748],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[99] 
-                ),
-        Attribute(
-                name="Sonia_Text25",
-                addresses=[0x1e749],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[97] 
-                ),
-        Attribute(
-                name="Sonia_Text26",
-                addresses=[0x1e74a],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[118] 
-                ),
-        Attribute(
-                name="Sonia_Text27",
-                addresses=[0x1e74b],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[101] 
-                ),
-        Attribute(
-                name="Sonia_Text28",
-                addresses=[0x1e74c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[46] 
-                ),
-        Attribute(
-                name="Sonia_Text29",
-                addresses=[0x1e74d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[5] 
-                ),
-        Attribute(
-                name="Sonia_Text30",
-                addresses=[0x1e74e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[9] 
-                ),
-        Attribute(
-                name="Sonia_Text31",
-                addresses=[0x1e74f],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[9] 
-                ),
-        Attribute(
-                name="Sonia_Text32",
-                addresses=[0x1e750],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[0] 
-                ),
-        ### Bracelet Stuff ###
-        Attribute(
-                name="Bracelet_Control",
-                addresses=[0x1f237],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[3]
-                ),        
-        Attribute(
-                name="Bracelet_Item",
-                addresses=[0x1f23c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[3]
-                ),
-]
-Required_Rules = [
-        Rule(
-                description="Checks are Different",
-                left_side=[ value("Firestorm"),value("Quake"),value("bat_reward"),value("Pygmy_Sword"),value("Pygmy_Armor"),
-                            value("Pygmy_Boots"),value("Pygmy_Shield"),value("Sun_Key"),value("Moon_Key"),value("Star_Key"),
-                            value("Blue_Gem"),value("Gold_Gem"),value("Thunder"),value("Return"),value("Power"),
-                            value("Shield_Magic_Chest"),value("Old_Axe"),value("Fire_Urn"),value("Charmstone_Chest"),value("Hard_Shield"),
-                            value("Trident"),value("Oasis_Boots"),value("Amulet"),value("Elixer_Chests"),value("First_Money"),
-                            value("Secret_Pyramid_1"),value("Secret_Pyramid_2"),value("Secret_Pyramid_3"),value("Secret_Pyramid_4"),value("Secret_Pyramid_5"),
-                            
-                            value("Water_Money_Chest3_Item1"),value("Water_Money_Chest3_Item2"),value("Water_Money_Chest3_Item3"),
-                            value("Water_Money_Chest3_Item4"),value("Water_Money_Chest3_Item5"),
+w = None
+def create_TopLevel(rt, *args, **kwargs):
+        '''Starting point when module is imported by another module.
+           Correct form of call: 'create_TopLevel(root, *args, **kwargs)' .'''
+        global w, w_win, root
+        #rt = root
+        root = rt
+        w = tk.Toplevel (root)
+        set_Tk_var()
+        top = TopLevel (w)
+        init(w, top, *args, **kwargs)
+        return (w, top)
 
-                            value("Full_Health_1"),value("Full_Health_2"),
-                            
-                            value("leather_boots"),value("medicine"),value("small_spear"),value("chain_mail"),value("wood_shield"),
-                            value("Knight_Sword"),value("Hard_Armor"),value("Charmstone_Purchase"),value("Potion"),value("Ladder_Boots"),
-                            value("excalibur"),value("steel_shield"),                           
-                            value("Marine_Boots"),value("Shield_Magic_Shop"),value("Shell_Shield"),value("Steel_Armor"),
-                            value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),value("Knight_Shield"),value("Holy_Water"),
-                            value("Flame_Shield"),value("Flame_Armor"),value("Hi_Potion"),value("Elixer_Shop"),
-                            
-                            value("elder_elixer"),value("elder_firestorm"),
-                            
-                            value("Legend_Sword"),value("Ocarina_Reward")
-                           ],
-                rule_type="!=",
-                right_side=None
-        ),
-        Rule(
-                description="Non Pool Items",
-                left_side=[ value("Water_Money_Chest2_Item1"),value("Water_Money_Chest2_Item2"),value("Water_Money_Chest2_Item3"),
-                            value("Water_Money_Chest2_Item4"),value("Water_Money_Chest2_Item5"),value("Water_Money_Chest2_Item6"),
-                            value("Legend_Armor"),value("Legend_Shield"),value("Legend_Boots")                            
-                            ],
-                rule_type="!=",
-                right_side=None
-        ),
-        Rule(
-                description="Trident + Bracelet",
-                left_side=[ (value("Pygmy_Sword"),"=",58),(value("Pygmy_Armor"),"=",58),(value("First_Money"),"=",58),
-                            (value("Thunder"),"=",58),(value("Amulet"),"=",58),
-                            (value("Water_Money_Chest3_Item1"),"=",58),(value("Water_Money_Chest3_Item2"),"=",58),
-                            (value("Water_Money_Chest3_Item3"),"=",58),(value("Water_Money_Chest3_Item4"),"=",58),
-                            (value("Water_Money_Chest3_Item5"),"=",58),
-                            
-                            (value("Blue_Gem"),"=",5),(value("Gold_Gem"),"=",5),(value("Pygmy_Boots"),"=",5),
-                            (value("Battle_Spear"),"=",5),(value("Ceramic_Boots"),"=",5),(value("Knight_Armor"),"=",5),
-                            (value("Knight_Shield"),"=",5),(value("Holy_Water"),"=",5)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Trident + Oasis",
-                left_side=[ (value("Pygmy_Sword"),"=",26),(value("Pygmy_Armor"),"=",26),(value("First_Money"),"=",26),
-                            (value("Thunder"),"=",26),(value("Amulet"),"=",26),
-                            (value("Water_Money_Chest3_Item1"),"=",26),(value("Water_Money_Chest3_Item2"),"=",26),
-                            (value("Water_Money_Chest3_Item3"),"=",26),(value("Water_Money_Chest3_Item4"),"=",26),
-                            (value("Water_Money_Chest3_Item5"),"=",26),
-                            
-                            (value("Shield_Magic_Chest"),"=",5),(value("excalibur"),"=",5),(value("steel_shield"),"=",5)                          
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Trident + Lamp",
-                left_side=[ (value("Pygmy_Sword"),"=",49),(value("Pygmy_Armor"),"=",49),(value("First_Money"),"=",49),
-                            (value("Thunder"),"=",49),(value("Amulet"),"=",49),
-                            (value("Water_Money_Chest3_Item1"),"=",49),(value("Water_Money_Chest3_Item2"),"=",49),
-                            (value("Water_Money_Chest3_Item3"),"=",49),(value("Water_Money_Chest3_Item4"),"=",49),
-                            (value("Water_Money_Chest3_Item5"),"=",49),
-                            
-                            (value("Hard_Shield"),"=",5),(value("Trident"),"=",5)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Bracelet + Oasis",
-                left_side=[ (value("Shield_Magic_Chest"),"=",58),
-                            
-                            (value("Blue_Gem"),"=",26),(value("Gold_Gem"),"=",26),(value("Pygmy_Boots"),"=",26),
-                            (value("Battle_Spear"),"=",26),(value("Ceramic_Boots"),"=",26),(value("Knight_Armor"),"=",26),
-                            (value("Knight_Shield"),"=",26),(value("Holy_Water"),"=",26)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Bracelet + Lamp",
-                left_side=[ (value("Hard_Shield"),"=",58),(value("Trident"),"=",58),
-                            (value("Blue_Gem"),"=",49),(value("Gold_Gem"),"=",49),(value("Pygmy_Boots"),"=",49)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Lamp + Oasis",
-                left_side=[ (value("Hard_Shield"),"=",26),(value("Trident"),"=",26),
-                            (value("Shield_Magic_Chest"),"=",49)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Amulet + Moon",
-                left_side=[ (value("Return"),"=",52),(value("Oasis_Boots"),"=",52),
-                            (value("Pygmy_Shield"),"=",50)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Amulet + Star",
-                left_side=[ (value("Return"),"=",53),(value("Oasis_Boots"),"=",53),
-                            (value("Power"),"=",50)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Star + Moon",
-                left_side=[ (value("Pygmy_Shield"),"=",53),
-                            (value("Power"),"=",52)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Sun + Moon",
-                left_side=[ (value("Secret_Pyramid_1"),"=",52),(value("Secret_Pyramid_2"),"=",52),(value("Secret_Pyramid_3"),"=",52),
-                            (value("Secret_Pyramid_4"),"=",52),(value("Secret_Pyramid_5"),"=",52),(value("Moon_Key"),"=",52),
-                            (value("Star_Key"),"=",52),
+def destroy_TopLevel():
+        global w
+        w.destroy()
+        w = None
 
-                            (value("Pygmy_Shield"),"=",51)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Sun + Star",
-                left_side=[ (value("Secret_Pyramid_1"),"=",53),(value("Secret_Pyramid_2"),"=",53),(value("Secret_Pyramid_3"),"=",53),
-                            (value("Secret_Pyramid_4"),"=",53),(value("Secret_Pyramid_5"),"=",53),(value("Moon_Key"),"=",53),
-                            (value("Star_Key"),"=",53),
+class TopLevel:
+        def __init__(self, top=None):
+                global vMult, changeRomVal
+                '''This class configures and populates the toplevel window.
+                   top is the toplevel containing window.'''
+                _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
+                _fgcolor = '#000000'  # X11 color: 'black'
+                _compcolor = '#d9d9d9' # X11 color: 'gray85'
+                _ana1color = '#d9d9d9' # X11 color: 'gray85'
+                _ana2color = '#ececec' # Closest X11 color: 'gray92'
+                self.style = ttk.Style()
+                if sys.platform == "win32":
+                        self.style.theme_use('winnative')
+                self.style.configure('.',background=_bgcolor)
+                self.style.configure('.',foreground=_fgcolor)
+                self.style.configure('.',font="TkDefaultFont")
+                self.style.map('.',background=
+                        [('selected', _compcolor), ('active',_ana2color)])
+                self.font = tkFont.Font(family='TkDefaultFont')
+                self.fontHeight = self.font.metrics('linespace') / 500
+                self.tooltip_font = "TkDefaultFont"
 
-                            (value("Power"),"=",51)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),
-        Rule(
-                description="Sun + Amulet",
-                left_side=[ (value("Secret_Pyramid_1"),"=",50),(value("Secret_Pyramid_2"),"=",50),(value("Secret_Pyramid_3"),"=",50),
-                            (value("Secret_Pyramid_4"),"=",50),(value("Secret_Pyramid_5"),"=",50),(value("Moon_Key"),"=",50),
-                            (value("Star_Key"),"=",50),
+                self.top = top
+                self.top.geometry(str(750)+"x"+str(450))
+                self.top.minsize(750, 450)
+                # self.top.maxsize(2000, 600)
+                self.top.resizable(1, 1)
+                self.top.title(Program_Name)
+                self.top.configure(background="#d9d9d9")
+                self.top.configure(highlightbackground="#d9d9d9")
+                self.top.configure(highlightcolor="black")
 
-                            (value("Return"),"=",51),(value("Oasis_Boots"),"=",51)
-                            ],
-                rule_type="count",
-                right_side=("==",1,"<",2)
-        ),   
-        Rule(
-                description="Ocarina Sync",
-                left_side=[ value("Ocarina_Reward"),value("Ocarina_Text"),value("Sonia_Item"),value("Ocarina_Cave_Sprite")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Fire Urn Hint",
-                left_side=[ value("Fire_Urn"),value("Fire_Urn_Text")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Posseidon Hint",
-                left_side=[ value("Oasis_Boots"),value("POSS_HINT")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Sphinx Hint",
-                left_side=[ value("Charmstone_Chest"),value("SPHINX_HINT")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Legend Sword Item",
-                left_side=[ value("Legend_Sword"),value("Legend_Item"),value("Blacksmith_ITEM")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
+                ## Menu Bar
+                menubar = tk.Menu(self.top, bg=_bgcolor, fg=_fgcolor, tearoff=0)
+                fileMenu = tk.Menu(menubar, tearoff=0)
+                fileMenu.add_command(label="Load File...", command=self.setSourceRom)
+                fileMenu.add_separator()
+                fileMenu.add_command(label="Exit", command=root.quit)
+                menubar.add_cascade(label="File", menu=fileMenu)
+                self.top.config(menu=menubar)
+                helpMenu = tk.Menu(menubar, tearoff=0)
+                helpMenu.add_command(label="View Help...", command=self.showHelpPopup)
+                helpMenu.add_separator()
+                if About_Page_Text is not None and About_Page_Text != "":
+                        helpMenu.add_command(label="About...", command=self.showAboutPopup)
+                helpMenu.add_command(label="Simple Randomizer Maker", command=self.showSRMPopup)
+                menubar.add_cascade(label="Help", menu=helpMenu)
+                self.top.config(menu=menubar)
 
-        Rule(
-                description="Leather_Boots Sprite_Match",
-                left_side=[ value("leather_boots"),value("Leather_Boots_Sprite")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Medecine Sprite_Match",
-                left_side=[ value("medicine"),value("Medecine_Sprite")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Small_Spear Sprite_Match",
-                left_side=[ value("Small_Spear_Sprite"),value("small_spear")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Chain_Mail Sprite_Match",
-                left_side=[ value("Chailmail_Sprite"),value("chain_mail")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Wood_Shield Sprite_Match",
-                left_side=[ value("Wood_Shield_Sprite"),value("wood_shield")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Excalibur Sprite_Match",
-                left_side=[ value("Excalibur_Sprite"),value("excalibur")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Steel Shield Sprite_Match",
-                left_side=[ value("SteelShield_Sprite"),value("steel_shield")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Knight Sword Sprite_Match",
-                left_side=[ value("Knight_Sword_Sprite"),value("Knight_Sword")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Hard Armor Sprite_Match",
-                left_side=[ value("Hard_Armor_Sprite"),value("Hard_Armor")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Potion Sprite_Match",
-                left_side=[ value("Potion_Sprite_Pura"),value("Potion_Sprite_Pad"),
-                            value("Potion_Sprite_Pura2"),value("Potion")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Charmstone Sprite_Match",
-                left_side=[ value("Charm_sprite"),value("Charm_sprite_2"),
-                            value("Charmstone_Purchase")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Ladder Sprite_Match",
-                left_side=[ value("Ladder_Sprite"),value("Ladder_Boots")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Marine Sprite_Match",
-                left_side=[ value("Marine_Sprite"),value("Marine_Boots")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Shield Sprite_Match",
-                left_side=[ value("Shield_Sprite"),value("Shield_Magic_Shop")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Steel Armor Sprite_Match",
-                left_side=[ value("Steel_Armor_Sprite"),value("Steel_Armor")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Shell Shield Sprite_Match",
-                left_side=[ value("Shell_Shield_Sprite"),value("Shell_Shield")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Battle Spear Sprite_Match",
-                left_side=[ value("Battle_Spear_Sprite"),value("Battle_Spear")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Knight_Armor_Sprite Sprite_Match",
-                left_side=[ value("Knight_Armor_Sprite"),value("Knight_Armor")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Ceramic_Boots_Sprite Sprite_Match",
-                left_side=[ value("Ceramic_Boots_Sprite"),value("Ceramic_Boots")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Knight_Shield_Sprite Sprite_Match",
-                left_side=[ value("Knight_Shield_Sprite"),value("Knight_Shield")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="HolyWater_Sprite Sprite_Match",
-                left_side=[ value("HolyWater_Sprite"),value("HolyWater_Sprite2"),
-                            value("Holy_Water")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Flame_Shield_Sprite Sprite_Match",
-                left_side=[ value("Flame_Shield_Sprite"),value("Flame_Shield")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Flame_Armor_Sprite Sprite_Match",
-                left_side=[ value("Flame_Armor_Sprite"),value("Flame_Armor")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="HiPotion_Sprite Sprite_Match",
-                left_side=[ value("HiPotion_Sprite"),value("Hi_Potion")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
-        Rule(
-                description="Elixer_Sprite Sprite_Match",
-                left_side=[ value("Elixer_Sprite"),value("Elixer_Shop")
-                           ],
-                rule_type="==",
-                right_side=None
-        ),
+                self.style.map('TCheckbutton',background=
+                        [('selected', _bgcolor), ('active', _ana2color)])
+                self.style.map('TRadiobutton',background=
+                        [('selected', _bgcolor), ('active', _ana2color)])
 
-]
+                vMult = 700.0/600
 
-Optional_Rulesets = [
-        Ruleset(
-		name="Difficulty - Easy",
-		description="First 4 Free Checks - Strong Items",
-		rules=[
-                        Rule(
-				description="Elixer",
-				left_side=[value("elder_elixer")],
-				rule_type="=",
-				right_side=1,
-			),
-			Rule(
-				description="Firestorm",
-				left_side=[value("elder_firestorm")],
-				rule_type="=",
-				right_side=25,
-                        ),
-                        Rule(
-				description="Ocarina",
-				left_side=[value("Ocarina_Reward")],
-				rule_type="=",
-				right_side=10,
-                        ),
-                        Rule(
-				description="Myconid",
-				left_side=[value("Firestorm")],
-				rule_type="=",
-                                right_side=18,
-                        ),   
-                ],
-                must_be_enabled=None,
-		must_be_disabled=None,
-	),
-	
-]
+                # Rom Input Label
+                self.Label_RomInput = ttk.Label(self.top)
+                self.Label_RomInput.configure(background="#d9d9d9")
+                self.Label_RomInput.configure(foreground="#000000")
+                self.Label_RomInput.configure(font="TkDefaultFont")
+                self.Label_RomInput.configure(relief="flat")
+                self.Label_RomInput.configure(anchor='w')
+                self.Label_RomInput.configure(justify='left')
+
+                # Rom Input Entry
+                self.Entry_RomInput = ttk.Entry(self.top)
+                self.Entry_RomInput.configure(state='readonly')
+                self.Entry_RomInput.configure(background="#000000")
+                self.Entry_RomInput.configure(cursor="ibeam")
+
+                # Change Rom Source Buttons
+                if len(Rom_Name) > 1:
+                        btnSize = .035
+                        changeRomVal = btnSize*2 + .01
+                        # Previous Source Rom Button
+                        self.Button_PrevSourceRom = ttk.Button(self.top)
+                        self.Button_PrevSourceRom.place(relx=.035, rely=.0365*vMult, relheight=.057*vMult, relwidth=btnSize)
+                        self.Button_PrevSourceRom.configure(command=self.decrementAndSetRomInput)
+                        self.Button_PrevSourceRom.configure(takefocus="")
+                        self.Button_PrevSourceRom.configure(text='<')
+
+                        # Next Source Rom Button
+                        self.Button_NextSourceRom = ttk.Button(self.top)
+                        self.Button_NextSourceRom.place(relx=.035+btnSize+.005, rely=.0365*vMult, relheight=.057*vMult, relwidth=btnSize)
+                        self.Button_NextSourceRom.configure(command=self.incrementAndSetRomInput)
+                        self.Button_NextSourceRom.configure(takefocus="")
+                        self.Button_NextSourceRom.configure(text='>')
+                else:
+                        changeRomVal = 0
+
+                # Rom Input Label and Entry
+                self.setRomInput()
+
+                # Rom Input Button
+                self.Button_RomInput = ttk.Button(self.top)
+                self.Button_RomInput.place(relx=.845, rely=.0365*vMult, relheight=.057*vMult, relwidth=.12)
+                self.Button_RomInput.configure(command=self.setSourceRom)
+                self.Button_RomInput.configure(takefocus="")
+                self.Button_RomInput.configure(text='Load File')
+
+                # Use Settings Radio Button
+                self.RadioButton_UseSettings = ttk.Radiobutton(self.top)
+                self.RadioButton_UseSettings.place(relx=.035, rely=.11*vMult, relheight=.05*vMult, relwidth=self.getTextLength('Use Settings'))
+                self.RadioButton_UseSettings.configure(variable=useSeed)
+                self.RadioButton_UseSettings.configure(value="0")
+                self.RadioButton_UseSettings.configure(text='Use Settings')
+                self.RadioButton_UseSettings.configure(compound='none')
+                self.RadioButton_UseSettings_tooltip = ToolTip(self.RadioButton_UseSettings, self.tooltip_font, 'Use the settings defined below to create a random seed.')
+
+                # Use Seed Radio Button
+                self.RadioButton_UseSeed = ttk.Radiobutton(self.top)
+                self.RadioButton_UseSeed.place(relx=.035-.01+.81-self.getTextLength("W"*(stringLen+1))-self.getTextLength('Use Seed'), rely=.11*vMult, relheight=.057*vMult, relwidth=self.getTextLength('Use Seed'))
+                self.RadioButton_UseSeed.configure(variable=useSeed)
+                self.RadioButton_UseSeed.configure(text='''Use Seed''')
+                self.RadioButton_UseSeed_tooltip = ToolTip(self.RadioButton_UseSeed, self.tooltip_font, 'Recreate a specific set of changes according to a seed.')
+
+                # Seed Input Entry
+                self.Entry_SeedInput = ttk.Entry(self.top)
+                # old relx=.37+self.getTextLength('Use Seed')
+                self.Entry_SeedInput.place(relx=.035-.01+.81-self.getTextLength("W"*(stringLen+1)), rely=.11*vMult, relheight=.05*vMult, relwidth=self.getTextLength("W"*(stringLen+1)))
+                self.Entry_SeedInput.configure(state='normal')
+                self.Entry_SeedInput.configure(textvariable=seedInput)
+                self.Entry_SeedInput.configure(takefocus="")
+                self.Entry_SeedInput.configure(cursor="ibeam")
+                self.Entry_SeedInput.bind('<Key>',self.keepUpperCharsSeed)
+                self.Entry_SeedInput.bind('<KeyRelease>',self.keepUpperCharsSeed)
+
+                # Frame
+                self.TFrame1 = ttk.Frame(self.top)
+                self.TFrame1.place(relx=.035, rely=.18*vMult, relheight=.55*vMult, relwidth=.93)
+                self.TFrame1.configure(relief='groove')
+                self.TFrame1.configure(borderwidth="2")
+                self.TFrame1.configure(relief="groove")
+
+                # Change Ruleset Page Buttons
+                if len(Optional_Rulesets) > 14:
+                        btnSize = .035
+                        # Previous Source Rom Button
+                        self.Button_PrevRulesetPage = ttk.Button(self.top)
+                        self.Button_PrevRulesetPage.place(relx=.93-btnSize-.005, rely=(.18+.55-.057)*vMult, relheight=.057*vMult, relwidth=btnSize)
+                        self.Button_PrevRulesetPage.configure(command=self.decrementAndSetDisplayedRulesets)
+                        self.Button_PrevRulesetPage.configure(takefocus="")
+                        self.Button_PrevRulesetPage.configure(text='<')
+
+                        # Next Source Rom Button
+                        self.Button_NextRulesetPage = ttk.Button(self.top)
+                        self.Button_NextRulesetPage.place(relx=.93, rely=(.18+.55-.057)*vMult, relheight=.057*vMult, relwidth=btnSize)
+                        self.Button_NextRulesetPage.configure(command=self.incrementAndSetDisplayedRulesets)
+                        self.Button_NextRulesetPage.configure(takefocus="")
+                        self.Button_NextRulesetPage.configure(text='>')
+
+                # Ruleset Check Buttons, Number of Seeds Label, Number of Seeds Dropdown
+                self.CheckButtons = []
+                self.CheckButtons_tooltips = []
+                global optRulesetValues
+                for i in range(len(Optional_Rulesets)):
+                        self.CheckButtons.append(ttk.Checkbutton(self.top)) # self.TFrame1 to put in frame
+                        self.CheckButtons[i].configure(variable=optRulesetValues[i])
+                        self.CheckButtons[i].configure(offvalue="0")
+                        self.CheckButtons[i].configure(onvalue="1")
+                        self.CheckButtons[i].configure(takefocus="")
+                        self.CheckButtons[i].configure(text=Optional_Rulesets[i].name)
+                        self.CheckButtons_tooltips.append(ToolTip(self.CheckButtons[i], self.tooltip_font, Optional_Rulesets[i].description))
+                self.Label_NumSeeds = ttk.Label(self.top)
+                self.Label_NumSeeds.configure(background="#d9d9d9")
+                self.Label_NumSeeds.configure(foreground="#000000")
+                self.Label_NumSeeds.configure(font="TkDefaultFont")
+                self.Label_NumSeeds.configure(relief="flat")
+                self.Label_NumSeeds.configure(anchor='w')
+                self.Label_NumSeeds.configure(justify='left')
+                self.Label_NumSeeds.configure(text='# of Seeds')
+                self.Label_NumSeeds_tooltip = ToolTip(self.Label_NumSeeds, self.tooltip_font, 'How many seeds would you like to generate?')
+                self.ComboBox_NumSeeds = ttk.Combobox(self.top)
+                self.ComboBox_NumSeeds.configure(values=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'])
+                self.ComboBox_NumSeeds.configure(state='readonly')
+                self.ComboBox_NumSeeds.configure(textvariable=numSeeds)
+                self.setDisplayedRulesets()
+
+                # Text Log Check Button
+                self.CheckButton_GenerateTextLog = ttk.Checkbutton(self.top)
+                self.CheckButton_GenerateTextLog.place(relx=.25, rely=.895, relheight=.05*vMult, relwidth=.20)
+                self.CheckButton_GenerateTextLog.configure(variable=generateLog)
+                self.CheckButton_GenerateTextLog.configure(takefocus="")
+                self.CheckButton_GenerateTextLog.configure(text='Generate Text Log')
+                self.CheckButton_GenerateTextLog_tooltip = ToolTip(self.CheckButton_GenerateTextLog, self.tooltip_font, 'Would you like to generate a text file that details what abilities are tied to each enemy/object in the created seed?')
+
+                # Create Rom Button
+                self.Button_CreateRom = ttk.Button(self.top)
+                self.Button_CreateRom.place(relx=.55, rely=.8915, relheight=.057*vMult, relwidth=.144)
+                self.Button_CreateRom.configure(takefocus="")
+                self.Label_NumSeeds.configure(anchor='w')
+                self.Button_CreateRom.configure(text='''Randomize!''')
+
+                # Other
+                self.RadioButton_UseSettings.configure(command=self.prepareSettingsAndSeed)
+                self.RadioButton_UseSeed.configure(command=self.prepareSettingsAndSeed)
+                self.Button_CreateRom.configure(command=self.attemptRandomize)
+                for i in range(len(Optional_Rulesets)):
+                        self.CheckButtons[i].configure(command=self.prepareSettingsFromDependencies)
+                self.prepareSettingsFromDependencies()
+
+        def getTextLength(self, text):
+                return .03+self.font.measure(text)/1000.0
+
+        def getMaxColumnWidth(self, num):
+                lower = 5 * (num//5)
+                upper = lower + 5
+                sizeArr = []
+                for i in range(lower, min(upper, len(Optional_Rulesets))):
+                        # sizeArr.append(self.getTextLength(Optional_Rulesets[i].name)-.03)
+                        for j in range(Optional_Rulesets[i].name.count('\n') + 1):
+                                sizeArr.append(self.getTextLength(Optional_Rulesets[i].name.split('\n')[j])-.03)
+                if len(sizeArr) == 0:
+                        return self.getTextLength("# of Seeds")-.03
+                return max(sizeArr)
+
+        def prepareSettingsAndSeed(self, unused=None):
+                if useSeed.get()=="1":
+                        self.Label_NumSeeds.configure(state="disabled")
+                        self.ComboBox_NumSeeds.configure(state="disabled")
+                        for button in self.CheckButtons:
+                                button.configure(state="disabled")
+                else:
+                        self.Label_NumSeeds.configure(state="normal")
+                        self.ComboBox_NumSeeds.configure(state="readonly")
+                        for button in self.CheckButtons:
+                                button.configure(state="normal")
+                        self.prepareSettingsFromDependencies()
+
+        def prepareSettingsFromDependencies(self):
+                for i in range(len(self.CheckButtons)):
+                        currCheckButton = self.CheckButtons[i]
+                        firstIndex = currRulesetPage*15
+                        lastIndex = min((currRulesetPage+1)*15, len(Optional_Rulesets)) # last index exclusive
+                        if not (firstIndex <= i < lastIndex):
+                                currCheckButton.configure(state="disabled")
+                                continue
+                        currCheckButton.configure(state="normal")
+                        for j in range(len(self.CheckButtons)):
+                                currRulesetVal = optRulesetValues[j].get()
+                                currRulesetName = Optional_Rulesets[j].originalName
+                                if ((currRulesetVal == "1") and (currRulesetName in Optional_Rulesets[i].must_be_disabled)
+                                        ) or ((currRulesetVal == "0") and (currRulesetName in Optional_Rulesets[i].must_be_enabled)):
+                                        optRulesetValues[i].set("0")
+                                        currCheckButton.configure(state="disabled")
+                                        break
+
+        def decrementAndSetDisplayedRulesets(self):
+                global currRulesetPage
+                currRulesetPage -= 1
+                if currRulesetPage < 0:
+                        currRulesetPage = len(Optional_Rulesets) // 15
+                self.setDisplayedRulesets()
+
+        def incrementAndSetDisplayedRulesets(self):
+                global currRulesetPage
+                currRulesetPage += 1
+                if currRulesetPage > len(Optional_Rulesets) // 15:
+                        currRulesetPage = 0
+                self.setDisplayedRulesets()
+
+        def setDisplayedRulesets(self):
+                # Ruleset Check Buttons
+                firstIndex = currRulesetPage*15
+                lastIndex = min((currRulesetPage+1)*15, len(Optional_Rulesets)) # last index exclusive
+                rulesetsOnCurrPage = Optional_Rulesets[currRulesetPage*15:min((currRulesetPage+1)*15, len(Optional_Rulesets))]
+                numOptRulesets = lastIndex - firstIndex
+                xShiftArray = spaceOut(min(numOptRulesets//5 + 1, 3), .3, numDecimalPlaces=3)
+                yShiftArray = spaceOut(min(numOptRulesets+1, 5), .09, numDecimalPlaces=3)
+                optRulesetNum = 0
+                for i in range(len(Optional_Rulesets)):
+                        tempMaxLen = 0
+                        tempNumLines = 0
+                        for line in Optional_Rulesets[i].name.split('\n'):
+                                tempMaxLen = max(tempMaxLen, self.getTextLength(line))
+                                tempNumLines += 1
+                        if firstIndex <= i < lastIndex:
+                                self.CheckButtons[i].place(relx=.475-self.getMaxColumnWidth(optRulesetNum)/2+xShiftArray[optRulesetNum//5], rely=(.40+yShiftArray[optRulesetNum%5])*vMult, relheight=max(self.fontHeight*tempNumLines*vMult, 0.05), relwidth=tempMaxLen+.03)
+                                optRulesetNum += 1
+                        else:
+                                self.CheckButtons[i].place(relx=10, rely=10, relheight=max(self.fontHeight*tempNumLines*vMult, 0.05), relwidth=tempMaxLen+.03)
+
+                if optRulesetNum < 15:
+                        # Number of Seeds Label
+                        seedX = .475-self.getMaxColumnWidth(optRulesetNum)/2+xShiftArray[optRulesetNum//5]
+                        self.Label_NumSeeds.place(relx=seedX, rely=(.40+yShiftArray[optRulesetNum%5])*vMult, relheight=.05*vMult, relwidth=.11)
+                        # Number of Seeds Dropdown
+                        self.ComboBox_NumSeeds.place(relx=seedX, rely=(.45+yShiftArray[optRulesetNum%5])*vMult, relheight=.05*vMult, relwidth=.088)
+                else:
+                        self.Label_NumSeeds.place(relx=10, rely=10, relheight=.05*vMult, relwidth=.11)
+                        self.ComboBox_NumSeeds.place(relx=10, rely=10, relheight=.05*vMult, relwidth=.088)
+                self.prepareSettingsAndSeed()
+
+        def decrementAndSetRomInput(self):
+                global currRomIndex
+                currRomIndex -= 1
+                if currRomIndex < 0:
+                        currRomIndex = len(Rom_Name) - 1
+                self.setRomInput()
+
+        def incrementAndSetRomInput(self):
+                global currRomIndex
+                currRomIndex += 1
+                if currRomIndex >= len(Rom_Name):
+                        currRomIndex = 0
+                self.setRomInput()
+
+        def setRomInput(self):
+                romTextLength = self.getTextLength(Rom_Name[currRomIndex])
+                self.Label_RomInput.place(relx=.035+changeRomVal, rely=.04*vMult, relheight=.05*vMult, relwidth=romTextLength)
+                self.Label_RomInput.configure(text=Rom_Name[currRomIndex])
+                self.Entry_RomInput.place(relx=.035+changeRomVal+romTextLength-.01, rely=.04*vMult, relheight=.05*vMult, relwidth=.81-romTextLength-changeRomVal)
+                self.Entry_RomInput.configure(textvariable=sourceRoms[currRomIndex])
+
+        def setSourceRom(self):
+                global sourceRoms
+                currRFF = Rom_File_Format[currRomIndex % len(Rom_File_Format)]
+                if currRFF is None or currRFF == "":
+                        sourceRoms[currRomIndex].set(askopenfilename())
+                else:
+                        sourceRoms[currRomIndex].set(askopenfilename(filetypes=[("Files", "*."+currRFF)]))
+                if sourceRoms[currRomIndex].get() != "":
+                        with open(sourceRoms[currRomIndex].get(), "rb") as inputFile:
+                                fileBytes = inputFile.read()
+                        currHash = Rom_Hash[currRomIndex % len(Rom_Hash)]
+                        if (currHash is not None) and (currHash != ""):
+                                fileHash = str(hex(binascii.crc32(fileBytes)))[2:].zfill(8).upper()
+                                if currHash.upper() != fileHash:
+                                        showerror("Incorrect File", "Incorrect file; CRC32 does not match expected hash.\n\nExpected: "+currHash.upper()+"\nGot: "+fileHash)
+                                        sourceRoms[currRomIndex].set("")
+
+        def keepUpperCharsSeed(self, unused):
+                global seedInput
+                seedInput.set(''.join(ch.upper() for ch in seedInput.get() if ch.isalpha() or ch.isdigit()))
+                seedInput.set(seedInput.get()[:stringLen])
+                useSeed.set("1")
+                self.prepareSettingsAndSeed()
+
+        def attemptRandomize(self):
+                global optionalRulesetsList
+                global optRulesetValues
+
+                optionalRulesetsList = [("", 0)] * len(optRulesetValues)
+                for i in range(len(optRulesetValues)):
+                        optionalRulesetsList[i] = (Optional_Rulesets[i].name, int(optRulesetValues[i].get()))
+                results = randomize()
+                print("\n")
+                if results[0]:
+                        showinfo("Success!", results[1])
+                else:
+                        showerror("Error", results[1])
+
+        def showHelpPopup(self):
+                showinfo("Help",
+                        "To learn more about an option, move your mouse over it."
+                        +"\n"+limitedString("You can generate multiple unique ROMs at once by changing the # of seeds.", 55, "- ")
+                        +"\n"+limitedString("You can also generate a text log that gives information about a created seed.", 55, "- ")
+                        +"\n"+limitedString("Generated ROMs will be placed in an \"output\" folder, which will be in the same folder as this program.", 55, "- "))
+
+        def showAboutPopup(self):
+                showinfo("About", About_Page_Text)
+
+        def showSRMPopup(self):
+                showinfo("Simple Randomizer Maker v1.262", "This was made using\nMips96's Simple Randomizer Maker.\n\nhttps://github.com/Mips96/SimpleRandomizerMaker")
+
+# ======================================================
+# Support code for Balloon Help (also called tooltips).
+# Found the original code at:
+# http://code.activestate.com/recipes/576688-tooltip-for-tkinter/
+# Modified by Rozen to remove Tkinter import statements and to receive
+# the font as an argument.
+# ======================================================
+
+from time import localtime, strftime
+
+class ToolTip(tk.Toplevel):
+        """
+        Provides a ToolTip widget for Tkinter.
+        To apply a ToolTip to any Tkinter widget, simply pass the widget to the
+        ToolTip constructor
+        """
+        def __init__(self, wdgt, tooltip_font, msg=None, msgFunc=None,
+                                 delay=0.5, follow=True):
+                """
+                Initialize the ToolTip
+
+                Arguments:
+                  wdgt: The widget this ToolTip is assigned to
+                  tooltip_font: Font to be used
+                  msg:  A static string message assigned to the ToolTip
+                  msgFunc: A function that retrieves a string to use as the ToolTip text
+                  delay:   The delay in seconds before the ToolTip appears(may be float)
+                  follow:  If True, the ToolTip follows motion, otherwise hides
+                """
+                self.wdgt = wdgt
+                # The parent of the ToolTip is the parent of the ToolTips widget
+                self.parent = self.wdgt.master
+                # Initalise the Toplevel
+                tk.Toplevel.__init__(self, self.parent, bg='black', padx=1, pady=1)
+                # Hide initially
+                self.withdraw()
+                # The ToolTip Toplevel should have no frame or title bar
+                self.overrideredirect(True)
+
+                # The msgVar will contain the text displayed by the ToolTip
+                self.msgVar = tk.StringVar()
+                if msg is None:
+                        self.msgVar.set('No message provided')
+                else:
+                        self.msgVar.set(msg)
+                self.msgFunc = msgFunc
+                self.delay = delay
+                self.follow = follow
+                self.visible = 0
+                self.lastMotion = 0
+                # The text of the ToolTip is displayed in a Message widget
+                tk.Message(self, textvariable=self.msgVar, bg='#FFFFDD',
+                                font=tooltip_font,
+                                aspect=1000).grid()
+
+                # Add bindings to the widget.  This will NOT override
+                # bindings that the widget already has
+                self.wdgt.bind('<Enter>', self.spawn, '+')
+                self.wdgt.bind('<Leave>', self.hide, '+')
+                self.wdgt.bind('<Motion>', self.move, '+')
+
+        def spawn(self, event=None):
+                """
+                Spawn the ToolTip.  This simply makes the ToolTip eligible for display.
+                Usually this is caused by entering the widget
+
+                Arguments:
+                  event: The event that called this funciton
+                """
+                self.visible = 1
+                # The after function takes a time argument in milliseconds
+                self.after(int(self.delay * 1000), self.show)
+
+        def show(self):
+                """
+                Displays the ToolTip if the time delay has been long enough
+                """
+                if self.visible == 1 and time() - self.lastMotion > self.delay:
+                        self.visible = 2
+                if self.visible == 2:
+                        self.deiconify()
+
+        def move(self, event):
+                """
+                Processes motion within the widget.
+                Arguments:
+                  event: The event that called this function
+                """
+                self.lastMotion = time()
+                # If the follow flag is not set, motion within the
+                # widget will make the ToolTip disappear
+                #
+                if self.follow is False:
+                        self.withdraw()
+                        self.visible = 1
+
+                # Offset the ToolTip 10x10 pixes southwest of the pointer
+                self.geometry('+%i+%i' % (event.x_root+20, event.y_root-10))
+                try:
+                        # Try to call the message function.  Will not change
+                        # the message if the message function is None or
+                        # the message function fails
+                        self.msgVar.set(self.msgFunc())
+                except:
+                        pass
+                self.after(int(self.delay * 1000), self.show)
+
+        def hide(self, event=None):
+                """
+                Hides the ToolTip.  Usually this is caused by leaving the widget
+                Arguments:
+                  event: The event that called this function
+                """
+                self.visible = 0
+                self.withdraw()
+
+        def update(self, msg):
+                """
+                Updates the Tooltip with a new message. Added by Rozen
+                """
+                self.msgVar.set(msg)
+
+# ===========================================================
+#                                  End of Class ToolTip
+# ===========================================================
+
+def set_Tk_var():
+        global sourceRoms
+        sourceRoms = []
+        for i in range(len(Rom_Name)):
+                sourceRoms.append(tk.StringVar())
+        global optRulesetValues
+        optRulesetValues = []
+        for i in range(len(Optional_Rulesets)):
+                optRulesetValues.append(tk.StringVar())
+        global numSeeds
+        numSeeds = tk.StringVar()
+        global useSeed
+        useSeed = tk.StringVar()
+        global seedInput
+        seedInput = tk.StringVar()
+        global generateLog
+        generateLog = tk.StringVar()
+        global message
+        message = tk.StringVar()
+        message.set('')
+        initVars()
+
+def initVars():
+        useSeed.set("0")
+        numSeeds.set("1")
+        generateLog.set("1")
+        for val in optRulesetValues:
+                val.set("0")
+        message.set("Move your mouse over a label to learn more about it.")
+
+def init(top, gui, *args, **kwargs):
+        global w, top_level, root
+        w = gui
+        top_level = top
+        root = top
+
+def destroy_window(endProg=False):
+        # Function which closes the window.
+        global top_level
+        top_level.destroy()
+        top_level = None
+        if endProg:
+                sys.exit()
+
+if __name__ == '__main__':
+        main()
