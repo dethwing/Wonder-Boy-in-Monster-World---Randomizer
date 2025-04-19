@@ -1,6 +1,7 @@
         # This is a randomizer file for the Simple Randomizer Maker.
 # This file must be named randomizer.py in order to work.
 # For more information on what each variable means, see "Readme (Tutorial).md"
+# Version 1.1, Updated on 4/19 to fix bat dropping # 
 
 from classes import *
 
@@ -144,7 +145,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -268,7 +269,25 @@ Attributes = [
                                     31,32,33,34,35,36,37,
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
-                                 64
+                                 64,
+                                     130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
+                                 ]
+                ),
+        Attribute(
+                name="Full_Health_1",
+                addresses=[0xA75C],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
+                                 10,11,12,13,   15,16,17,18,19,
+                                 20,21,22,23,24,25,26,27,28,
+                                    31,32,33,34,35,36,37,
+                                    41,   43,44,45,         49,
+                                 50,51,52,53,54,55,   57,58,
+                                 64,
+                                 130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
                                  ]
                 ),
         Attribute(
@@ -282,7 +301,9 @@ Attributes = [
                                     31,32,33,34,35,36,37,
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
-                                 64
+                                 64,
+                                 130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
                                  ]
                 ),      
         ### Sphere 1 Checks - 19 ###
@@ -300,7 +321,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -316,7 +337,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),      
@@ -332,7 +353,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -350,7 +371,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -366,7 +387,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -382,7 +403,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -398,7 +419,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),        
@@ -414,7 +435,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -430,7 +451,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]                
                 ),
@@ -446,7 +467,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -462,7 +483,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -478,7 +499,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -494,7 +515,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -512,7 +533,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,58,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -614,7 +635,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -630,7 +651,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -646,7 +667,7 @@ Attributes = [
                                     41,   43,44,45,         49,
                                  50,51,52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -684,7 +705,7 @@ Attributes = [
                                     41,   43,44,45,         
                                     51,52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -702,7 +723,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,51,52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -720,7 +741,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,   52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -736,7 +757,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,   52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -752,7 +773,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,   52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -768,7 +789,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,   52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -784,7 +805,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,   52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -800,7 +821,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,   52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -816,7 +837,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,   52,53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -834,7 +855,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,51,   53,54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -852,7 +873,7 @@ Attributes = [
                                     41,   43,44,45,         
                                  50,51,52,   54,55,   57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),
@@ -871,7 +892,7 @@ Attributes = [
                                     41,   43,44,45,         
                                                       57,
                                  64,
-                                 128,130,132,134,136,138,140,
+                                 130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
                 ),               
@@ -940,7 +961,21 @@ Attributes = [
 
         ### I've removed some items to increase the chance you'll need
         ### the Pygmy Items. It's around 50% you'll need to do at least
-        ### one of these. 
+        ### one of these.
+        Attribute(
+                name="Full_Health_2",
+                addresses=[0xA724],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 0,                     8, 
+                                                   16,17,18,19,
+                                 20,21,22,   24, 
+                                       32,      35,36,
+                                    41,   43,44,45, 
+                                                      57,
+                                 64
+                                 ]
+                ),
         Attribute(
                 name="Fire_Urn",
                 addresses=[0xA75A],
@@ -949,8 +984,8 @@ Attributes = [
                 possible_values=[ 0,                     8, 
                                                    16,17,18,19,
                                  20,21,22,   24, 
-                                                   36,
-                                    41,   
+                                       32,      35,36,
+                                    41,   43,44,45,
                                                       57,
                                  64
                                  ]
@@ -963,25 +998,20 @@ Attributes = [
                 possible_values=[ 0,                     8, 
                                                    16,17,18,19,
                                  20,21,22,   24, 
-                                                   36,
-                                    41,   
+                                       32,      35,36,
+                                    41,   43,44,45, 
                                                       57,
                                  64
                                  ]
                 ),
 
-        ### Legend Items - Remove Fire Urn / Legend Sword ###
+        #### Non - Pool Items ###
         Attribute(
                 name="Legend_Boots",
                 addresses=[0xA742],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[    1, 2,    4,    6,    8, 9,
-                                 10,11,12,13,      16,17,18,19,
-                                 20,21,22,   24,25,   27,28,
-                                       32,33,34,35,36,
-                                    41,   43,44,45,
-                                                      
+                possible_values=[41,                                                      
                                  64,
                                  128,130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
@@ -992,12 +1022,7 @@ Attributes = [
                 addresses=[0xA74A],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[    1, 2,    4,    6,    8, 9,
-                                 10,11,12,13,      16,17,18,19,
-                                 20,21,22,   24,25,   27,28,
-                                       32,33,34,35,36,
-                                    41,   43,44,45,
-                                                      
+                possible_values=[41,                                                      
                                  64,
                                  128,130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
@@ -1008,49 +1033,32 @@ Attributes = [
                 addresses=[0xA748],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[    1, 2,    4,    6,    8, 9,
-                                 10,11,12,13,      16,17,18,19,
-                                 20,21,22,   24,25,   27,28,
-                                       32,33,34,35,36,
-                                    41,   43,44,45,
-                                                      
+                possible_values=[41,                                                      
                                  64,
                                  128,130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
-                ),
-
-        #### Non - Pool Items ###
-        Attribute(
-                name="Full_Health_1",
-                addresses=[0xA75C],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[12,14,16,18,20,22,169,192
-                                 ]
-                ),
-        Attribute(
-                name="Full_Health_2",
-                addresses=[0xA724],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[12,14,16,18,20,22,169,192
-                                 ]
-                ),
+                ),        
         Attribute(
                 name="Water_Money_Chest2_Item1",
                 addresses=[0xa784],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[12,14,16,18,20,22,169,192
-                                 ] 
+                possible_values=[41,                                                      
+                                 64,
+                                 128,130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
+                                 ]
                 ),
         Attribute(
                 name="Water_Money_Chest2_Item2",
                 addresses=[0xa786],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[12,14,16,18,20,22,169,192
+                possible_values=[41,                                                      
+                                 64,
+                                 128,130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
                                  ]
                 ),        
         Attribute(
@@ -1058,7 +1066,10 @@ Attributes = [
                 addresses=[0xa788],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[12,14,16,18,20,22,169,192
+                possible_values=[41,                                                      
+                                 64,
+                                 128,130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
                                  ]
                 ),
         Attribute(
@@ -1066,7 +1077,10 @@ Attributes = [
                 addresses=[0xa78a],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[12,14,16,18,20,22,169,192
+                possible_values=[41,                                                      
+                                 64,
+                                 128,130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
                                  ]
                 ),
         Attribute(
@@ -1074,7 +1088,10 @@ Attributes = [
                 addresses=[0xa78c],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[12,14,16,18,20,22,169,192
+                possible_values=[41,                                                      
+                                 64,
+                                 128,130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
                                  ]
                 ),
         Attribute(
@@ -1082,7 +1099,10 @@ Attributes = [
                 addresses=[0xa78e],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[12,14,16,18,20,22,169,192
+                possible_values=[41,                                                      
+                                 64,
+                                 128,130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
                                  ]
                 ),  
         ###Prices####
@@ -3013,15 +3033,19 @@ Required_Rules = [
                             
                             value("Water_Money_Chest3_Item1"),value("Water_Money_Chest3_Item2"),value("Water_Money_Chest3_Item3"),
                             value("Water_Money_Chest3_Item4"),value("Water_Money_Chest3_Item5"),
+
+                            value("Full_Health_1"),value("Full_Health_2"),
+                            
                             value("leather_boots"),value("medicine"),value("small_spear"),value("chain_mail"),value("wood_shield"),
                             value("Knight_Sword"),value("Hard_Armor"),value("Charmstone_Purchase"),value("Potion"),value("Ladder_Boots"),
                             value("excalibur"),value("steel_shield"),                           
                             value("Marine_Boots"),value("Shield_Magic_Shop"),value("Shell_Shield"),value("Steel_Armor"),
                             value("Ceramic_Boots"),value("Battle_Spear"),value("Knight_Armor"),value("Knight_Shield"),value("Holy_Water"),
                             value("Flame_Shield"),value("Flame_Armor"),value("Hi_Potion"),value("Elixer_Shop"),
+                            
                             value("elder_elixer"),value("elder_firestorm"),
-                            value("Legend_Sword"),value("Ocarina_Reward"),
-                            value("Legend_Armor"),value("Legend_Shield"),value("Legend_Boots")
+                            
+                            value("Legend_Sword"),value("Ocarina_Reward")
                            ],
                 rule_type="!=",
                 right_side=None
@@ -3030,7 +3054,7 @@ Required_Rules = [
                 description="Non Pool Items",
                 left_side=[ value("Water_Money_Chest2_Item1"),value("Water_Money_Chest2_Item2"),value("Water_Money_Chest2_Item3"),
                             value("Water_Money_Chest2_Item4"),value("Water_Money_Chest2_Item5"),value("Water_Money_Chest2_Item6"),
-                            value("Full_Health_1"),value("Full_Health_2")
+                            value("Legend_Armor"),value("Legend_Shield"),value("Legend_Boots")                            
                             ],
                 rule_type="!=",
                 right_side=None
@@ -3378,38 +3402,6 @@ Required_Rules = [
 ]
 
 Optional_Rulesets = [
-        Ruleset(
-		name="Difficulty - Very Easy",
-		description="First 4 Free Checks - Legend Items",
-		rules=[
-                        Rule(
-				description="Elixer",
-				left_side=[value("elder_elixer")],
-				rule_type="=",
-				right_side=0,
-			),
-			Rule(
-				description="Firestorm",
-				left_side=[value("elder_firestorm")],
-				rule_type="=",
-				right_side=24,
-                        ),
-                        Rule(
-				description="Ocarina",
-				left_side=[value("Ocarina_Reward")],
-				rule_type="=",
-				right_side=8,
-                        ),
-                        Rule(
-				description="Myconid",
-				left_side=[value("Firestorm")],
-				rule_type="=",
-                                right_side=16,
-                        ),   
-                ],
-                must_be_enabled=None,
-		must_be_disabled=None,
-	),
         Ruleset(
 		name="Difficulty - Easy",
 		description="First 4 Free Checks - Strong Items",
