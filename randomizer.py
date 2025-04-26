@@ -1,7 +1,8 @@
         # This is a randomizer file for the Simple Randomizer Maker.
 # This file must be named randomizer.py in order to work.
 # For more information on what each variable means, see "Readme (Tutorial).md"
-# Version 1.1, Updated on 4/19 to fix bat dropping # 
+# Version 1.1, Updated on 4/19 to fix bat dropping #
+# Version 1.2, Updated on 4/26. Prices on some items decreased. #
 
 from classes import *
 
@@ -1575,8 +1576,8 @@ Attributes = [
                 addresses=[0x1df4],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=11,
-		max_value=11,
+                min_value=7,
+		max_value=7,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1584,8 +1585,8 @@ Attributes = [
                 addresses=[0x1df5],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=184,
-		max_value=184,
+                min_value=208,
+		max_value=208,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1611,8 +1612,8 @@ Attributes = [
                 addresses=[0x1dc0],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=15,
-		max_value=15,
+                min_value=11,
+		max_value=11,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1620,8 +1621,8 @@ Attributes = [
                 addresses=[0x1dc1],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=160,
-		max_value=160,
+                min_value=184,
+		max_value=184,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1665,8 +1666,8 @@ Attributes = [
                 addresses=[0x1e10],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=19,
-		max_value=19,
+                min_value=15,
+		max_value=15,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1674,8 +1675,8 @@ Attributes = [
                 addresses=[0x1e11],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=136,
-		max_value=136,
+                min_value=160,
+		max_value=160,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1701,8 +1702,8 @@ Attributes = [
                 addresses=[0x1db0],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=29,
-		max_value=29,
+                min_value=23,
+		max_value=23,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1710,8 +1711,8 @@ Attributes = [
                 addresses=[0x1db1],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=76,
-		max_value=76,
+                min_value=112,
+		max_value=112,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1719,8 +1720,8 @@ Attributes = [
                 addresses=[0x1df0],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=19,
-		max_value=19,
+                min_value=15,
+		max_value=15,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1728,8 +1729,8 @@ Attributes = [
                 addresses=[0x1df1],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=136,
-		max_value=136,
+                min_value=160,
+		max_value=160,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1737,8 +1738,8 @@ Attributes = [
                 addresses=[0x1dd0],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=19,
-		max_value=19,
+                min_value=15,
+		max_value=15,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1746,8 +1747,8 @@ Attributes = [
                 addresses=[0x1dd1],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=136,
-		max_value=136,
+                min_value=160,
+		max_value=160,
 		min_max_interval=1,
                 ),
         Attribute(
