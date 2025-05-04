@@ -3,6 +3,8 @@
 # For more information on what each variable means, see "Readme (Tutorial).md"
 # Version 1.1, Updated on 4/19 to fix bat dropping #
 # Version 1.2, Updated on 4/26. Prices on some items decreased. #
+# Version 1.3, Updated on 5/1. Fixed Heart Check #
+# Version 1.4, Updated on 5/4. Added Bracelet and Text # 
 
 from classes import *
 
@@ -377,8 +379,8 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Water_Money_Chest3_Item1",
-                addresses=[0xa790],
+                name="Water_Money_Chest2_Item1",
+                addresses=[0xa784],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
@@ -393,24 +395,8 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Water_Money_Chest3_Item2",
-                addresses=[0xa792],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,26,27,28,
-                                    31,32,33,34,35,36,37,
-                                    41,   43,44,45,         49,
-                                 50,51,52,53,54,55,   57,58,
-                                 64,
-                                 130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest3_Item3",
-                addresses=[0xa794],
+                name="Water_Money_Chest2_Item2",
+                addresses=[0xa786],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
@@ -425,8 +411,8 @@ Attributes = [
                                  ]
                 ),        
         Attribute(
-                name="Water_Money_Chest3_Item4",
-                addresses=[0xa796],
+                name="Water_Money_Chest2_Item3",
+                addresses=[0xa788],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
@@ -441,8 +427,8 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Water_Money_Chest3_Item5",
-                addresses=[0xa798],
+                name="Water_Money_Chest2_Item4",
+                addresses=[0xa78a],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
@@ -454,7 +440,39 @@ Attributes = [
                                  64,
                                  130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
-                                 ]                
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest2_Item5",
+                addresses=[0xa78c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
+                                 10,11,12,13,   15,16,17,18,19,
+                                 20,21,22,23,24,25,26,27,28,
+                                    31,32,33,34,35,36,37,
+                                    41,   43,44,45,         49,
+                                 50,51,52,53,54,55,   57,58,
+                                 64,
+                                 130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest2_Item6",
+                addresses=[0xa78e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 0, 1, 2,    4,    6, 7, 8, 9,
+                                 10,11,12,13,   15,16,17,18,19,
+                                 20,21,22,23,24,25,26,27,28,
+                                    31,32,33,34,35,36,37,
+                                    41,   43,44,45,         49,
+                                 50,51,52,53,54,55,   57,58,
+                                 64,
+                                 130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
+                                 ]
                 ),
         Attribute(
                 name="Pygmy_Armor",
@@ -964,26 +982,12 @@ Attributes = [
         ### the Pygmy Items. It's around 50% you'll need to do at least
         ### one of these.
         Attribute(
-                name="Full_Health_2",
-                addresses=[0xA724],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 0,                     8, 
-                                                   16,17,18,19,
-                                 20,21,22,   24, 
-                                       32,      35,36,
-                                    41,   43,44,45, 
-                                                      57,
-                                 64
-                                 ]
-                ),
-        Attribute(
                 name="Fire_Urn",
                 addresses=[0xA75A],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 0,                     8, 
-                                                   16,17,18,19,
+                                                   16,
                                  20,21,22,   24, 
                                        32,      35,36,
                                     41,   43,44,45,
@@ -997,10 +1001,10 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 0,                     8, 
-                                                   16,17,18,19,
+                                                   16,
                                  20,21,22,   24, 
                                        32,      35,36,
-                                    41,   43,44,45, 
+                                    41,   43,44,45,
                                                       57,
                                  64
                                  ]
@@ -1039,10 +1043,43 @@ Attributes = [
                                  128,130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
                                  ]
+                ),
+        Attribute(
+                name="Water_Money_Chest3_Item1",
+                addresses=[0xa790],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[41,                                                      
+                                 64,
+                                 128,130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest3_Item2",
+                addresses=[0xa792],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[41,                                                      
+                                 64,
+                                 128,130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest3_Item3",
+                addresses=[0xa794],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[41,                                                      
+                                 64,
+                                 128,130,132,134,136,138,140,
+                                 142,144,146,148,150,152,154,156
+                                 ]
                 ),        
         Attribute(
-                name="Water_Money_Chest2_Item1",
-                addresses=[0xa784],
+                name="Water_Money_Chest3_Item4",
+                addresses=[0xa796],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[41,                                                      
@@ -1052,60 +1089,16 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Water_Money_Chest2_Item2",
-                addresses=[0xa786],
+                name="Water_Money_Chest3_Item5",
+                addresses=[0xa798],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[41,                                                      
                                  64,
                                  128,130,132,134,136,138,140,
                                  142,144,146,148,150,152,154,156
-                                 ]
-                ),        
-        Attribute(
-                name="Water_Money_Chest2_Item3",
-                addresses=[0xa788],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
+                                 ]              
                 ),
-        Attribute(
-                name="Water_Money_Chest2_Item4",
-                addresses=[0xa78a],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest2_Item5",
-                addresses=[0xa78c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest2_Item6",
-                addresses=[0xa78e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[41,                                                      
-                                 64,
-                                 128,130,132,134,136,138,140,
-                                 142,144,146,148,150,152,154,156
-                                 ]
-                ),  
         ###Prices####
         Attribute(
                 name="Medecine_Price",
@@ -3012,15 +3005,78 @@ Attributes = [
                 addresses=[0x1f237],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[3]
+                possible_values=[59]
                 ),        
         Attribute(
                 name="Bracelet_Item",
                 addresses=[0x1f23c],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[3]
+                possible_values=[32,33,34,35,36,37,
+                                 41,42
+                                 ]
                 ),
+        Attribute(
+                name="Bracelet_Text1",
+                addresses=[0x1f25B],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[11
+                                 ]
+                ),
+        Attribute(
+                name="Bracelet_Text2",
+                addresses=[0x1f25C],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[10
+                                 ]
+                ),
+        Attribute(
+                name="Bracelet_Text",
+                addresses=[0x1f25D],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=0,
+		max_value=100,
+		min_max_interval=1
+                ),
+        Attribute(
+                name="Bracelet_Text5",
+                addresses=[0x1f25E],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[12]
+                ),
+        Attribute(
+                name="Bracelet_Text6",
+                addresses=[0x1f25F],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[2]
+                ),
+        Attribute(
+                name="Bracelet_Text7",
+                addresses=[0x1f260],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32] 
+                ),
+        Attribute(
+                name="Bracelet_Text8",
+                addresses=[0x1f261],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[5] 
+                ),
+        Attribute(
+                name="Bracelet_Text9",
+                addresses=[0x1f262],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[0] 
+                ), 
 ]
 Required_Rules = [
         Rule(
@@ -3032,10 +3088,10 @@ Required_Rules = [
                             value("Trident"),value("Oasis_Boots"),value("Amulet"),value("Elixer_Chests"),value("First_Money"),
                             value("Secret_Pyramid_1"),value("Secret_Pyramid_2"),value("Secret_Pyramid_3"),value("Secret_Pyramid_4"),value("Secret_Pyramid_5"),
                             
-                            value("Water_Money_Chest3_Item1"),value("Water_Money_Chest3_Item2"),value("Water_Money_Chest3_Item3"),
-                            value("Water_Money_Chest3_Item4"),value("Water_Money_Chest3_Item5"),
+                            value("Water_Money_Chest2_Item1"),value("Water_Money_Chest2_Item2"),value("Water_Money_Chest2_Item3"),
+                            value("Water_Money_Chest2_Item4"),value("Water_Money_Chest2_Item5"),value("Water_Money_Chest2_Item6"),
 
-                            value("Full_Health_1"),value("Full_Health_2"),
+                            value("Full_Health_1"),
                             
                             value("leather_boots"),value("medicine"),value("small_spear"),value("chain_mail"),value("wood_shield"),
                             value("Knight_Sword"),value("Hard_Armor"),value("Charmstone_Purchase"),value("Potion"),value("Ladder_Boots"),
@@ -3053,8 +3109,8 @@ Required_Rules = [
         ),
         Rule(
                 description="Non Pool Items",
-                left_side=[ value("Water_Money_Chest2_Item1"),value("Water_Money_Chest2_Item2"),value("Water_Money_Chest2_Item3"),
-                            value("Water_Money_Chest2_Item4"),value("Water_Money_Chest2_Item5"),value("Water_Money_Chest2_Item6"),
+                left_side=[ value("Water_Money_Chest3_Item1"),value("Water_Money_Chest3_Item2"),value("Water_Money_Chest3_Item3"),
+                            value("Water_Money_Chest3_Item4"),value("Water_Money_Chest3_Item5"),                            
                             value("Legend_Armor"),value("Legend_Shield"),value("Legend_Boots")                            
                             ],
                 rule_type="!=",
@@ -3192,6 +3248,7 @@ Required_Rules = [
                 rule_type="==",
                 right_side=None
         ),
+        
         Rule(
                 description="Fire Urn Hint",
                 left_side=[ value("Fire_Urn"),value("Fire_Urn_Text")
@@ -3216,6 +3273,13 @@ Required_Rules = [
         Rule(
                 description="Legend Sword Item",
                 left_side=[ value("Legend_Sword"),value("Legend_Item"),value("Blacksmith_ITEM")
+                           ],
+                rule_type="==",
+                right_side=None
+        ),
+        Rule(
+                description="Bracelt Sync",
+                left_side=[ value("Bracelet_Text"),value("Bracelet_Item")
                            ],
                 rule_type="==",
                 right_side=None
@@ -3403,37 +3467,6 @@ Required_Rules = [
 ]
 
 Optional_Rulesets = [
-        Ruleset(
-		name="Difficulty - Easy",
-		description="First 4 Free Checks - Strong Items",
-		rules=[
-                        Rule(
-				description="Elixer",
-				left_side=[value("elder_elixer")],
-				rule_type="=",
-				right_side=1,
-			),
-			Rule(
-				description="Firestorm",
-				left_side=[value("elder_firestorm")],
-				rule_type="=",
-				right_side=25,
-                        ),
-                        Rule(
-				description="Ocarina",
-				left_side=[value("Ocarina_Reward")],
-				rule_type="=",
-				right_side=10,
-                        ),
-                        Rule(
-				description="Myconid",
-				left_side=[value("Firestorm")],
-				rule_type="=",
-                                right_side=18,
-                        ),   
-                ],
-                must_be_enabled=None,
-		must_be_disabled=None,
-	),
+   
 	
 ]
