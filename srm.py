@@ -345,7 +345,11 @@ def generateRom():
                                             "Water_Money_Chest3_Item1","Water_Money_Chest3_Item2","Water_Money_Chest3_Item3",
                                             "Water_Money_Chest3_Item4","Water_Money_Chest3_Item5",
                                             "Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
-                                            "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6"]
+                                            "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6",
+                                            "Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
+                                            "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6",    
+                                            "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8"       
+                                            ]
                                 flag = any (x == att.name for x in Shift_Up)
                                 if flag:
                                         att.value = att.value+128
@@ -408,8 +412,14 @@ def generateTextLog():
                                         "Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
                                         "Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5",
                                             "Full_Health_1","Full_Health_2",
+                                            "Legend_Shield","Legend_Armor","Legend_Boots",
                                             "Water_Money_Chest3_Item1","Water_Money_Chest3_Item2","Water_Money_Chest3_Item3",
-                                            "Water_Money_Chest3_Item4","Water_Money_Chest3_Item5"]
+                                            "Water_Money_Chest3_Item4","Water_Money_Chest3_Item5",
+                                            "Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
+                                            "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6",
+                                            "Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
+                                            "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6",    
+                                            "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8"  ]
                 flag = any (x == att.name for x in Chest)
                 if flag:                                 
                         if att.value == 128:
@@ -457,7 +467,8 @@ def generateTextLog():
                 Shop = ["leather_boots","medicine","small_spear","chain_mail","wood_shield","Knight_Sword","Hard_Armor","Charmstone_Purchase",
                         "Potion","Ladder_Boots","excalibur","steel_shield","Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
                         "Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield","Flame_Armor","Hi_Potion",
-                        "Elixer_Shop","elder_elixer","elder_firestorm","Legend_Sword","Ocarina_Reward"]
+                        "Elixer_Shop","elder_elixer","elder_firestorm","Legend_Sword","Ocarina_Reward",
+                        'Charm_Guy_1','Charm_Guy2','Charm_Guy_3','Charm_Guy_4','Charm_Guy_5']
                 flag2 = any (x == att.name for x in Shop)
                 if flag2:                        
                         if att.value == 0:
