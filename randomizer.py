@@ -6,6 +6,7 @@
 # Version 1.3, Updated on 5/1. Fixed Heart Check #
 # Version 1.4, Updated on 5/4. Added Bracelet and Text #
 # Version 1.5, Updated on 5/18. Fixed water logic, updated Prices, added Charm Guy #
+# Version 1.6, Updated on 5/30. Fixed Charm text so you can see what you get / Added 4th Water Chest #
 
 from classes import *
 
@@ -1046,6 +1047,95 @@ Attributes = [
                                  146,148,150
                                  ]
                 ),
+        Attribute(
+                name="Water_Money_Chest4_Item1",
+                addresses=[0xa774],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32,33,34,35,36,37,
+                                 41,42,64,
+                                 140,142,144,
+                                 146,148,150
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest4_Item2",
+                addresses=[0xa776],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32,33,34,35,36,37,
+                                 41,42,64,
+                                 140,142,144,
+                                 146,148,150
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest4_Item3",
+                addresses=[0xa778],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32,33,34,35,36,37,
+                                 41,42,64,
+                                 140,142,144,
+                                 146,148,150
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest4_Item4",
+                addresses=[0xa77a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32,33,34,35,36,37,
+                                 41,42,64,
+                                 140,142,144,
+                                 146,148,150
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest4_Item5",
+                addresses=[0xa77c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32,33,34,35,36,37,
+                                 41,42,64,
+                                 140,142,144,
+                                 146,148,150
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest4_Item6",
+                addresses=[0xa77e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32,33,34,35,36,37,
+                                 41,42,64,
+                                 140,142,144,
+                                 146,148,150
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest4_Item7",
+                addresses=[0xa780],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32,33,34,35,36,37,
+                                 41,42,64,
+                                 140,142,144,
+                                 146,148,150
+                                 ]
+                ),
+        Attribute(
+                name="Water_Money_Chest4_Item8",
+                addresses=[0xa782],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32,33,34,35,36,37,
+                                 41,42,64,
+                                 140,142,144,
+                                 146,148,150
+                                 ]
+                ),
+        
         Attribute(
                 name="Water_Money_Chest3_Item1",
                 addresses=[0xa790],
@@ -3130,48 +3220,266 @@ Attributes = [
                 is_little_endian=False,
                 possible_values=[0] 
                 ),
+        
         Attribute(
-                name="Charm_Test1",
+                name="Charm_Text1",
                 addresses=[0x1f9C2],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[115] 
+                possible_values=[105] 
                 ),
         Attribute(
-                name="Charm_Test2",
+                name="Charm_Text2",
                 addresses=[0x1f9C3],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[116] 
                 ),
         Attribute(
-                name="Charm_Test3",
+                name="Charm_Text3",
                 addresses=[0x1f9C4],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[117] 
+                possible_values=[101] 
                 ),
         Attribute(
-                name="Charm_Test4",
+                name="Charm_Text4",
                 addresses=[0x1f9C5],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[102] 
+                possible_values=[109] 
                 ),
         Attribute(
-                name="Charm_Test5",
+                name="Charm_Text5",
                 addresses=[0x1f9C6],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[102] 
+                possible_values=[115] 
                 ),
         Attribute(
-                name="Charm_Test6",
+                name="Charm_Text6",
                 addresses=[0x1f9C7],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[63] 
-                ), 
+                ),
+        Attribute(
+                name="Charm_Text7",
+                addresses=[0x1f9C8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32] 
+                ),
+        
+        Attribute(
+                name="Charm_Items_1",
+                addresses=[0x1f9D7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[11] 
+                ),
+        Attribute(
+                name="Charm_Items_2",
+                addresses=[0x1f9D8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[10] 
+                ),
+        Attribute(
+                name="Charm_Items_3",
+                addresses=[0x1f9D9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=0,
+		max_value=100,
+		min_max_interval=1
+                ),
+        Attribute(
+                name="Charm_Items_4",
+                addresses=[0x1f9Da],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[12] 
+                ),
+        Attribute(
+                name="Charm_Items_5",
+                addresses=[0x1f9Db],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[2] 
+                ),
+        Attribute(
+                name="Charm_Items_6",
+                addresses=[0x1f9Dc],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Charm_Items_7",
+                addresses=[0x1f9Dd],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[11] 
+                ),
+        Attribute(
+                name="Charm_Items_8",
+                addresses=[0x1f9De],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[10] 
+                ),
+        Attribute(
+                name="Charm_Items_9",
+                addresses=[0x1f9Df],
+                number_of_bytes=1,
+                is_little_endian=False,
+		min_value=0,
+		max_value=100,
+		min_max_interval=1
+                ),
+        Attribute(
+                name="Charm_Items_10",
+                addresses=[0x1f9e0],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[12] 
+                ),
+        Attribute(
+                name="Charm_Items_11",
+                addresses=[0x1f9e1],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[2] 
+                ),
+        Attribute(
+                name="Charm_Items_12",
+                addresses=[0x1f9e2],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Charm_Items_13",
+                addresses=[0x1f9e3],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[11]
+                ),
+        Attribute(
+                name="Charm_Items_14",
+                addresses=[0x1f9e4],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[10] 
+                ),
+        Attribute(
+                name="Charm_Items_15",
+                addresses=[0x1f9e5],
+                number_of_bytes=1,
+                is_little_endian=False,
+		min_value=0,
+		max_value=100,
+		min_max_interval=1 
+                ),
+        Attribute(
+                name="Charm_Items_16",
+                addresses=[0x1f9e6],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[12] 
+                ),
+        Attribute(
+                name="Charm_Items_17",
+                addresses=[0x1f9e7],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[2] 
+                ),
+        Attribute(
+                name="Charm_Items_18",
+                addresses=[0x1f9e8],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Charm_Items_19",
+                addresses=[0x1f9e9],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[11] 
+                ),
+        Attribute(
+                name="Charm_Items_20",
+                addresses=[0x1f9ea],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[10] 
+                ),
+        Attribute(
+                name="Charm_Items_21",
+                addresses=[0x1f9eb],
+                number_of_bytes=1,
+                is_little_endian=False,
+		min_value=0,
+		max_value=100,
+		min_max_interval=1  
+                ),
+        Attribute(
+                name="Charm_Items_22",
+                addresses=[0x1f9ec],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[12] 
+                ),
+        Attribute(
+                name="Charm_Items_23",
+                addresses=[0x1f9ed],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[2] 
+                ),
+
+        Attribute(
+                name="Charm_Items_24",
+                addresses=[0x1fA09],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[11] 
+                ),
+        Attribute(
+                name="Charm_Items_25",
+                addresses=[0x1fA0a],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[10] 
+                ),
+        Attribute(
+                name="Charm_Items_26",
+                addresses=[0x1fA0b],
+                number_of_bytes=1,
+                is_little_endian=False,
+		min_value=0,
+		max_value=100,
+		min_max_interval=1  
+                ),
+        Attribute(
+                name="Charm_Items_27",
+                addresses=[0x1fA0c],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[12] 
+                ),
+        Attribute(
+                name="Charm_Items_28",
+                addresses=[0x1fA0d],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[2] 
+                ),
+        
 ]
 Required_Rules = [
         Rule(
@@ -3558,6 +3866,44 @@ Required_Rules = [
                 rule_type="==",
                 right_side=None
         ),
+
+        Rule(
+                description="Charm_1_Match",
+                left_side=[ value("Charm_Guy_1"),value("Charm_Items_3")
+                           ],
+                rule_type="==",
+                right_side=None
+        ),
+        Rule(
+                description="Charm_2_Match",
+                left_side=[ value("Charm_Guy_2"),value("Charm_Items_9")
+                           ],
+                rule_type="==",
+                right_side=None
+        ),
+        Rule(
+                description="Charm_3_Match",
+                left_side=[ value("Charm_Guy_3"),value("Charm_Items_15")
+                           ],
+                rule_type="==",
+                right_side=None
+        ),
+        Rule(
+                description="Charm_4_Match",
+                left_side=[ value("Charm_Guy_4"),value("Charm_Items_21")
+                           ],
+                rule_type="==",
+                right_side=None
+        ),
+        Rule(
+                description="Charm_5_Match",
+                left_side=[ value("Charm_Guy_5"),value("Charm_Items_26")
+                           ],
+                rule_type="==",
+                right_side=None
+        ),
+
+        
 
 ]
 
