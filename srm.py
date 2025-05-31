@@ -348,7 +348,9 @@ def generateRom():
                                             "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6",
                                             "Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
                                             "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6",    
-                                            "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8"       
+                                            "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
+                                            'Pyramid_Item_1','Pyramid_Item_2','Pyramid_Item_3','Pyramid_Item_4','Pyramid_Item_5',
+                                            'Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8'
                                             ]
                                 flag = any (x == att.name for x in Shift_Up)
                                 if flag:
@@ -419,7 +421,9 @@ def generateTextLog():
                                             "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6",
                                             "Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
                                             "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6",    
-                                            "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8"  ]
+                                            "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
+                                            'Pyramid_Item_1','Pyramid_Item_2','Pyramid_Item_3','Pyramid_Item_4','Pyramid_Item_5',
+                                            'Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8']
                 flag = any (x == att.name for x in Chest)
                 if flag:                                 
                         if att.value == 128:
