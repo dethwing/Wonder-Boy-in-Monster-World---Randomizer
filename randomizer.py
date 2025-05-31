@@ -7,6 +7,7 @@
 # Version 1.4, Updated on 5/4. Added Bracelet and Text #
 # Version 1.5, Updated on 5/18. Fixed water logic, updated Prices, added Charm Guy #
 # Version 1.6, Updated on 5/30. Fixed Charm text so you can see what you get / Added 4th Water Chest #
+# Version 1.7, Updated on 5/31. Pyramid Chest Items #
 
 from classes import *
 
@@ -1235,6 +1236,71 @@ Attributes = [
         Attribute(
                 name="Charm_Guy_5",
                 addresses=[0x1FA06],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 32,33,34,35,36,37,42        
+                                 ]                                 
+                ),
+
+        Attribute(
+                name="Pyramid_Item_1",
+                addresses=[0xA712],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 32,33,34,35,36,37,42        
+                                 ]                                 
+                ),
+        Attribute(
+                name="Pyramid_Item_2",
+                addresses=[0xA714],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 32,33,34,35,36,37,42        
+                                 ]                                 
+                ),
+        Attribute(
+                name="Pyramid_Item_3",
+                addresses=[0xA716],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 32,33,34,35,36,37,42        
+                                 ]                                 
+                ),
+        Attribute(
+                name="Pyramid_Item_4",
+                addresses=[0xA718],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 32,33,34,35,36,37,42        
+                                 ]                                 
+                ),
+        Attribute(
+                name="Pyramid_Item_5",
+                addresses=[0xA71a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 32,33,34,35,36,37,42        
+                                 ]                                 
+                ),
+        Attribute(
+                name="Pyramid_Item_6",
+                addresses=[0xA71c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 32,33,34,35,36,37,42        
+                                 ]                                 
+                ),
+        Attribute(
+                name="Pyramid_Item_7",
+                addresses=[0xA71e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 32,33,34,35,36,37,42        
+                                 ]                                 
+                ),
+        Attribute(
+                name="Pyramid_Item_8",
+                addresses=[0xA720],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 32,33,34,35,36,37,42        
