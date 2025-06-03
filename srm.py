@@ -353,7 +353,19 @@ def generateRom():
                                       "Heart_Chest"]
 
                         Can_Reach = ["elder_elixer","elder_firestorm","leather_boots","medicine","small_spear","chain_mail","wood_shield","Ocarina_Reward"]
-
+                        
+                        Random = random.choice(All_Checks)
+                        
+                        while Random in ["Legend_Shield","Legend_Armor","Legend_Boots"]:                                
+                                Random = random.choice(All_Checks)
+                        for att in Attributes:
+                                if att.name == Random:
+                                        att.value = 0
+                        
+                        All_Checks.remove(Random)
+                        if Random in Can_Reach:
+                                Can_Reach.remove(Random)
+                        
                         Random = random.choice(Can_Reach)                        
                         for att in Attributes:
                                 if att.name == Random:
@@ -371,7 +383,7 @@ def generateRom():
                         Can_Reach.remove(Random)
 
 
-                        Progression_Items = [0,8,16,24,
+                        Progression_Items = [
                                              7,15,23,31,
                                              5,26,27,41,41,
                                              49,50,
@@ -463,10 +475,10 @@ def generateRom():
                                                 Can_Reach = Can_Reach + ["Legend_Boots","Legend_Shield","Legend_Armor"]
 
                         Trouble_Items = [64,64,64,64,64,64,64,64,64,64,
-                                         64,64,64,    
+                                         64,   
                                          128,130,132,134,136,138,140,
                                          142,144,146,148,150,152,154,156,
-                                         146,146,148,148,150,150]
+                                         144,144,146,146,148,148,150,150]
                         
                         while len(Trouble_Items) > 0:
                                 Random_Item = random.choice(Trouble_Items)
@@ -517,7 +529,8 @@ def generateRom():
                                                32,33,34,35,36,
                                                32,32,33,33,34,34,
                                                35,36,
-                                            41,42,43,44,45    
+                                            41,42,43,44,45,
+                                        8,16,24
                                         ]
                         
                         while len(Remaining_Items) > 0:
@@ -831,7 +844,7 @@ def generateTextLog():
                         "Potion","Ladder_Boots","excalibur","steel_shield","Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
                         "Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield","Flame_Armor","Hi_Potion",
                         "Elixer_Shop","elder_elixer","elder_firestorm","Legend_Sword","Ocarina_Reward",
-                        'Charm_Guy_1','Charm_Guy2','Charm_Guy_3','Charm_Guy_4','Charm_Guy_5']
+                        'Charm_Guy_1','Charm_Guy_2','Charm_Guy_3','Charm_Guy_4','Charm_Guy_5']
                 flag2 = any (x == att.name for x in Shop)
                 if flag2:
                         if att.value == 40:
