@@ -16,10 +16,9 @@ You can find his work here : https://github.com/PaddyCo/mw3rando
 
 With that out of the way, here's what this randomizer does and does not do. [So Far].
 
-There are currently 66 objcets randomized in the "Pool". They are :
+There are currently 96 objcets randomized in the "Pool". They are :
 
-(1). All 25 Shop Items. Non-Equippable items such as Keys cost billions of coins, and adjusting their prices causes the game to crash. So they cannot be found in Shops. All other equippable items can be found in shops.
-This includes Trident, Oasis Boots, Pygmy Items, Legend Items, and Spells. It does not include a Heart.
+(1). All 25 Shop Items. Non-Equippable items such as Keys cost billions of coins, and adjusting their prices causes the game to crash. So they cannot be found in Shops. All other equippable items can be found in shops. This includes Ocarina, Trident, Oasis Boots, Pygmy Items, Legend Items, and Spells. It does not include a Heart.
 
 (2). The "Elder" items at the beginning of the game. These can be any item, except for a Heart.
 
@@ -27,63 +26,56 @@ This includes Trident, Oasis Boots, Pygmy Items, Legend Items, and Spells. It do
 
 (4). The "Blacksmith" item (Legend Sword in Vanilla). This can be any item, except for a heart. 
 
-(5). 37 Chest items: 
-("Firestorm"),("Quake"),("bat_reward"),("Pygmy_Sword"),("Pygmy_Armor"),
-("Pygmy_Boots"),("Pygmy_Shield"),("Sun_Key"),("Moon_Key"),("Star_Key"),
-("Blue_Gem"),("Gold_Gem"),("Thunder"),("Return"),("Power"),
-("Shield_Magic_Chest"),("Old_Axe"),("Fire_Urn"),("Charmstone_Chest"),("Hard_Shield"),
-("Trident"),("Oasis_Boots"),("Amulet"),("Elixer_Chests"),("First_Money"),
-("Secret_Pyramid_1"),("Secret_Pyramid_2"),("Secret_Pyramid_3"),("Secret_Pyramid_4"),("Secret_Pyramid_5"),
-("Water_Money_Chest3_Item1"),("Water_Money_Chest3_Item2"),("Water_Money_Chest3_Item3"),("Water_Money_Chest3_Item4"),("Water_Money_Chest3_Item5"),
-("Full_Health_1"),("Full_Health_2"),
+(5). The Charmstone Items [For TWO Charmstones. One still gives you a heart]. These can be any items, except for a heart.
 
-The item pool consists of a corresponding 66 items, forcing each "Check" to be different. They are :
+(5). 62 Chest items. This includes all 4 water money chests. (They have 1, 5, 6, and 8 Items respectively). This also includes the pyramid money chests. They have 8 items. 
+
+Full List :
+
+"Heart_Chests","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",                                        "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power","Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
+"Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
+"Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5",
+"Full_Health_1","Legend_Shield","Legend_Armor","Legend_Boots",
+"Water_Money_Chest3_Item1","Water_Money_Chest3_Item2","Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5",
+Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3","Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6",
+"Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3","Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6", "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
+'Pyramid_Item_1','Pyramid_Item_2','Pyramid_Item_3','Pyramid_Item_4','Pyramid_Item_5','Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8'
+
+*The Bracelet item is bugged, and does not work if you USE the bracelet before talking to the Elder Dragon. His item is completed random and may be a duplicate of something you already have.
+*It will never be -needed- to beat the game, but it might be helpful. 
+
+The item pool consists of a corresponding 96 items.
 
 (1). All equipment except for the starting items. -- 29
 
-(2). All Spells -- 6
+(2). 3 Fire Storm, 3 Thunder, 3 Quake, 2 Shield, 2 Power, 1 Return -- 14 Spells
 
-(3). Potions and Elixer -- 5 [Elixer and Hi-Potion can only appear in Shops. This so you can be properly equipped for the final battle]
+(3). 1 of each Potion, 2 Elixers. Both Hi-Potion and Elixer are guaranteed to take a shop-slot so you can refill before Biomeka. --- 6
 
-(4). The Ocarina and Charmstone -- 2
+(4). The Ocarina and Three Charmstones -- 4
 
 (5). Non-Equippable Progression Items (Lamp, Amulet, 3 Keys, 2 Gems, Fire Urn, Bracelet) -- 9
 
-(6). A Heart -- 1
+(6). Thirteen Hearts -- 13
 
-(7). Money, small heart, big heart, magic refil -- 14
+(7). Money, small heart, big heart, magic refil -- 21 
 
-Some notes on Item Restrictions :
-
-(1). Ocarina must appear in the first 8 checks, by the Sonia Item.
-
-(2). Leather Boots must appear in the first 14 checks, before leaving Purapil. 
-
-(3). Return Magic, Trident, Oasis Boots, Bracelet, and Lamp (The most important Items) are never behind more than one progression item. (So they cannot be in the pyramid, or in Poseidon's Area for instance).
-
-(4). Amulet, Keys, and Gems are never behind more than TWO progression items. (So they cannot be Legend Sword, Blacksmith, or either Pygmy Check). 
-
-(5). The three pygmy checks (Fire-Urn and Charmstone and the 2nd Health) are restricted to increase the chances you'll need Pygmy items. It's roughly 50-50 you'll need to do one of them.
-
-9 other Chest items are randomized for fun, but will never have progression items in them. The Legend Chests, and the 2nd Money-Chest Near Alsedo. These will have some random combination of money, small hearts, Heart, and even an extra Charmstone. 
-
-
-"Go-Mode" requires 7 items --
+"Go-Mode" requires 10 items --
    
-      (a). Defeat the ice-bomber. Requires Bracelet and Both-Gems. The Old-Axe is not needed, nor is it in the Pool. 
+      (a). Defeat the ice-bomber. Requires Bracelet and Both-Gems. 
    
-      (b). Have access to Begonia. Requires Oasis Boots (Or enough Health/Refills to skip them) and the Star-Key.
+      (b). Have access to Begonia. Requires Oasis Boots and Star-Key.
    
       (c). The Fire-Urn. Talk to the Blacksmith.
 
-      (d). Legend Sword. (You technicallty don't need the other Legend Items, but good luck vs Biomeka without them! I personally would never try it without booth Legend Armor and Legend Shield). 
+      (d). Legend Sword, Legend Shield, Legend Armor. (Technically you don't need Shield/Armor, but good luck without 'em)
    
   
 
-      If you talk to the Elder after using the Bracelet to enter Childam, the door back to Purapill will not spawn. You may need to walk back. 
+If you talk to the Dragon Elder after using the Bracelet to enter Childam, the door back to Purapill will not spawn. You may need to walk back. 
 
 
-   If you find any issues or logical progression problems, please reach out to me.
+If you find any issues or logical progression problems, please reach out to me.
 
 
 In addition to the random elements, many Quality of Life improvements are in place. In general, all items are cheaper than they would be in Vanilla, so less grinding is needed. 
@@ -98,7 +90,7 @@ The lady on the right will hint about the "Poseidon item". This is the OASIS BOO
 
 The wandering Dragon in Begonia will hint about the "Volcano item". This is the FIRE-URN chest. 
 
-As many text speed ups are in place as I could find. The following texts can be skipped by holding C and mashing A : The Intro, Ocarina playing, The Dwarf, The Sphinx, the Gems, the Ice Melting, and both Prince speaches.
+As many text speed ups are in place as I could find. The following texts can be skipped by holding C and mashing A : The Intro, Ocarina Activation, The Dwarf, The Sphinx, the Gems, the Ice Melting, and both Prince speaches.
 
 Be very careful when skipping the text with the Sphinx! I'm not responsible if you skip a question! :-P
 
@@ -110,11 +102,9 @@ Here's what you'll have to do to run the randomizer :
 
 (3). Point it at the (Legally Aquired) rom you'll be using. Make sure you're using USA version, not Japanese! I cannot guarantee it will work the same [Though it might!]
 
-(4). Be Patient. Sometimes it takes a while, sometime it crashes. If you receieve the message "Maybe it was a bad seed?" try again. If it gets over 50,000 atttempts, I'd recomend trying again. 
+(4). Open the output with your emulator. I use fusion, but it should work with any of them. 
 
-(5). Open the output with your emulator. I use fusion, but it should work with any of them. 
-
-(6). In addition to the rom, the program will output a spoiler log, with key items written in english. If you want to know what the other numbers mean, let me know. 
+(5). In addition to the rom, the program will output a spoiler log, with key items written in english. If you want to know what the other numbers mean, let me know. 
 
 Have fun!
     
