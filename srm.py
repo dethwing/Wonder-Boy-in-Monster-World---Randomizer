@@ -702,7 +702,7 @@ def generateRom():
                      
                                 
                         for att in Attributes:
-                                Shift_Up = ["Heart_Chests","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
+                                Shift_Up = ["Heart_Chest","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
                                         "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
                                         "Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
                                         "Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
@@ -763,7 +763,7 @@ def generateTextLog():
                 intStr = str(att.value).rjust(maxIntLen)
                 hexStr = "[0x"+str(hex(att.value))[2:].rjust(maxHexLen, "0").upper()+"]"
                 Text_String = ""
-                Chest = ["Heart_Chests","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
+                Chest = ["Heart_Chest","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
                                         "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
                                         "Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
                                         "Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
