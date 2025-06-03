@@ -173,6 +173,7 @@ def randomize():
                 shuffleAllAttributes()
                 for rule in myRules:
                         rule.relatedAttributes.sort(key=getShuffledAttributeNum)
+                '''
                 print("Generating values...")
                 if not (shotgunApproach(myRules)
                         or ((not Slow_Mode) and enforceRulesetBacktracking(myRules))
@@ -189,6 +190,7 @@ def randomize():
                         print(errorMessage)
                         resetAttributesAndSeed()
                         return (False, errorMessage)
+                '''
                 generatedRom = generateRom()
                 resetAttributesAndSeed(True)                                  
                 if generateLog.get() == "1":
@@ -334,8 +336,373 @@ def generateRom():
                 shutil.copyfile(sourceRoms[i].get(), newRom)
                 try:
                         file = open(newRom, "r+b")
+
+
+                        All_Checks = ["elder_elixer","elder_firestorm","leather_boots","medicine","small_spear","chain_mail","wood_shield","Ocarina_Reward","Firestorm","Knight_Sword",
+                              "Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor","bat_reward","Full_Health_1",
+                              "Quake","Elixer_Chests","Hard_Shield","Trident","First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
+                              "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1","Water_Money_Chest3_Item2",
+                              "Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2",
+                              "Water_Money_Chest4_Item3","Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7",
+                              "Water_Money_Chest4_Item8","Pygmy_Armor","Pygmy_Sword","Amulet","Thunder","Shield_Magic_Chest","excalibur","steel_shield","Ceramic_Boots",
+                              "Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water","Pygmy_Boots","Blue_Gem","Gold_Gem","Oasis_Boots","Return","Sun_Key","Moon_Key",
+                              "Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key","Pygmy_Shield","Power","Charm_Guy_1",
+                              "Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Old_Axe","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Pyramid_Item_1",
+                              "Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6",
+                              "Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest","Fire_Urn","Legend_Sword","Legend_Boots","Legend_Shield","Legend_Armor",
+                                      "Heart_Chest"]
+
+                        Can_Reach = ["elder_elixer","elder_firestorm","leather_boots","medicine","small_spear","chain_mail","wood_shield","Ocarina_Reward"]
+
+                        Random = random.choice(Can_Reach)                        
                         for att in Attributes:
-                                Shift_Up = ["Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
+                                if att.name == Random:
+                                        att.value = 40                                
+                        All_Checks.remove(Random)
+                        Can_Reach.remove(Random)
+                        Can_Reach = Can_Reach + ["Heart_Chest","Firestorm","Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                 "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor","bat_reward","Full_Health_1"]
+
+                        Random = random.choice(Can_Reach)
+                        for att in Attributes:
+                                if att.name == Random:
+                                        att.value = 37                                
+                        All_Checks.remove(Random)
+                        Can_Reach.remove(Random)
+
+
+                        Progression_Items = [0,8,16,24,
+                                             7,15,23,31,
+                                             5,26,27,41,41,
+                                             49,50,
+                                             51,52,53,
+                                             54,55,
+                                             57,58                                             
+                                             ]
+                        while len(Progression_Items) > 0:
+                                
+                                Random_Item = random.choice(Progression_Items)
+                                Random_Check = random.choice(Can_Reach)
+                                if Random_Item in [49, 50, 51, 52, 53, 54, 55, 57, 58]:
+                                        while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
+                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
+                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
+                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
+                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop"]:
+                                                Random_Check = random.choice(Can_Reach)
+
+                                for att in Attributes:
+                                        if att.name == Random_Check:
+                                                att.value = Random_Item
+                                                
+                                All_Checks.remove(Random_Check)
+                                Can_Reach.remove(Random_Check)
+                                Progression_Items.remove(Random_Item)
+                                
+                                if Random_Item == 5:
+                                        Can_Reach = Can_Reach + ["First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
+                                                                 "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1",
+                                                                 "Water_Money_Chest3_Item2","Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5",
+                                                                 "Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3","Water_Money_Chest4_Item4",
+                                                                 "Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
+                                                                 "Pygmy_Armor","Pygmy_Sword"]
+                                if Random_Item == 41:
+                                        if 41 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5"]                                        
+                                if Random_Item == 26:
+                                        Can_Reach = Can_Reach + ["Shield_Magic_Chest","excalibur","steel_shield"]
+                                if Random_Item == 27:
+                                        Can_Reach = Can_Reach + ["Quake"]
+                                if Random_Item == 49:
+                                        Can_Reach = Can_Reach + ["Elixer_Chests","Hard_Shield","Trident"]
+                                if Random_Item == 58:
+                                        Can_Reach = Can_Reach + ["Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water","Pygmy_Boots","Blue_Gem","Gold_Gem"]
+
+                                if Random_Item == 5 or Random_Item == 50:
+                                        if 5 not in Progression_Items and 50 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Oasis_Boots","Return"]
+
+                                if Random_Item == 26 or Random_Item == 5:
+                                        if 26 not in Progression_Items and 5 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Sun_Key"]
+                                if Random_Item == 26 or Random_Item == 51:
+                                        if 26 not in Progression_Items and 51 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3",
+                                                                         "Secret_Pyramid_4","Secret_Pyramid_5","Star_Key"]
+                                if Random_Item == 26 or Random_Item == 52:
+                                        if 26 not in Progression_Items and 52 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Pygmy_Shield"]
+                                if Random_Item == 26 or Random_Item == 53:
+                                        if 26 not in Progression_Items and 53 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Power"]
+
+                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58:
+                                        if 54 not in Progression_Items and 55 not in Progression_Items and 58 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Old_Axe"]
+
+                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53:
+                                        if 54 not in Progression_Items and 55 not in Progression_Items and 58 not in Progression_Items and 26 not in Progression_Items and 53 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop"]
+
+                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53 or Random_Item == 57:
+                                        if 54 not in Progression_Items and 55 not in Progression_Items and 58 not in Progression_Items and 26 not in Progression_Items and 53 not in Progression_Items and 57 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Legend_Sword"]
+
+                                if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31:
+                                        if 26 not in Progression_Items and 53 not in Progression_Items and 7 not in Progression_Items and 15 not in Progression_Items and 23 not in Progression_Items and 31 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
+                                                                         "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest"]
+
+                                if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31 or Random_Item == 54 or Random_Item == 55 or Random_Item == 58:                                        
+                                        if 26 not in Progression_Items and 53 not in Progression_Items and 7 not in Progression_Items and 15 not in Progression_Items and 23 not in Progression_Items and 31 not in Progression_Items and 54 not in Progression_Items and 55 not in Progression_Items and 58 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Fire_Urn"]
+
+                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53 or Random_Item == 57 or Random_Item == 0:
+                                        if 54 not in Progression_Items and 55 not in Progression_Items and 58 not in Progression_Items and 26 not in Progression_Items and 53 not in Progression_Items and 57 not in Progression_Items and 0 not in Progression_Items:
+                                                Can_Reach = Can_Reach + ["Legend_Boots","Legend_Shield","Legend_Armor"]
+
+                        Trouble_Items = [64,64,64,64,64,64,64,64,64,64,
+                                         64,64,64,    
+                                         128,130,132,134,136,138,140,
+                                         142,144,146,148,150,152,154,156,
+                                         146,146,148,148,150,150]
+                        
+                        while len(Trouble_Items) > 0:
+                                Random_Item = random.choice(Trouble_Items)
+                                Random_Check = random.choice(All_Checks)
+                                if Random_Item > 50 :
+                                        while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
+                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
+                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
+                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
+                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop",
+                                                                  "elder_elixer","elder_firestorm",
+                                                                  "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
+                                                                  "Legend_Sword","Ocarina_Reward",
+                                                                       "Oasis_Boots","Charmstone_Chest"]:
+                                                Random_Check = random.choice(All_Checks)
+
+                                for att in Attributes:
+                                        if att.name == Random_Check:
+                                                att.value = Random_Item
+                                                
+                                All_Checks.remove(Random_Check)
+                                Trouble_Items.remove(Random_Item)
+
+                        Healing_Items = [42,46]
+                        
+                        while len(Healing_Items) > 0:
+                                Random_Item = random.choice(Healing_Items)
+                                Random_Check = random.choice(All_Checks)
+                                while Random_Check not in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
+                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
+                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
+                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
+                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop"
+                                                                  ]:
+                                                Random_Check = random.choice(All_Checks)
+                                for att in Attributes:
+                                        if att.name == Random_Check:
+                                                att.value = Random_Item
+                                                
+                                All_Checks.remove(Random_Check)
+                                Healing_Items.remove(Random_Item)
+                        
+                        Remaining_Items = [    1, 2,    4,    6,       9,
+                                         10,11,12,13,         17,18,19,
+                                         20,21,22,      25,      28,29,
+                                               32,33,34,35,36,
+                                               32,32,33,33,34,34,
+                                               35,36,
+                                            41,42,43,44,45    
+                                        ]
+                        
+                        while len(Remaining_Items) > 0:
+                                Random_Item = random.choice(Remaining_Items)
+                                Random_Check = random.choice(All_Checks)
+                                for att in Attributes:
+                                        if att.name == Random_Check:
+                                                att.value = Random_Item
+                                                
+                                All_Checks.remove(Random_Check)
+                                Remaining_Items.remove(Random_Item)
+
+                        
+
+                        for att_1 in Attributes:
+                                if att_1.name == "Ocarina_Reward":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Ocarina_Text":
+                                                        att_2.value = att_1.value
+                                                if att_2.name =="Sonia_Item":
+                                                        att_2.value = att_1.value
+                                                if att_2.name =="Ocarina_Cave_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Fire_Urn":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Fire_Urn_Text":
+                                                        att_2.value = att_1.value
+                                if att_1.name == "Oasis_Boots":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="POSS_HINT":
+                                                        att_2.value = att_1.value
+                                if att_1.name == "Charmstone_Chest":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="SPHINX_HINT":
+                                                        att_2.value = att_1.value
+                                if att_1.name == "Legend_Sword":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Legend_Item":
+                                                        att_2.value = att_1.value
+                                                if att_2.name =="Blacksmith_ITEM":
+                                                        att_2.value = att_1.value
+                                if att_1.name == "Bracelet_Item":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Bracelet_Text":
+                                                        att_2.value = att_1.value
+                                if att_1.name == "leather_boots":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Leather_Boots_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "medicine":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Medecine_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "small_spear":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Small_Spear_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "chain_mail":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Chailmail_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "wood_shield":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Wood_Shield_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "excalibur":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Excalibur_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "steel_shield":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="SteelShield_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Knight_Sword":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Knight_Sword_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Hard_Armor":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Hard_Armor_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Potion":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Potion_Sprite_Pura":
+                                                        att_2.value = 2*att_1.value
+                                                if att_2.name =="Potion_Sprite_Pad":
+                                                        att_2.value = 2*att_1.value
+                                                if att_2.name =="Potion_Sprite_Pura2":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Charmstone_Purchase":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Charm_sprite":
+                                                        att_2.value = 2*att_1.value
+                                                if att_2.name =="Charm_sprite_2":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Ladder_Boots":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Ladder_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Marine_Boots":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Marine_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Shield_Magic_Shop":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Shield_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Steel_Armor":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Steel_Armor_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Shell_Shield":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Shell_Shield_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Battle_Spear":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Battle_Spear_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Knight_Armor":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Knight_Armor_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Ceramic_Boots":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Ceramic_Boots_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Knight_Shield":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Knight_Shield_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Knight_Shield":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Knight_Shield_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Holy_Water":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="HolyWater_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                                if att_2.name =="HolyWater_Sprite2":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Flame_Shield":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Flame_Shield_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Flame_Armor":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Flame_Armor_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Hi_Potion":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="HiPotion_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Elixer_Shop":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Elixer_Sprite":
+                                                        att_2.value = 2*att_1.value
+                                if att_1.name == "Charm_Guy_1":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Charm_Items_3":
+                                                        att_2.value = att_1.value
+                                if att_1.name == "Charm_Guy_2":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Charm_Items_9":
+                                                        att_2.value = att_1.value
+                                if att_1.name == "Charm_Guy_3":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Charm_Items_15":
+                                                        att_2.value = att_1.value
+                                if att_1.name == "Charm_Guy_4":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Charm_Items_21":
+                                                        att_2.value = att_1.value
+                                if att_1.name == "Charm_Guy_5":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Charm_Items_26":
+                                                        att_2.value = att_1.value
+                                
+                                
+                                
+                                
+                     
+                                
+                        for att in Attributes:
+                                Shift_Up = ["Heart_Chests","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
                                         "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
                                         "Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
                                         "Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
@@ -355,18 +722,6 @@ def generateRom():
                                 flag = any (x == att.name for x in Shift_Up)
                                 if flag:
                                         att.value = att.value+128
-                                        
-                                Double = ["Leather_Boots_Sprite","Medecine_Sprite","Small_Spear_Sprite","Chailmail_Sprite",
-                                          "Wood_Shield_Sprite","Excalibur_Sprite","SteelShield_Sprite","Knight_Sword_Sprite",
-                                          "Hard_Armor_Sprite","Potion_Sprite_Pura","Potion_Sprite_Pura2","Potion_Sprite_Pad",
-                                          "Charm_sprite","Charm_sprite_2","Ladder_Sprite","Shield_Sprite","Marine_Sprite"
-                                          ,"Steel_Armor_Sprite", "Shell_Shield_Sprite","Battle_Spear_Sprite","Knight_Armor_Sprite",
-                                          "Ceramic_Boots_Sprite","Knight_Shield_Sprite","HolyWater_Sprite","HolyWater_Sprite2",
-                                          "Flame_Shield_Sprite","Flame_Armor_Sprite","HiPotion_Sprite","Elixer_Sprite",
-                                          "Ocarina_Cave_Sprite"                                          ]
-                                flag2 = any (x == att.name for x in Double)
-                                if flag2:
-                                        att.value = att.value*2
                                 if att.value > 200:
                                         att.value = att.value - 256
                                 for addressTuple in att.addresses:
@@ -408,7 +763,7 @@ def generateTextLog():
                 intStr = str(att.value).rjust(maxIntLen)
                 hexStr = "[0x"+str(hex(att.value))[2:].rjust(maxHexLen, "0").upper()+"]"
                 Text_String = ""
-                Chest = ["Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
+                Chest = ["Heart_Chests","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
                                         "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
                                         "Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
                                         "Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
@@ -425,7 +780,11 @@ def generateTextLog():
                                             'Pyramid_Item_1','Pyramid_Item_2','Pyramid_Item_3','Pyramid_Item_4','Pyramid_Item_5',
                                             'Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8']
                 flag = any (x == att.name for x in Chest)
-                if flag:                                 
+                if flag:
+                        if att.value == 169:
+                                Text_String  = "Charmstone"
+                        if att.value == 170:
+                                Text_String  = "Elixer [Chest]"
                         if att.value == 128:
                                 Text_String  = "Legend Sword"
                         if att.value == 133:
@@ -474,7 +833,15 @@ def generateTextLog():
                         "Elixer_Shop","elder_elixer","elder_firestorm","Legend_Sword","Ocarina_Reward",
                         'Charm_Guy_1','Charm_Guy2','Charm_Guy_3','Charm_Guy_4','Charm_Guy_5']
                 flag2 = any (x == att.name for x in Shop)
-                if flag2:                        
+                if flag2:
+                        if att.value == 40:
+                                Text_String  = "Ocarina"
+                        if att.value == 41:
+                                Text_String  = "Charmstone"
+                        if att.value == 42:
+                                Text_String  = "Elixer (In Shop)"
+                        if att.value == 46:
+                                Text_String  = "Hi-Potion"
                         if att.value == 0:
                                 Text_String  = "Legend Sword"
                         if att.value == 5:
