@@ -391,6 +391,21 @@ def generateRom():
                                              54,55,
                                              57,58                                             
                                              ]
+                        Quake = 0
+                        Elixer = 0
+                        Poseidon = 0
+                        Well = 0
+                        Pyramid_Main = 0
+                        Pyramid_Extra = 0
+                        Moon = 0
+                        Star = 0
+                        Bomber = 0
+                        Begonia = 0
+                        Blacksmith = 0
+                        Teh_Urn = 0
+                        Sky = 0
+                        Charm = 0
+                        
                         while len(Progression_Items) > 0:
                                 
                                 Random_Item = random.choice(Progression_Items)
@@ -420,58 +435,82 @@ def generateRom():
                                                                  "Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
                                                                  "Pygmy_Armor","Pygmy_Sword"]
                                 if Random_Item == 41:
-                                        if 41 not in Progression_Items:
+                                        Charm = Charm + 1
+                                        if Charm == 2:
                                                 Can_Reach = Can_Reach + ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5"]                                        
                                 if Random_Item == 26:
                                         Can_Reach = Can_Reach + ["Shield_Magic_Chest","excalibur","steel_shield"]
+                                        if Quake == 0:
+                                                Can_Reach = Can_Reach + ['Quake']
+                                                Quake = 1
                                 if Random_Item == 27:
-                                        Can_Reach = Can_Reach + ["Quake"]
+                                        if Quake == 0:
+                                                Can_Reach = Can_Reach + ['Quake']
+                                                Quake = 1
                                 if Random_Item == 49:
-                                        Can_Reach = Can_Reach + ["Elixer_Chests","Hard_Shield","Trident"]
+                                        Can_Reach = Can_Reach + ["Hard_Shield","Trident"]
+                                        if Elixer == 0:
+                                                Can_Reach = Can_Reach + ['Elixer_Chests']
+                                                Elixer = 1
                                 if Random_Item == 58:
                                         Can_Reach = Can_Reach + ["Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water","Pygmy_Boots","Blue_Gem","Gold_Gem"]
-
                                 if Random_Item == 5 or Random_Item == 50:
-                                        if 5 not in Progression_Items and 50 not in Progression_Items:
+                                        Poseidon = Poseidon + 1
+                                        if Poseidon == 2:
                                                 Can_Reach = Can_Reach + ["Oasis_Boots","Return"]
-
+                                                if Elixer == 0:
+                                                        Can_Reach = Can_Reach + ['Elixer_Chests']
+                                                        Elixer = 1                                        
                                 if Random_Item == 26 or Random_Item == 5:
-                                        if 26 not in Progression_Items and 5 not in Progression_Items:
+                                        Well = Well + 1
+                                        if Well == 2:
                                                 Can_Reach = Can_Reach + ["Sun_Key"]
                                 if Random_Item == 26 or Random_Item == 51:
-                                        if 26 not in Progression_Items and 51 not in Progression_Items:
-                                                Can_Reach = Can_Reach + ["Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3",
-                                                                         "Secret_Pyramid_4","Secret_Pyramid_5","Star_Key"]
-                                if Random_Item == 26 or Random_Item == 52:
-                                        if 26 not in Progression_Items and 52 not in Progression_Items:
-                                                Can_Reach = Can_Reach + ["Pygmy_Shield"]
-                                if Random_Item == 26 or Random_Item == 53:
-                                        if 26 not in Progression_Items and 53 not in Progression_Items:
-                                                Can_Reach = Can_Reach + ["Power"]
-
-                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58:
-                                        if 54 not in Progression_Items and 55 not in Progression_Items and 58 not in Progression_Items:
-                                                Can_Reach = Can_Reach + ["Old_Axe"]
-
-                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53:
-                                        if 54 not in Progression_Items and 55 not in Progression_Items and 58 not in Progression_Items and 26 not in Progression_Items and 53 not in Progression_Items:
-                                                Can_Reach = Can_Reach + ["Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop"]
-
-                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53 or Random_Item == 57:
-                                        if 54 not in Progression_Items and 55 not in Progression_Items and 58 not in Progression_Items and 26 not in Progression_Items and 53 not in Progression_Items and 57 not in Progression_Items:
-                                                Can_Reach = Can_Reach + ["Legend_Sword"]
-
+                                        Pyramid_Main = Pyramid_Main + 1
+                                        if Pyramid_Main == 2 and Pyramid_Extra < 6:
+                                                Can_Reach = Can_Reach + ["Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key"]
+                                                if Elixer == 0:
+                                                        Can_Reach = Can_Reach + ['Elixer_Chests']
+                                                        Elixer = 1
                                 if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31:
-                                        if 26 not in Progression_Items and 53 not in Progression_Items and 7 not in Progression_Items and 15 not in Progression_Items and 23 not in Progression_Items and 31 not in Progression_Items:
+                                        Pyramid_Extra = Pyramid_Extra + 1
+                                        if Pyramid_Extra == 6:
                                                 Can_Reach = Can_Reach + ["Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
                                                                          "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest"]
-
+                                                if Pyramid_Main < 2:
+                                                        Can_Reach = Can_Reach + ["Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3",
+                                                                                 "Secret_Pyramid_4","Secret_Pyramid_5","Star_Key"]
+                                                        Pyramid = 1
+                                                        if Elixer == 0:
+                                                                Can_Reach = Can_Reach + ['Elixer_Chests']
+                                                                Elixer = 1
+                                if Random_Item == 26 or Random_Item == 52:
+                                        Moon = Moon + 1
+                                        if Moon == 2:
+                                                Can_Reach = Can_Reach + ["Pygmy_Shield"]
+                                if Random_Item == 26 or Random_Item == 53:
+                                        Star = Star + 1
+                                        if Star == 2:
+                                                Can_Reach = Can_Reach + ["Power"]
+                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58:
+                                        Bomber = Bomber + 1
+                                        if Bomber == 3:
+                                                Can_Reach = Can_Reach + ["Old_Axe"]
+                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53:
+                                        Begonia = Begonia + 1
+                                        if Begonia == 5:
+                                                Can_Reach = Can_Reach + ["Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop"]
+                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53 or Random_Item == 57:
+                                        Blacksmith = Blacksmith + 1
+                                        if Blacksmith == 6:
+                                                Can_Reach = Can_Reach + ["Legend_Sword"]
                                 if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31 or Random_Item == 54 or Random_Item == 55 or Random_Item == 58:                                        
-                                        if 26 not in Progression_Items and 53 not in Progression_Items and 7 not in Progression_Items and 15 not in Progression_Items and 23 not in Progression_Items and 31 not in Progression_Items and 54 not in Progression_Items and 55 not in Progression_Items and 58 not in Progression_Items:
+                                        Teh_Urn = Teh_Urn + 1
+                                        if Teh_Urn == 9:
                                                 Can_Reach = Can_Reach + ["Fire_Urn"]
-
                                 if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53 or Random_Item == 57 or Random_Item == 0:
-                                        if 54 not in Progression_Items and 55 not in Progression_Items and 58 not in Progression_Items and 26 not in Progression_Items and 53 not in Progression_Items and 57 not in Progression_Items and 0 not in Progression_Items:
+                                        Sky = Sky + 1
+                                        if Sky == 7:
                                                 Can_Reach = Can_Reach + ["Legend_Boots","Legend_Shield","Legend_Armor"]
 
                         Trouble_Items = [64,64,64,64,64,64,64,64,64,64,
@@ -794,6 +833,8 @@ def generateTextLog():
                                             'Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8']
                 flag = any (x == att.name for x in Chest)
                 if flag:
+                        if att.value == 155:
+                                Text_String = "Marine Boots"
                         if att.value == 169:
                                 Text_String  = "Charmstone"
                         if att.value == 170:
@@ -847,6 +888,8 @@ def generateTextLog():
                         'Charm_Guy_1','Charm_Guy_2','Charm_Guy_3','Charm_Guy_4','Charm_Guy_5']
                 flag2 = any (x == att.name for x in Shop)
                 if flag2:
+                        if att.value == 27:
+                                Text_String = "Marine Boots"
                         if att.value == 40:
                                 Text_String  = "Ocarina"
                         if att.value == 41:
