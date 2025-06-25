@@ -391,6 +391,7 @@ def generateRom():
                                              54,55,
                                              57,58                                             
                                              ]
+                        
                         Quake = 0
                         Elixer = 0
                         Poseidon = 0
@@ -410,6 +411,11 @@ def generateRom():
                                 
                                 Random_Item = random.choice(Progression_Items)
                                 Random_Check = random.choice(Can_Reach)
+
+                                while Random_Item == 5:
+                                        if random() <= .5
+                                                Random_Item = random.choice(Progression_Items)
+                                                
                                 if Random_Item in [49, 50, 51, 52, 53, 54, 55, 57, 58]:
                                         while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
                                                                   "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
@@ -531,8 +537,7 @@ def generateRom():
                                                                   "Flame_Armor","Hi_Potion","Elixer_Shop",
                                                                   "elder_elixer","elder_firestorm",
                                                                   "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
-                                                                  "Legend_Sword","Ocarina_Reward",
-                                                                       "Oasis_Boots","Charmstone_Chest"]:
+                                                                  "Legend_Sword","Ocarina_Reward",'Fire_Urn',"Oasis_Boots","Star_Key"]:
                                                 Random_Check = random.choice(All_Checks)
 
                                 for att in Attributes:
@@ -601,7 +606,7 @@ def generateRom():
                                         for att_2 in Attributes:
                                                 if att_2.name =="POSS_HINT":
                                                         att_2.value = att_1.value
-                                if att_1.name == "Charmstone_Chest":
+                                if att_1.name == "Star_Key":
                                         for att_2 in Attributes:
                                                 if att_2.name =="SPHINX_HINT":
                                                         att_2.value = att_1.value
@@ -731,21 +736,31 @@ def generateRom():
                                         for att_2 in Attributes:
                                                 if att_2.name =="Charm_Items_3":
                                                         att_2.value = att_1.value
+                                                if att_2.name =="Charm_Hint_One_28":
+                                                        att_2.value = att_1.value
                                 if att_1.name == "Charm_Guy_2":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Charm_Items_9":
+                                                        att_2.value = att_1.value
+                                                if att_2.name =="Charm_Hint_Two_28":
                                                         att_2.value = att_1.value
                                 if att_1.name == "Charm_Guy_3":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Charm_Items_15":
                                                         att_2.value = att_1.value
+                                                if att_2.name =="Charm_Hint_Three_28":
+                                                        att_2.value = att_1.value
                                 if att_1.name == "Charm_Guy_4":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Charm_Items_21":
                                                         att_2.value = att_1.value
+                                                if att_2.name =="Charm_Hint_Four_28":
+                                                        att_2.value = att_1.value
                                 if att_1.name == "Charm_Guy_5":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Charm_Items_26":
+                                                        att_2.value = att_1.value
+                                                if att_2.name =="Charm_Hint_Five_28":
                                                         att_2.value = att_1.value
                                 
                                 
