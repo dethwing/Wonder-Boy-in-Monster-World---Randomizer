@@ -412,9 +412,6 @@ def generateRom():
                                 Random_Item = random.choice(Progression_Items)
                                 Random_Check = random.choice(Can_Reach)
 
-                                while Random_Item == 5:
-                                        if random() <= .5
-                                                Random_Item = random.choice(Progression_Items)
                                                 
                                 if Random_Item in [49, 50, 51, 52, 53, 54, 55, 57, 58]:
                                         while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
