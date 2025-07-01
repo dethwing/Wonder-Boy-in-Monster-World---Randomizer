@@ -525,7 +525,7 @@ def generateRom():
                         while len(Trouble_Items) > 0:
                                 Random_Item = random.choice(Trouble_Items)
                                 Random_Check = random.choice(All_Checks)
-                                if Random_Item > 50 :
+                                if Random_Item > 70 :
                                         while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
                                                                   "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
                                                                   "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
@@ -534,7 +534,18 @@ def generateRom():
                                                                   "Flame_Armor","Hi_Potion","Elixer_Shop",
                                                                   "elder_elixer","elder_firestorm",
                                                                   "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
-                                                                  "Legend_Sword","Ocarina_Reward",'Fire_Urn',"Oasis_Boots","Star_Key"]:
+                                                                  "Legend_Sword","Ocarina_Reward",'Fire_Urn',"Oasis_Boots","Power","Full_Health_1","Trident"]:
+                                                Random_Check = random.choice(All_Checks)
+                                if Random_Item == 64 :
+                                        while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
+                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
+                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
+                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
+                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop",
+                                                                  "elder_elixer","elder_firestorm",
+                                                                  "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
+                                                                  "Legend_Sword","Ocarina_Reward",'Fire_Urn']:
                                                 Random_Check = random.choice(All_Checks)
 
                                 for att in Attributes:
@@ -584,7 +595,28 @@ def generateRom():
                                 All_Checks.remove(Random_Check)
                                 Remaining_Items.remove(Random_Item)
 
+                        Sphinx_Question_One_Possible =  [ 0, 1, 2,    4, 5, 6, 7, 8, 9,
+                                                         10,11,12,13,   15,16,17,18,19,
+                                                         20,21,22,23,24,25,26,27,28,29,
+                                                            31,32,33,34,35,36,37,
+                                                         40,41,42,43,44,45,46,      49,
+                                                         50,51,52,53,54,55,   57,58       
+                                                         ]
                         
+                        Sphinx_Question_Two_Possible =  [ 0, 1, 2,    4, 5, 6, 7, 8, 9,
+                                                         10,11,12,13,   15,16,17,18,19,
+                                                         20,21,22,23,24,25,26,27,28,29,
+                                                            31,32,33,34,35,36,37,
+                                                         40,41,42,43,44,45,46      
+                                                         ]
+
+                        Sphinx_Question_Three_Possible =  [ 0, 1, 2,    4, 5, 6, 7, 8, 9,
+                                                         10,11,12,13,   15,16,17,18,19,
+                                                         20,21,22,23,24,25,26,27,28,29,
+                                                            31,32,33,34,35,36,37,
+                                                         40,41,42,43,44,45,46,      49,
+                                                         50,51,52,53,54,55,   57,58, 64      
+                                                         ]
 
                         for att_1 in Attributes:
                                 if att_1.name == "Ocarina_Reward":
@@ -599,13 +631,17 @@ def generateRom():
                                         for att_2 in Attributes:
                                                 if att_2.name =="Fire_Urn_Text":
                                                         att_2.value = att_1.value
+                                if att_1.name == "Full_Health_1":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Sewer_Hint_13":
+                                                        att_2.value = att_1.value
                                 if att_1.name == "Oasis_Boots":
                                         for att_2 in Attributes:
-                                                if att_2.name =="POSS_HINT":
+                                                if att_2.name =="Poss_Hint_Text17":
                                                         att_2.value = att_1.value
-                                if att_1.name == "Star_Key":
+                                if att_1.name == "Power":
                                         for att_2 in Attributes:
-                                                if att_2.name =="SPHINX_HINT":
+                                                if att_2.name =="Sphinx_Hint_Text34":
                                                         att_2.value = att_1.value
                                 if att_1.name == "Legend_Sword":
                                         for att_2 in Attributes:
@@ -759,13 +795,45 @@ def generateRom():
                                                         att_2.value = att_1.value
                                                 if att_2.name =="Charm_Hint_Five_28":
                                                         att_2.value = att_1.value
-                                
-                                
-                                
-                                
-                     
+                                if att_1.name == "Sphinx_Question_One_Wrong1":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="elder_elixer":
+                                                        att_1.value = att_2.value
+                                        if att_1.value in Sphinx_Question_One_Possible:
+                                                Sphinx_Question_One_Possible.remove(att_1.value) 
+                                if att_1.name == "Sphinx_Question_One_Wrong2":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="elder_firestorm":
+                                                        att_1.value = att_2.value
+                                        if att_1.value in Sphinx_Question_One_Possible:
+                                                Sphinx_Question_One_Possible.remove(att_1.value)
+                                if att_1.name == "Sphinx_Question_Two_Wrong1":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="excalibur":
+                                                        att_1.value = att_2.value
+                                        if att_1.value in Sphinx_Question_Two_Possible:
+                                                Sphinx_Question_Two_Possible.remove(att_1.value) 
+                                if att_1.name == "Sphinx_Question_Two_Wrong2":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="steel_shield":
+                                                        att_1.value = att_2.value
+                                        if att_1.value in Sphinx_Question_Two_Possible:
+                                                Sphinx_Question_Two_Possible.remove(att_1.value)
+                                if att_1.name == "Sphinx_Question_Three_Correct":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Trident":
+                                                        att_1.value = att_2.value
+                                        if att_1.value in Sphinx_Question_Three_Possible:
+                                                Sphinx_Question_Three_Possible.remove(att_1.value)
                                 
                         for att in Attributes:
+                                if att.name == "Sphinx_Question_One_Correct":
+                                        att.value == random.choice(Sphinx_Question_One_Possible)
+                                if att.name == "Sphinx_Question_Two_Correct":
+                                        att.value == random.choice(Sphinx_Question_Two_Possible)
+                                if att.name == "Sphinx_Question_Three_Wrong":
+                                        att.value == random.choice(Sphinx_Question_Three_Possible)
+                                        
                                 Shift_Up = ["Heart_Chest","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
                                         "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
                                         "Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
