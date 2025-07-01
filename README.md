@@ -82,17 +82,23 @@ In addition to the random elements, many Quality of Life improvements are in pla
 
 Sonia's text synchs with her correpsonding item, so you can skip it if it's useless. The blacksmith's language is also synched, so you know what you're getting.
 
-There are THREE hints currently in the game. 
+There are now 9 hints currently in the game. 
 
-At the top of purapill stairs, on the first screen, the lady to the left will hint about the "Sphinx Item". This is the CHARMSTONE chest.
+At the top of purapill stairs, on the first screen, the lady to the left will hint about the "Leap of Faith". This is the POWER chest.
 
-The lady on the right will hint about the "Poseidon item". This is the OASIS BOOTS chest.
+The lady on the right will hint about the "Trident and Amulet Item". This is the OASIS BOOTS chest.
 
 The wandering Dragon in Begonia will hint about the "Volcano item". This is the FIRE-URN chest. 
+
+The second NPC in Alsedo [Left] hints about a "Sewer" item. This is the "FULL_HEALTH" chest.
+
+One NPC in each village will hint a "Charmstone" item. 
 
 As many text speed ups are in place as I could find. The following texts can be skipped by holding C and mashing A : The Intro, Ocarina Activation, The Dwarf, The Sphinx, the Gems, the Ice Melting, and both Prince speaches.
 
 Be very careful when skipping the text with the Sphinx! I'm not responsible if you skip a question! :-P
+
+The Sphinx now contains THREE random questions! Be careful!
 
 Here's what you'll have to do to run the randomizer :
 
