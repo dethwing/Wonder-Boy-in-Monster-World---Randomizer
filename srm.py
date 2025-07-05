@@ -442,6 +442,20 @@ def generateRom():
                                         if Charm == 2:
                                                 Can_Reach = Can_Reach + ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5"]                                        
                                 if Random_Item == 26:
+                                        if Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
+                                                            "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots",
+                                                            "Shield_Magic_Shop","Shell_Shield","Steel_Armor","Ceramic_Boots",
+                                                            "Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water",
+                                                            "Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop"]:
+                                                Oasis_Boots = "Shop"
+                                        elif Random_Check in ["First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
+                              "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1","Water_Money_Chest3_Item2",
+                              "Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2",
+                              "Water_Money_Chest4_Item3","Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7",
+                              "Water_Money_Chest4_Item8","Thunder","Oasis_Boots","Return","Sun_Key"]:
+                                                Oasis_Boots = "Underwater"
+                                        else:
+                                                Oasis_Boots = "Other"
                                         Can_Reach = Can_Reach + ["Shield_Magic_Chest","excalibur","steel_shield"]
                                         if Quake == 0:
                                                 Can_Reach = Can_Reach + ['Quake']
@@ -618,7 +632,13 @@ def generateRom():
                                                          50,51,52,53,54,55,   57,58, 64      
                                                          ]
 
+                        Charmstone_Price = [0,1,2]
+
+                        Random_Price = random.choice(Charmstone_Price)
+
                         for att_1 in Attributes:
+                                if att_1.name == "Charmstone_Price3":
+                                        att_1.value = att_1.value + Random_Price
                                 if att_1.name == "Ocarina_Reward":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Ocarina_Text":
@@ -825,14 +845,48 @@ def generateRom():
                                                         att_1.value = att_2.value
                                         if att_1.value in Sphinx_Question_Three_Possible:
                                                 Sphinx_Question_Three_Possible.remove(att_1.value)
+                                if att_1.name == "Sphinx_Question_Four_Correct":
+                                        att_1.value = att_1.value+Random_Price                                       
+                                        Charmstone_Price.remove(Random_Price)
+                                if att_1.name == "Sphinx_Question_Five_Correct":
+                                        if Oasis_Boots == "Shop":
+                                                att_1.value = 195
+                                        if Oasis_Boots == "Underwater":
+                                                att_1.value = 219
+                                        if Oasis_Boots == "Other":
+                                                att_1.value = 177 
+                                      
+                                                        
                                 
                         for att in Attributes:
                                 if att.name == "Sphinx_Question_One_Correct":
-                                        att.value == random.choice(Sphinx_Question_One_Possible)
+                                        att.value = random.choice(Sphinx_Question_One_Possible)
                                 if att.name == "Sphinx_Question_Two_Correct":
-                                        att.value == random.choice(Sphinx_Question_Two_Possible)
+                                        att.value = random.choice(Sphinx_Question_Two_Possible)
                                 if att.name == "Sphinx_Question_Three_Wrong":
-                                        att.value == random.choice(Sphinx_Question_Three_Possible)
+                                        att.value = random.choice(Sphinx_Question_Three_Possible)
+                                if att.name == "Sphinx_Question_Four_Wrong_1":
+                                        Random_Price = random.choice(Charmstone_Price)
+                                        att.value = att.value+Random_Price                                       
+                                        Charmstone_Price.remove(Random_Price)
+                                if att.name == "Sphinx_Question_Four_Wrong_2":
+                                        Random_Price = random.choice(Charmstone_Price)
+                                        att.value = att.value+Random_Price                                       
+                                        Charmstone_Price.remove(Random_Price)
+                                if att.name == "Sphinx_Question_Five_Wrong_2":
+                                        if Oasis_Boots == "Shop":
+                                                att.value = 177
+                                        if Oasis_Boots == "Underwater":
+                                                att.value = 195
+                                        if Oasis_Boots == "Other":
+                                                att.value = 219
+                                if att.name == "Sphinx_Question_Five_Wrong2_2":
+                                        if Oasis_Boots == "Shop":
+                                                att.value = 219
+                                        if Oasis_Boots == "Underwater":
+                                                att.value = 177
+                                        if Oasis_Boots == "Other":
+                                                att.value = 195
                                         
                                 Shift_Up = ["Heart_Chest","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
                                         "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
