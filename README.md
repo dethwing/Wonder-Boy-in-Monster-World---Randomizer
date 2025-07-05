@@ -10,11 +10,11 @@ Update : To make certain things work, I needed to directly edit the SRM file. So
 
 
 In addition, I couldn't have made any progress without the ground work that PaddyCo laid out. He started this project over 4 years ago and provided me with the addresses for around 10 checks, along with all the values.
-Using his framework and a hex editor, I was able to deduce [MOST] of the remaining checks.
+Using his framework and a hex editor, I was able to deduce all of the remaining checks.
 You can find his work here : https://github.com/PaddyCo/mw3rando
 
 
-With that out of the way, here's what this randomizer does and does not do. [So Far].
+With that out of the way, here's what this randomizer does and does not do.
 
 There are currently 96 objcets randomized in the "Pool". They are :
 
@@ -60,7 +60,7 @@ The item pool consists of a corresponding 96 items.
 
 (7). Money, small heart, big heart, magic refil -- 21 
 
-"Go-Mode" requires 10 items --
+"Go-Mode" requirements --
    
       (a). Defeat the ice-bomber. Requires Bracelet and Both-Gems. 
    
@@ -69,6 +69,8 @@ The item pool consists of a corresponding 96 items.
       (c). The Fire-Urn. Talk to the Blacksmith.
 
       (d). Legend Sword, Legend Shield, Legend Armor. (Technically you don't need Shield/Armor, but good luck without 'em)
+
+      (e). In addition, I highly recomend you stock yourself with Power, Elixer, and Hi-Potion.
    
   
 
@@ -90,7 +92,7 @@ The lady on the right will hint about the "Trident and Amulet Item". This is the
 
 The wandering Dragon in Begonia will hint about the "Volcano item". This is the FIRE-URN chest. 
 
-The second NPC in Alsedo [Left] hints about a "Sewer" item. This is the "FULL_HEALTH" chest.
+The second NPC in Alsedo [Left] hints about a "Sewer" item. This is the "FULL_HEAL" chest.
 
 One NPC in each village will hint a "Charmstone" item. 
 
@@ -98,7 +100,7 @@ As many text speed ups are in place as I could find. The following texts can be 
 
 Be very careful when skipping the text with the Sphinx! I'm not responsible if you skip a question! :-P
 
-The Sphinx now contains THREE random questions! Be careful!
+The Sphinx now contains FIVE random questions! Be careful!
 
 Here's what you'll have to do to run the randomizer :
 
