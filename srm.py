@@ -350,7 +350,7 @@ def generateRom():
                               "Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Old_Axe","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Pyramid_Item_1",
                               "Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6",
                               "Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest","Fire_Urn","Legend_Sword","Legend_Boots","Legend_Shield","Legend_Armor",
-                                      "Heart_Chest"]
+                                      "Heart_Chest","Big_Yeti","Left_Yeti","Right_Yeti"]
 
                         Can_Reach = ["elder_elixer","elder_firestorm","leather_boots","medicine","small_spear","chain_mail","wood_shield","Ocarina_Reward"]
                         
@@ -372,8 +372,18 @@ def generateRom():
                                         att.value = 40                                
                         All_Checks.remove(Random)
                         Can_Reach.remove(Random)
+                        
                         Can_Reach = Can_Reach + ["Heart_Chest","Firestorm","Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
-                                                 "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor","bat_reward","Full_Health_1"]
+                                                 "Full_Health_1"]
+
+                        Random = random.choice(Can_Reach)
+                        for att in Attributes:
+                                if att.name == Random:
+                                        att.value = 29                                
+                        All_Checks.remove(Random)
+                        Can_Reach.remove(Random)
+
+                        Can_Reach = Can_Reach + ["Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor","bat_reward"]
 
                         Random = random.choice(Can_Reach)
                         for att in Attributes:
@@ -429,7 +439,17 @@ def generateRom():
                                 All_Checks.remove(Random_Check)
                                 Can_Reach.remove(Random_Check)
                                 Progression_Items.remove(Random_Item)
-                                
+
+                                if Random_Item == 51:
+                                        if Random_Check in ["First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
+                              "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1","Water_Money_Chest3_Item2",
+                              "Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2",
+                              "Water_Money_Chest4_Item3","Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7",
+                              "Water_Money_Chest4_Item8","Thunder","Oasis_Boots","Return","Sun_Key"]:
+                                                Sun_Key = "Underwater"
+                                        else:
+                                                Sun_Key = "Other"
+                                        
                                 if Random_Item == 5:
                                         Can_Reach = Can_Reach + ["First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
                                                                  "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1",
@@ -470,7 +490,8 @@ def generateRom():
                                                 Can_Reach = Can_Reach + ['Elixer_Chests']
                                                 Elixer = 1
                                 if Random_Item == 58:
-                                        Can_Reach = Can_Reach + ["Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water","Pygmy_Boots","Blue_Gem","Gold_Gem"]
+                                        Can_Reach = Can_Reach + ["Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water",
+                                                                 "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti"]
                                 if Random_Item == 5 or Random_Item == 50:
                                         Poseidon = Poseidon + 1
                                         if Poseidon == 2:
@@ -591,12 +612,13 @@ def generateRom():
                         
                         Remaining_Items = [    1, 2,    4,    6,       9,
                                          10,11,12,13,         17,18,19,
-                                         20,21,22,      25,      28,29,
+                                         20,21,22,      25,      28,
                                                32,33,34,35,36,
                                                32,32,33,33,34,34,
-                                               35,36,
-                                            41,42,43,44,45,
+                                               35,35,36,36,
+                                            41,42,42,43,44,45,
                                         8,16,24
+                                               
                                         ]
                         
                         while len(Remaining_Items) > 0:
@@ -854,6 +876,11 @@ def generateRom():
                                         if Oasis_Boots == "Underwater":
                                                 att_1.value = 219
                                         if Oasis_Boots == "Other":
+                                                att_1.value = 177
+                                if att_1.name == "Sphinx_Question_Six_Correct":
+                                        if Sun_Key == "Underwater":
+                                                att_1.value = 219
+                                        if Sun_Key == "Other":
                                                 att_1.value = 177 
                                       
                                                         
@@ -887,6 +914,16 @@ def generateRom():
                                                 att.value = 177
                                         if Oasis_Boots == "Other":
                                                 att.value = 195
+                                if att.name == "Sphinx_Question_Six_Wrong1":
+                                        if Sun_Key == "Underwater":
+                                                att.value = 177
+                                        if Sun_Key == "Other":
+                                                att.value = 219
+                                if att.name == "Sphinx_Question_Six_Wrong2":
+                                        if Sun_Key == "Underwater":
+                                                att.value = 195
+                                        if Sun_Key == "Other":
+                                                att.value = 195
                                         
                                 Shift_Up = ["Heart_Chest","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
                                         "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
@@ -903,7 +940,7 @@ def generateRom():
                                             "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6",    
                                             "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
                                             'Pyramid_Item_1','Pyramid_Item_2','Pyramid_Item_3','Pyramid_Item_4','Pyramid_Item_5',
-                                            'Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8'
+                                            'Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8',"Big_Yeti","Left_Yeti","Right_Yeti"
                                             ]
                                 flag = any (x == att.name for x in Shift_Up)
                                 if flag:
@@ -964,7 +1001,7 @@ def generateTextLog():
                                             "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6",    
                                             "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
                                             'Pyramid_Item_1','Pyramid_Item_2','Pyramid_Item_3','Pyramid_Item_4','Pyramid_Item_5',
-                                            'Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8']
+                                            'Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8',"Big_Yeti","Left_Yeti","Right_Yeti"]
                 flag = any (x == att.name for x in Chest)
                 if flag:
                         if att.value == 155:
