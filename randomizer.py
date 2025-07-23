@@ -39,7 +39,16 @@ Slow_Mode = False
 
 Attributes = [
         
+        #Attribute(
+        #        name="test",
+        #        addresses=[0x384a8],
+        #        number_of_bytes=1,
+        #        is_little_endian=False,
+        #        possible_values=[1      
+        #                         ]                                 
+        #        ),
         
+
         
         ### Sphere 0 Checks - 8 (Ocarina) ###
         Attribute(
@@ -1527,19 +1536,89 @@ Attributes = [
                 ),
 
 
-        ### Non-Pool (1) ###
+        ### Non-Pool (2) ###
         Attribute(
                 name="Bracelet_Item",
                 addresses=[0x1f23c],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                 10,11,12,13,   15,16,17,18,19,
-                                 20,21,22,23,24,25,   27,28,29,
-                                    31,32,33,34,35,36,37,
-                                    41,42,43,44,45,46,      49,
-                                 50,51,52,   54,55,   57,58       
-                                 ] 
+                possible_values=[    1, 2,    4,    6,
+                                     9,10,11,12,13,   
+                                    17,18,19,20,21,22,
+                                    25,    28,29,
+                                    32,33,34,   36,
+                                 40,41,42,43,44,45,46     
+                                 ]  
+                ),
+
+        Attribute(
+                name="Sphinx_Fix_1",
+                addresses=[0x2036d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[11       
+                                 ]                                 
+                ),
+        Attribute(
+                name="Sphinx_Fix_2",
+                addresses=[0x2036e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[10       
+                                 ]                                 
+                ),
+        Attribute(
+                name="Sphinx_Bonus_Item",
+                addresses=[0x2036f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[    1, 2,    4,    6,
+                                     9,10,11,12,13,   
+                                    17,18,19,20,21,22,
+                                    25,    28,29,
+                                    32,33,34,   36,
+                                 40,41,42,43,44,45,46     
+                                 ]                                  
+                ),
+        Attribute(
+                name="Sphinx_Fix_4",
+                addresses=[0x20370],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[12       
+                                 ]                                 
+                ),
+        Attribute(
+                name="Sphinx_Fix_5",
+                addresses=[0x20371],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[2       
+                                 ]                                 
+                ),
+        Attribute(
+                name="Sphinx_Fix_6",
+                addresses=[0x20372],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[11       
+                                 ]                                 
+                ),
+        Attribute(
+                name="Sphinx_Fix_7",
+                addresses=[0x20373],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[8       
+                                 ]                                 
+                ),
+        Attribute(
+                name="Sphinx_Fix_8",
+                addresses=[0x20374],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[255      
+                                 ]                                 
                 ),
         
 
@@ -2228,13 +2307,335 @@ Attributes = [
                 ),       
      
         ###Quality of Life Stuff####
+        #Attribute(
+        #        name="Openning_Text_Speed",
+        #        addresses=[0x1df28],
+        #        number_of_bytes=1,
+        #        is_little_endian=False,
+        #        possible_values=[8]
+        #        ),
         Attribute(
-                name="Openning_Text_Speed",
-                addresses=[0x1df28],
+                name="Open_Text_1",
+                addresses=[0x1df29],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[8]
+                possible_values=[82]
                 ),
+        Attribute(
+                name="Open_Text_2",
+                addresses=[0x1df2a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[97]
+                ),
+        Attribute(
+                name="Open_Text_3",
+                addresses=[0x1df2b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[110]
+                ),
+        Attribute(
+                name="Open_Text_4",
+                addresses=[0x1df2c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[100]
+                ),
+        Attribute(
+                name="Open_Text_5",
+                addresses=[0x1df2d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[111]
+                ),
+        Attribute(
+                name="Open_Text_6",
+                addresses=[0x1df2e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[109]
+                ),
+        Attribute(
+                name="Open_Text_7",
+                addresses=[0x1df2f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[105]
+                ),
+        Attribute(
+                name="Open_Text_8",
+                addresses=[0x1df30],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[122]
+                ),
+        Attribute(
+                name="Open_Text_9",
+                addresses=[0x1df31],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[101]
+                ),
+        Attribute(
+                name="Open_Text_10",
+                addresses=[0x1df32],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[114]
+                ),
+        Attribute(
+                name="Open_Text_11",
+                addresses=[0x1df33],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="Open_Text_12",
+                addresses=[0x1df34],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[99]
+                ),
+        Attribute(
+                name="Open_Text_13",
+                addresses=[0x1df35],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[114]
+                ),
+        Attribute(
+                name="Open_Text_14",
+                addresses=[0x1df36],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[101]
+                ),
+        Attribute(
+                name="Open_Text_15",
+                addresses=[0x1df37],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[97]
+                ),
+        Attribute(
+                name="Open_Text_16",
+                addresses=[0x1df38],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[116]
+                ),
+        Attribute(
+                name="Open_Text_17",
+                addresses=[0x1df39],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[101]
+                ),
+        Attribute(
+                name="Open_Text_18",
+                addresses=[0x1df3a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[100]
+                ),
+        Attribute(
+                name="Open_Text_19",
+                addresses=[0x1df3b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="Open_Text_20",
+                addresses=[0x1df3c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[98]
+                ),
+        Attribute(
+                name="Open_Text_21",
+                addresses=[0x1df3d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[121]
+                ),
+        Attribute(
+                name="Open_Text_22",
+                addresses=[0x1df3e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="Open_Text_23",
+                addresses=[0x1df3f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[100]
+                ),
+        Attribute(
+                name="Open_Text_24",
+                addresses=[0x1df40],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[101]
+                ),
+        Attribute(
+                name="Open_Text_25",
+                addresses=[0x1df41],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[116]
+                ),
+        Attribute(
+                name="Open_Text_26",
+                addresses=[0x1df42],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[104]
+                ),
+        Attribute(
+                name="Open_Text_27",
+                addresses=[0x1df43],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[119]
+                ),
+        Attribute(
+                name="Open_Text_28",
+                addresses=[0x1df44],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[105]
+                ),
+        Attribute(
+                name="Open_Text_29",
+                addresses=[0x1df45],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[110]
+                ),
+        Attribute(
+                name="Open_Text_30",
+                addresses=[0x1df46],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[103]
+                ),
+        Attribute(
+                name="Open_Text_31",
+                addresses=[0x1df47],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[46]
+                ),
+        Attribute(
+                name="Open_Text_32",
+                addresses=[0x1df48],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="Open_Text_33",
+                addresses=[0x1df49],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[71]
+                ),
+        Attribute(
+                name="Open_Text_34",
+                addresses=[0x1df4a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[111]
+                ),
+        Attribute(
+                name="Open_Text_35",
+                addresses=[0x1df4b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[111]
+                ),
+        Attribute(
+                name="Open_Text_36",
+                addresses=[0x1df4c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[100]
+                ),
+        Attribute(
+                name="Open_Text_37",
+                addresses=[0x1df4d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="Open_Text_38",
+                addresses=[0x1df4e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[76]
+                ),
+        Attribute(
+                name="Open_Text_39",
+                addresses=[0x1df4f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[117]
+                ),
+        Attribute(
+                name="Open_Text_40",
+                addresses=[0x1df50],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[99]
+                ),
+        Attribute(
+                name="Open_Text_41",
+                addresses=[0x1df51],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[107]
+                ),
+        Attribute(
+                name="Open_Text_42",
+                addresses=[0x1df52],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[33]
+                ),
+        Attribute(
+                name="Open_Text_43",
+                addresses=[0x1df53],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[9]
+                ),
+        Attribute(
+                name="Open_Text_44",
+                addresses=[0x1df54],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[9]
+                ),
+        Attribute(
+                name="Open_Text_45",
+                addresses=[0x1df55],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[5]
+                ),
+        Attribute(
+                name="Open_Text_46",
+                addresses=[0x1df56],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[0]
+                ),        
         Attribute(
                 name="Ocarina_Reward_Speed",
                 addresses=[0x1e264],
