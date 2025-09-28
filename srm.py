@@ -658,7 +658,106 @@ def generateRom():
 
                         Random_Price = random.choice(Charmstone_Price)
 
+                        Lilly_Name = [0,1,2]
+                        Random_Lilly_Name = random.choice(Lilly_Name)
+
+                        Myc_Name = [0,1,2]
+                        Random_Myc_Name = random.choice(Myc_Name) 
+
                         for att_1 in Attributes:
+                                if att_1.name == "Lilypad_Town_Name_1":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 65
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 83
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 76
+                                if att_1.name == "Lilypad_Town_Name_2":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 110
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 119
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 105
+                                if att_1.name == "Lilypad_Town_Name_3":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 107
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 108
+                                if att_1.name == "Lilypad_Town_Name_4":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 108
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 109
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 116
+                                if att_1.name == "Lilypad_Town_Name_5":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 98
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 112
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 119
+                                if att_1.name == "Lilypad_Town_Name_6":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 116
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 110
+
+                                if att_1.name == "Myconid_Name_1":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 70
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 77
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 84
+                                if att_1.name == "Myconid_Name_2":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 114
+                                if att_1.name == "Myconid_Name_3":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 110
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 115
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 117
+                                if att_1.name == "Myconid_Name_4":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 45
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 104
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 102
+                                if att_1.name == "Myconid_Name_5":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 71
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 101
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 102
+                                if att_1.name == "Myconid_Name_6":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 108
+                                if att_1.name == "Myconid_Name_7":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 101
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 101                                        
+                                        
                                 if att_1.name == "Charmstone_Price3":
                                         att_1.value = att_1.value + Random_Price
                                 if att_1.name == "Ocarina_Reward":
@@ -881,7 +980,287 @@ def generateRom():
                                         if Sun_Key == "Underwater":
                                                 att_1.value = 219
                                         if Sun_Key == "Other":
-                                                att_1.value = 177 
+                                                att_1.value = 177
+                                                
+                                if att_1.name == "Sphinx_Question_Dwarf_Right_1":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 65
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 83
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 76
+                                if att_1.name == "Sphinx_Question_Dwarf_Right_2":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 110
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 119
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Dwarf_Right_3":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 107
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 108
+                                if att_1.name == "Sphinx_Question_Dwarf_Right_4":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 108
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 109
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 116
+                                if att_1.name == "Sphinx_Question_Dwarf_Right_5":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 98
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 112
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 119
+                                if att_1.name == "Sphinx_Question_Dwarf_Right_6":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 116
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 110
+
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong1_1":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 65
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 83
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 76
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong1_2":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 110
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 119
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong1_3":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 107
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 108
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong1_4":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 108
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 109
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 116
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong1_5":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 98
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 112
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 119
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong1_6":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 116
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 110
+
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong2_1":
+                                        if Random_Lilly_Name == 21:
+                                                att_1.value = 65
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 83
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 76
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong2_2":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 110
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 119
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong2_3":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 107
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 108
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong2_4":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 108
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 109
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 116
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong2_5":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 98
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 112
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 119
+                                if att_1.name == "Sphinx_Question_Dwarf_Wrong2_6":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 116
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 110
+
+                                if att_1.name == "Sphinx_Question_Myc_Right1":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 70
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 77
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 84
+                                if att_1.name == "Sphinx_Question_Myc_Right2":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 114
+                                if att_1.name == "Sphinx_Question_Myc_Right3":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 110
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 115
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 117
+                                if att_1.name == "Sphinx_Question_Myc_Right4":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 45
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 104
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 102
+                                if att_1.name == "Sphinx_Question_Myc_Right5":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 71
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 101
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 102
+                                if att_1.name == "Sphinx_Question_Myc_Right6":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 108
+                                if att_1.name == "Sphinx_Question_Myc_Right7":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 101
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 101
+
+                                if att_1.name == "Sphinx_Question_Myc_Wrong1":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 70
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 77
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 84
+                                if att_1.name == "Sphinx_Question_Myc_Wrong2":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 114
+                                if att_1.name == "Sphinx_Question_Myc_Wrong3":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 110
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 115
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 117
+                                if att_1.name == "Sphinx_Question_Myc_Wrong4":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 45
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 104
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 102
+                                if att_1.name == "Sphinx_Question_Myc_Wrong5":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 71
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 101
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 102
+                                if att_1.name == "Sphinx_Question_Myc_Wrong6":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 108
+                                if att_1.name == "Sphinx_Question_Myc_Wrong7":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 101
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 101
+
+                                if att_1.name == "Sphinx_Question_Myc_Wrong2_1":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 70
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 77
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 84
+                                if att_1.name == "Sphinx_Question_Myc_Wrong2_2":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 114
+                                if att_1.name == "Sphinx_Question_Myc_Wrong2_3":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 110
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 115
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 117
+                                if att_1.name == "Sphinx_Question_Myc_Wrong2_4":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 45
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 104
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 102
+                                if att_1.name == "Sphinx_Question_Myc_Wrong2_5":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 71
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 101
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 102
+                                if att_1.name == "Sphinx_Question_Myc_Wrong2_6":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 117
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 108
+                                if att_1.name == "Sphinx_Question_Myc_Wrong2_7":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 101
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 101 
+                                
                                       
                                                         
                                 
