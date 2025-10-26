@@ -337,9 +337,8 @@ def generateRom():
                 try:
                         file = open(newRom, "r+b")
 
-
-                        All_Checks = ["elder_elixer","elder_firestorm","leather_boots","medicine","small_spear","chain_mail","wood_shield","Ocarina_Reward","Firestorm","Knight_Sword",
-                              "Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor","bat_reward","Full_Health_1",
+                        All_Checks = ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","Ocarina_Reward","Firestorm",
+                              "Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop","bat_reward","Full_Health_1",
                               "Quake","Elixer_Chests","Hard_Shield","Trident","First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
                               "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1","Water_Money_Chest3_Item2",
                               "Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2",
@@ -352,12 +351,129 @@ def generateRom():
                               "Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest","Fire_Urn","Legend_Sword","Legend_Boots","Legend_Shield","Legend_Armor",
                                       "Heart_Chest","Big_Yeti","Left_Yeti","Right_Yeti"]
 
-                        Can_Reach = ["elder_elixer","elder_firestorm","leather_boots","medicine","small_spear","chain_mail","wood_shield","Ocarina_Reward"]
+                        Num_Legend_Itms = 0
+
+                        No_Weapon_Shop = random.choice(["Fell","Bach","Goon"])
+
+                        
+                        Remaining_Items = [    1, 2,    4,    6,       9,
+                                         10,11,12,13,         17,18,19,
+                                         20,21,22,      25,      28,
+                                               32,33,34,35,36,
+                                               32,32,33,33,34,34,
+                                               35,35,36,36,
+                                               42,42,43,44,45,
+                                        8,16,24
+                                               
+                                        ]
+
+                        Weapons = [1,2,4,6]
+                        Non_Weapons = [9,10,11,12,13,         17,18,19,
+                                      20,21,22,      25,      28,
+                                      32,33,34,35,36,                                               
+                                      42,43,44,45,
+                                       8,16,24]
+
+                        if No_Weapon_Shop == "Fell":
+                                for att in Attributes:
+                                        if att.name == "medicine":
+                                                att.value = random.choice(Non_Weapons)
+                                                #All_Checks.remove("medicine")
+                                                Remaining_Items.remove(att.value)
+                                                Non_Weapons.remove(att.value)
+
+                                        if att.name == "Knight_Sword":
+                                                att.value = random.choice(Weapons)
+                                                #All_Checks.remove("Knight_Sword")
+                                                Remaining_Items.remove(att.value)
+                                                Weapons.remove(att.value)
+                                                
+                                        if att.name == "Hard_Armor":
+                                                att.value = random.choice(Non_Weapons)
+                                                #All_Checks.remove("Hard_Armor")
+                                                Remaining_Items.remove(att.value)
+                                                Non_Weapons.remove(att.value)
+                                                                          
+                                        if att.name == "Shell_Shield":
+                                                att.value = random.choice(Weapons)
+                                                #All_Checks.remove("Shell_Shield")
+                                                Remaining_Items.remove(att.value)
+                                                Weapons.remove(att.value)
+
+                                        if att.name == "Steel_Armor":
+                                                att.value = random.choice(Non_Weapons)
+                                                #All_Checks.remove("Steel_Armor")
+                                                Remaining_Items.remove(att.value)
+                                                Non_Weapons.remove(att.value)
+
+                        if No_Weapon_Shop == "Bach":
+                                for att in Attributes:
+                                        if att.name == "medicine":
+                                                att.value = random.choice(Weapons)
+                                                #All_Checks.remove("medicine")
+                                                Remaining_Items.remove(att.value)
+                                                Weapons.remove(att.value)
+                                                        
+                                        if att.name == "Shell_Shield":
+                                                att.value = random.choice(Weapons)
+                                                #All_Checks.remove("Shell_Shield")
+                                                Remaining_Items.remove(att.value)
+                                                Weapons.remove(att.value)
+
+                                        if att.name == "Steel_Armor":
+                                                att.value = random.choice(Non_Weapons)
+                                                #All_Checks.remove("Steel_Armor")
+                                                Remaining_Items.remove(att.value)
+                                                Non_Weapons.remove(att.value)
+
+                                        if att.name == "Knight_Sword":
+                                                att.value = random.choice(Non_Weapons)
+                                                #All_Checks.remove("Knight_Sword")
+                                                Remaining_Items.remove(att.value)
+                                                Non_Weapons.remove(att.value)
+                                                        
+                                        if att.name == "Hard_Armor":
+                                                att.value = random.choice(Non_Weapons)
+                                                #All_Checks.remove("Hard_Armor")
+                                                Remaining_Items.remove(att.value)
+                                                Non_Weapons.remove(att.value)
+
+                        if No_Weapon_Shop == "Goon":
+                                for att in Attributes:
+                                        if att.name == "medicine":
+                                                att.value = random.choice(Weapons)
+                                                #All_Checks.remove("medicine")
+                                                Remaining_Items.remove(att.value)
+                                                Weapons.remove(att.value)
+                                        if att.name == "Knight_Sword":
+                                                att.value = random.choice(Weapons)
+                                                #All_Checks.remove("Knight_Sword")
+                                                Remaining_Items.remove(att.value)
+                                                Weapons.remove(att.value)
+                                        if att.name == "Hard_Armor":
+                                                att.value = random.choice(Non_Weapons)
+                                                #All_Checks.remove("Hard_Armor")
+                                                Remaining_Items.remove(att.value)
+                                                Non_Weapons.remove(att.value)
+                                        if att.name == "Shell_Shield":
+                                                att.value = random.choice(Non_Weapons)
+                                                #All_Checks.remove("Shell_Shield")
+                                                Remaining_Items.remove(att.value)
+                                                Non_Weapons.remove(att.value)
+                                        if att.name == "Steel_Armor":
+                                                att.value = random.choice(Non_Weapons)
+                                                #All_Checks.remove("Steel_Armor")
+                                                Remaining_Items.remove(att.value)
+                                                Non_Weapons.remove(att.value)
+
+                        
+
+                        Can_Reach = ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","Ocarina_Reward"]
                         
                         Random = random.choice(All_Checks)
-                        
-                        while Random in ["Legend_Shield","Legend_Armor","Legend_Boots"]:                                
+                        while Random in ["Legend_Shield","Legend_Armor","Legend_Boots"] :                                
                                 Random = random.choice(All_Checks)
+                                
                         for att in Attributes:
                                 if att.name == Random:
                                         att.value = 0
@@ -373,7 +489,7 @@ def generateRom():
                         All_Checks.remove(Random)
                         Can_Reach.remove(Random)
                         
-                        Can_Reach = Can_Reach + ["Heart_Chest","Firestorm","Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
+                        Can_Reach = Can_Reach + ["Heart_Chest","Firestorm","Charmstone_Purchase","Potion","Ladder_Boots",
                                                  "Full_Health_1"]
 
                         Random = random.choice(Can_Reach)
@@ -383,7 +499,7 @@ def generateRom():
                         All_Checks.remove(Random)
                         Can_Reach.remove(Random)
 
-                        Can_Reach = Can_Reach + ["Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor","bat_reward"]
+                        Can_Reach = Can_Reach + ["Marine_Boots","Shield_Magic_Shop","bat_reward"]
 
                         Random = random.choice(Can_Reach)
                         for att in Attributes:
@@ -395,7 +511,7 @@ def generateRom():
 
                         Progression_Items = [
                                              7,15,23,31,
-                                             5,26,27,41,41,
+                                             5,26,27,41,41,41,
                                              49,50,
                                              51,52,53,
                                              54,55,
@@ -416,6 +532,8 @@ def generateRom():
                         Teh_Urn = 0
                         Sky = 0
                         Charm = 0
+
+                        
                         
                         while len(Progression_Items) > 0:
                                 
@@ -553,9 +671,11 @@ def generateRom():
 
                         Trouble_Items = [64,64,64,64,64,64,64,64,64,64,
                                          64,   
-                                         128,130,132,134,136,138,140,
-                                         142,144,146,148,150,152,154,156,
-                                         144,144,146,146,148,148,150,150]
+                                         128,130,132,134,136,138,
+                                         140,142,144,146,148,150,
+                                         152,154,156,
+                                         
+                                         146,146,148,148,148,150,150,150]
                         
                         while len(Trouble_Items) > 0:
                                 Random_Item = random.choice(Trouble_Items)
@@ -580,7 +700,7 @@ def generateRom():
                                                                   "Flame_Armor","Hi_Potion","Elixer_Shop",
                                                                   "elder_elixer","elder_firestorm",
                                                                   "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
-                                                                  "Legend_Sword","Ocarina_Reward",'Fire_Urn']:
+                                                                  "Legend_Sword","Ocarina_Reward"]:
                                                 Random_Check = random.choice(All_Checks)
 
                                 for att in Attributes:
@@ -595,6 +715,10 @@ def generateRom():
                         while len(Healing_Items) > 0:
                                 Random_Item = random.choice(Healing_Items)
                                 Random_Check = random.choice(All_Checks)
+                                while Random_Item == 42 and Random_Check == "elder_elixer":
+                                        Random_Item = random.choice(Healing_Items)
+                                        Random_Check = random.choice(All_Checks)
+                                        
                                 while Random_Check not in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
                                                                   "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
                                                                   "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
@@ -610,20 +734,19 @@ def generateRom():
                                 All_Checks.remove(Random_Check)
                                 Healing_Items.remove(Random_Item)
                         
-                        Remaining_Items = [    1, 2,    4,    6,       9,
-                                         10,11,12,13,         17,18,19,
-                                         20,21,22,      25,      28,
-                                               32,33,34,35,36,
-                                               32,32,33,33,34,34,
-                                               35,35,36,36,
-                                            41,42,42,43,44,45,
-                                        8,16,24
-                                               
-                                        ]
+                        
                         
                         while len(Remaining_Items) > 0:
                                 Random_Item = random.choice(Remaining_Items)
                                 Random_Check = random.choice(All_Checks)
+
+                                if Random_Item == 8 or Random_Item == 16 or Random_Item == 24:
+                                        if Random_Check == "Legend_Boots" or Random_Check == "Legend_Shield" or Random_Check == "Legend_Armor":
+                                                Num_Legend_Itms = Num_Legend_Itms + 1
+                                while Random_Item >= 42 and Random_Item <= 45 and Random_Check == "elder_elixer":
+                                        Random_Item = random.choice(Remaining_Items)
+                                        Random_Check = random.choice(All_Checks)
+                                        
                                 for att in Attributes:
                                         if att.name == Random_Check:
                                                 att.value = Random_Item
@@ -662,9 +785,54 @@ def generateRom():
                         Random_Lilly_Name = random.choice(Lilly_Name)
 
                         Myc_Name = [0,1,2]
-                        Random_Myc_Name = random.choice(Myc_Name) 
+                        Random_Myc_Name = random.choice(Myc_Name)
+                        
+                        Elf_Name = [0,1,2]
+                        Random_Elf_Name = random.choice(Elf_Name)
+                        
 
                         for att_1 in Attributes:
+                                if att_1.name == "Sky_Legend_Num_Items":
+                                        att_1.value = att_1.value + Num_Legend_Itms
+                                        
+                                if att_1.name == "Elf_Queen_Name_1":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 76
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 75
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 77
+                                if att_1.name == "Elf_Queen_Name_2":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 105
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 105
+                                if att_1.name == "Elf_Queen_Name_3":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 114
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 109
+                                if att_1.name == "Elf_Queen_Name_4":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 108
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 105
+                                if att_1.name == "Elf_Queen_Name_5":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 32
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 32
+
+
+                                                
                                 if att_1.name == "Lilypad_Town_Name_1":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 65
@@ -802,6 +970,8 @@ def generateRom():
                                         for att_2 in Attributes:
                                                 if att_2.name =="Medecine_Sprite":
                                                         att_2.value = 2*att_1.value
+                                                if att_2.name =="Fellisimo_Item":
+                                                        att_2.value = att_1.value
                                 if att_1.name == "small_spear":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Small_Spear_Sprite":
@@ -1259,9 +1429,310 @@ def generateRom():
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 101
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 101 
+                                                att_1.value = 101
+
+                                if att_1.name == "Sphinx_Question_Queen_Right_1":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 76
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 75
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 77
+                                if att_1.name == "Sphinx_Question_Queen_Right_2":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 105
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Queen_Right_3":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 114
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 109
+                                if att_1.name == "Sphinx_Question_Queen_Right_4":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 108
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Queen_Right_5":
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 32
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 32
+
+                                if att_1.name == "Sphinx_Question_Queen_Wrong1_1":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 76
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 75
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 77
+                                if att_1.name == "Sphinx_Question_Queen_Wrong1_2":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 105
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Queen_Wrong1_3":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 114
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 109
+                                if att_1.name == "Sphinx_Question_Queen_Wrong1_4":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 108
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Queen_Wrong1_5":
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 32
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 32
+
+                                if att_1.name == "Sphinx_Question_Queen_Wrong2_1":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 76
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 75
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 77
+                                if att_1.name == "Sphinx_Question_Queen_Wrong2_2":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 105
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Queen_Wrong2_3":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 121
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 114
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 109
+                                if att_1.name == "Sphinx_Question_Queen_Wrong2_4":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 108
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Queen_Wrong2_5":
+                                        if Random_Lilly_Name == 2:
+                                                att_1.value = 97
+                                        if Random_Lilly_Name == 0:
+                                                att_1.value = 32
+                                        if Random_Lilly_Name == 1:
+                                                att_1.value = 32
+
+                                if att_1.name == "Sphinx_Question_Shops_1":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 71
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 70
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 66
+                                if att_1.name == "Sphinx_Question_Shops_2":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 111
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 101
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 97
+                                if att_1.name == "Sphinx_Question_Shops_3":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 111
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 108
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 99
+                                if att_1.name == "Sphinx_Question_Shops_4":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 110
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 105
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 99
+                                if att_1.name == "Sphinx_Question_Shops_5":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 105
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 115
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 104
+                                if att_1.name == "Sphinx_Question_Shops_6":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 110
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 115
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 117
+                                if att_1.name == "Sphinx_Question_Shops_7":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 103
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 105
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 115
+                                if att_1.name == "Sphinx_Question_Shops_8":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 108
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 109
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 0
+                                if att_1.name == "Sphinx_Question_Shops_9":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 101
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 111
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 70
+                                if att_1.name == "Sphinx_Question_Shops_10":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 0
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 0
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 101
+                                if att_1.name == "Sphinx_Question_Shops_11":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 66
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 71
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 108
+                                if att_1.name == "Sphinx_Question_Shops_12":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 97
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 111
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Shops_13":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 99
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 111
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 115
+                                if att_1.name == "Sphinx_Question_Shops_14":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 99
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 110
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 115
+                                if att_1.name == "Sphinx_Question_Shops_15":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 104
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 105
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Shops_16":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 117
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 110
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 109
+                                if att_1.name == "Sphinx_Question_Shops_17":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 115
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 103
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 111
+                                if att_1.name == "Sphinx_Question_Shops_18":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 0
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 108
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 0
+                                if att_1.name == "Sphinx_Question_Shops_19":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 70
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 101
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 71
+                                if att_1.name == "Sphinx_Question_Shops_20":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 101
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 0
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 111
+                                if att_1.name == "Sphinx_Question_Shops_21":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 108
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 66
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 111
+                                if att_1.name == "Sphinx_Question_Shops_22":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 105
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 97
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 110
+                                if att_1.name == "Sphinx_Question_Shops_23":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 115
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 99
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Shops_24":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 115
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 99
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 110
+                                if att_1.name == "Sphinx_Question_Shops_25":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 105
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 104
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 103
+                                if att_1.name == "Sphinx_Question_Shops_26":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 109
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 117
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 108
+                                if att_1.name == "Sphinx_Question_Shops_27":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 111
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 115
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 101
+                                                        
                                 
-                                      
+
+
+                                                              
                                                         
                                 
                         for att in Attributes:
