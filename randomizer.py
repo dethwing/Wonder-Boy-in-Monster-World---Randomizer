@@ -13,7 +13,7 @@
 # Version 1.A, Updated on 7/5. Added 2 more Sphinx Questions #
 # Version 1.B, Updated on 7/16. Added 2 more Sphinx Questions + 3 Yeti Checks #
 # Version 1.C, Updated on 9/29. Added 2 more Sphinx Questions #
-# Version 1.D, Updated on 10/26. Last Spehinx Question. Added hint for Legend Items in Sky #
+# Version 1.D, Updated on 10/26. Last Sphinx Question. Added hint for Legend Items in Sky #
 
 from classes import *
 
@@ -8781,189 +8781,177 @@ Attributes = [
                 ),
 
         Attribute(
-                name="Sphinx_Question_Shops_1",
+                name="Sphinx_Question_Shops_Wrong1_1",
                 addresses=[0x216F7],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_2",
+                name="Sphinx_Question_Shops_Wrong1_2",
                 addresses=[0x216F8],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_3",
+                name="Sphinx_Question_Shops_Wrong1_3",
                 addresses=[0x216F9],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_4",
+                name="Sphinx_Question_Shops_Wrong1_4",
                 addresses=[0x216Fa],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_5",
+                name="Sphinx_Question_Shops_Wrong1_5",
                 addresses=[0x216Fb],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_6",
+                name="Sphinx_Question_Shops_Wrong1_6",
                 addresses=[0x216Fc],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_7",
+                name="Sphinx_Question_Shops_Wrong1_7",
                 addresses=[0x216Fd],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_8",
+                name="Sphinx_Question_Shops_Wrong1_8",
                 addresses=[0x216Fe],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_9",
+                name="Sphinx_Question_Shops_Wrong1_9",
                 addresses=[0x216Ff],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
+        
         Attribute(
-                name="Sphinx_Question_Shops_10",
-                addresses=[0x21700],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Shops_11",
+                name="Sphinx_Question_Shops_Wrong2_1",
                 addresses=[0x21701],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_12",
+                name="Sphinx_Question_Shops_Wrong2_2",
                 addresses=[0x21702],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_13",
+                name="Sphinx_Question_Shops_Wrong2_3",
                 addresses=[0x21703],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_14",
+                name="Sphinx_Question_Shops_Wrong2_4",
                 addresses=[0x21704],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_15",
+                name="Sphinx_Question_Shops_Wrong2_5",
                 addresses=[0x21705],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_16",
+                name="Sphinx_Question_Shops_Wrong2_6",
                 addresses=[0x21706],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_17",
+                name="Sphinx_Question_Shops_Wrong2_7",
                 addresses=[0x21707],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
+        
         Attribute(
-                name="Sphinx_Question_Shops_18",
-                addresses=[0x21708],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Shops_19",
+                name="Sphinx_Question_Shops_Right_1",
                 addresses=[0x21709],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_20",
+                name="Sphinx_Question_Shops_Right_2",
                 addresses=[0x2170a],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_21",
+                name="Sphinx_Question_Shops_Right_3",
                 addresses=[0x2170b],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_22",
+                name="Sphinx_Question_Shops_Right_4",
                 addresses=[0x2170c],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_23",
+                name="Sphinx_Question_Shops_Right_5",
                 addresses=[0x2170d],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_24",
+                name="Sphinx_Question_Shops_Right_6",
                 addresses=[0x2170e],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_25",
+                name="Sphinx_Question_Shops_Right_7",
                 addresses=[0x2170f],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_26",
+                name="Sphinx_Question_Shops_Right_8",
                 addresses=[0x21710],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Shops_27",
+                name="Sphinx_Question_Shops_Right_9",
                 addresses=[0x21711],
                 number_of_bytes=1,
                 is_little_endian=False,
