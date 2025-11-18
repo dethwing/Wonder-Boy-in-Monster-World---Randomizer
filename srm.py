@@ -1539,195 +1539,187 @@ def generateRom():
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 32
 
-                                if att_1.name == "Sphinx_Question_Shops_1":
+                                if att_1.name == "Sphinx_Question_Shops_Right_1":
                                         if No_Weapon_Shop == "Fell":
-                                                att_1.value = 71
-                                        if No_Weapon_Shop == "Bach":
                                                 att_1.value = 70
-                                        if No_Weapon_Shop == "Goon":
+                                        if No_Weapon_Shop == "Bach":
                                                 att_1.value = 66
-                                if att_1.name == "Sphinx_Question_Shops_2":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 111
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 101
                                         if No_Weapon_Shop == "Goon":
+                                                att_1.value = 71
+                                if att_1.name == "Sphinx_Question_Shops_Right_2":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 101
+                                        if No_Weapon_Shop == "Bach":
                                                 att_1.value = 97
-                                if att_1.name == "Sphinx_Question_Shops_3":
-                                        if No_Weapon_Shop == "Fell":
+                                        if No_Weapon_Shop == "Goon":
                                                 att_1.value = 111
-                                        if No_Weapon_Shop == "Bach":
+                                if att_1.name == "Sphinx_Question_Shops_Right_3":
+                                        if No_Weapon_Shop == "Fell":
                                                 att_1.value = 108
-                                        if No_Weapon_Shop == "Goon":
+                                        if No_Weapon_Shop == "Bach":
                                                 att_1.value = 99
-                                if att_1.name == "Sphinx_Question_Shops_4":
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 111
+                                if att_1.name == "Sphinx_Question_Shops_Right_4":
                                         if No_Weapon_Shop == "Fell":
+                                                att_1.value = 105
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 99
+                                        if No_Weapon_Shop == "Goon":
                                                 att_1.value = 110
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 105
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 99
-                                if att_1.name == "Sphinx_Question_Shops_5":
+                                if att_1.name == "Sphinx_Question_Shops_Right_5":
                                         if No_Weapon_Shop == "Fell":
-                                                att_1.value = 105
-                                        if No_Weapon_Shop == "Bach":
                                                 att_1.value = 115
-                                        if No_Weapon_Shop == "Goon":
+                                        if No_Weapon_Shop == "Bach":
                                                 att_1.value = 104
-                                if att_1.name == "Sphinx_Question_Shops_6":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 110
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 115
                                         if No_Weapon_Shop == "Goon":
-                                                att_1.value = 117
-                                if att_1.name == "Sphinx_Question_Shops_7":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 103
-                                        if No_Weapon_Shop == "Bach":
                                                 att_1.value = 105
-                                        if No_Weapon_Shop == "Goon":
+                                if att_1.name == "Sphinx_Question_Shops_Right_6":
+                                        if No_Weapon_Shop == "Fell":
                                                 att_1.value = 115
-                                if att_1.name == "Sphinx_Question_Shops_8":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 108
                                         if No_Weapon_Shop == "Bach":
-                                                att_1.value = 109
+                                                att_1.value = 117
                                         if No_Weapon_Shop == "Goon":
-                                                att_1.value = 0
-                                if att_1.name == "Sphinx_Question_Shops_9":
+                                                att_1.value = 110
+                                if att_1.name == "Sphinx_Question_Shops_Right_7":
                                         if No_Weapon_Shop == "Fell":
-                                                att_1.value = 101
+                                                att_1.value = 105
                                         if No_Weapon_Shop == "Bach":
+                                                att_1.value = 115
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 103
+                                if att_1.name == "Sphinx_Question_Shops_Right_8":
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 109
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 32
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 108
+                                if att_1.name == "Sphinx_Question_Shops_Right_9":
+                                        if No_Weapon_Shop == "Fell":
                                                 att_1.value = 111
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 32
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 101
+
+                                if att_1.name == "Sphinx_Question_Shops_Wrong1_1":
                                         if No_Weapon_Shop == "Goon":
                                                 att_1.value = 70
-                                if att_1.name == "Sphinx_Question_Shops_10":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 0
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 0
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 101
-                                if att_1.name == "Sphinx_Question_Shops_11":
                                         if No_Weapon_Shop == "Fell":
                                                 att_1.value = 66
                                         if No_Weapon_Shop == "Bach":
                                                 att_1.value = 71
+                                if att_1.name == "Sphinx_Question_Shops_Wrong1_2":
                                         if No_Weapon_Shop == "Goon":
-                                                att_1.value = 108
-                                if att_1.name == "Sphinx_Question_Shops_12":
+                                                att_1.value = 101
                                         if No_Weapon_Shop == "Fell":
                                                 att_1.value = 97
                                         if No_Weapon_Shop == "Bach":
                                                 att_1.value = 111
+                                if att_1.name == "Sphinx_Question_Shops_Wrong1_3":
                                         if No_Weapon_Shop == "Goon":
-                                                att_1.value = 105
-                                if att_1.name == "Sphinx_Question_Shops_13":
+                                                att_1.value = 108
                                         if No_Weapon_Shop == "Fell":
                                                 att_1.value = 99
                                         if No_Weapon_Shop == "Bach":
                                                 att_1.value = 111
+                                if att_1.name == "Sphinx_Question_Shops_Wrong1_4":
                                         if No_Weapon_Shop == "Goon":
-                                                att_1.value = 115
-                                if att_1.name == "Sphinx_Question_Shops_14":
+                                                att_1.value = 105
                                         if No_Weapon_Shop == "Fell":
                                                 att_1.value = 99
                                         if No_Weapon_Shop == "Bach":
                                                 att_1.value = 110
+                                if att_1.name == "Sphinx_Question_Shops_Wrong1_5":
                                         if No_Weapon_Shop == "Goon":
                                                 att_1.value = 115
-                                if att_1.name == "Sphinx_Question_Shops_15":
                                         if No_Weapon_Shop == "Fell":
                                                 att_1.value = 104
                                         if No_Weapon_Shop == "Bach":
                                                 att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Shops_Wrong1_6":
                                         if No_Weapon_Shop == "Goon":
-                                                att_1.value = 105
-                                if att_1.name == "Sphinx_Question_Shops_16":
+                                                att_1.value = 115
                                         if No_Weapon_Shop == "Fell":
                                                 att_1.value = 117
                                         if No_Weapon_Shop == "Bach":
                                                 att_1.value = 110
+                                if att_1.name == "Sphinx_Question_Shops_Wrong1_7":
                                         if No_Weapon_Shop == "Goon":
-                                                att_1.value = 109
-                                if att_1.name == "Sphinx_Question_Shops_17":
+                                                att_1.value = 105
                                         if No_Weapon_Shop == "Fell":
                                                 att_1.value = 115
                                         if No_Weapon_Shop == "Bach":
                                                 att_1.value = 103
+                                if att_1.name == "Sphinx_Question_Shops_Wrong1_8":
                                         if No_Weapon_Shop == "Goon":
-                                                att_1.value = 111
-                                if att_1.name == "Sphinx_Question_Shops_18":
+                                                att_1.value = 109
                                         if No_Weapon_Shop == "Fell":
-                                                att_1.value = 0
+                                                att_1.value = 32
                                         if No_Weapon_Shop == "Bach":
                                                 att_1.value = 108
+                                if att_1.name == "Sphinx_Question_Shops_Wrong1_9":
                                         if No_Weapon_Shop == "Goon":
-                                                att_1.value = 0
-                                if att_1.name == "Sphinx_Question_Shops_19":
+                                                att_1.value = 111
                                         if No_Weapon_Shop == "Fell":
+                                                att_1.value = 32
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 101
+
+                                if att_1.name == "Sphinx_Question_Shops_Wrong2_1":
+                                        if No_Weapon_Shop == "Bach":
                                                 att_1.value = 70
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 101
                                         if No_Weapon_Shop == "Goon":
-                                                att_1.value = 71
-                                if att_1.name == "Sphinx_Question_Shops_20":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 101
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 0
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 111
-                                if att_1.name == "Sphinx_Question_Shops_21":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 108
-                                        if No_Weapon_Shop == "Bach":
                                                 att_1.value = 66
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 111
-                                if att_1.name == "Sphinx_Question_Shops_22":
                                         if No_Weapon_Shop == "Fell":
-                                                att_1.value = 105
+                                                att_1.value = 71
+                                if att_1.name == "Sphinx_Question_Shops_Wrong2_2":
                                         if No_Weapon_Shop == "Bach":
-                                                att_1.value = 97
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 110
-                                if att_1.name == "Sphinx_Question_Shops_23":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 99
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 105
-                                if att_1.name == "Sphinx_Question_Shops_24":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 99
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 110
-                                if att_1.name == "Sphinx_Question_Shops_25":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 105
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 104
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 103
-                                if att_1.name == "Sphinx_Question_Shops_26":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 109
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 117
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 108
-                                if att_1.name == "Sphinx_Question_Shops_27":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 111
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Goon":
                                                 att_1.value = 101
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 97
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 111
+                                if att_1.name == "Sphinx_Question_Shops_Wrong2_3":
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 108
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 99
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 111
+                                if att_1.name == "Sphinx_Question_Shops_Wrong2_4":
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 105
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 99
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 110
+                                if att_1.name == "Sphinx_Question_Shops_Wrong2_5":
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 115
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 104
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 105
+                                if att_1.name == "Sphinx_Question_Shops_Wrong2_6":
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 115
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 117
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 110
+                                if att_1.name == "Sphinx_Question_Shops_Wrong2_7":
+                                        if No_Weapon_Shop == "Bach":
+                                                att_1.value = 105
+                                        if No_Weapon_Shop == "Goon":
+                                                att_1.value = 115
+                                        if No_Weapon_Shop == "Fell":
+                                                att_1.value = 103
+
+                                                
+
+                                
                                                         
                                 
 
