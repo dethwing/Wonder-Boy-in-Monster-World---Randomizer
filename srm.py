@@ -337,193 +337,324 @@ def generateRom():
                 try:
                         file = open(newRom, "r+b")
 
-                        All_Checks = ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","Ocarina_Reward","Firestorm",
-                              "Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop","bat_reward","Full_Health_1",
-                              "Quake","Elixer_Chests","Hard_Shield","Trident","First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
+                        Exits = ["Start","Alsedo_Inn","Pura_Inn","Begonia_Inn","Childam_Inn","Lilly_Inn",
+                                 "Alsedo_Tele_Bot","Alsedo_Tele_Top",
+                                 "Pura_Castle_Out","Pura_Castle_In","Sewers_Start_Out","Sewers_Start_In",
+                                 "Cave_to_Myc","Myconid","Exit_Myc_Left","Exit_Myc_Right","Alsedo_Forest",
+                                 "Sewers_Waterfall","Tower_Bot","Tower_Top_Outside","Tower_Top_Inside",
+                                 "Tower_Mid_Inside","Pura_To_Tower","Lilly_From_Pura","Lilly_To_Pura_Inside",
+                                 "Pura_To_Lilly_Inside","Pura_From_Lilly","Exit_Temple","Enter_Temple",
+                                 "Begonia_Elder_Out","Begonia_Elder_In","Begonia_Pura_Out","Begonia_Pura_In",
+                                 "Pura_Begonia_Out","Pura_Begonia_In","Pura_Childam_Out","Pura_Childam_In",
+                                 "Chil_Pura_In","Chil_Pura_Out","To_Sphinx","From_StarKey",
+                                 "Volcano_In","Volcano_Out"
+                                 
+                                 
+                                 ]
+
+                        Entrances = ["Start",
+                                     "Alsedo","Pura","Begonia","Childam","Lilly",
+                                     "To_Alsedo_Forest","To_Myc",
+                                     "To_Sphinx","From_StarKey"]
+
+
+                        while len(Entrances) > 0:
+                                if "Myconid" in Exits:
+                                        Random_Exit = "Myconid"
+                                elif "To_Sphinx" in Exits:
+                                        Random_Exit = "To_Sphinx"
+                                else:
+                                        Random_Exit = random.choice(Exits)
+                                        
+                                Random_Entrance = random.choice(Entrances)
+
+
+                                if Random_Entrance == "Start":
+                                        Name_1 = "Start_Game1"
+                                        Name_2 = "Start_Game2"
+                                elif Random_Entrance == "Alsedo":
+                                        Name_1 = "Alsedo_Inn1"
+                                        Name_2 = "Alsedo_Inn2"
+                                elif Random_Entrance == "Pura":
+                                        Name_1 = "Pura_Inn1"
+                                        Name_2 = "Pura_Inn2"
+                                elif Random_Entrance == "Begonia":
+                                        Name_1 = "Begonia_Inn1"
+                                        Name_2 = "Begonia_Inn2"
+                                elif Random_Entrance == "Childam":
+                                        Name_1 = "Childam_Inn1"
+                                        Name_2 = "Childam_Inn2"
+                                elif Random_Entrance == "Lilly":
+                                        Name_1 = "Lilly_Inn1"
+                                        Name_2 = "Lilly_Inn2"
+                                elif Random_Entrance == "To_Alsedo_Forest":
+                                        Name_1 = "To_Alsedo_Forest1"
+                                        Name_2 = "To_Alsedo_Forest2"
+                                elif Random_Entrance == "To_Myc":
+                                        Name_1 = "To_Myc1"
+                                        Name_2 = "To_Myc2"
+                                elif Random_Entrance == "To_Sphinx":
+                                        Name_1 = "To_Sphinx1"
+                                        Name_2 = "To_Sphinx2"
+                                elif Random_Entrance == "From_StarKey":
+                                        Name_1 = "From_StarKey1"
+                                        Name_2 = "From_StarKey2" 
+                                else:
+                                        print("ERROR!")
+
+
+                                if Random_Exit == "Start":
+                                        Value_1 = 1
+                                        Value_2 = 20
+                                elif Random_Exit == "Alsedo_Inn":
+                                        Value_1 = 3
+                                        Value_2 = 32
+                                elif Random_Exit == "Pura_Inn":
+                                        Value_1 = 3
+                                        Value_2 = 40
+                                elif Random_Exit == "Begonia_Inn":
+                                        Value_1 = 3
+                                        Value_2 = 68
+                                elif Random_Exit == "Childam_Inn":
+                                        Value_1 = 1
+                                        Value_2 = 218
+                                elif Random_Exit == "Lilly_Inn":
+                                        Value_1 = 3
+                                        Value_2 = 48
+                                elif Random_Exit == "Pura_Castle_Out":
+                                        Value_1 = 1
+                                        Value_2 = 28
+                                elif Random_Exit == "Pura_Castle_In":
+                                        Value_1 = 1
+                                        Value_2 = 150
+                                elif Random_Exit == "Alsedo_Tele_Bot":
+                                        Value_1 = 1
+                                        Value_2 = 34
+                                elif Random_Exit == "Alsedo_Tele_Top":
+                                        Value_1 = 1
+                                        Value_2 = 40
+                                        
+                                elif Random_Exit == "Sewers_Start_Out":
+                                        Value_1 = 1
+                                        Value_2 = 46
+                                elif Random_Exit == "Sewers_Start_In":
+                                        Value_1 = 1
+                                        Value_2 = 64
+                                elif Random_Exit == "Cave_to_Myc":
+                                        Value_1 = 1
+                                        Value_2 = 70
+                                elif Random_Exit == "Myconid":
+                                        Value_1 = 1
+                                        Value_2 = 76
+                                elif Random_Exit == "Exit_Myc_Left":
+                                        Value_1 = 1
+                                        Value_2 = 88
+                                elif Random_Exit == "Exit_Myc_Right":
+                                        Value_1 = 1
+                                        Value_2 = 82
+                                elif Random_Exit == "Alsedo_Forest":
+                                        Value_1 = 1
+                                        Value_2 = 94
+                                elif Random_Exit == "Sewers_Waterfall":
+                                        Value_1 = 1
+                                        Value_2 = 100
+                                elif Random_Exit == "Tower_Bot":
+                                        Value_1 = 1
+                                        Value_2 = 70
+                                elif Random_Exit == "Tower_Top_Outside":
+                                        Value_1 = 1
+                                        Value_2 = 106
+                                        
+                                elif Random_Exit == "Tower_Top_Inside":
+                                        Value_1 = 1
+                                        Value_2 = 124
+                                elif Random_Exit == "Tower_Mid_Inside":
+                                        Value_1 = 1
+                                        Value_2 = 118
+                                elif Random_Exit == "Pura_To_Tower":
+                                        Value_1 = 1
+                                        Value_2 = 144
+                                elif Random_Exit == "Lilly_From_Pura":
+                                        Value_1 = 1
+                                        Value_2 = 164
+                                elif Random_Exit == "Lilly_To_Pura_Inside":
+                                        Value_1 = 1
+                                        Value_2 = 176
+                                elif Random_Exit == "Pura_To_Lilly_Inside":
+                                        Value_1 = 1
+                                        Value_2 = 182
+                                elif Random_Exit == "Pura_From_Lilly":
+                                        Value_1 = 1
+                                        Value_2 = 130
+                                elif Random_Exit == "Exit_Temple":
+                                        Value_1 = 1
+                                        Value_2 = 170
+                                elif Random_Exit == "Enter_Temple":
+                                        Value_1 = 1
+                                        Value_2 = 188
+                                elif Random_Exit == "Begonia_Elder_Out":
+                                        Value_1 = 2
+                                        Value_2 = 66
+                                        
+                                elif Random_Exit == "Begonia_Elder_In":
+                                        Value_1 = 2
+                                        Value_2 = 72
+                                elif Random_Exit == "Begonia_Pura_Out":
+                                        Value_1 = 2
+                                        Value_2 = 78
+                                elif Random_Exit == "Begonia_Pura_In":
+                                        Value_1 = 2
+                                        Value_2 = 84
+                                elif Random_Exit == "Pura_Begonia_Out":
+                                        Value_1 = 2
+                                        Value_2 = 90
+                                elif Random_Exit == "Pura_Begonia_In":
+                                        Value_1 = 1
+                                        Value_2 = 156
+                                elif Random_Exit == "Pura_Childam_Out":
+                                        Value_1 = 2
+                                        Value_2 = 96
+                                elif Random_Exit == "Pura_Childam_In":
+                                        Value_1 = 2
+                                        Value_2 = 102
+                                elif Random_Exit == "Chil_Pura_In":
+                                        Value_1 = 2
+                                        Value_2 = 108
+                                elif Random_Exit == "Chil_Pura_Out":
+                                        Value_1 = 1
+                                        Value_2 = 136
+                                elif Random_Exit == "To_Sphinx":
+                                        Value_1 = 2
+                                        Value_2 = 60
+                                        
+                                elif Random_Exit == "From_StarKey":
+                                        Value_1 = 4
+                                        Value_2 = 10
+                                elif Random_Exit == "Volcano_Out":
+                                        Value_1 = 2
+                                        Value_2 = 234
+                                elif Random_Exit == "Volcano_In":
+                                        Value_1 = 2
+                                        Value_2 = 240
+
+
+
+                                else:
+                                        print("ERROR!")
+                                        print(Random_Exit)                                        
+
+                                for att in Attributes:
+                                        if att.name == Name_1:
+                                                att.value = Value_1
+                                        if att.name == Name_2:
+                                                att.value = Value_2
+
+                                Exits.remove(Random_Exit)
+                                Entrances.remove(Random_Entrance)
+
+
+
+                        ### CURRENT COUNT = 105 ###
+
+                        
+                        All_Checks = [
+
+                              "Init_Weapon","Init_Boots","Init_Armor","Init_Heart1","Init_Heart2","Init_Heart3","elder_elixer","elder_firestorm","leather_boots","small_spear",
+                              
+                              "chain_mail","wood_shield","medicine","Ocarina_Reward","Firestorm","Heart_Chest","Hard_Armor","Knight_Sword","excalibur","steel_shield",
+                              
+                              "Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward","Elixer_Chests","Hard_Shield",
+                              
+                              "Trident","First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
                               "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1","Water_Money_Chest3_Item2",
-                              "Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2",
-                              "Water_Money_Chest4_Item3","Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7",
-                              "Water_Money_Chest4_Item8","Pygmy_Armor","Pygmy_Sword","Amulet","Thunder","Shield_Magic_Chest","excalibur","steel_shield","Ceramic_Boots",
-                              "Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water","Pygmy_Boots","Blue_Gem","Gold_Gem","Oasis_Boots","Return","Sun_Key","Moon_Key",
-                              "Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key","Pygmy_Shield","Power","Charm_Guy_1",
-                              "Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Old_Axe","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Pyramid_Item_1",
-                              "Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6",
-                              "Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest","Fire_Urn","Legend_Sword","Legend_Boots","Legend_Shield","Legend_Armor",
-                                      "Heart_Chest","Big_Yeti","Left_Yeti","Right_Yeti"]
+                              
+                              "Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Pygmy_Armor","Pygmy_Sword",
+                              "Thunder","Amulet","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
+                              
+                              "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
+                              "Oasis_Boots","Return","Full_Health_1","Quake","Battle_Spear",
+                              
+                              "Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
 
-                        Num_Legend_Itms = 0
+                              "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key",
 
-                        No_Weapon_Shop = random.choice(["Fell","Bach","Goon"])
+                              "Pygmy_Shield","Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword","Charm_Guy_1","Charm_Guy_2",
 
-                        
-                        Remaining_Items = [    1, 2,    4,    6,       9,
-                                         10,11,12,13,         17,18,19,
-                                         20,21,22,      25,      28,
-                                               32,33,34,35,36,
-                                               32,32,33,33,34,34,
-                                               35,35,36,36,
-                                               42,42,43,44,45,
-                                        8,16,24
-                                               
-                                        ]
+                              "Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
+                                                                
+                              "Pyramid_Item_8","Charmstone_Chest","Legend_Boots","Legend_Shield","Legend_Armor"
+                                      ]
 
-                        Weapons = [1,2,4,6]
-                        Non_Weapons = [9,10,11,12,13,         17,18,19,
-                                      20,21,22,      25,      28,
-                                      32,33,34,35,36,                                               
-                                      42,43,44,45,
-                                       8,16,24]
 
-                        if No_Weapon_Shop == "Fell":
-                                for att in Attributes:
-                                        if att.name == "medicine":
-                                                att.value = random.choice(Non_Weapons)
-                                                #All_Checks.remove("medicine")
-                                                Remaining_Items.remove(att.value)
-                                                Non_Weapons.remove(att.value)
+                        All_Items = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31, ## 32 Equipment ##
 
-                                        if att.name == "Knight_Sword":
-                                                att.value = random.choice(Weapons)
-                                                #All_Checks.remove("Knight_Sword")
-                                                Remaining_Items.remove(att.value)
-                                                Weapons.remove(att.value)
-                                                
-                                        if att.name == "Hard_Armor":
-                                                att.value = random.choice(Non_Weapons)
-                                                #All_Checks.remove("Hard_Armor")
-                                                Remaining_Items.remove(att.value)
-                                                Non_Weapons.remove(att.value)
-                                                                          
-                                        if att.name == "Shell_Shield":
-                                                att.value = random.choice(Weapons)
-                                                #All_Checks.remove("Shell_Shield")
-                                                Remaining_Items.remove(att.value)
-                                                Weapons.remove(att.value)
+                                     32,32,32, 33,33,33 ,34,34,34, 35,35,35, 36,36,37, ## 15 Spells ##
 
-                                        if att.name == "Steel_Armor":
-                                                att.value = random.choice(Non_Weapons)
-                                                #All_Checks.remove("Steel_Armor")
-                                                Remaining_Items.remove(att.value)
-                                                Non_Weapons.remove(att.value)
+                                     41,41,41,41 ,42,42, 43,44,45,46, ## 4 Charms, 2 Elixers, 4 Health = 10 ##
 
-                        if No_Weapon_Shop == "Bach":
-                                for att in Attributes:
-                                        if att.name == "medicine":
-                                                att.value = random.choice(Weapons)
-                                                #All_Checks.remove("medicine")
-                                                Remaining_Items.remove(att.value)
-                                                Weapons.remove(att.value)
-                                                        
-                                        if att.name == "Shell_Shield":
-                                                att.value = random.choice(Weapons)
-                                                #All_Checks.remove("Shell_Shield")
-                                                Remaining_Items.remove(att.value)
-                                                Weapons.remove(att.value)
+                                     40,49,50,51,52, 53,54,55,57,58, ## 10 Progression Items ###
 
-                                        if att.name == "Steel_Armor":
-                                                att.value = random.choice(Non_Weapons)
-                                                #All_Checks.remove("Steel_Armor")
-                                                Remaining_Items.remove(att.value)
-                                                Non_Weapons.remove(att.value)
+                                     64,64,64,64,64, 64,64,64,64,64, 64,64,64,64, ## 14 Hearts ##
 
-                                        if att.name == "Knight_Sword":
-                                                att.value = random.choice(Non_Weapons)
-                                                #All_Checks.remove("Knight_Sword")
-                                                Remaining_Items.remove(att.value)
-                                                Non_Weapons.remove(att.value)
-                                                        
-                                        if att.name == "Hard_Armor":
-                                                att.value = random.choice(Non_Weapons)
-                                                #All_Checks.remove("Hard_Armor")
-                                                Remaining_Items.remove(att.value)
-                                                Non_Weapons.remove(att.value)
+                                     128,130,132, 134,136,138, 140,142,144, 146,148,150, 152,154,156, ### 15 Money, Health, Magic Refills ###
 
-                        if No_Weapon_Shop == "Goon":
-                                for att in Attributes:
-                                        if att.name == "medicine":
-                                                att.value = random.choice(Weapons)
-                                                #All_Checks.remove("medicine")
-                                                Remaining_Items.remove(att.value)
-                                                Weapons.remove(att.value)
-                                        if att.name == "Knight_Sword":
-                                                att.value = random.choice(Weapons)
-                                                #All_Checks.remove("Knight_Sword")
-                                                Remaining_Items.remove(att.value)
-                                                Weapons.remove(att.value)
-                                        if att.name == "Hard_Armor":
-                                                att.value = random.choice(Non_Weapons)
-                                                #All_Checks.remove("Hard_Armor")
-                                                Remaining_Items.remove(att.value)
-                                                Non_Weapons.remove(att.value)
-                                        if att.name == "Shell_Shield":
-                                                att.value = random.choice(Non_Weapons)
-                                                #All_Checks.remove("Shell_Shield")
-                                                Remaining_Items.remove(att.value)
-                                                Non_Weapons.remove(att.value)
-                                        if att.name == "Steel_Armor":
-                                                att.value = random.choice(Non_Weapons)
-                                                #All_Checks.remove("Steel_Armor")
-                                                Remaining_Items.remove(att.value)
-                                                Non_Weapons.remove(att.value)
+                                     146,146,146,148,148,148,150,150,150 ### 9 Extra Money ###
+
+                                     ]
 
                         
-
-                        Can_Reach = ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","Ocarina_Reward"]
+                        print(len(All_Checks))
+                        print(len(All_Items))
                         
+                        Can_Reach = ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine","Ocarina_Reward"]
+
                         Random = random.choice(All_Checks)
-                        while Random in ["Legend_Shield","Legend_Armor","Legend_Boots"] :                                
+                        
+                        while Random in ["Legend_Shield","Legend_Armor","Legend_Boots",
+                                         "Init_Boots","Init_Weapon","Init_Armor",
+                                         "Init_Heart1","Init_Heart2","Init_Heart3"] :                                
                                 Random = random.choice(All_Checks)
-                                
+                                      
                         for att in Attributes:
                                 if att.name == Random:
                                         att.value = 0
+                                        
+                                        
+                        All_Checks.remove(Random)    
+                        All_Items.remove(0)
                         
-                        All_Checks.remove(Random)
                         if Random in Can_Reach:
                                 Can_Reach.remove(Random)
-                        
-                        Random = random.choice(Can_Reach)                        
-                        for att in Attributes:
-                                if att.name == Random:
-                                        att.value = 40                                
-                        All_Checks.remove(Random)
-                        Can_Reach.remove(Random)
-                        
-                        Can_Reach = Can_Reach + ["Heart_Chest","Firestorm","Charmstone_Purchase","Potion","Ladder_Boots",
-                                                 "Full_Health_1"]
 
                         Random = random.choice(Can_Reach)
+                                
                         for att in Attributes:
                                 if att.name == Random:
-                                        att.value = 29                                
+                                        att.value = 40
+                                        
                         All_Checks.remove(Random)
                         Can_Reach.remove(Random)
+                        All_Items.remove(40)
+                        
+                        
+                        Can_Reach = Can_Reach + ["Heart_Chest","Firestorm","Full_Health_1","Hard_Armor","Knight_Sword","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                 "Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward"]
 
-                        Can_Reach = Can_Reach + ["Marine_Boots","Shield_Magic_Shop","bat_reward"]
-
+                        
                         Random = random.choice(Can_Reach)
                         for att in Attributes:
                                 if att.name == Random:
                                         att.value = 37                                
                         All_Checks.remove(Random)
                         Can_Reach.remove(Random)
+                        All_Items.remove(37)
 
-
-                        Progression_Items = [
-                                             7,15,23,31,
-                                             5,26,27,41,41,41,
-                                             49,50,
-                                             51,52,53,
-                                             54,55,
-                                             57,58                                             
-                                             ]
-                        
                         Quake = 0
                         Elixer = 0
                         Poseidon = 0
                         Well = 0
                         Pyramid_Main = 0
-                        Pyramid_Extra = 0
+                        Pyramid_Extra = 0 
                         Moon = 0
                         Star = 0
                         Bomber = 0
@@ -533,12 +664,33 @@ def generateRom():
                         Sky = 0
                         Charm = 0
 
+                        Progression_Items = [
+                                             7,15,23,31,
+                                             5,26,27,41,41,41,
+                                             49,50,
+                                             51,52,53,
+                                             54,55,
+                                             57,58                                             
+                                             ]
+
+                        
+                        Long_Checks = ["Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
+                                       "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest",
+                                       "Oasis_Boots","Oasis_Boots","Oasis_Boots","Oasis_Boots","Oasis_Boots","Oasis_Boots",
+                                       "Fire_Urn","Fire_Urn","Fire_Urn"]
+                        
+                        Random_Long_Check = random.choice(Long_Checks)
                         
                         
                         while len(Progression_Items) > 0:
-                                
+
+                                if Random_Long_Check in Can_Reach:
+                                        Random_Check = Random_Long_Check
+
+                                else:                                
+                                        Random_Check = random.choice(Can_Reach)
+                                        
                                 Random_Item = random.choice(Progression_Items)
-                                Random_Check = random.choice(Can_Reach)
 
                                                 
                                 if Random_Item in [49, 50, 51, 52, 53, 54, 55, 57, 58]:
@@ -556,7 +708,8 @@ def generateRom():
                                                 
                                 All_Checks.remove(Random_Check)
                                 Can_Reach.remove(Random_Check)
-                                Progression_Items.remove(Random_Item)
+                                Progression_Items.remove(Random_Item)                                
+                                All_Items.remove(Random_Item)
 
                                 if Random_Item == 51:
                                         if Random_Check in ["First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
@@ -669,17 +822,274 @@ def generateRom():
                                         if Sky == 7:
                                                 Can_Reach = Can_Reach + ["Legend_Boots","Legend_Shield","Legend_Armor"]
 
-                        Trouble_Items = [64,64,64,64,64,64,64,64,64,64,
-                                         64,   
-                                         128,130,132,134,136,138,
-                                         140,142,144,146,148,150,
-                                         152,154,156,
-                                         
-                                         146,146,148,148,148,150,150,150]
+
+                        Healing_Items = [42,46]
                         
-                        while len(Trouble_Items) > 0:
-                                Random_Item = random.choice(Trouble_Items)
+                        while len(Healing_Items) > 0:
+                                Random_Item = random.choice(Healing_Items)
                                 Random_Check = random.choice(All_Checks)
+                                        
+                                while Random_Check not in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
+                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
+                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
+                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
+                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop"
+                                                                  ]:
+                                                Random_Check = random.choice(All_Checks)
+                                for att in Attributes:
+                                        if att.name == Random_Check:
+                                                att.value = Random_Item
+                                                
+                                Healing_Items.remove(Random_Item)
+                                All_Checks.remove(Random_Check)                        
+                                All_Items.remove(Random_Item)
+
+                        Other_Healing = [42,43,44,45]
+                        
+                        while len(Other_Healing) > 0:
+                                Random_Item = random.choice(Other_Healing)
+                                Random_Check = random.choice(All_Checks)
+                                        
+                                while Random_Check  in ["Init_Weapon","Init_Boots","Init_Armor","Init_Heart1","Init_Heart2","Init_Heart3"]:
+                                                Random_Check = random.choice(All_Checks)
+                                                
+                                for att in Attributes:
+                                        if att.name == Random_Check:
+                                                att.value = Random_Item
+                                                
+                                Other_Healing.remove(Random_Item)
+                                All_Checks.remove(Random_Check)                        
+                                All_Items.remove(Random_Item)
+
+
+
+                        for att in Attributes:
+                                if att.name == "Init_Boots":
+                                        
+                                        Random_Boots = random.choice([24,25,28,29,30])
+
+                                        
+                                        if Random_Boots == 24:                                               
+                                                att.value = 1
+                                        if Random_Boots == 25:                                               
+                                                att.value = 2
+                                        if Random_Boots == 28:                                               
+                                                att.value = 16
+                                        if Random_Boots == 29:                                               
+                                                att.value = 32
+                                        if Random_Boots == 30:                                               
+                                                att.value = 64
+
+                                        All_Items.remove(Random_Boots)
+                                        All_Checks.remove("Init_Boots")
+                                                                
+                                                
+                                if att.name == "Init_Armor":
+                                        
+                                        Random_Armor = random.choice([8,9,10,11,12,13,14])
+
+                                        
+                                        if Random_Armor == 8:                                               
+                                                att.value = 1
+                                        if Random_Armor == 9:                                               
+                                                att.value = 2
+                                        if Random_Armor == 10:                                               
+                                                att.value = 4
+                                        if Random_Armor == 11:                                               
+                                                att.value = 8
+                                        if Random_Armor == 12:                                               
+                                                att.value = 16
+                                        if Random_Armor == 13:                                               
+                                                att.value = 32
+                                        if Random_Armor == 14:                                               
+                                                att.value = 64
+
+
+                                        All_Items.remove(Random_Armor)
+                                        All_Checks.remove("Init_Armor")
+                                                
+                                if att.name == "Init_Weapon":
+
+                                       Random_Weapon = random.choice([1,2,3,4,6])
+                                                
+                                       if Random_Weapon == 1:                                               
+                                               att.value = 2
+                                       if Random_Weapon == 2:                                               
+                                               att.value = 4
+                                       if Random_Weapon == 3:                                               
+                                               att.value = 8
+                                       if Random_Weapon == 4:                                               
+                                               att.value = 16
+                                       if Random_Weapon == 6:                                               
+                                               att.value = 64
+
+                                       All_Items.remove(Random_Weapon)
+                                       All_Checks.remove("Init_Weapon")
+
+                        
+
+
+                        Starting_Items = ["Init_Heart1","Init_Heart2","Init_Heart3"]
+
+                        while len(Starting_Items) > 0:
+                                Starter = random.choice(Starting_Items)
+                                Random_Item = random.choice(All_Items)
+
+
+                                while Random_Item > 150:
+                                        Random_Item = random.choice(All_Items)        
+
+                                if Random_Item < 8:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Weapon":                                                        
+                                                        if Random_Item == 1:                                               
+                                                                att.value = att.value+2
+                                                        if Random_Item == 2:                                               
+                                                               att.value = att.value+4
+                                                        if Random_Item == 3:                                               
+                                                               att.value = att.value+8
+                                                        if Random_Item == 4:                                               
+                                                               att.value = att.value+16
+                                                        if Random_Item == 6:                                               
+                                                               att.value = att.value+64
+
+                                        
+
+                                elif Random_Item < 15:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Armor":
+                                                        if Random_Item == 8:                                               
+                                                                att.value = att.value+1
+                                                        if Random_Item == 9:                                               
+                                                                att.value = att.value+2
+                                                        if Random_Item == 10:                                               
+                                                               att.value = att.value+4
+                                                        if Random_Item == 11:                                               
+                                                               att.value = att.value+8
+                                                        if Random_Item == 12:                                               
+                                                               att.value = att.value+16
+                                                        if Random_Item == 13:                                               
+                                                               att.value = att.value+32
+                                                        if Random_Item == 14:                                               
+                                                               att.value = att.value+64
+
+
+
+                                elif Random_Item < 24:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Shield":
+                                                        if Random_Item == 16:                                               
+                                                                att.value = att.value+1
+                                                        if Random_Item == 17:                                               
+                                                                att.value = att.value+2
+                                                        if Random_Item == 18:                                               
+                                                               att.value = att.value+4
+                                                        if Random_Item == 19:                                               
+                                                               att.value = att.value+8
+                                                        if Random_Item == 20:                                               
+                                                               att.value = att.value+16
+                                                        if Random_Item == 21:                                               
+                                                               att.value = att.value+32
+                                                        if Random_Item == 22:                                               
+                                                               att.value = att.value+64
+
+
+
+                                elif Random_Item < 32:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Boots":
+                                                        if Random_Item == 24:                                               
+                                                                att.value = att.value+1
+                                                        if Random_Item == 25:                                               
+                                                                att.value = att.value+2
+                                                                
+                                                        if Random_Item == 28:                                               
+                                                               att.value = att.value+16
+                                                        if Random_Item == 29:                                               
+                                                               att.value = att.value+32
+                                                        if Random_Item == 30:                                               
+                                                               att.value = att.value+64
+
+
+
+                                elif Random_Item == 32:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Fire_Quake":
+                                                        att.value = att.value + 48
+                                        
+                                elif Random_Item == 33:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Fire_Quake":
+                                                        att.value = att.value + 3
+                                        
+                                elif Random_Item == 34:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Thunder_Power":
+                                                        att.value = att.value + 48
+                                        
+                                elif Random_Item == 35:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Thunder_Power":
+                                                        att.value = att.value + 3
+                                        
+                                elif Random_Item == 36:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Shield_Return":
+                                                        att.value = att.value + 32
+
+                                elif Random_Item == 64:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Hearts":
+                                                        att.value = att.value + 1
+
+                                elif Random_Item in [128,130,132]:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Money":
+                                                        att.value = att.value + 10
+                                                                    
+                                elif Random_Item in [134,136,138]:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Money":
+                                                        att.value = att.value + 50
+                                                        
+                                elif Random_Item in [140,142,144]:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Money":
+                                                        att.value = att.value + 100
+
+
+                                elif Random_Item in [146,148,150]:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Money2":
+                                                        att.value = att.value + 2
+
+
+                                        
+                                All_Items.remove(Random_Item)
+                                All_Checks.remove(Starter)
+                                Starting_Items.remove(Starter)
+
+                        Num_Legend_Itms = 0
+
+
+                                
+                
+                        
+                        while len(All_Checks) > 0:
+                                Random_Item = random.choice(All_Items)
+                                Random_Check = random.choice(All_Checks)
+
+                                if max(All_Items)>=64:
+                                
+                                        while(Random_Item)<64:
+                                                Random_Item = random.choice(All_Items)
+
+                                if Random_Item == 8 or Random_Item == 16 or Random_Item == 24:
+                                        if Random_Check == "Legend_Boots" or Random_Check == "Legend_Shield" or Random_Check == "Legend_Armor":
+                                                Num_Legend_Itms = Num_Legend_Itms + 1
+
+                                                
                                 if Random_Item > 70 :
                                         while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
                                                                   "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
@@ -697,62 +1107,21 @@ def generateRom():
                                                                   "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
                                                                   "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
                                                                   "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
-                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop",
+                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop"
                                                                   "elder_elixer","elder_firestorm",
                                                                   "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
                                                                   "Legend_Sword","Ocarina_Reward"]:
                                                 Random_Check = random.choice(All_Checks)
-
+                                
                                 for att in Attributes:
                                         if att.name == Random_Check:
                                                 att.value = Random_Item
                                                 
                                 All_Checks.remove(Random_Check)
-                                Trouble_Items.remove(Random_Item)
+                                All_Items.remove(Random_Item)
+                                
 
-                        Healing_Items = [42,46]
                         
-                        while len(Healing_Items) > 0:
-                                Random_Item = random.choice(Healing_Items)
-                                Random_Check = random.choice(All_Checks)
-                                while Random_Item == 42 and Random_Check == "elder_elixer":
-                                        Random_Item = random.choice(Healing_Items)
-                                        Random_Check = random.choice(All_Checks)
-                                        
-                                while Random_Check not in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
-                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
-                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
-                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
-                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
-                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop"
-                                                                  ]:
-                                                Random_Check = random.choice(All_Checks)
-                                for att in Attributes:
-                                        if att.name == Random_Check:
-                                                att.value = Random_Item
-                                                
-                                All_Checks.remove(Random_Check)
-                                Healing_Items.remove(Random_Item)
-                        
-                        
-                        
-                        while len(Remaining_Items) > 0:
-                                Random_Item = random.choice(Remaining_Items)
-                                Random_Check = random.choice(All_Checks)
-
-                                if Random_Item == 8 or Random_Item == 16 or Random_Item == 24:
-                                        if Random_Check == "Legend_Boots" or Random_Check == "Legend_Shield" or Random_Check == "Legend_Armor":
-                                                Num_Legend_Itms = Num_Legend_Itms + 1
-                                while Random_Item >= 42 and Random_Item <= 45 and Random_Check == "elder_elixer":
-                                        Random_Item = random.choice(Remaining_Items)
-                                        Random_Check = random.choice(All_Checks)
-                                        
-                                for att in Attributes:
-                                        if att.name == Random_Check:
-                                                att.value = Random_Item
-                                                
-                                All_Checks.remove(Random_Check)
-                                Remaining_Items.remove(Random_Item)
 
                         Sphinx_Question_One_Possible =  [ 0, 1, 2,    4, 5, 6, 7, 8, 9,
                                                          10,11,12,13,   15,16,17,18,19,
@@ -1539,193 +1908,6 @@ def generateRom():
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 32
 
-                                if att_1.name == "Sphinx_Question_Shops_Right_1":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 70
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 66
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 71
-                                if att_1.name == "Sphinx_Question_Shops_Right_2":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 101
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 97
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 111
-                                if att_1.name == "Sphinx_Question_Shops_Right_3":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 108
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 99
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 111
-                                if att_1.name == "Sphinx_Question_Shops_Right_4":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 105
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 99
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 110
-                                if att_1.name == "Sphinx_Question_Shops_Right_5":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 104
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 105
-                                if att_1.name == "Sphinx_Question_Shops_Right_6":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 117
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 110
-                                if att_1.name == "Sphinx_Question_Shops_Right_7":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 105
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 103
-                                if att_1.name == "Sphinx_Question_Shops_Right_8":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 109
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 32
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 108
-                                if att_1.name == "Sphinx_Question_Shops_Right_9":
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 111
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 32
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 101
-
-                                if att_1.name == "Sphinx_Question_Shops_Wrong1_1":
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 70
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 66
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 71
-                                if att_1.name == "Sphinx_Question_Shops_Wrong1_2":
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 101
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 97
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 111
-                                if att_1.name == "Sphinx_Question_Shops_Wrong1_3":
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 108
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 99
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 111
-                                if att_1.name == "Sphinx_Question_Shops_Wrong1_4":
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 105
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 99
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 110
-                                if att_1.name == "Sphinx_Question_Shops_Wrong1_5":
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 104
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 105
-                                if att_1.name == "Sphinx_Question_Shops_Wrong1_6":
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 117
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 110
-                                if att_1.name == "Sphinx_Question_Shops_Wrong1_7":
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 105
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 103
-                                if att_1.name == "Sphinx_Question_Shops_Wrong1_8":
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 109
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 32
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 108
-                                if att_1.name == "Sphinx_Question_Shops_Wrong1_9":
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 111
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 32
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 101
-
-                                if att_1.name == "Sphinx_Question_Shops_Wrong2_1":
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 70
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 66
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 71
-                                if att_1.name == "Sphinx_Question_Shops_Wrong2_2":
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 101
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 97
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 111
-                                if att_1.name == "Sphinx_Question_Shops_Wrong2_3":
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 108
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 99
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 111
-                                if att_1.name == "Sphinx_Question_Shops_Wrong2_4":
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 105
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 99
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 110
-                                if att_1.name == "Sphinx_Question_Shops_Wrong2_5":
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 104
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 105
-                                if att_1.name == "Sphinx_Question_Shops_Wrong2_6":
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 117
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 110
-                                if att_1.name == "Sphinx_Question_Shops_Wrong2_7":
-                                        if No_Weapon_Shop == "Bach":
-                                                att_1.value = 105
-                                        if No_Weapon_Shop == "Goon":
-                                                att_1.value = 115
-                                        if No_Weapon_Shop == "Fell":
-                                                att_1.value = 103
-
-                                                
-
-                                
-                                                        
-                                
-
-
-                                                              
-                                                        
                                 
                         for att in Attributes:
                                 if att.name == "Sphinx_Question_One_Correct":
