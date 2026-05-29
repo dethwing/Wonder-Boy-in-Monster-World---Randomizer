@@ -16,7 +16,7 @@ You can find his work here : https://github.com/PaddyCo/mw3rando
 
 With that out of the way, here's what this randomizer does and does not do.
 
-There are currently 96 objcets randomized in the "Pool". They are :
+There are currently 105 objcets randomized in the "Pool". They are :
 
 (1). All 25 Shop Items. Non-Equippable items such as Keys cost billions of coins, and adjusting their prices causes the game to crash. So they cannot be found in Shops. All other equippable items can be found in shops. This includes Ocarina, Trident, Oasis Boots, Pygmy Items, Legend Items, and Spells. It does not include a Heart.
 
@@ -30,35 +30,12 @@ There are currently 96 objcets randomized in the "Pool". They are :
 
 (5). 62 Chest items. This includes all 4 water money chests. (They have 1, 5, 6, and 8 Items respectively). This also includes the pyramid money chests. They have 8 items. 
 
-Full List :
-
-"Heart_Chests","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",                                        "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power","Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
-"Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
-"Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5",
-"Full_Health_1","Legend_Shield","Legend_Armor","Legend_Boots",
-"Water_Money_Chest3_Item1","Water_Money_Chest3_Item2","Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5",
-Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3","Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6",
-"Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3","Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6", "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
-'Pyramid_Item_1','Pyramid_Item_2','Pyramid_Item_3','Pyramid_Item_4','Pyramid_Item_5','Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8'
+(6). 9 new items since I made this list. 3 of the mini-bosses in the Ice Castle. Starting Equipment. Starting Hearts. 
 
 *The Bracelet item is bugged, and does not work if you USE the bracelet before talking to the Elder Dragon. His item is completed random and may be a duplicate of something you already have.
 *It will never be -needed- to beat the game, but it might be helpful. 
 
-The item pool consists of a corresponding 96 items.
-
-(1). All equipment except for the starting items. -- 29
-
-(2). 3 Fire Storm, 3 Thunder, 3 Quake, 2 Shield, 2 Power, 1 Return -- 14 Spells
-
-(3). 1 of each Potion, 2 Elixers. Both Hi-Potion and Elixer are guaranteed to take a shop-slot so you can refill before Biomeka. --- 6
-
-(4). The Ocarina and Three Charmstones -- 4
-
-(5). Non-Equippable Progression Items (Lamp, Amulet, 3 Keys, 2 Gems, Fire Urn, Bracelet) -- 9
-
-(6). Thirteen Hearts -- 13
-
-(7). Money, small heart, big heart, magic refil -- 21 
+The item pool consists of a corresponding 105 items.
 
 "Go-Mode" requirements --
    
@@ -70,7 +47,7 @@ The item pool consists of a corresponding 96 items.
 
       (d). Legend Sword, Legend Shield, Legend Armor. (Technically you don't need Shield/Armor, but good luck without 'em)
 
-      (e). In addition, I highly recomend you stock yourself with Power, Elixer, and Hi-Potion.
+      (e). In addition, I highly recomend you stock yourself with Power, Thunder, Elixer, and Hi-Potion.
    
   
 
@@ -100,7 +77,9 @@ As many text speed ups are in place as I could find. The following texts can be 
 
 Be very careful when skipping the text with the Sphinx! I'm not responsible if you skip a question! :-P
 
-The Sphinx now contains FIVE random questions! Be careful!
+Some 1-way Entrances are randomized. Sleeping at an Inn will always send you someplace new. 
+
+The Sphinx now contains 9/10 random questions! Be careful!
 
 Here's what you'll have to do to run the randomizer :
 
