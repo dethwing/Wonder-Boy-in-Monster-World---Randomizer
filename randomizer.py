@@ -16,6 +16,7 @@
 # Version 1.D, Updated on 10/26. Last Sphinx Question. Added hint for Legend Items in Sky #
 # Version 1.E, Updated on 5/29/2026. Added Initial equips and initial hearts to pool. Revamped code to make generation significantly
 #                                    More likely. Removed Sphinx Question about weapons. Will return at some point. [Maybe] #
+# Version 1.F, Updated on 6/04/26. Changed Oasis/Key Questions to be easier. Now it just changes the names of the item. #
 
 from classes import *
 
@@ -49,12 +50,30 @@ Attributes = [
 
         ### ENTRANCES ####
         Attribute(
+                name="Demo1",
+                addresses=[0x2257c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 3
+                                 ] 
+                ),
+        Attribute(
+                name="Demo2",
+                addresses=[0x2257d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 76
+                                 ] 
+                ),
+        Attribute(
                 name="Begin_Platforms1",
                 addresses=[0x22566],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[
-                                 1
+                                 3
                                  ] 
                 ),
         Attribute(
@@ -64,6 +83,42 @@ Attributes = [
                 is_little_endian=False,
                 possible_values=[
                                  100
+                                 ] 
+                ),
+        Attribute(
+                name="WellDoor_1",
+                addresses=[0x2251c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 2
+                                 ] 
+                ),
+        Attribute(
+                name="WellDoor_2",
+                addresses=[0x2251d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 42
+                                 ] 
+                ),
+        Attribute(
+                name="Volcano_Secret_Door1",
+                addresses=[0x22564],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 2
+                                 ] 
+                ),
+        Attribute(
+                name="Volcano_Secret_Door2",
+                addresses=[0x22565],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 252
                                  ] 
                 ),
         Attribute(
@@ -102,24 +157,7 @@ Attributes = [
                                  60
                                  ] 
                 ),
-        Attribute(
-                name="To_Myc1",
-                addresses=[0x224d4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 1
-                                 ] 
-                ),
-        Attribute(
-                name="To_Myc2",
-                addresses=[0x224d5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 76
-                                 ] 
-                ),
+        
         Attribute(
                 name="To_Alsedo_Forest1",
                 addresses=[0x224da],
@@ -251,7 +289,33 @@ Attributes = [
         
         
         ### Initial Items ###
-        
+        Attribute(
+                name="Jumping1",
+                addresses=[0xEBB4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 103
+                                 ] 
+                ),
+        Attribute(
+                name="Jumping2",
+                addresses=[0xEBB5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 18
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Rapid_Pad",
+                addresses=[0x8e54],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ] 
+                ),
         
         Attribute(
                 name="Init_Boots",
@@ -3522,7 +3586,7 @@ Attributes = [
                 name="SRAM_1",
                 addresses=[0x1b2],
                 number_of_bytes=1,
-               is_little_endian=False,
+                is_little_endian=False,
                 possible_values=[248]
                 ),
         Attribute(
@@ -7674,943 +7738,480 @@ Attributes = [
                 is_little_endian=False,
 		possible_values=[48] 
                 ),
+        
         Attribute(
-                name="Sphinx_Question_Five_Text_1",
-                addresses=[0x21675],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[101] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_2",
-                addresses=[0x21676],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[114] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_3",
-                addresses=[0x21677],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[101] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_4",
-                addresses=[0x21678],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_5",
-                addresses=[0x21679],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[100] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_6",
-                addresses=[0x2167a],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[105] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_7",
-                addresses=[0x2167b],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[100] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_8",
-                addresses=[0x2167c],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_9",
-                addresses=[0x2167d],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[121] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_10",
-                addresses=[0x2167e],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[111] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_11",
-                addresses=[0x2167f],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[117] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_12",
-                addresses=[0x21680],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_13",
-                addresses=[0x21681],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[102] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_14",
-                addresses=[0x21682],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[105] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_15",
-                addresses=[0x21683],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[110] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_16",
-                addresses=[0x21684],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[100] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_17",
-                addresses=[0x21685],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_18",
-                addresses=[0x21686],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[79] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_19",
-                addresses=[0x21687],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[97] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_20",
-                addresses=[0x21688],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[115] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_21",
-                addresses=[0x21689],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[105] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_21.5",
-                addresses=[0x2168a],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[115] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_22",
-                addresses=[0x2168b],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_23",
-                addresses=[0x2168c],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[66] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_24",
-                addresses=[0x2168d],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[111] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_25",
-                addresses=[0x2168e],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[111] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_26",
-                addresses=[0x2168f],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[116] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_27",
-                addresses=[0x21690],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[115] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_28",
-                addresses=[0x21691],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[63] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_29",
-                addresses=[0x21692],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Text_30",
-                addresses=[0x21693],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[40] 
-                ),       
-        Attribute(
-                name="Sphinx_Question_Five_Text_45",
-                addresses=[0x216a2],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[41] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Five_Right_1",
+                name="Sphinx_Question_Five_Boots_Right_1",
                 addresses=[0x216b1],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[12] 
+		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Correct",
+                name="Sphinx_Question_Five_Boots_Right_2",
                 addresses=[0x216b2],
                 number_of_bytes=1,
                 is_little_endian=False,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1 
+		possible_values=[32]  
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Right_3",
+                name="Sphinx_Question_Five_Boots_Right_3",
                 addresses=[0x216b3],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Right_4",
+                name="Sphinx_Question_Five_Boots_Right_4",
                 addresses=[0x216b4],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Right_5",
+                name="Sphinx_Question_Five_Boots_Right_5",
                 addresses=[0x216b5],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Right_6",
+                name="Sphinx_Question_Five_Boots_Right_6",
                 addresses=[0x216b6],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Right_7",
+                name="Sphinx_Question_Five_Boots_Right_7",
                 addresses=[0x216b7],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Right_8",
+                name="Sphinx_Question_Five_Boots_Right_8",
                 addresses=[0x216b8],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Right_9",
+                name="Sphinx_Question_Five_Boots_Right_9",
                 addresses=[0x216b9],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Right_10",
+                name="Sphinx_Question_Five_Boots_Right_10",
                 addresses=[0x216ba],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Right_11",
+                name="Sphinx_Question_Five_Boots_Right_11",
                 addresses=[0x216bb],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
+        
         Attribute(
-                name="Sphinx_Question_Five_Wrong_1",
+                name="Sphinx_Question_Five_Boots_Wrong1_1",
                 addresses=[0x216a4],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[12]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_2",
+                name="Sphinx_Question_Five_Boots_Wrong1_2",
                 addresses=[0x216a5],
                 number_of_bytes=1,
                 is_little_endian=False,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1 
+		possible_values=[12]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_3",
+                name="Sphinx_Question_Five_Boots_Wrong1_3",
                 addresses=[0x216a6],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_4",
+                name="Sphinx_Question_Five_Boots_Wrong1_4",
                 addresses=[0x216a7],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_5",
+                name="Sphinx_Question_Five_Boots_Wrong1_5",
                 addresses=[0x216a8],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_6",
+                name="Sphinx_Question_Five_Boots_Wrong1_6",
                 addresses=[0x216a9],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_7",
+                name="Sphinx_Question_Five_Boots_Wrong1_7",
                 addresses=[0x216aa],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_8",
+                name="Sphinx_Question_Five_Boots_Wrong1_8",
                 addresses=[0x216ab],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_9",
+                name="Sphinx_Question_Five_Boots_Wrong1_9",
                 addresses=[0x216ac],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_10",
+                name="Sphinx_Question_Five_Boots_Wrong1_10",
                 addresses=[0x216ad],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_11",
+                name="Sphinx_Question_Five_Boots_Wrong1_11",
                 addresses=[0x216ae],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong_12",
+                name="Sphinx_Question_Five_Boots_Wrong1_12",
                 addresses=[0x216af],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_1",
+                name="Sphinx_Question_Five_Boots_Wrong2_1",
                 addresses=[0x216bd],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[12]
+		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_2",
+                name="Sphinx_Question_Five_Boots_Wrong2_2",
                 addresses=[0x216be],
                 number_of_bytes=1,
                 is_little_endian=False,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1 
+		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_3",
+                name="Sphinx_Question_Five_Boots_Wrong2_3",
                 addresses=[0x216bf],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_4",
+                name="Sphinx_Question_Five_Boots_Wrong2_4",
                 addresses=[0x216c0],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_5",
+                name="Sphinx_Question_Five_Boots_Wrong2_5",
                 addresses=[0x216c1],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_6",
+                name="Sphinx_Question_Five_Boots_Wrong2_6",
                 addresses=[0x216c2],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_7",
+                name="Sphinx_Question_Five_Boots_Wrong2_7",
                 addresses=[0x216c3],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_8",
+                name="Sphinx_Question_Five_Boots_Wrong2_8",
                 addresses=[0x216c4],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_9",
+                name="Sphinx_Question_Five_Boots_Wrong2_9",
                 addresses=[0x216c5],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_10",
+                name="Sphinx_Question_Five_Boots_Wrong2_10",
                 addresses=[0x216c6],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_11",
+                name="Sphinx_Question_Five_Boots_Wrong2_11",
                 addresses=[0x216c7],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
         Attribute(
-                name="Sphinx_Question_Five_Wrong2_12",
+                name="Sphinx_Question_Five_Boots_Wrong2_12",
                 addresses=[0x216c8],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32]
                 ),
+        
+        Attribute(
+                name="Oasis_Boots_Name_1",
+                addresses=[0x218E0],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Oasis_Boots_Name_2",
+                addresses=[0x218E1],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Oasis_Boots_Name_3",
+                addresses=[0x218E2],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Oasis_Boots_Name_4",
+                addresses=[0x218E3],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Oasis_Boots_Name_5",
+                addresses=[0x218E4],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+
+
+
+        
 
         Attribute(
-                name="Sphinx_Question_Six_Text_1",
-                addresses=[0x215e9],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[101] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_2",
-                addresses=[0x215ea],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[114] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_3",
-                addresses=[0x215eb],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[101] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_4",
-                addresses=[0x215ec],
+                name="Sun_Key_Name_1",
+                addresses=[0x219AF],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Text_5",
-                addresses=[0x215ed],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[100] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_6",
-                addresses=[0x215ee],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[105] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_7",
-                addresses=[0x215ef],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[100] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_8",
-                addresses=[0x215f0],
+                name="Sun_Key_Name_2",
+                addresses=[0x219b0],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Text_9",
-                addresses=[0x215f1],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[121] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_10",
-                addresses=[0x215f2],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[111] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_11",
-                addresses=[0x215f3],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[117] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_12",
-                addresses=[0x215f4],
+                name="Sun_Key_Name_3",
+                addresses=[0x219b1],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
+        
+        
         Attribute(
-                name="Sphinx_Question_Six_Text_13",
-                addresses=[0x215f5],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[102] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_14",
-                addresses=[0x215f6],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[105] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_15",
-                addresses=[0x215f7],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[110] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_16",
-                addresses=[0x215f8],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[100] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_17",
-                addresses=[0x215f9],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_18",
-                addresses=[0x215fa],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[116] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_19",
-                addresses=[0x215fb],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[104] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_19.5",
-                addresses=[0x215fc],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[101] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_20",
-                addresses=[0x215fd],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_21",
-                addresses=[0x215fe],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[83] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_21.5",
-                addresses=[0x215ff],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[117] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_22",
-                addresses=[0x21600],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[110] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_23",
-                addresses=[0x21601],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_24",
-                addresses=[0x21602],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[75] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_25",
-                addresses=[0x21603],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[101] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_26",
-                addresses=[0x21604],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[121] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_27",
-                addresses=[0x21605],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[63] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_28",
-                addresses=[0x21606],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_29",
-                addresses=[0x21607],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_30",
-                addresses=[0x21608],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_31",
-                addresses=[0x21609],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_32",
-                addresses=[0x2160a],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_33",
-                addresses=[0x2160b],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_34",
-                addresses=[0x2160c],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_35",
-                addresses=[0x2160d],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_36",
-                addresses=[0x2160e],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_37",
-                addresses=[0x2160f],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_38",
-                addresses=[0x21610],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_39",
-                addresses=[0x21611],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Text_40",
-                addresses=[0x21612],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sphinx_Question_Six_Right_1",
+                name="Sphinx_Question_Key_Right_1",
                 addresses=[0x2161d],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[12] 
+		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Correct",
+                name="Sphinx_Question_Key_Right_2",
                 addresses=[0x2161e],
                 number_of_bytes=1,
                 is_little_endian=False,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1 
+		possible_values=[32]  
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Right_3",
+                name="Sphinx_Question_Key_Right_3",
                 addresses=[0x2161f],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Right_4",
+                name="Sphinx_Question_Key_Right_4",
                 addresses=[0x21620],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Right_5",
+                name="Sphinx_Question_Key_Right_5",
                 addresses=[0x21621],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Right_6",
+                name="Sphinx_Question_Key_Right_6",
                 addresses=[0x21622],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Right_7",
+                name="Sphinx_Question_Key_Right_7",
                 addresses=[0x21623],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong1_1",
+                name="Sphinx_Question_Key_Wrong1_1",
                 addresses=[0x21614],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[12] 
+		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong1",
+                name="Sphinx_Question_Key_Wrong1_2",
                 addresses=[0x21615],
                 number_of_bytes=1,
                 is_little_endian=False,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1 
+		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong1_3",
+                name="Sphinx_Question_Key_Wrong1_3",
                 addresses=[0x21616],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong1_4",
+                name="Sphinx_Question_Key_Wrong1_4",
                 addresses=[0x21617],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong1_5",
+                name="Sphinx_Question_Key_Wrong1_5",
                 addresses=[0x21618],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong1_6",
+                name="Sphinx_Question_Key_Wrong1_6",
                 addresses=[0x21619],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong1_7",
+                name="Sphinx_Question_Key_Wrong1_7",
                 addresses=[0x2161a],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong1_7",
+                name="Sphinx_Question_Key_Wrong1_8",
                 addresses=[0x2161b],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong2_1",
+                name="Sphinx_Question_Key_Wrong2_1",
                 addresses=[0x21625],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[12] 
+		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong2",
+                name="Sphinx_Question_Key_Wrong2_2",
                 addresses=[0x21626],
                 number_of_bytes=1,
                 is_little_endian=False,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1 
+		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong2_3",
+                name="Sphinx_Question_Key_Wrong2_3",
                 addresses=[0x21627],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong2_4",
+                name="Sphinx_Question_Key_Wrong2_4",
                 addresses=[0x21628],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong2_5",
+                name="Sphinx_Question_Key_Wrong2_5",
                 addresses=[0x21629],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong2_6",
+                name="Sphinx_Question_Key_Wrong2_6",
                 addresses=[0x2162a],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong2_7",
+                name="Sphinx_Question_Key_Wrong2_7",
                 addresses=[0x2162b],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sphinx_Question_Six_Wrong2_8",
+                name="Sphinx_Question_Key_Wrong2_8",
                 addresses=[0x2162c],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
+
+        
         
         Attribute(
                 name="Sphinx_Question_Dwarf_Right_1",
@@ -9094,6 +8695,73 @@ Attributes = [
                 is_little_endian=False,
 		possible_values=[0] 
                 ),
+
+        Attribute(
+                name="Rapid_Pad_1",
+                addresses=[0x219F5],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[74] 
+                ),
+        Attribute(
+                name="Rapid_Pad_2",
+                addresses=[0x219F6],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[101] 
+                ),
+        Attribute(
+                name="Rapid_Pad_3",
+                addresses=[0x219F7],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[116] 
+                ),
+        Attribute(
+                name="Rapid_Pad_4",
+                addresses=[0x219F8],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Rapid_Pad_5",
+                addresses=[0x219F9],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[80] 
+                ),
+        Attribute(
+                name="Rapid_Pad_6",
+                addresses=[0x219Fa],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[97] 
+                ),
+        Attribute(
+                name="Rapid_Pad_7",
+                addresses=[0x219Fb],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[99] 
+                ),
+        Attribute(
+                name="Rapid_Pad_8",
+                addresses=[0x219Fc],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[107] 
+                ),
+        Attribute(
+                name="Rapid_Pad_9",
+                addresses=[0x219Fd],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+
+
+        
         
         
         
