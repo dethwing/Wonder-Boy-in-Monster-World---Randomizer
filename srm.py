@@ -641,7 +641,8 @@ def generateRom():
                         
                         while Random in ["Legend_Shield","Legend_Armor","Legend_Boots",
                                          "Init_Boots","Init_Weapon","Init_Armor",
-                                         "Init_Heart1","Init_Heart2","Init_Heart3"] :                                
+                                         "Init_Heart1","Init_Heart2","Init_Heart3","Bracelet_Item","Sphinx_Bonus_Item"
+                                         ] :                                
                                 Random = random.choice(All_Checks)
                                       
                         for att in Attributes:
@@ -695,7 +696,7 @@ def generateRom():
 
                         Progression_Items = [
                                              7,15,23,31,
-                                             5,26,27,41,41,41,
+                                             5,26,27,41,41,
                                              49,50,
                                              51,52,53,
                                              54,55,
@@ -1192,7 +1193,7 @@ def generateRom():
                                                          10,11,12,13,   15,16,17,18,19,
                                                          20,21,22,23,24,25,26,27,28,29,
                                                             31,32,33,34,35,36,37,
-                                                         40,41,42,43,44,45,46      
+                                                         40,41,42,43,44,45,46, 59      
                                                          ]
 
                         Sphinx_Question_Three_Possible =  [ 0, 1, 2,    4, 5, 6, 7, 8, 9,
