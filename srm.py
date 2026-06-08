@@ -342,6 +342,32 @@ def generateRom():
                         Entrance_Randomizer = 1          ## 0 = Off, 1 = On ##
                         Initial_Hearts_Randomizer = 1    ## 0 = Off, 1 = On ##
                         Initial_Equipment_Randomizer = 1 ## 0 = Off, 1 = On ##
+
+                        Platforms = ["Left","Left","Left","Left","Right","Right","Right","Right","End"]
+                        Random_Platform = random.choice(Platforms)
+
+
+                        if Random_Platform == "Left":
+                                for att in Attributes:
+                                        if att.name == "Begin_Platforms1":
+                                                att.value = 3
+                                        if att.name == "Begin_Platforms2":
+                                                att.value = 2
+                        elif Random_Platform == "Right":
+                                for att in Attributes:                                
+                                        if att.name == "Begin_Platforms1":
+                                                att.value = 1
+                                        if att.name == "Begin_Platforms2":
+                                                att.value = 226
+                        elif Random_Platform == "End":
+                                for att in Attributes:
+                                        if att.name == "Begin_Platforms1":
+                                                att.value = 3
+                                        if att.name == "Begin_Platforms2":
+                                                att.value = 100
+                        else:
+                                print("ERROR")
+
                         
 
                         Exits = ["Start","Alsedo_Inn","Pura_Inn","Begonia_Inn","Childam_Inn","Lilly_Inn",
@@ -710,6 +736,8 @@ def generateRom():
                                        "Fire_Urn","Fire_Urn","Fire_Urn"]
                         
                         Random_Long_Check = random.choice(Long_Checks)
+
+                        
                         
                         
                         while len(Progression_Items) > 0:
@@ -752,6 +780,37 @@ def generateRom():
                                                 Sun_Key = "Other"
                                         
                                 if Random_Item == 5:
+                                        if Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
+                                                            "Ocarina_Reward","Firestorm","Heart_Chest"]:
+                                               Trident_Location = "Alsedo"
+                                                
+                                        elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                              "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Full_Health_1","Quake"]:
+                                               Trident_Location = "Pura"
+                                               
+                                        elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward","Elixer_Chests","Hard_Shield",
+                                                            "Trident"]:
+                                               Trident_Location = "Lilly"
+                                               
+                                        elif Random_Check in ["Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water",
+                                                             "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
+                                                              "Old_Axe"]:
+                                               Trident_Location = "Childam"
+                                               
+                                        elif Random_Check in ["Shield_Magic_Chest","Power",
+                                                              "Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3",
+                                                              "Secret_Pyramid_4","Secret_Pyramid_5","Star_Key","Pygmy_Shield",
+                                                              "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
+                                                              "Pyramid_Item_8","Charmstone_Chest",
+                                                              "Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword"
+                                                              ]:
+                                               Trident_Location = "Desert"
+                                        else:
+                                               print("ERROR!")
+                                               Trident_Location = "Error!"
+
+
+                                               
                                         Can_Reach = Can_Reach + ["First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
                                                                  "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1",
                                                                  "Water_Money_Chest3_Item2","Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5",
@@ -763,20 +822,32 @@ def generateRom():
                                         if Charm == 2:
                                                 Can_Reach = Can_Reach + ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5"]                                        
                                 if Random_Item == 26:
-                                        if Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
-                                                            "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots",
-                                                            "Shield_Magic_Shop","Shell_Shield","Steel_Armor","Ceramic_Boots",
-                                                            "Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water",
-                                                            "Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop"]:
-                                                Oasis_Boots = "Shop"
+                                        if Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
+                                                            "Ocarina_Reward","Firestorm","Heart_Chest"]:
+                                               Oasis_Boots_Location = "Alsedo"
+                                                
+                                        elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                              "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Full_Health_1","Quake"]:
+                                               Oasis_Boots_Location = "Pura"
+                                                
+                                        elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward","Elixer_Chests","Hard_Shield",
+                                                            "Trident"]:
+                                               Oasis_Boots_Location = "Lilly"
                                         elif Random_Check in ["First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
-                              "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1","Water_Money_Chest3_Item2",
-                              "Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2",
-                              "Water_Money_Chest4_Item3","Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7",
-                              "Water_Money_Chest4_Item8","Thunder","Oasis_Boots","Return","Sun_Key"]:
-                                                Oasis_Boots = "Underwater"
+                                      "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1","Water_Money_Chest3_Item2",
+                                      "Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Pygmy_Armor","Pygmy_Sword",
+                                      "Thunder","Amulet","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
+                                      "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
+                                      "Oasis_Boots","Return"]:
+                                               Oasis_Boots_Location = "Underwater"
+                                        elif Random_Check in ["Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water",
+                                                             "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
+                                                              "Old_Axe"]:
+                                               Oasis_Boots_Location = "Childam"
                                         else:
-                                                Oasis_Boots = "Other"
+                                               print("ERROR!")
+                                               Oasis_Boots_Location = "Error!"
+                                               
                                         Can_Reach = Can_Reach + ["Shield_Magic_Chest","excalibur","steel_shield"]
                                         if Quake == 0:
                                                 Can_Reach = Can_Reach + ['Quake']
@@ -1165,7 +1236,7 @@ def generateRom():
                                                                   "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
                                                                   "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
                                                                   "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
-                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop"
+                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop",
                                                                   "elder_elixer","elder_firestorm",
                                                                   "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
                                                                   "Legend_Sword","Ocarina_Reward","Bracelet_Item","Sphinx_Bonus_Item"]:
@@ -1180,28 +1251,30 @@ def generateRom():
                                 
 
                         
-
-                        Sphinx_Question_One_Possible =  [ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                                         10,11,12,13,   15,16,17,18,19,
+                                ### Elder Item ###
+                        Sphinx_Question_One_Possible =  [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                                                         10,11,12,13,14,15,16,17,18,19,
                                                          20,21,22,23,24,25,26,27,28,29,
-                                                            31,32,33,34,35,36,37,
+                                                         30,31,32,33,34,35,36,37,
                                                          40,41,42,43,44,45,46,      49,
-                                                         50,51,52,53,54,55,   57,58,59       
+                                                         50,51,52,53,54,55,56,57,58,59       
                                                          ]
-                        
-                        Sphinx_Question_Two_Possible =  [ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                                         10,11,12,13,   15,16,17,18,19,
+
+                                ### Wanderer Shop ###      
+                        Sphinx_Question_Two_Possible =  [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                                                         10,11,12,13,14,15,16,17,18,19,
                                                          20,21,22,23,24,25,26,27,28,29,
-                                                            31,32,33,34,35,36,37,
+                                                         30,31,32,33,34,35,36,37,
                                                          40,41,42,43,44,45,46, 59      
                                                          ]
-
-                        Sphinx_Question_Three_Possible =  [ 0, 1, 2,    4, 5, 6, 7, 8, 9,
-                                                         10,11,12,13,   15,16,17,18,19,
+                        
+                                ## Blargh and Glargh Item ###
+                        Sphinx_Question_Three_Possible =  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+                                                         10,11,12,13,14,15,16,17,18,19,
                                                          20,21,22,23,24,25,26,27,28,29,
-                                                            31,32,33,34,35,36,37,
+                                                         30,31,32,33,34,35,36,37,
                                                          40,41,42,43,44,45,46,      49,
-                                                         50,51,52,53,54,55,   57,58,59, 64      
+                                                         50,51,52,53,54,55,56,57,58,59 ,64      
                                                          ]
 
                         Charmstone_Price = [0,1,2]
@@ -1227,40 +1300,64 @@ def generateRom():
                         for att_1 in Attributes:
                                 if att_1.name == "Sky_Legend_Num_Items":
                                         att_1.value = att_1.value + Num_Legend_Itms
+                                        
+                                if att_1.name == "Oasis_Boots_Hint_LOCATION":
+                                        if Oasis_Boots_Location == "Alsedo":
+                                                att_1.value =   64
+                                        if Oasis_Boots_Location == "Pura":
+                                                att_1.value =   90
+                                        if Oasis_Boots_Location == "Lilly":
+                                                att_1.value =   81
+                                        if Oasis_Boots_Location == "Underwater":
+                                                att_1.value =   219
+                                        if Oasis_Boots_Location == "Childam":
+                                                att_1.value = 65
+
+                                if att_1.name == "Trident_Hint_LOCATION":
+                                        if Trident_Location == "Alsedo":
+                                                att_1.value =   64
+                                        if Trident_Location == "Pura":
+                                                att_1.value =   90
+                                        if Trident_Location == "Lilly":
+                                                att_1.value =   81
+                                        if Trident_Location == "Childam":
+                                                att_1.value = 65
+                                        if Trident_Location == "Desert":
+                                                att_1.value = 74
 
                                 if att_1.name == "Oasis_Boots_Name_1":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 79
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 87
+                                                att_1.value = 83
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 72
                                 if att_1.name == "Oasis_Boots_Name_2":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 97
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 97
+                                                att_1.value = 110
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 97
                                 if att_1.name == "Oasis_Boots_Name_3":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 115
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 116
+                                                att_1.value = 97
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 118
                                 if att_1.name == "Oasis_Boots_Name_4":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 105
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 101
+                                                att_1.value = 107
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 101
                                 if att_1.name == "Oasis_Boots_Name_5":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 115
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 114
+                                                att_1.value = 101
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 110
 
@@ -2198,35 +2295,35 @@ def generateRom():
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 79
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 87
+                                                att_1.value = 83
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 72
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_2":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 97
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 97
+                                                att_1.value = 110
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 97
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_3":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 115
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 116
+                                                att_1.value = 97
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 118
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_4":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 105
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 101
+                                                att_1.value = 107
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 101
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_5":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 115
                                         if Random_Lilly_Name == 1:
-                                                att_1.value = 114
+                                                att_1.value = 101
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 110
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_6":
@@ -2274,35 +2371,35 @@ def generateRom():
 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_1":
                                         if Random_Lilly_Name == 0:
-                                                att_1.value = 87
+                                                att_1.value = 83
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 72 
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 79 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_2":
                                         if Random_Lilly_Name == 0:
-                                                att_1.value = 97
+                                                att_1.value = 110
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 97
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 97
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_3":
                                         if Random_Lilly_Name == 0:
-                                                att_1.value = 116
+                                                att_1.value = 97
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 118 
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 115 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_4":
                                         if Random_Lilly_Name == 0:
-                                                att_1.value = 101
+                                                att_1.value = 107
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 101 
                                         if Random_Lilly_Name == 2:
                                                 att_1.value = 105 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_5":
                                         if Random_Lilly_Name == 0:
-                                                att_1.value = 114
+                                                att_1.value = 101
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 110 
                                         if Random_Lilly_Name == 2:
@@ -2363,35 +2460,35 @@ def generateRom():
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 79  
                                         if Random_Lilly_Name == 2:
-                                                att_1.value = 87  
+                                                att_1.value = 83 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_2":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 97
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 97
                                         if Random_Lilly_Name == 2:
-                                                att_1.value = 97
+                                                att_1.value = 110
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_3":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 118
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 115  
                                         if Random_Lilly_Name == 2:
-                                                att_1.value = 116  
+                                                att_1.value = 97
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_4":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 101
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 105  
                                         if Random_Lilly_Name == 2:
-                                                att_1.value = 101  
+                                                att_1.value = 107 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_5":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 110
                                         if Random_Lilly_Name == 1:
                                                 att_1.value = 115  
                                         if Random_Lilly_Name == 2:
-                                                att_1.value = 114  
+                                                att_1.value = 101
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_6":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 32
