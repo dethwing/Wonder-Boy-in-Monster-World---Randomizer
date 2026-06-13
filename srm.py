@@ -342,6 +342,7 @@ def generateRom():
                         Entrance_Randomizer = 1          ## 0 = Off, 1 = On ##
                         Initial_Hearts_Randomizer = 1    ## 0 = Off, 1 = On ##
                         Initial_Equipment_Randomizer = 1 ## 0 = Off, 1 = On ##
+                        Force_First_Heart = 1            ## With this on, you guarantee at least 1 heart to start with ##
 
                         Platforms = ["Left","Left","Left","Left","Right","Right","Right","Right","End"]
                         Random_Platform = random.choice(Platforms)
@@ -364,7 +365,7 @@ def generateRom():
                                         if att.name == "Begin_Platforms1":
                                                 att.value = 3
                                         if att.name == "Begin_Platforms2":
-                                                att.value = 100
+                                                att.value = 8
                         else:
                                 print("ERROR")
 
@@ -408,6 +409,8 @@ def generateRom():
                                         if Random_Entrance == "Start":
                                                 Name_1 = "Start_Game1"
                                                 Name_2 = "Start_Game2"
+                                                while Random_Exit == "Cave_to_Myc":
+                                                        Random_Exit = random.choice(Exits)        
                                         elif Random_Entrance == "Alsedo":
                                                 Name_1 = "Alsedo_Inn1"
                                                 Name_2 = "Alsedo_Inn2"
@@ -667,7 +670,7 @@ def generateRom():
                         
                         while Random in ["Legend_Shield","Legend_Armor","Legend_Boots",
                                          "Init_Boots","Init_Weapon","Init_Armor",
-                                         "Init_Heart1","Init_Heart2","Init_Heart3","Bracelet_Item","Sphinx_Bonus_Item"
+                                         "Init_Heart1","Init_Heart2","Init_Heart3","Sphinx_Bonus_Item"
                                          ] :                                
                                 Random = random.choice(All_Checks)
                                       
@@ -768,16 +771,6 @@ def generateRom():
                                 Can_Reach.remove(Random_Check)
                                 Progression_Items.remove(Random_Item)                                
                                 All_Items.remove(Random_Item)
-
-                                if Random_Item == 51:
-                                        if Random_Check in ["First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
-                              "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1","Water_Money_Chest3_Item2",
-                              "Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2",
-                              "Water_Money_Chest4_Item3","Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7",
-                              "Water_Money_Chest4_Item8","Thunder","Oasis_Boots","Return","Sun_Key"]:
-                                                Sun_Key = "Underwater"
-                                        else:
-                                                Sun_Key = "Other"
                                         
                                 if Random_Item == 5:
                                         if Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
@@ -890,7 +883,7 @@ def generateRom():
                                                 if Pyramid_Main < 2:
                                                         Can_Reach = Can_Reach + ["Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3",
                                                                                  "Secret_Pyramid_4","Secret_Pyramid_5","Star_Key"]
-                                                        Pyramid = 1
+                                                        Pyramid_Main = 3
                                                         if Elixer == 0:
                                                                 Can_Reach = Can_Reach + ['Elixer_Chests']
                                                                 Elixer = 1
@@ -901,7 +894,7 @@ def generateRom():
                                 if Random_Item == 26 or Random_Item == 53:
                                         Star = Star + 1
                                         if Star == 2:
-                                                Can_Reach = Can_Reach + ["Power"]
+                                                Can_Reach = Can_Reach + ["Power","Bracelet_Item"]
                                 if Random_Item == 54 or Random_Item == 55 or Random_Item == 58:
                                         Bomber = Bomber + 1
                                         if Bomber == 3:
@@ -918,10 +911,6 @@ def generateRom():
                                         Teh_Urn = Teh_Urn + 1
                                         if Teh_Urn == 9:
                                                 Can_Reach = Can_Reach + ["Fire_Urn"]
-                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53 or Random_Item == 57 or Random_Item == 0:
-                                        Sky = Sky + 1
-                                        if Sky == 7:
-                                                Can_Reach = Can_Reach + ["Legend_Boots","Legend_Shield","Legend_Armor"]
 
 
                         Healing_Items = [42,46]
@@ -1045,7 +1034,12 @@ def generateRom():
                                 
                                 Starter = random.choice(Starting_Items)
                                 if Initial_Hearts_Randomizer == 0:
-                                        Random_Item = 64        
+                                        Random_Item = 64
+                                elif Force_First_Heart == 1:
+                                        if len(Starting_Items) == 3:
+                                                Random_Item = 64
+                                        else:
+                                                Random_Item = random.choice(All_Items)                                                
                                 else:                                
                                         Random_Item = random.choice(All_Items)
 
@@ -1069,7 +1063,7 @@ def generateRom():
 
                                         
 
-                                elif Random_Item < 15:
+                                elif Random_Item < 16:
                                         for att in Attributes:          
                                                 if att.name == "Init_Armor":
                                                         if Random_Item == 8:                                               
