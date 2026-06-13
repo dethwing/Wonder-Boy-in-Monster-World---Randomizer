@@ -5035,13 +5035,104 @@ Attributes = [
                 possible_values=[0] 
                 ),
         ### Bracelet Stuff ###
+       # Attribute(
+       #         name="Bracelet_Control1_1",
+       #         addresses=[0x1f1c2],                
+       #         number_of_bytes=1,
+       #         is_little_endian=False,
+       #         possible_values=[32]
+       #         ),
+       # Attribute(
+       #         name="Bracelet_Control1_2",
+       #         addresses=[0x1f1c3],                
+       #         number_of_bytes=1,
+       #         is_little_endian=False,
+       #         possible_values=[11]
+       #         ),
+       # Attribute(
+       #         name="Bracelet_Control1_3",
+       #         addresses=[0x1f1c4],                
+       #         number_of_bytes=1,
+       #         is_little_endian=False,
+       #         possible_values=[32]
+       #         ),
+       # Attribute(
+       #         name="Bracelet_Control1_4",
+       #         addresses=[0x1f1c5],                
+       #         number_of_bytes=1,
+       #         is_little_endian=False,
+       #         possible_values=[11]
+       #         ),
         Attribute(
-                name="Bracelet_Control",
+                name="Bracelet_Control1_5",
+                addresses=[0x1f1c6],                
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="Bracelet_Control1_6",
+                addresses=[0x1f1c7],                
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[11]
+                ),
+        Attribute(
+                name="Bracelet_Control1_7",
+                addresses=[0x1f1c8],                
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="Bracelet_Control1_8",
+                addresses=[0x1f1c9],                
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[11]
+                ),
+        Attribute(
+                name="Bracelet_Control1_9",
+                addresses=[0x1f1ca],                
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="Bracelet_Control1",
+                addresses=[0x1f235],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[9]
+                ),
+        Attribute(
+                name="Bracelet_Control2",
+                addresses=[0x1f236],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[11]
+                ),
+        Attribute(
+                name="Bracelet_Control3",
                 addresses=[0x1f237],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[59]
-                ),    
+                possible_values=[32]
+                ),
+        Attribute(
+                name="Bracelet_Control4",
+                addresses=[0x1f238],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[11]
+                ),
+        Attribute(
+                name="Bracelet_Control5",
+                addresses=[0x1f239],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
         Attribute(
                 name="Bracelet_Text1",
                 addresses=[0x1f25B],
