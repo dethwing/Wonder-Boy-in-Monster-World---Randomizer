@@ -47,6 +47,43 @@ Slow_Mode = False
 
 
 Attributes = [
+        ### For Special Rules ####
+        Attribute(
+                name="Entrance_Randomizer",
+                addresses=[0xBFFF0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=255,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Heart_Randomizer",
+                addresses=[0xBFFF1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=255,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Initial_Equip_Randomizer",
+                addresses=[0xBFFF2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=255,
+		min_max_interval=1, 
+                ),
+        Attribute(
+                name="At_Least_One_Heart",
+                addresses=[0xBFFF3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=255,
+		min_max_interval=1,
+                ),
 
         ### ENTRANCES ####
         Attribute(
@@ -9139,6 +9176,53 @@ Required_Rules = [
 ]
 
 Optional_Rulesets = [
-   
+        Ruleset(
+		name="Turn Entrance Randomizer Off",
+		description="A set of basic rules",
+		rules=[
+			Rule(
+				description="Turn Entrance Randomizer Off",
+				left_side=[value("Entrance_Randomizer"), 0],
+				rule_type="==",
+				right_side=None,
+			),
+		],
+	),
+        Ruleset(
+		name="Do not Randomize Starting Equipment",
+		description="A set of basic rules",
+		rules=[
+			Rule(
+				description="Turns off Initial Equipment Randomizer",
+				left_side=[value("Initial_Equip_Randomizer"), 0],
+				rule_type="==",
+				right_side=None,
+			),
+		],
+	),
+	Ruleset(
+		name="Do not Randomize Starting Hearts",
+		description="A set of basic rules",
+		rules=[
+			Rule(
+				description="Turns off Initial Heart Randomizer",
+				left_side=[value("Heart_Randomizer"), 0],
+				rule_type="==",
+				right_side=None,
+			),
+		],
+	),
+	Ruleset(
+		name="Require a minimum of 1 starting Heart",
+		description="A set of basic rules",
+		rules=[
+			Rule(
+				description="Force at least one Starting Heart",
+				left_side=[value("At_Least_One_Heart"), 0],
+				rule_type="==",
+				right_side=None,
+			),
+		],
+	),
 	
 ]
