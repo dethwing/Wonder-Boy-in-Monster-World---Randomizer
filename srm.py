@@ -339,10 +339,30 @@ def generateRom():
 
                         ### SETTINGS ###
 
-                        Entrance_Randomizer = 1          ## 0 = Off, 1 = On ##
-                        Initial_Hearts_Randomizer = 1    ## 0 = Off, 1 = On ##
-                        Initial_Equipment_Randomizer = 1 ## 0 = Off, 1 = On ##
-                        Force_First_Heart = 1            ## With this on, you guarantee at least 1 heart to start with ##
+                        for att in Attributes:
+                                if att.name == "Entrance_Randomizer":
+                                        if att.value == 0:
+                                                Entrance_Randomizer = 0
+                                        else:
+                                                Entrance_Randomizer = 1
+                                if att.name == "Heart_Randomizer":
+                                        if att.value == 0:
+                                                Initial_Hearts_Randomizer = 0
+                                        else:
+                                                Initial_Hearts_Randomizer = 1        
+                                if att.name == "Initial_Equip_Randomizer":
+                                        if att.value == 0:
+                                                Initial_Equipment_Randomizer = 0
+                                        else:
+                                                Initial_Equipment_Randomizer = 1        
+                                if att.name == "At_Least_One_Heart":
+                                        if att.value == 0:
+                                                Force_First_Heart = 0
+                                        else:
+                                                Force_First_Heart = 1        
+
+                        print("CHECK")
+
 
                         Platforms = ["Left","Left","Left","Left","Right","Right","Right","Right","End"]
                         Random_Platform = random.choice(Platforms)
@@ -393,13 +413,13 @@ def generateRom():
                                      "To_Sphinx","From_StarKey",
                                      "From_Volcano","Well_Door","Demo"]
 
-                        if Entrance_Randomizer == 1:
+                        if Entrance_Randomizer > 0:
                                 while len(Entrances) > 0:
                                         Random_Entrance = random.choice(Entrances)                                                
                                                 
                                         if "To_Sphinx" in Exits:
                                                 Random_Exit = "To_Sphinx"
-                                                while Random_Entrance in ["From_StarKey","Demo"]:
+                                                while Random_Entrance in ["From_StarKey","Demo","Start"]:
                                                         Random_Entrance = random.choice(Entrances)        
                                         else:
                                                 Random_Exit = random.choice(Exits)
@@ -1035,7 +1055,7 @@ def generateRom():
                                 Starter = random.choice(Starting_Items)
                                 if Initial_Hearts_Randomizer == 0:
                                         Random_Item = 64
-                                elif Force_First_Heart == 1:
+                                elif Force_First_Heart == 0:
                                         if len(Starting_Items) == 3:
                                                 Random_Item = 64
                                         else:
