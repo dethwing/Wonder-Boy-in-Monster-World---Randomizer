@@ -46,7 +46,251 @@ Slow_Mode = False
 
 
 
-Attributes = [
+Attributes = [    
+        ### Chest Swaping for Item Balancing ###
+        Attribute(
+                name="Firestorm_Chest_Swap",
+                addresses=[0xA6Fd],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 198
+                                 ]
+                ),
+        Attribute(
+                name="HardShield_Chest_Swap",
+                addresses=[0xA6F9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 186
+                                 ]
+                ),
+        Attribute(
+                name="Return_Chest_Swap",
+                addresses=[0xA6E1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 170
+                                 ]
+                ),
+        Attribute(
+                name="8Money_Chest_Swap",
+                addresses=[0xA70D],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 108
+                                 ]
+                ),
+        Attribute(
+                name="6Money_Chest_Swap",
+                addresses=[0xA70F],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 132
+                                 ]
+                ),
+        Attribute(
+                name="5Money_Chest_Swap",
+                addresses=[0xA711],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 136
+                                 ]
+                ),
+
+
+        
+        ### PATCHING A JSR. OPEN PURA FROM START ###
+        Attribute(
+                name="JSR_1",
+                addresses=[0xBBB00],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 78
+                                 ]
+                ),
+        Attribute(
+                name="JSR_2",
+                addresses=[0xBBB01],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 185
+                                 ]
+                ),
+        Attribute(
+                name="JSR_3",
+                addresses=[0xBBB02],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ]
+                ),
+        Attribute(
+                name="JSR_4",
+                addresses=[0xBBB03],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 1
+                                 ]
+                ),
+        Attribute(
+                name="JSR_5",
+                addresses=[0xBBB04],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 194
+                                 ]
+                ),
+        Attribute(
+                name="JSR_6",
+                addresses=[0xBBB05],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 84
+                                 ]
+                ),
+        Attribute(
+                name="JSR_7",
+                addresses=[0xBBB06],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 17
+                                 ]
+                ),
+        Attribute(
+                name="JSR_8",
+                addresses=[0xBBB07],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 252
+                                 ]
+                ),
+        Attribute(
+                name="JSR_9",
+                addresses=[0xBBB08],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ]
+                ),
+        Attribute(
+                name="JSR_10",
+                addresses=[0xBBB09],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 15
+                                 ]
+                ),
+        Attribute(
+                name="JSR_11",
+                addresses=[0xBBB0a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 153
+                                 ]
+                ),
+        Attribute(
+                name="JSR_12",
+                addresses=[0xBBB0b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 197
+                                 ]
+                ),
+        Attribute(
+                name="JSR_13",
+                addresses=[0xBBB0c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 78
+                                 ]
+                ),
+        Attribute(
+                name="JSR_14",
+                addresses=[0xBBB0d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 117
+                                 ]
+                ),
+
+        Attribute(
+                name="JSR_Two_1",
+                addresses=[0x8EB4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 78
+                                 ]
+                ),
+        Attribute(
+                name="JSR_Two_2",
+                addresses=[0x8EB5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 185
+                                 ]
+                ),
+        Attribute(
+                name="JSR_Two_3",
+                addresses=[0x8EB6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ]
+                ),
+        Attribute(
+                name="JSR_Two_4",
+                addresses=[0x8EB7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 11
+                                 ]
+                ),
+        Attribute(
+                name="JSR_Two_5",
+                addresses=[0x8EB8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 187
+                                 ]
+                ),
+        Attribute(
+                name="JSR_Two_6",
+                addresses=[0x8EB9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ]
+                ),
+        
+
+        
+        
         ### For Special Rules ####
         Attribute(
                 name="Entrance_Randomizer",
@@ -54,7 +298,7 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
-		max_value=255,
+		max_value=1,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -63,7 +307,7 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
-		max_value=255,
+		max_value=1,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -72,7 +316,7 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
-		max_value=255,
+		max_value=1,
 		min_max_interval=1, 
                 ),
         Attribute(
@@ -81,7 +325,7 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
-		max_value=255,
+		max_value=1,
 		min_max_interval=1,
                 ),
 
@@ -9177,8 +9421,8 @@ Required_Rules = [
 
 Optional_Rulesets = [
         Ruleset(
-		name="Turn Entrance Randomizer Off",
-		description="A set of basic rules",
+		name="Entrance Randomizer Off",
+		description="Select this to turn off the Entrance Randomizer. Default is 50% chance to be Off",
 		rules=[
 			Rule(
 				description="Turn Entrance Randomizer Off",
@@ -9189,8 +9433,20 @@ Optional_Rulesets = [
 		],
 	),
         Ruleset(
-		name="Do not Randomize Starting Equipment",
-		description="A set of basic rules",
+		name="Entrance Randomizer On",
+		description="Select this to turn on the Entrance Randomizer. Default is 50% chance to be On",
+		rules=[
+			Rule(
+				description="Turn Entrance Randomizer On",
+				left_side=[value("Entrance_Randomizer"), 1],
+				rule_type="==",
+				right_side=None,
+			),
+		],
+	),
+        Ruleset(
+		name="Initial Equipment Randomizer Off",
+		description="Select this to turn off the Initial Equipment Randomizer. Default is 50% chance to be Off",
 		rules=[
 			Rule(
 				description="Turns off Initial Equipment Randomizer",
@@ -9200,9 +9456,21 @@ Optional_Rulesets = [
 			),
 		],
 	),
+        Ruleset(
+		name="Initial Equipment Randomizer On",
+		description="Select this to turn on the Initial Equipment Randomizer. Default is 50% chance to be On",
+		rules=[
+			Rule(
+				description="Turns On Initial Equipment Randomizer",
+				left_side=[value("Initial_Equip_Randomizer"), 1],
+				rule_type="==",
+				right_side=None,
+			),
+		],
+	),
 	Ruleset(
-		name="Do not Randomize Starting Hearts",
-		description="A set of basic rules",
+		name="Initial Hearts Randomizer Off",
+		description="Select this to turn off the Initial Heart Randomizer. Default is 50% chance to be Off",
 		rules=[
 			Rule(
 				description="Turns off Initial Heart Randomizer",
@@ -9212,13 +9480,37 @@ Optional_Rulesets = [
 			),
 		],
 	),
+        Ruleset(
+		name="Initial Hearts Randomizer On",
+		description="Select this to turn on the Initial Heart Randomizer. Default is 50% chance to be On",
+		rules=[
+			Rule(
+				description="Turns on Initial Heart Randomizer",
+				left_side=[value("Heart_Randomizer"), 1],
+				rule_type="==",
+				right_side=None,
+			),
+		],
+	),
 	Ruleset(
 		name="Require a minimum of 1 starting Heart",
-		description="A set of basic rules",
+		description="Select this to ensure at least one heart, if using Heart Randomizer",
 		rules=[
 			Rule(
 				description="Force at least one Starting Heart",
 				left_side=[value("At_Least_One_Heart"), 0],
+				rule_type="==",
+				right_side=None,
+			),
+		],
+	),
+        Ruleset(
+		name="No minimum starting Heart",
+		description="Select this to ensure allow the possibility of starting with 0 hearts",
+		rules=[
+			Rule(
+				description="Do not force 1 starting heart",
+				left_side=[value("At_Least_One_Heart"), 1],
 				rule_type="==",
 				right_side=None,
 			),
