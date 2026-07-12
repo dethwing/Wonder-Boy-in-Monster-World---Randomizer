@@ -376,9 +376,9 @@ def generateRom():
                         elif Random_Platform == "Right":
                                 for att in Attributes:                                
                                         if att.name == "Begin_Platforms1":
-                                                att.value = 1
+                                                att.value = 3
                                         if att.name == "Begin_Platforms2":
-                                                att.value = 226
+                                                att.value = 100
                         elif Random_Platform == "End":
                                 for att in Attributes:
                                         if att.name == "Begin_Platforms1":
@@ -401,16 +401,265 @@ def generateRom():
                                  "Pura_Begonia_Out","Pura_Begonia_In","Pura_Childam_Out","Pura_Childam_In",
                                  "Chil_Pura_In","Chil_Pura_Out","To_Sphinx","From_StarKey",
                                  "Volcano_In","Volcano_Out","Volcano_Secret_Heart","Volcano_From_Secret_Heart",
-                                 "Demo"
-                                 
-                                 
+                                 "Demo"                                 
                                  ]
 
-                        Entrances = ["Start",
-                                     "Alsedo","Pura","Begonia","Childam","Lilly",
+                        Entrances = ["Alsedo","Pura","Begonia","Childam","Lilly",
                                      "To_Alsedo_Forest",
                                      "To_Sphinx","From_StarKey",
-                                     "From_Volcano","Well_Door","Demo"]
+                                     "From_Volcano","Well_Door"]
+
+                        ### Randomize the Demo ###
+                        
+                        Random_Exit = random.choice(Exits)
+                        if Random_Exit == "Start":
+                                Value_1 = 1
+                                Value_2 = 20
+                        elif Random_Exit == "Alsedo_Inn":
+                                Value_1 = 3
+                                Value_2 = 32
+                        elif Random_Exit == "Pura_Inn":
+                                Value_1 = 3
+                                Value_2 = 40
+                        elif Random_Exit == "Begonia_Inn":
+                                Value_1 = 3
+                                Value_2 = 68
+                        elif Random_Exit == "Childam_Inn":
+                                Value_1 = 1
+                                Value_2 = 218
+                        elif Random_Exit == "Lilly_Inn":
+                                Value_1 = 3
+                                Value_2 = 48
+                        elif Random_Exit == "Pura_Castle_Out":
+                                Value_1 = 1
+                                Value_2 = 28
+                        elif Random_Exit == "Pura_Castle_In":
+                                Value_1 = 1
+                                Value_2 = 150
+                        elif Random_Exit == "Alsedo_Tele_Bot":
+                                Value_1 = 1
+                                Value_2 = 34
+                        elif Random_Exit == "Alsedo_Tele_Top":
+                                Value_1 = 1
+                                Value_2 = 40
+                                
+                        elif Random_Exit == "Sewers_Start_Out":
+                                Value_1 = 1
+                                Value_2 = 46
+                        elif Random_Exit == "Sewers_Start_In":
+                                Value_1 = 1
+                                Value_2 = 64
+                        elif Random_Exit == "Cave_to_Myc":
+                                Value_1 = 1
+                                Value_2 = 70
+                        elif Random_Exit == "Myconid":
+                                Value_1 = 1
+                                Value_2 = 76
+                        elif Random_Exit == "Exit_Myc_Left":
+                                Value_1 = 1
+                                Value_2 = 88
+                        elif Random_Exit == "Exit_Myc_Right":
+                                Value_1 = 1
+                                Value_2 = 82
+                        elif Random_Exit == "Alsedo_Forest":
+                                Value_1 = 1
+                                Value_2 = 94
+                        elif Random_Exit == "Sewers_Waterfall":
+                                Value_1 = 1
+                                Value_2 = 100
+                        elif Random_Exit == "Tower_Bot":
+                                Value_1 = 1
+                                Value_2 = 70
+                        elif Random_Exit == "Tower_Top_Outside":
+                                Value_1 = 1
+                                Value_2 = 106
+                                
+                        elif Random_Exit == "Tower_Top_Inside":
+                                Value_1 = 1
+                                Value_2 = 124
+                        elif Random_Exit == "Tower_Mid_Inside":
+                                Value_1 = 1
+                                Value_2 = 118
+                        elif Random_Exit == "Pura_To_Tower":
+                                Value_1 = 1
+                                Value_2 = 144
+                        elif Random_Exit == "Lilly_From_Pura":
+                                Value_1 = 1
+                                Value_2 = 164
+                        elif Random_Exit == "Lilly_To_Pura_Inside":
+                                Value_1 = 1
+                                Value_2 = 176
+                        elif Random_Exit == "Pura_To_Lilly_Inside":
+                                Value_1 = 1
+                                Value_2 = 182
+                        elif Random_Exit == "Pura_From_Lilly":
+                                Value_1 = 1
+                                Value_2 = 130
+                        elif Random_Exit == "Exit_Temple":
+                                Value_1 = 1
+                                Value_2 = 170
+                        elif Random_Exit == "Enter_Temple":
+                                Value_1 = 1
+                                Value_2 = 188
+                        elif Random_Exit == "Begonia_Elder_Out":
+                                Value_1 = 2
+                                Value_2 = 66
+                                
+                        elif Random_Exit == "Begonia_Elder_In":
+                                Value_1 = 2
+                                Value_2 = 72
+                        elif Random_Exit == "Begonia_Pura_Out":
+                                Value_1 = 2
+                                Value_2 = 78
+                        elif Random_Exit == "Begonia_Pura_In":
+                                Value_1 = 2
+                                Value_2 = 84
+                        elif Random_Exit == "Pura_Begonia_Out":
+                                Value_1 = 2
+                                Value_2 = 90
+                        elif Random_Exit == "Pura_Begonia_In":
+                                Value_1 = 1
+                                Value_2 = 156
+                        elif Random_Exit == "Pura_Childam_Out":
+                                Value_1 = 2
+                                Value_2 = 96
+                        elif Random_Exit == "Pura_Childam_In":
+                                Value_1 = 2
+                                Value_2 = 102
+                        elif Random_Exit == "Chil_Pura_In":
+                                Value_1 = 2
+                                Value_2 = 108
+                        elif Random_Exit == "Chil_Pura_Out":
+                                Value_1 = 1
+                                Value_2 = 136
+                        elif Random_Exit == "To_Sphinx":
+                                Value_1 = 2
+                                Value_2 = 60
+                                
+                        elif Random_Exit == "From_StarKey":
+                                Value_1 = 4
+                                Value_2 = 10
+                        elif Random_Exit == "Volcano_Out":
+                                Value_1 = 2
+                                Value_2 = 234
+                        elif Random_Exit == "Volcano_In":
+                                Value_1 = 2
+                                Value_2 = 240
+                        elif Random_Exit == "Volcano_Secret_Heart":
+                                Value_1 = 2
+                                Value_2 = 36
+                        elif Random_Exit == "Volcano_From_Secret_Heart":
+                                Value_1 = 2
+                                Value_2 = 252
+                        elif Random_Exit == "Demo":
+                                Value_1 = 3
+                                Value_2 = 76
+
+                        else:
+                                print("ERROR!")
+                                print(Random_Exit)                                        
+
+                        for att in Attributes:
+                                if att.name == "Demo1":
+                                        att.value = Value_1
+                                if att.name == "Demo2":
+                                        att.value = Value_2
+
+                        ### Random Start ###
+                                        
+                        Ok_Start_Exit = ["Start","Alsedo_Inn","Pura_Inn","Lilly_Inn", "Alsedo_Tele_Bot","Alsedo_Tele_Top",
+                                 "Pura_Castle_Out","Pura_Castle_In","Sewers_Start_Out","Sewers_Start_In",
+                                 "Alsedo_Forest","Sewers_Waterfall","Tower_Bot","Tower_Top_Outside","Tower_Top_Inside",
+                                 "Tower_Mid_Inside","Pura_To_Tower","Lilly_From_Pura","Lilly_To_Pura_Inside",
+                                 "Pura_To_Lilly_Inside","Pura_From_Lilly","Exit_Temple","Enter_Temple",
+                                 "Demo"                                 
+                                 ]
+                        
+                        Random_Exit = random.choice(Ok_Start_Exit)
+                        if Random_Exit == "Start":
+                                Value_1 = 1
+                                Value_2 = 20
+                        elif Random_Exit == "Alsedo_Inn":
+                                Value_1 = 3
+                                Value_2 = 32
+                        elif Random_Exit == "Pura_Inn":
+                                Value_1 = 3
+                                Value_2 = 40                        
+                        elif Random_Exit == "Lilly_Inn":
+                                Value_1 = 3
+                                Value_2 = 48
+                        elif Random_Exit == "Pura_Castle_Out":
+                                Value_1 = 1
+                                Value_2 = 28
+                        elif Random_Exit == "Pura_Castle_In":
+                                Value_1 = 1
+                                Value_2 = 150
+                        elif Random_Exit == "Alsedo_Tele_Bot":
+                                Value_1 = 1
+                                Value_2 = 34
+                        elif Random_Exit == "Alsedo_Tele_Top":
+                                Value_1 = 1
+                                Value_2 = 40                                
+                        elif Random_Exit == "Sewers_Start_Out":
+                                Value_1 = 1
+                                Value_2 = 46
+                        elif Random_Exit == "Sewers_Start_In":
+                                Value_1 = 1
+                                Value_2 = 64
+                                
+                        elif Random_Exit == "Alsedo_Forest":
+                                Value_1 = 1
+                                Value_2 = 94
+                        elif Random_Exit == "Sewers_Waterfall":
+                                Value_1 = 1
+                                Value_2 = 100
+                        elif Random_Exit == "Tower_Bot":
+                                Value_1 = 1
+                                Value_2 = 70
+                        elif Random_Exit == "Tower_Top_Outside":
+                                Value_1 = 1
+                                Value_2 = 106                                
+                        elif Random_Exit == "Tower_Top_Inside":
+                                Value_1 = 1
+                                Value_2 = 124
+                        elif Random_Exit == "Tower_Mid_Inside":
+                                Value_1 = 1
+                                Value_2 = 118
+                        elif Random_Exit == "Pura_To_Tower":
+                                Value_1 = 1
+                                Value_2 = 144
+                        elif Random_Exit == "Lilly_From_Pura":
+                                Value_1 = 1
+                                Value_2 = 164
+                        elif Random_Exit == "Lilly_To_Pura_Inside":
+                                Value_1 = 1
+                                Value_2 = 176
+                        elif Random_Exit == "Pura_To_Lilly_Inside":
+                                Value_1 = 1
+                                Value_2 = 182
+                                
+                        elif Random_Exit == "Pura_From_Lilly":
+                                Value_1 = 1
+                                Value_2 = 130
+                        elif Random_Exit == "Exit_Temple":
+                                Value_1 = 1
+                                Value_2 = 170
+                        elif Random_Exit == "Enter_Temple":
+                                Value_1 = 1
+                                Value_2 = 188                        
+                        elif Random_Exit == "Demo":
+                                Value_1 = 3
+                                Value_2 = 76
+
+                        else:
+                                print("ERROR!")
+                                print(Random_Exit)                                        
+
+                        for att in Attributes:
+                                if att.name == "Start_Game1":
+                                        att.value = Value_1
+                                if att.name == "Start_Game2":
+                                        att.value = Value_2                        
 
                         if Entrance_Randomizer > 0:
                                 while len(Entrances) > 0:
@@ -634,20 +883,25 @@ def generateRom():
                         
                         All_Checks = [
 
-                              "Init_Weapon","Init_Boots","Init_Armor","Init_Heart1","Init_Heart2","Init_Heart3","elder_elixer","elder_firestorm","leather_boots","small_spear",
+                              "Init_Weapon","Init_Boots","Init_Armor","Init_Heart1","Init_Heart2","Init_Heart3",
+
+                              "elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine","Ocarina_Reward",
                               
-                              "chain_mail","wood_shield","medicine","Ocarina_Reward","Firestorm","Heart_Chest","Hard_Armor","Knight_Sword","excalibur","steel_shield",
+                              "Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5",
+
+                              "Heart_Chest","Hard_Armor","Knight_Sword","excalibur","steel_shield",
                               
-                              "Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward","Elixer_Chests","Hard_Shield",
+                              "Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward","Elixer_Chests",
+
+                              "Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6","Trident",
+
+                              "First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
+
+                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet",
+
+                              "Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",
                               
-                              "Trident","First_Money","Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
-                              "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Water_Money_Chest3_Item1","Water_Money_Chest3_Item2",
-                              
-                              "Water_Money_Chest3_Item3","Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Pygmy_Armor","Pygmy_Sword",
-                              "Thunder","Amulet","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
-                              
-                              "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
-                              "Oasis_Boots","Return","Full_Health_1","Quake","Battle_Spear",
+                              "Oasis_Boots","Full_Health_1","Quake","Battle_Spear",
                               
                               "Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
 
@@ -665,7 +919,7 @@ def generateRom():
 
                                      32,32,32, 33,33,33 ,34,34,34, 35,35,35, 36,36,37, ## 15 Spells ##
 
-                                     41,41,41,41,41 ,42,42, 43,44,45,46, ## 5 Charms, 2 Elixers, 4 Health = 11 ##
+                                     41,41,41,41 ,42,42,42, 43,44,45,46, ## 4 Charms, 3 Elixers, 4 Health = 11 ##
 
                                      40,49,50,51,52, 53,54,55,57,58, ## 10 Progression Items ###
 
@@ -688,35 +942,39 @@ def generateRom():
                                                  "Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward"                                        
                                      ]
 
-                        Random = random.choice(All_Checks)
                         
-                        while Random in ["Legend_Shield","Legend_Armor","Legend_Boots",
-                                         "Init_Boots","Init_Weapon","Init_Armor",
-                                         "Init_Heart1","Init_Heart2","Init_Heart3","Sphinx_Bonus_Item","Bracelet_Item"
-                                         ] :                                
-                                Random = random.choice(All_Checks)
+
+
+                        Deep_Checks = [ "Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",
+
+                                      "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
+                              
+                                      "Oasis_Boots","Old_Axe","Sun_Key","Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key",
+
+                                      "Pygmy_Shield","Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword","Charm_Guy_1","Charm_Guy_2",
+
+                                      "Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
+                                                                
+                                      "Pyramid_Item_8","Charmstone_Chest"]
+
+                        Legend_Items = [0,8,16,24]
+                        
+                        while len(Legend_Items) > 0:
+                                random_check = random.choice(Deep_Checks)
+                                random_item = random.choice(Legend_Items)
                                       
-                        for att in Attributes:
-                                if att.name == Random:
-                                        att.value = 0                                        
+                                for att in Attributes:
+                                        if att.name == random_check:
+                                                att.value = random_item                                        
                                         
-                        All_Checks.remove(Random)    
-                        All_Items.remove(0)
-                        
-                        if Random in Can_Reach:
-                                Can_Reach.remove(Random)
-
-
-                        Random = random.choice(Can_Reach)
+                                All_Checks.remove(random_check)    
+                                All_Items.remove(random_item)
                                 
-                        for att in Attributes:
-                                if att.name == Random:
-                                        att.value = 37
-                                        
-                        All_Checks.remove(Random)
-                        Can_Reach.remove(Random)
-                        All_Items.remove(37)
+                                Deep_Checks.remove(random_check)    
+                                Legend_Items.remove(random_item)
                         
+
+                                               
                         
 
                         
@@ -735,10 +993,11 @@ def generateRom():
                         Teh_Urn = 0
                         Sky = 0
                         Charm = 0
+                        Ice_Castle = 0 
 
-                        Progression_Items = [40,
+                        Progression_Items = [37,40,
                                              7,15,23,31,
-                                             5,24,25,26,27,41,41,
+                                             5,25,26,27,41,41,
                                              49,50,
                                              51,52,53,
                                              54,55,
@@ -764,8 +1023,12 @@ def generateRom():
                                 Random_Item = random.choice(Progression_Items)
 
                                 if Random_Check == "Bracelet_Item":
-                                        while Random_Item not in [54,55,58]:
-                                                Random_Item = random.choice(Progression_Items)
+                                        if (54 not in Progression_Items) and (55 not in Progression_Items) and (58 not in Progression_Items):
+                                                while Random_Check == "Bracelet_Item":
+                                                        Random_Check = random.choice(Can_Reach)        
+                                        else:
+                                                while Random_Item not in [54,55,58]:
+                                                        Random_Item = random.choice(Progression_Items)
                                                 
                                 if Random_Item in [49, 50, 51, 52, 53, 54, 55, 57, 58]:
                                         while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
@@ -786,22 +1049,16 @@ def generateRom():
                                 All_Items.remove(Random_Item)
 
                                 if Random_Item == 40:
-                                        Can_Reach = Can_Reach + ["Water_Money_Chest3_Item1",
-                                                            "Water_Money_Chest3_Item2","Water_Money_Chest3_Item3",
-                                                            "Water_Money_Chest3_Item4","Water_Money_Chest3_Item5"]
+                                        Can_Reach = Can_Reach + ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5",]
                                         if Heart_Chest == 0:
                                                 Can_Reach = Can_Reach + ['Heart_Chest']
                                                 Heart_Chest = 1
                                         
                                 if Random_Item == 5:
-                                        if Heart_Chest == 0:
-                                                Can_Reach = Can_Reach + ['Heart_Chest']
-                                                Heart_Chest = 1
+                                        
                                         if Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
                                                             "Ocarina_Reward","Heart_Chest",
-                                                            "Water_Money_Chest3_Item1",
-                                                            "Water_Money_Chest3_Item2","Water_Money_Chest3_Item3",
-                                                            "Water_Money_Chest3_Item4","Water_Money_Chest3_Item5"]:
+                                                            "Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5"]:
                                                Trident_Location = "Alsedo"
                                                 
                                         elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots",
@@ -809,14 +1066,12 @@ def generateRom():
                                                Trident_Location = "Pura"
                                                
                                         elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward","Elixer_Chests",
-                                                               "Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
-                                                               "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6",
+                                                               "Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6",
                                                                "Trident"]:
                                                Trident_Location = "Lilly"
                                                
                                         elif Random_Check in ["Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water",
-                                                             "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
-                                                              "Old_Axe"]:
+                                                             "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe"]:
                                                Trident_Location = "Childam"
                                                
                                         elif Random_Check in ["Shield_Magic_Chest","Power",
@@ -832,17 +1087,18 @@ def generateRom():
                                                Trident_Location = "Error!"
 
                                                
-                                        Can_Reach = Can_Reach + ["First_Money","Firestorm","Hard_Shield","Return"
-                                                                 "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet"]
+                                        Can_Reach = Can_Reach + ["First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
+                                                                      "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet"]
+                                        if Heart_Chest == 0:
+                                                Can_Reach = Can_Reach + ['Heart_Chest']
+                                                Heart_Chest = 1
                                 if Random_Item == 41:
                                         Charm = Charm + 1
                                         if Charm == 2:
                                                 Can_Reach = Can_Reach + ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5"]                                        
                                 if Random_Item == 26:
                                         if Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
-                                                            "Ocarina_Reward","Water_Money_Chest3_Item1",
-                                                            "Water_Money_Chest3_Item2","Water_Money_Chest3_Item3",
-                                                            "Water_Money_Chest3_Item4","Water_Money_Chest3_Item5","Heart_Chest"]:
+                                                            "Ocarina_Reward","Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5","Heart_Chest"]:
                                                Oasis_Boots_Location = "Alsedo"
                                                 
                                         elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots",
@@ -850,14 +1106,13 @@ def generateRom():
                                                Oasis_Boots_Location = "Pura"
                                                 
                                         elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward","Elixer_Chests",
-                                                               "Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
-                                                               "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6",
-                                                            "Trident"]:
+                                                              "Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6",
+                                                              "Trident"]:
                                                Oasis_Boots_Location = "Lilly"
-                                        elif Random_Check in ["First_Money","Firestorm","Hard_Shield","Pygmy_Armor","Pygmy_Sword",
-                                      "Thunder","Amulet","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
-                                      "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6","Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
-                                      "Oasis_Boots","Return"]:
+                                        elif Random_Check in ["First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
+                                                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet",
+                                                              "Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",
+                                                              "Oasis_Boots"]:
                                                Oasis_Boots_Location = "Underwater"
                                         elif Random_Check in ["Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water",
                                                              "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
@@ -875,35 +1130,43 @@ def generateRom():
                                         if Quake == 0:
                                                 Can_Reach = Can_Reach + ['Quake']
                                                 Quake = 1
-                                if Random_Item == 24:
-                                        if Quake == 0:
-                                                Can_Reach = Can_Reach + ['Quake']
-                                                Quake = 1
                                 if Random_Item == 25:
                                         if Quake == 0:
                                                 Can_Reach = Can_Reach + ['Quake']
                                                 Quake = 1
                                 if Random_Item == 49:
-                                        Can_Reach = Can_Reach + ["Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
-                                                                 "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6","Trident"]
+                                        Can_Reach = Can_Reach + ["Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6","Trident"]
                                         if Elixer == 0:
                                                 Can_Reach = Can_Reach + ['Elixer_Chests']
                                                 Elixer = 1
                                         if Heart_Chest == 0:
                                                 Can_Reach = Can_Reach + ['Heart_Chest']
                                                 Heart_Chest = 1
+
+                                if Random_Item == 37:
+                                        Ice_Castle = Ice_Castle + 1
+                                        if Ice_Castle == 2:
+                                                Can_Reach  = Can_Reach + ["Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti"]
+                                                
+                                                if Heart_Chest == 0:
+                                                        Can_Reach = Can_Reach + ['Heart_Chest']
+                                                        Heart_Chest = 1
+                                                        
                                 if Random_Item == 58:
-                                        Can_Reach = Can_Reach + ["Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water",
-                                                                 "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti"]
-                                        if Heart_Chest == 0:
-                                                Can_Reach = Can_Reach + ['Heart_Chest']
-                                                Heart_Chest = 1
+                                        Ice_Castle = Ice_Castle + 1
+                                        Can_Reach = Can_Reach + ["Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water"]
+ 
+                                        if Ice_Castle == 2:
+                                                Can_Reach  = Can_Reach + ["Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti"]
+                                                
+                                                if Heart_Chest == 0:
+                                                        Can_Reach = Can_Reach + ['Heart_Chest']
+                                                        Heart_Chest = 1
+                                                        
                                 if Random_Item == 5 or Random_Item == 50:
                                         Poseidon = Poseidon + 1
                                         if Poseidon == 2:
-                                                Can_Reach = Can_Reach + ["Oasis_Boots","Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
-                                                                         "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6",
-                                                                         "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8"]
+                                                Can_Reach = Can_Reach + ["Oasis_Boots","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8"]
                                                 if Elixer == 0:
                                                         Can_Reach = Can_Reach + ['Elixer_Chests']
                                                         Elixer = 1                                        
@@ -911,6 +1174,7 @@ def generateRom():
                                         Well = Well + 1
                                         if Well == 2:
                                                 Can_Reach = Can_Reach + ["Sun_Key"]
+                                                
                                 if Random_Item == 26 or Random_Item == 51:
                                         Pyramid_Main = Pyramid_Main + 1
                                         if Pyramid_Main == 2 and Pyramid_Extra < 6:
@@ -918,6 +1182,7 @@ def generateRom():
                                                 if Elixer == 0:
                                                         Can_Reach = Can_Reach + ['Elixer_Chests']
                                                         Elixer = 1
+                                                        
                                 if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31:
                                         Pyramid_Extra = Pyramid_Extra + 1
                                         if Pyramid_Extra == 6:
@@ -930,6 +1195,7 @@ def generateRom():
                                                         if Elixer == 0:
                                                                 Can_Reach = Can_Reach + ['Elixer_Chests']
                                                                 Elixer = 1
+                                                                
                                 if Random_Item == 26 or Random_Item == 52:
                                         Moon = Moon + 1
                                         if Moon == 2:
@@ -1020,11 +1286,9 @@ def generateRom():
                                         if Initial_Equipment_Randomizer == 0:
                                                 Random_Armor = 14
                                         else:
-                                                Random_Armor = random.choice([8,9,10,11,12,13,14])
+                                                Random_Armor = random.choice([9,10,11,12,13,14])
 
                                         
-                                        if Random_Armor == 8:                                               
-                                                att.value = 1
                                         if Random_Armor == 9:                                               
                                                 att.value = 2
                                         if Random_Armor == 10:                                               
@@ -1104,8 +1368,6 @@ def generateRom():
                                 elif Random_Item < 16:
                                         for att in Attributes:          
                                                 if att.name == "Init_Armor":
-                                                        if Random_Item == 8:                                               
-                                                                att.value = att.value+1
                                                         if Random_Item == 9:                                               
                                                                 att.value = att.value+2
                                                         if Random_Item == 10:                                               
@@ -1124,8 +1386,6 @@ def generateRom():
                                 elif Random_Item < 24:
                                         for att in Attributes:          
                                                 if att.name == "Init_Shield":
-                                                        if Random_Item == 16:                                               
-                                                                att.value = att.value+1
                                                         if Random_Item == 17:                                               
                                                                 att.value = att.value+2
                                                         if Random_Item == 18:                                               
@@ -1144,11 +1404,6 @@ def generateRom():
                                 elif Random_Item < 32:
                                         for att in Attributes:          
                                                 if att.name == "Init_Boots":
-                                                        if Random_Item == 24:                                               
-                                                                att.value = att.value+1
-                                                        if Random_Item == 25:                                               
-                                                                att.value = att.value+2
-                                                                
                                                         if Random_Item == 28:                                               
                                                                att.value = att.value+16
                                                         if Random_Item == 29:                                               
@@ -1230,7 +1485,6 @@ def generateRom():
                                 All_Checks.remove(Starter)
                                 Starting_Items.remove(Starter)
 
-                        Num_Legend_Itms = 0
 
 
                                 
@@ -1245,9 +1499,7 @@ def generateRom():
                                         while(Random_Item)<64:
                                                 Random_Item = random.choice(All_Items)
 
-                                if Random_Item == 8 or Random_Item == 16 or Random_Item == 24:
-                                        if Random_Check == "Legend_Boots" or Random_Check == "Legend_Shield" or Random_Check == "Legend_Armor":
-                                                Num_Legend_Itms = Num_Legend_Itms + 1
+                                
 
                                                 
                                 if Random_Item > 70 :
@@ -1271,7 +1523,7 @@ def generateRom():
                                                                   "Flame_Armor","Hi_Potion","Elixer_Shop",
                                                                   "elder_elixer","elder_firestorm",
                                                                   "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
-                                                                  "Legend_Sword","Ocarina_Reward","Bracelet_Item","Sphinx_Bonus_Item"]:
+                                                                  "Legend_Sword","Ocarina_Reward","Bracelet_Item","Sphinx_Bonus_Item","Heart_Chest","bat_reward"]:
                                                 Random_Check = random.choice(All_Checks)
                                 
                                 for att in Attributes:
@@ -1305,12 +1557,11 @@ def generateRom():
                                                          10,11,12,13,14,15,16,17,18,19,
                                                          20,21,22,23,24,25,26,27,28,29,
                                                          30,31,32,33,34,35,36,37,
-                                                         40,41,42,43,44,45,46,      49,
+                                                         40,41,42,43,44,45,46,      
                                                          50,51,52,53,54,55,56,57,58,59 ,64      
                                                          ]
 
                         Charmstone_Price = [0,1,2]
-
                         Random_Price = random.choice(Charmstone_Price)
 
                         Lilly_Name = [0,1,2]
@@ -1330,8 +1581,7 @@ def generateRom():
                         
 
                         for att_1 in Attributes:
-                                if att_1.name == "Sky_Legend_Num_Items":
-                                        att_1.value = att_1.value + Num_Legend_Itms
+                                
                                         
                                 if att_1.name == "Oasis_Boots_Hint_LOCATION":
                                         if Oasis_Boots_Location == "Alsedo":
@@ -1358,97 +1608,97 @@ def generateRom():
                                                 att_1.value = 74
 
                                 if att_1.name == "Oasis_Boots_Name_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 79
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 83
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 72
                                 if att_1.name == "Oasis_Boots_Name_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 110
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 97
                                 if att_1.name == "Oasis_Boots_Name_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 118
                                 if att_1.name == "Oasis_Boots_Name_4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 105
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 107
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 101
                                 if att_1.name == "Oasis_Boots_Name_5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 110
 
                                 if att_1.name == "Sun_Key_Name_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 83
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 83
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 82
                                 if att_1.name == "Sun_Key_Name_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 101
                                 if att_1.name == "Sun_Key_Name_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 110
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 108
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 100
                                         
                                 if att_1.name == "Elf_Queen_Name_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 76
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 75
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 77
                                 if att_1.name == "Elf_Queen_Name_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 105
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 105
                                 if att_1.name == "Elf_Queen_Name_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 114
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 109
                                 if att_1.name == "Elf_Queen_Name_4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 108
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 105
                                 if att_1.name == "Elf_Queen_Name_5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 32
 
 
@@ -1497,57 +1747,58 @@ def generateRom():
                                                 att_1.value = 110
 
                                 if att_1.name == "Myconid_Name_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 70
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 77
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 84
                                 if att_1.name == "Myconid_Name_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 114
                                 if att_1.name == "Myconid_Name_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 110
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 117
                                 if att_1.name == "Myconid_Name_4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 45
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 104
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 102
                                 if att_1.name == "Myconid_Name_5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 71
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 102
                                 if att_1.name == "Myconid_Name_6":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 108
                                 if att_1.name == "Myconid_Name_7":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 101                                        
                                         
                                 if att_1.name == "Charmstone_Price3":
                                         att_1.value = att_1.value + Random_Price
+                                        
                                 if att_1.name == "Ocarina_Reward":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Ocarina_Text":
@@ -1759,19 +2010,8 @@ def generateRom():
                                 if att_1.name == "Sphinx_Question_Four_Correct":
                                         att_1.value = att_1.value+Random_Price                                       
                                         Charmstone_Price.remove(Random_Price)
-                                if att_1.name == "Sphinx_Question_Five_Correct":
-                                        if Oasis_Boots == "Shop":
-                                                att_1.value = 195
-                                        if Oasis_Boots == "Underwater":
-                                                att_1.value = 219
-                                        if Oasis_Boots == "Other":
-                                                att_1.value = 177
-                                if att_1.name == "Sphinx_Question_Six_Correct":
-                                        if Sun_Key == "Underwater":
-                                                att_1.value = 219
-                                        if Sun_Key == "Other":
-                                                att_1.value = 177
-                                                
+                                        
+                                
                                 if att_1.name == "Sphinx_Question_Dwarf_Right_1":
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 65
@@ -1859,7 +2099,7 @@ def generateRom():
                                                 att_1.value = 110
 
                                 if att_1.name == "Sphinx_Question_Dwarf_Wrong2_1":
-                                        if Random_Lilly_Name == 21:
+                                        if Random_Lilly_Name == 2:
                                                 att_1.value = 65
                                         if Random_Lilly_Name == 0:
                                                 att_1.value = 83
@@ -1902,673 +2142,673 @@ def generateRom():
                                                 att_1.value = 110
 
                                 if att_1.name == "Sphinx_Question_Myc_Right1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 70
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 77
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 84
                                 if att_1.name == "Sphinx_Question_Myc_Right2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 114
                                 if att_1.name == "Sphinx_Question_Myc_Right3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 110
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 117
                                 if att_1.name == "Sphinx_Question_Myc_Right4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 45
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 104
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 102
                                 if att_1.name == "Sphinx_Question_Myc_Right5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 71
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 102
                                 if att_1.name == "Sphinx_Question_Myc_Right6":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 108
                                 if att_1.name == "Sphinx_Question_Myc_Right7":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 101
 
                                 if att_1.name == "Sphinx_Question_Myc_Wrong1":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 70
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 77
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 84
                                 if att_1.name == "Sphinx_Question_Myc_Wrong2":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 114
                                 if att_1.name == "Sphinx_Question_Myc_Wrong3":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 110
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 117
                                 if att_1.name == "Sphinx_Question_Myc_Wrong4":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 45
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 104
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 102
                                 if att_1.name == "Sphinx_Question_Myc_Wrong5":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 71
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 102
                                 if att_1.name == "Sphinx_Question_Myc_Wrong6":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 108
                                 if att_1.name == "Sphinx_Question_Myc_Wrong7":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 101
 
                                 if att_1.name == "Sphinx_Question_Myc_Wrong2_1":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 70
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 77
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 84
                                 if att_1.name == "Sphinx_Question_Myc_Wrong2_2":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 114
                                 if att_1.name == "Sphinx_Question_Myc_Wrong2_3":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 110
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 117
                                 if att_1.name == "Sphinx_Question_Myc_Wrong2_4":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 45
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 104
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 102
                                 if att_1.name == "Sphinx_Question_Myc_Wrong2_5":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 71
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 102
                                 if att_1.name == "Sphinx_Question_Myc_Wrong2_6":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 108
                                 if att_1.name == "Sphinx_Question_Myc_Wrong2_7":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Myc_Name == 2:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Myc_Name == 0:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Myc_Name == 1:
                                                 att_1.value = 101
 
                                 if att_1.name == "Sphinx_Question_Queen_Right_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 76
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 75
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 77
                                 if att_1.name == "Sphinx_Question_Queen_Right_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 105
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 105
                                 if att_1.name == "Sphinx_Question_Queen_Right_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 114
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 109
                                 if att_1.name == "Sphinx_Question_Queen_Right_4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 108
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 105
                                 if att_1.name == "Sphinx_Question_Queen_Right_5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 32
 
                                 if att_1.name == "Sphinx_Question_Queen_Wrong1_1":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 76
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 75
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 77
                                 if att_1.name == "Sphinx_Question_Queen_Wrong1_2":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 105
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 105
                                 if att_1.name == "Sphinx_Question_Queen_Wrong1_3":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 114
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 109
                                 if att_1.name == "Sphinx_Question_Queen_Wrong1_4":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 108
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 105
                                 if att_1.name == "Sphinx_Question_Queen_Wrong1_5":
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 32
 
                                 if att_1.name == "Sphinx_Question_Queen_Wrong2_1":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 76
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 75
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 77
                                 if att_1.name == "Sphinx_Question_Queen_Wrong2_2":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 105
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 105
                                 if att_1.name == "Sphinx_Question_Queen_Wrong2_3":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 114
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 109
                                 if att_1.name == "Sphinx_Question_Queen_Wrong2_4":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 108
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 105
                                 if att_1.name == "Sphinx_Question_Queen_Wrong2_5":
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Elf_Name == 2:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Elf_Name == 0:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Elf_Name == 1:
                                                 att_1.value = 32
 
                                 if att_1.name == "Sphinx_Question_Key_Right_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 83
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 83
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 82
                                 if att_1.name == "Sphinx_Question_Key_Right_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 117
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 101
                                 if att_1.name == "Sphinx_Question_Key_Right_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 110
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 108
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 100
                                 if att_1.name == "Sphinx_Question_Key_Right_4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 45
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 45
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 45
                                 if att_1.name == "Sphinx_Question_Key_Right_5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 75
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 75
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 75
                                 if att_1.name == "Sphinx_Question_Key_Right_6":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 101
                                 if att_1.name == "Sphinx_Question_Key_Right_7":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 121
 
                                 if att_1.name == "Sphinx_Question_Key_Wrong1_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 83
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 82
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 83
                                 if att_1.name == "Sphinx_Question_Key_Wrong1_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 101 
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 117 
                                 if att_1.name == "Sphinx_Question_Key_Wrong1_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 108
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 100 
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 110 
                                 if att_1.name == "Sphinx_Question_Key_Wrong1_4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 45
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 45
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 45
                                 if att_1.name == "Sphinx_Question_Key_Wrong1_5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 75
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 75
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 75
                                 if att_1.name == "Sphinx_Question_Key_Wrong1_6":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 101
                                 if att_1.name == "Sphinx_Question_Key_Wrong1_7":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 121
                                 if att_1.name == "Sphinx_Question_Key_Wrong1_8":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 32
 
                                 if att_1.name == "Sphinx_Question_Key_Wrong2_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 82
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 83
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 83
                                 if att_1.name == "Sphinx_Question_Key_Wrong2_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 117  
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 111  
                                 if att_1.name == "Sphinx_Question_Key_Wrong2_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 100
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 110  
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 108  
                                 if att_1.name == "Sphinx_Question_Key_Wrong2_4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 45
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 45
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 45
                                 if att_1.name == "Sphinx_Question_Key_Wrong2_5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 75
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 75
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 75
                                 if att_1.name == "Sphinx_Question_Key_Wrong2_6":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 101
                                 if att_1.name == "Sphinx_Question_Key_Wrong2_7":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 121
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 121
                                 if att_1.name == "Sphinx_Question_Key_Wrong2_8":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Key_Name == 0:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Key_Name == 1:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Key_Name == 2:
                                                 att_1.value = 32
 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 79
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 83
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 72
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 110
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 97
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 118
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 105
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 107
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 101
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 110
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_6":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 32
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_7":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 66
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 66
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 66
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_8":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 111
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_9":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 111
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_10":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 116
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 116
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 116
                                 if att_1.name == "Sphinx_Question_Five_Boots_Right_11":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 115
 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 83
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 72 
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 79 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 110
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 97
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 118 
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 115 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 107
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 101 
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 105 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 110 
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 115 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_6":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 32
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_7":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 66
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 66
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 66
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_8":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 111
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_9":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 111
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_10":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 116
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 116
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 116
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_11":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 115
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong1_11":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 32
 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_1":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 72
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 79  
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 83 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_2":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 97
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 110
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_3":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 118
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 115  
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 97
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_4":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 101
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 105  
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 107 
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_5":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 110
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 115  
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 101
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_6":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 32
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_7":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 66
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 66
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 66
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_8":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 111
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_9":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 111
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 111
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_10":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 116
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 116
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 116
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_11":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 115
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 115
                                 if att_1.name == "Sphinx_Question_Five_Boots_Wrong2_12":
-                                        if Random_Lilly_Name == 0:
+                                        if Random_Boot_Name == 0:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 1:
+                                        if Random_Boot_Name == 1:
                                                 att_1.value = 32
-                                        if Random_Lilly_Name == 2:
+                                        if Random_Boot_Name == 2:
                                                 att_1.value = 32
                                 
 
@@ -2591,37 +2831,18 @@ def generateRom():
                                         Random_Price = random.choice(Charmstone_Price)
                                         att.value = att.value+Random_Price                                       
                                         Charmstone_Price.remove(Random_Price)
-                                if att.name == "Sphinx_Question_Five_Wrong_2":
-                                        if Oasis_Boots == "Shop":
-                                                att.value = 177
-                                        if Oasis_Boots == "Underwater":
-                                                att.value = 195
-                                        if Oasis_Boots == "Other":
-                                                att.value = 219
-                                if att.name == "Sphinx_Question_Five_Wrong2_2":
-                                        if Oasis_Boots == "Shop":
-                                                att.value = 219
-                                        if Oasis_Boots == "Underwater":
-                                                att.value = 177
-                                        if Oasis_Boots == "Other":
-                                                att.value = 195
+                                
                                         
-                                Shift_Up = ["Heart_Chest","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
-                                        "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
-                                        "Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
-                                        "Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
-                                        "Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5",
-                                            "Full_Health_1","Full_Health_2",
-                                            "Legend_Shield","Legend_Armor","Legend_Boots",
-                                            "Water_Money_Chest3_Item1","Water_Money_Chest3_Item2","Water_Money_Chest3_Item3",
-                                            "Water_Money_Chest3_Item4","Water_Money_Chest3_Item5",
-                                            "Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
-                                            "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6",
-                                            "Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
-                                            "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6",    
-                                            "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
-                                            'Pyramid_Item_1','Pyramid_Item_2','Pyramid_Item_3','Pyramid_Item_4','Pyramid_Item_5',
-                                            'Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8',"Big_Yeti","Left_Yeti","Right_Yeti"
+                                Shift_Up = ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5","Heart_Chest","bat_reward","Elixer_Chests",
+                                              "Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6","Trident",
+                                              "First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
+                                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",                              
+                                              "Oasis_Boots","Return","Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
+                                              "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key",
+                                              "Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key",
+                                              "Pygmy_Shield","Power","Fire_Urn","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
+                                              "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest",
+                                              "Legend_Boots","Legend_Shield","Legend_Armor"
                                             ]
                                 flag = any (x == att.name for x in Shift_Up)
                                 if flag:
@@ -2667,133 +2888,359 @@ def generateTextLog():
                 intStr = str(att.value).rjust(maxIntLen)
                 hexStr = "[0x"+str(hex(att.value))[2:].rjust(maxHexLen, "0").upper()+"]"
                 Text_String = ""
-                Chest = ["Heart_Chest","Firestorm","Quake","bat_reward","Pygmy_Sword","Pygmy_Armor","Pygmy_Boots","Pygmy_Shield",
-                                        "Sun_Key","Moon_Key","Star_Key","Blue_Gem","Gold_Gem","Thunder","Return","Power",
-                                        "Shield_Magic_Chest","Old_Axe","Fire_Urn","Charmstone_Chest","Hard_Shield",
-                                        "Trident","Oasis_Boots","Amulet","Elixer_Chests","First_Money","Secret_Pyramid_1",
-                                        "Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5",
-                                            "Full_Health_1","Full_Health_2",
-                                            "Legend_Shield","Legend_Armor","Legend_Boots",
-                                            "Water_Money_Chest3_Item1","Water_Money_Chest3_Item2","Water_Money_Chest3_Item3",
-                                            "Water_Money_Chest3_Item4","Water_Money_Chest3_Item5",
-                                            "Water_Money_Chest2_Item1","Water_Money_Chest2_Item2","Water_Money_Chest2_Item3",
-                                            "Water_Money_Chest2_Item4","Water_Money_Chest2_Item5","Water_Money_Chest2_Item6",
-                                            "Water_Money_Chest4_Item1","Water_Money_Chest4_Item2","Water_Money_Chest4_Item3",
-                                            "Water_Money_Chest4_Item4","Water_Money_Chest4_Item5","Water_Money_Chest4_Item6",    
-                                            "Water_Money_Chest4_Item7","Water_Money_Chest4_Item8",
-                                            'Pyramid_Item_1','Pyramid_Item_2','Pyramid_Item_3','Pyramid_Item_4','Pyramid_Item_5',
-                                            'Pyramid_Item_6','Pyramid_Item_7','Pyramid_Item_8',"Big_Yeti","Left_Yeti","Right_Yeti"]
+                Chest = ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5","Heart_Chest","bat_reward","Elixer_Chests",
+                                              "Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6","Trident",
+                                              "First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
+                                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",                              
+                                              "Oasis_Boots","Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
+                                              "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key",
+                                              "Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key",
+                                              "Pygmy_Shield","Power","Fire_Urn","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
+                                              "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest",
+                                              "Legend_Boots","Legend_Shield","Legend_Armor"]
                 flag = any (x == att.name for x in Chest)
                 if flag:
+                        if att.value == 128:
+                                Text_String = "Legend Sword"
+                        if att.value == 129:
+                                Text_String = "Excalibur"
+                        if att.value == 130:
+                                Text_String = "Knight Sword"
+                        if att.value == 131:
+                                Text_String = "Gradius"
+                        if att.value == 132:
+                                Text_String = "Battle Spear"
+                        if att.value == 133:
+                                Text_String = "Trident"
+                        if att.value == 134:
+                                Text_String = "Small Spear"
+                        if att.value == 135:
+                                Text_String = "Pygmy Sword"
+
+                        if att.value == 136:
+                                Text_String = "Legend Armor"
+                        if att.value == 137:
+                                Text_String = "Flame Armor"
+                        if att.value == 138:
+                                Text_String = "Knight Armor"
+                        if att.value == 139:
+                                Text_String = "Steel Armor"
+                        if att.value == 140:
+                                Text_String = "Hard Armor"
+                        if att.value == 141:
+                                Text_String = "Chain Mail"
+                        if att.value == 142:
+                                Text_String = "Leather Armor"
+                        if att.value == 143:
+                                Text_String = "Pygmy Armor"
+
+                        if att.value == 144:
+                                Text_String = "Legend Shield"
+                        if att.value == 145:
+                                Text_String = "Flame Shield"
+                        if att.value == 146:
+                                Text_String = "Knight Shield"
+                        if att.value == 147:
+                                Text_String = "Steel Shield"
+                        if att.value == 148:
+                                Text_String = "Hard Shield"
+                        if att.value == 149:
+                                Text_String = "Shell Shield"
+                        if att.value == 150:
+                                Text_String = "Wood Shield"
+                        if att.value == 151:
+                                Text_String = "Pygmy Shield"
+
+                        if att.value == 152:
+                                Text_String = "Legend Boots"
+                        if att.value == 153:
+                                Text_String = "Ceramic Boots"
+                        if att.value == 154:
+                                Text_String = "Oasis Boots"
                         if att.value == 155:
                                 Text_String = "Marine Boots"
-                        if att.value == 169:
-                                Text_String  = "Charmstone"
-                        if att.value == 170:
-                                Text_String  = "Elixer [Chest]"
-                        if att.value == 128:
-                                Text_String  = "Legend Sword"
-                        if att.value == 133:
-                                Text_String  = "Trident"
-                        if att.value == 135:
-                                Text_String  = "Pygmy Sword"
-                        if att.value == 143:
-                                Text_String  = "Pygmy Armor"
-                        if att.value == 151:
-                                Text_String  = "Pygmy Shield"
-                        if att.value == 154:
-                                Text_String  = "Oasis Boots"
-                        if att.value == 155:
-                                Text_String  = "Marine Boots"
-                        if att.value == 159:                                
-                                Text_String  = "Pygmy Boots"
-                        if att.value == 168:
-                                Text_String  = "Ocarina"
-                        if att.value == 177:
-                                Text_String  = "Lamp"
-                        if att.value == 178:
-                                Text_String  = "Amulet"
-                        if att.value == 179:
-                                Text_String  = "Sun-Key"
-                        if att.value == 180:
-                                Text_String  = "Moon-Key"
-                        if att.value == 181:
-                                Text_String  = "Star-Key"
-                        if att.value == 182:
-                                Text_String  = "Gold-Gem"
-                        if att.value == 183:
-                                Text_String  = "Blue-Gem"
-                        if att.value == 185:
-                                Text_String  = "Fire-Urn"
-                        if att.value == 186:
-                                Text_String  = "Bracelet"
-                        if att.value == 136:
-                                Text_String  = "Legend Armor"
-                        if att.value == 144:
-                                Text_String  = "Legend Shield"
-                        if att.value == 152:
-                                Text_String  = "Legend Boots"
+                        if att.value == 156:
+                                Text_String = "Ladder Boots"
+                        if att.value == 157:
+                                Text_String = "Leather Boots"
+                        if att.value == 158:
+                                Text_String = "Cloth Boots"
+                        if att.value == 159:
+                                Text_String = "Pygmy Boots"
+
+                        if att.value == 160:
+                                Text_String = "Firestorm"
+                        if att.value == 161:
+                                Text_String = "Quake"
+                        if att.value == 162:
+                                Text_String = "Thunder"
+                        if att.value == 163:
+                                Text_String = "Power"
+                        if att.value == 164:
+                                Text_String = "Shield Magic"
                         if att.value == 165:
-                                Text_String  = "Return Magic"
+                                Text_String = "Return"
+
+                        if att.value == 168:
+                                Text_String = "Ocarina"
+                        if att.value == 169:
+                                Text_String = "Charmstone"
+                        if att.value == 170:
+                                Text_String = "Elixer"
+                        if att.value == 171:
+                                Text_String = "Medicine"
+                        if att.value == 172:
+                                Text_String = "Potion"
+                        if att.value == 173:
+                                Text_String = "Holywater"
+                        if att.value == 174:
+                                Text_String = "Hi-Potion"
+
+                        if att.value == 177:
+                                Text_String = "Lamp"
+                        if att.value == 178:
+                                Text_String = "Amulet"
+                        if att.value == 179:
+                                Text_String = "Sun-Key"
+                        if att.value == 180:
+                                Text_String = "Moon-Key"
+                        if att.value == 181:
+                                Text_String = "Star-Key"
+                        if att.value == 182:
+                                Text_String = "Gold-Gem"
+                        if att.value == 183:
+                                Text_String = "Blue-Gem"
+
+                        if att.value == 185:
+                                Text_String = "Fire-Urn"
+                        if att.value == 186:
+                                Text_String = "Bracelet"
+                        if att.value == 187:
+                                Text_String = "Jet-Pack"
+
+                        if att.value == 192:
+                                Text_String = "Heart"
+                        
+                        
                 Shop = ["leather_boots","medicine","small_spear","chain_mail","wood_shield","Knight_Sword","Hard_Armor","Charmstone_Purchase",
                         "Potion","Ladder_Boots","excalibur","steel_shield","Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
                         "Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield","Flame_Armor","Hi_Potion",
                         "Elixer_Shop","elder_elixer","elder_firestorm","Legend_Sword","Ocarina_Reward",
-                        'Charm_Guy_1','Charm_Guy_2','Charm_Guy_3','Charm_Guy_4','Charm_Guy_5']
+                        'Charm_Guy_1','Charm_Guy_2','Charm_Guy_3','Charm_Guy_4','Charm_Guy_5',"Bracelet_Item","Sphinx_Bonus_Item"]
                 flag2 = any (x == att.name for x in Shop)
                 if flag2:
+                        if att.value == 0:
+                                Text_String = "Legend Sword"
+                        if att.value == 1:
+                                Text_String = "Excalibur"
+                        if att.value == 2:
+                                Text_String = "Knight Sword"
+                        if att.value == 3:
+                                Text_String = "Gradius"
+                        if att.value == 4:
+                                Text_String = "Battle Spear"
+                        if att.value == 5:
+                                Text_String = "Trident"
+                        if att.value == 6:
+                                Text_String = "Small Spear"
+                        if att.value == 7:
+                                Text_String = "Pygmy Sword"
+
+                        if att.value == 8:
+                                Text_String = "Legend Armor"
+                        if att.value == 9:
+                                Text_String = "Flame Armor"
+                        if att.value == 10:
+                                Text_String = "Knight Armor"
+                        if att.value == 11:
+                                Text_String = "Steel Armor"
+                        if att.value == 12:
+                                Text_String = "Hard Armor"
+                        if att.value == 13:
+                                Text_String = "Chain Mail"
+                        if att.value == 14:
+                                Text_String = "Leather Armor"
+                        if att.value == 15:
+                                Text_String = "Pygmy Armor"
+
+                        if att.value == 16:
+                                Text_String = "Legend Shield"
+                        if att.value == 17:
+                                Text_String = "Flame Shield"
+                        if att.value == 18:
+                                Text_String = "Knight Shield"
+                        if att.value == 19:
+                                Text_String = "Steel Shield"
+                        if att.value == 20:
+                                Text_String = "Hard Shield"
+                        if att.value == 21:
+                                Text_String = "Shell Shield"
+                        if att.value == 22:
+                                Text_String = "Wood Shield"
+                        if att.value == 23:
+                                Text_String = "Pygmy Shield"
+
+                        if att.value == 24:
+                                Text_String = "Legend Boots"
+                        if att.value == 25:
+                                Text_String = "Ceramic Boots"
+                        if att.value == 26:
+                                Text_String = "Oasis Boots"
                         if att.value == 27:
                                 Text_String = "Marine Boots"
-                        if att.value == 40:
-                                Text_String  = "Ocarina"
-                        if att.value == 41:
-                                Text_String  = "Charmstone"
-                        if att.value == 42:
-                                Text_String  = "Elixer (In Shop)"
-                        if att.value == 46:
-                                Text_String  = "Hi-Potion"
-                        if att.value == 0:
-                                Text_String  = "Legend Sword"
-                        if att.value == 5:
-                                Text_String  = "Trident"
-                        if att.value == 7:
-                                Text_String  = "Pygmy Sword"
-                        if att.value == 15:
-                                Text_String  = "Pygmy Armor"
-                        if att.value == 23:
-                                Text_String  = "Pygmy Shield"
-                        if att.value == 26:
-                                Text_String  = "Oasis Boots"
-                        if att.value == 27:
-                                Text_String  = "Marine Boots"
+                        if att.value == 28:
+                                Text_String = "Ladder Boots"
+                        if att.value == 29:
+                                Text_String = "Leather Boots"
+                        if att.value == 30:
+                                Text_String = "Cloth Boots"
                         if att.value == 31:
-                                Text_String  = "Pygmy Boots"
-                        if att.value == 8:
-                                Text_String  = "Legend Armor"
-                        if att.value == 16:
-                                Text_String  = "Legend Shield"
-                        if att.value == 24:
-                                Text_String  = "Legend Boots"
-                        if att.value == 49:
-                                Text_String  = "Lamp"
-                        if att.value == 50:
-                                Text_String  = "Amulet"
-                        if att.value == 51:
-                                Text_String  = "Sun-Key"
-                        if att.value == 52:
-                                Text_String  = "Moon-Key"
-                        if att.value == 53:
-                                Text_String  = "Star-Key"
-                        if att.value == 54:
-                                Text_String  = "Gold-Gem"
-                        if att.value == 55:
-                                Text_String  = "Blue-Gem"
-                        if att.value == 57:
-                                Text_String  = "Fire-Urn"
-                        if att.value == 58:
-                                Text_String  = "Bracelet"
+                                Text_String = "Pygmy Boots"
+
+                        if att.value == 32:
+                                Text_String = "Firestorm"
+                        if att.value == 33:
+                                Text_String = "Quake"
+                        if att.value == 34:
+                                Text_String = "Thunder"
+                        if att.value == 35:
+                                Text_String = "Power"
+                        if att.value == 36:
+                                Text_String = "Shield Magic"
                         if att.value == 37:
-                                Text_String  = "Return Magic"
+                                Text_String = "Return"
+
+                        if att.value == 40:
+                                Text_String = "Ocarina"
+                        if att.value == 41:
+                                Text_String = "Charmstone"
+                        if att.value == 42:
+                                Text_String = "Elixer (Shop)"
+                        if att.value == 43:
+                                Text_String = "Medicine"
+                        if att.value == 44:
+                                Text_String = "Potion"
+                        if att.value == 45:
+                                Text_String = "Holywater"
+                        if att.value == 46:
+                                Text_String = "Hi-Potion"
+
+                        if att.value == 49:
+                                Text_String = "Lamp"
+                        if att.value == 50:
+                                Text_String = "Amulet"
+                        if att.value == 51:
+                                Text_String = "Sun-Key"
+                        if att.value == 52:
+                                Text_String = "Moon-Key"
+                        if att.value == 53:
+                                Text_String = "Star-Key"
+                        if att.value == 54:
+                                Text_String = "Gold-Gem"
+                        if att.value == 55:
+                                Text_String = "Blue-Gem"
+
+                        if att.value == 57:
+                                Text_String = "Fire-Urn"
+                        if att.value == 58:
+                                Text_String = "Bracelet"
+                        if att.value == 59:
+                                Text_String = "Jet-Pack"
+                                
+                Initial_Weapon = ["Init_Weapon"]
+                flag3 = any (x == att.name for x in Initial_Weapon)
+                if flag3:
+                        if att.value == 2:
+                                Text_String = "Excalibur"
+                                
+                        if att.value == 4:
+                                Text_String = "Knight Sword"
+                        if att.value == 6:
+                                Text_String = "Excalibur // Knight Sword"
+                                
+                        if att.value == 8:
+                                Text_String = "Gradius"
+                        if att.value == 10:
+                                Text_String = "Excalibur // Gradius"
+                        if att.value == 12:
+                                Text_String = "Knight Sword // Gradius"
+                        if att.value == 14:
+                                Text_String = "Excalibur // Knight Sword // Gradius"
+                                
+                        if att.value == 16:
+                                Text_String = "Battle Spear"
+                        if att.value == 18:
+                                Text_String = "Battle Spear // Excalibur"
+                        if att.value == 20:
+                                Text_String = "Battle Spear // Knight Sword"
+                        if att.value == 22:
+                                Text_String = "Battle Spear // Excalibur // Knight Sword"
+                        if att.value == 24:
+                                Text_String = "Battle Spear // Gradius"
+                        if att.value == 26:
+                                Text_String = "Battle Spear // Excalibur // Gradius"
+                        if att.value == 28:
+                                Text_String = "Battle Spear // Knight Sword // Gradius"
+                        if att.value == 30:
+                                Text_String = "Battle Spear // Excalibur // Knight Sword // Gradius"
+
+                        if att.value == 64:
+                                Text_String = "Small Spear"
+                        if att.value == 66:
+                                Text_String = "Excalibur // Small Spear"
+                                
+                        if att.value == 68:
+                                Text_String = "Knight Sword // Small Spear"
+                        if att.value == 70:
+                                Text_String = "Excalibur // Knight Sword // Small Spear"
+                                
+                        if att.value == 72:
+                                Text_String = "Small Spear // Gradius"
+                        if att.value == 74:
+                                Text_String = "Excalibur // Small Spear // Gradius"
+                        if att.value == 76:
+                                Text_String = "Knight Sword // Small Spear // Gradius"
+                        if att.value == 78:
+                                Text_String = "Excalibur // Knight Sword // Small Spear // Gradius"
+                                
+                        if att.value == 80:
+                                Text_String = "Battle Spear // Small Spear"
+                        if att.value == 82:
+                                Text_String = "Battle Spear // Excalibur // Small Spear"
+                        if att.value == 84:
+                                Text_String = "Battle Spear // Knight Sword // Small Spear"
+                        if att.value == 86:
+                                Text_String = "Battle Spear // Excalibur // Knight Sword // Small Spear"
+                        if att.value == 88:
+                                Text_String = "Battle Spear // Small Spear // Gradius"
+                        if att.value == 90:
+                                Text_String = "Battle Spear // Excalibur // Small Spear // Gradius"
+                        if att.value == 92:
+                                Text_String = "Battle Spear // Knight Sword // Small Spear // Gradius"
+                        if att.value == 94:
+                                Text_String = "Battle Spear // Excalibur // Knight Sword // Small Spear // Gradius"
+
+                Initial_Boots = ["Init_Boots"]
+                flag4 = any (x == att.name for x in Initial_Boots)
+                if flag4:
+                                
+                        if att.value == 16:
+                                Text_String = "Ladder Boots"                                
+                        if att.value == 32:
+                                Text_String = "Leather Boots"                                
+                        if att.value == 48:
+                                Text_String = "Ladder Boots // Leather Boots"
+                        if att.value == 64:
+                                Text_String = "Cloth Boots"
+                        if att.value == 80:
+                                Text_String = "Ladder Boots // Cloth Boots"
+                        if att.value == 96:
+                                Text_String = "Leather Boots // Cloth Boots"
+                        if att.value == 112:
+                                Text_String = "Ladder Boots // Leather Boots // Cloths Boots"
+                        
+                        
+
                         
                 file.writelines(nameStr+": "+intStr+" "+hexStr+" "+Text_String+"\n")
         file.close()
