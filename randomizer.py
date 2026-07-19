@@ -17,6 +17,7 @@
 # Version 1.E, Updated on 5/29/2026. Added Initial equips and initial hearts to pool. Revamped code to make generation significantly
 #                                    More likely. Removed Sphinx Question about weapons. Will return at some point. [Maybe] #
 # Version 1.F, Updated on 6/04/26. Changed Oasis/Key Questions to be easier. Now it just changes the names of the item. #
+# Version 2.0. Updated on 6/19/26. Swapped large chests around to harder to reach areas. 
 
 from classes import *
 
@@ -618,7 +619,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Secret_Pyramid_1",
+                name="Star_Key_1",
                 addresses=[0xa76a],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -626,7 +627,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Secret_Pyramid_2",
+                name="Star_Key_2",
                 addresses=[0xa76c],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -634,7 +635,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Secret_Pyramid_3",
+                name="Star_Key_3",
                 addresses=[0xa76e],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -642,7 +643,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Secret_Pyramid_4",
+                name="Star_Key_4",
                 addresses=[0xa770],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -650,7 +651,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Secret_Pyramid_5",
+                name="Star_Key_5",
                 addresses=[0xa772],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -666,7 +667,7 @@ Attributes = [
                                  ]                                  
                 ),
         Attribute(
-                name="Star_Key",
+                name="Secret_Pyramid",
                 addresses=[0xA73E],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -7836,6 +7837,25 @@ Attributes = [
                 is_little_endian=False,
                 possible_values=[
                                  136
+                                 ]
+                ),
+        
+        Attribute(
+                name="Secret_Pyramid_Swap",
+                addresses=[0xA70B],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 116
+                                 ]
+                ),
+        Attribute(
+                name="Star_Key_Swap",
+                addresses=[0xA6E9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 160
                                  ]
                 ),
 
