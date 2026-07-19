@@ -905,7 +905,7 @@ def generateRom():
                               
                               "Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
 
-                              "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key",
+                              "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
 
                               "Pygmy_Shield","Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword","Charm_Guy_1","Charm_Guy_2",
 
@@ -949,7 +949,7 @@ def generateRom():
 
                                       "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
                               
-                                      "Oasis_Boots","Old_Axe","Sun_Key","Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key",
+                                      "Oasis_Boots","Old_Axe","Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
 
                                       "Pygmy_Shield","Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword","Charm_Guy_1","Charm_Guy_2",
 
@@ -1075,9 +1075,9 @@ def generateRom():
                                                Trident_Location = "Childam"
                                                
                                         elif Random_Check in ["Shield_Magic_Chest","Power",
-                                                              "Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3",
-                                                              "Secret_Pyramid_4","Secret_Pyramid_5","Star_Key","Pygmy_Shield",
-                                                              "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
+                                                              "Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
+                                                              "Pygmy_Shield", "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
+                                                              "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
                                                               "Pyramid_Item_8","Charmstone_Chest",
                                                               "Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword"
                                                               ]:
@@ -1178,7 +1178,7 @@ def generateRom():
                                 if Random_Item == 26 or Random_Item == 51:
                                         Pyramid_Main = Pyramid_Main + 1
                                         if Pyramid_Main == 2 and Pyramid_Extra < 6:
-                                                Can_Reach = Can_Reach + ["Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key"]
+                                                Can_Reach = Can_Reach + ["Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid"]
                                                 if Elixer == 0:
                                                         Can_Reach = Can_Reach + ['Elixer_Chests']
                                                         Elixer = 1
@@ -1189,8 +1189,8 @@ def generateRom():
                                                 Can_Reach = Can_Reach + ["Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
                                                                          "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest"]
                                                 if Pyramid_Main < 2:
-                                                        Can_Reach = Can_Reach + ["Moon_Key","Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3",
-                                                                                 "Secret_Pyramid_4","Secret_Pyramid_5","Star_Key"]
+                                                        Can_Reach = Can_Reach + ["Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3"
+                                                                                 ,"Star_Key_4","Star_Key_5","Secret_Pyramid",]
                                                         Pyramid_Main = 3
                                                         if Elixer == 0:
                                                                 Can_Reach = Can_Reach + ['Elixer_Chests']
@@ -2839,7 +2839,7 @@ def generateRom():
                                               "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",                              
                                               "Oasis_Boots","Return","Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
                                               "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key",
-                                              "Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key",
+                                              "Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
                                               "Pygmy_Shield","Power","Fire_Urn","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
                                               "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest",
                                               "Legend_Boots","Legend_Shield","Legend_Armor"
@@ -2894,7 +2894,7 @@ def generateTextLog():
                                               "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",                              
                                               "Oasis_Boots","Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
                                               "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key",
-                                              "Secret_Pyramid_1","Secret_Pyramid_2","Secret_Pyramid_3","Secret_Pyramid_4","Secret_Pyramid_5","Star_Key",
+                                              "Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
                                               "Pygmy_Shield","Power","Fire_Urn","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
                                               "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest",
                                               "Legend_Boots","Legend_Shield","Legend_Armor"]
@@ -3238,6 +3238,136 @@ def generateTextLog():
                                 Text_String = "Leather Boots // Cloth Boots"
                         if att.value == 112:
                                 Text_String = "Ladder Boots // Leather Boots // Cloths Boots"
+
+                Initial_Armor = ["Init_Armor"]
+                flag5 = any (x == att.name for x in Initial_Armor)
+                if flag5:
+                        if att.value == 2:
+                                Text_String = "Flame Armor"
+                        if att.value == 4:
+                                Text_String = "Knight Armor"
+                        if att.value == 6:
+                                Text_String = "Flame Armor // Knight Armor"
+                        if att.value == 8:
+                                Text_String = "Steel Armor"
+                        if att.value == 10:
+                                Text_String = "Flame Armor // Steel Armor"
+                        if att.value == 12:
+                                Text_String = "Knight Armor // Steel Armor"
+                        if att.value == 14:
+                                Text_String = "Flame Armor // Knight Armor // Steel Armor"
+                        if att.value == 16:
+                                Text_String = "Hard Armor"
+                        if att.value == 18:
+                                Text_String = "Flame Armor // Hard Armor"
+                        if att.value == 20:
+                                Text_String = "Knight Armor// Hard Armor"
+                        if att.value == 22:
+                                Text_String = "Flame Armor // Knight Armor// Hard Armor"
+                        if att.value == 24:
+                                Text_String = "Steel Armor// Hard Armor"
+                        if att.value == 26:
+                                Text_String = "Flame Armor // Steel Armor// Hard Armor"
+                        if att.value == 28:
+                                Text_String = "Knight Armor // Steel Armor// Hard Armor"
+                        if att.value == 30:
+                                Text_String = "Flame Armor // Knight Armor // Steel Armor// Hard Armor"
+                        if att.value == 32:
+                                Text_String = "Chain Armor"
+                        if att.value == 34:
+                                Text_String = "Flame Armor // Chain Armor"
+                        if att.value == 36:
+                                Text_String = "Knight Armor // Chain Armor"
+                        if att.value == 38:
+                                Text_String = "Flame Armor // Knight Armor // Chain Armor"
+                        if att.value == 40:
+                                Text_String = "Steel Armo // Chain Armorr"
+                        if att.value == 42:
+                                Text_String = "Flame Armor // Steel Armor // Chain Armor"
+                        if att.value == 44:
+                                Text_String = "Knight Armor // Steel Armor // Chain Armor"
+                        if att.value == 46:
+                                Text_String = "Flame Armor // Knight Armor // Steel Armor // Chain Armor"
+                        if att.value == 48:
+                                Text_String = "Hard Armor // Chain Armor"
+                        if att.value == 50:
+                                Text_String = "Flame Armor // Hard Armor // Chain Armor"
+                        if att.value == 52:
+                                Text_String = "Knight Armor// Hard Armor // Chain Armor"
+                        if att.value == 54:
+                                Text_String = "Flame Armor // Knight Armor// Hard Armor // Chain Armor"
+                        if att.value == 56:
+                                Text_String = "Steel Armor// Hard Armo // Chain Armorr"
+                        if att.value == 58:
+                                Text_String = "Flame Armor // Steel Armor// Hard Armor // Chain Armor"
+                        if att.value == 60:
+                                Text_String = "Knight Armor // Steel Armor// Hard Armor // Chain Armor"
+                        if att.value == 62:
+                                Text_String = "Flame Armor // Knight Armor // Steel Armor// Hard Armor // Chain Armor"
+                        if att.value == 64:
+                                Text_String = "Leather Armor"
+                        if att.value == 66:
+                                Text_String = "Flame Armor // Leather Armor"
+                        if att.value == 68:
+                                Text_String = "Knight Armor // Leather Armor"
+                        if att.value == 70:
+                                Text_String = "Flame Armor // Knight Armor // Leather Armor"
+                        if att.value == 72:
+                                Text_String = "Steel Armor // Leather Armor"
+                        if att.value == 74:
+                                Text_String = "Flame Armor // Steel Armor // Leather Armor"
+                        if att.value == 76:
+                                Text_String = "Knight Armor // Steel Armor // Leather Armor"
+                        if att.value == 78:
+                                Text_String = "Flame Armor // Knight Armor // Steel Armor // Leather Armor"
+                        if att.value == 80:
+                                Text_String = "Hard Armor // Leather Armor"
+                        if att.value == 82:
+                                Text_String = "Flame Armor // Hard Armor // Leather Armor"
+                        if att.value == 84:
+                                Text_String = "Knight Armor// Hard Armor // Leather Armor"
+                        if att.value == 86:
+                                Text_String = "Flame Armor // Knight Armor// Hard Armor // Leather Armor"
+                        if att.value == 88:
+                                Text_String = "Steel Armor// Hard Armor // Leather Armor"
+                        if att.value == 90:
+                                Text_String = "Flame Armor // Steel Armor// Hard Armor // Leather Armor"
+                        if att.value == 92:
+                                Text_String = "Knight Armor // Steel Armor// Hard Armor // Leather Armor"
+                        if att.value == 94:
+                                Text_String = "Flame Armor // Knight Armor // Steel Armor// Hard Armor // Leather Armor"
+                        if att.value == 96:
+                                Text_String = "Chain Armor // Leather Armor"
+                        if att.value == 98:
+                                Text_String = "Flame Armor // Chain Armor // Leather Armor"
+                        if att.value == 100:
+                                Text_String = "Knight Armor // Chain Armor // Leather Armor"
+                        if att.value == 102:
+                                Text_String = "Flame Armor // Knight Armor // Chain Armor // Leather Armor"
+                        if att.value == 104:
+                                Text_String = "Steel Armo // Chain Armorr // Leather Armor"
+                        if att.value == 106:
+                                Text_String = "Flame Armor // Steel Armor // Chain Armor // Leather Armor"
+                        if att.value == 108:
+                                Text_String = "Knight Armor // Steel Armor // Chain Armor // Leather Armor"
+                        if att.value == 110:
+                                Text_String = "Flame Armor // Knight Armor // Steel Armor // Chain Armor // Leather Armor"
+                        if att.value == 112:
+                                Text_String = "Hard Armor // Chain Armor // Leather Armor"
+                        if att.value == 114:
+                                Text_String = "Flame Armor // Hard Armor // Chain Armor // Leather Armor"
+                        if att.value == 116:
+                                Text_String = "Knight Armor// Hard Armor // Chain Armo // Leather Armorr"
+                        if att.value == 118:
+                                Text_String = "Flame Armor // Knight Armor// Hard Armor // Chain Armor // Leather Armor"
+                        if att.value == 120:
+                                Text_String = "Steel Armor// Hard Armo // Chain Armor // Leather Armor"
+                        if att.value == 122:
+                                Text_String = "Flame Armor // Steel Armor// Hard Armor // Chain Armor // Leather Armor"
+                        if att.value == 124:
+                                Text_String = "Knight Armor // Steel Armor// Hard Armor // Chain Armor // Leather Armor"
+                        if att.value == 126:
+                                Text_String = "Flame Armor // Knight Armor // Steel Armor// Hard Armor // Chain Armor // Leather Armor"                        
                         
                         
 
