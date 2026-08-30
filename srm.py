@@ -469,7 +469,7 @@ def generateRom():
                                 Value_2 = 100
                         elif Random_Exit == "Tower_Bot":
                                 Value_1 = 1
-                                Value_2 = 70
+                                Value_2 = 112
                         elif Random_Exit == "Tower_Top_Outside":
                                 Value_1 = 1
                                 Value_2 = 106
@@ -615,7 +615,7 @@ def generateRom():
                                 Value_2 = 100
                         elif Random_Exit == "Tower_Bot":
                                 Value_1 = 1
-                                Value_2 = 70
+                                Value_2 = 112
                         elif Random_Exit == "Tower_Top_Outside":
                                 Value_1 = 1
                                 Value_2 = 106                                
@@ -775,7 +775,7 @@ def generateRom():
                                                 Value_2 = 100
                                         elif Random_Exit == "Tower_Bot":
                                                 Value_1 = 1
-                                                Value_2 = 70
+                                                Value_2 = 112
                                         elif Random_Exit == "Tower_Top_Outside":
                                                 Value_1 = 1
                                                 Value_2 = 106
@@ -893,7 +893,7 @@ def generateRom():
                               
                               "Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward","Elixer_Chests",
 
-                              "Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6","Trident",
+                              "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6",
 
                               "First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
 
@@ -917,9 +917,9 @@ def generateRom():
 
                         All_Items = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31, ## 32 Equipment ##
 
-                                     32,32,32, 33,33,33 ,34,34,34, 35,35,35, 36,36,37, ## 15 Spells ##
+                                     32,32,32, 33,33,33 ,34,34,34, 35,35,35, 36,37, ## 14 Spells ##
 
-                                     41,41,41,41 ,42,42,42, 43,44,45,46, ## 4 Charms, 3 Elixers, 4 Health = 11 ##
+                                     41,41,41,41,41 ,42,42,42, 43,44,45,46, ## 5 Charms, 3 Elixers, 4 Health = 12 ##
 
                                      40,49,50,51,52, 53,54,55,57,58, ## 10 Progression Items ###
 
@@ -945,19 +945,31 @@ def generateRom():
                         
 
 
-                        Deep_Checks = [ "Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",
+                        Deep_Checks = ["Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8","Oasis_Boots",
 
-                                      "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
-                              
-                                      "Oasis_Boots","Old_Axe","Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
+                                      "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe",
 
-                                      "Pygmy_Shield","Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword","Charm_Guy_1","Charm_Guy_2",
+                                      "Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid","Pygmy_Shield",
 
-                                      "Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
+                                      "Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword",
+
+                                      "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
+
+                                      "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
                                                                 
-                                      "Pyramid_Item_8","Charmstone_Chest"]
+                                      "Pyramid_Item_8","Charmstone_Chest",
+					
+				      "leather_boots","small_spear","chain_mail","wood_shield","medicine","Hard_Armor","Knight_Sword",
+
+				      "excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop",
+
+			              "Steel_Armor","Shell_Shield","Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water"
+
+					]
 
                         Legend_Items = [0,8,16,24]
+
+                        Legend_Sword_Location = "Blank"
                         
                         while len(Legend_Items) > 0:
                                 random_check = random.choice(Deep_Checks)
@@ -972,16 +984,35 @@ def generateRom():
                                 
                                 Deep_Checks.remove(random_check)    
                                 Legend_Items.remove(random_item)
-                        
 
-                                               
-                        
+                                if random_item == 0:
+                                        if random_check in ["Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8","Oasis_Boots"]:
+                                                Legend_Sword_Location = "Underwater"
 
+                                        elif random_check in ["Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe",
+								"Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water"]:
+                                                Legend_Sword_Location = "Bracelet"
+
+                                        elif random_check in ["Sun_Key","Power","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5",
+                                                              "Secret_Pyramid","Pygmy_Shield","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop",
+                                                              "Fire_Urn","Legend_Sword","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
+							      "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest"]:
+                                                Legend_Sword_Location = "Desert"
+
+                                        elif random_check in ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
+							      "Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots"]:
+                                                Legend_Sword_Location = "Pura"
+                                        elif random_check in ["leather_boots","small_spear","chain_mail","wood_shield","medicine"]:
+                                                Legend_Sword_Location = "Alsedo"
+						
+                                        elif random_check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield"]:
+                                                Legend_Sword_Location = "Lilly" 
                         
                         Heart_Chest = 0
                         Quake = 0
                         Elixer = 0
                         Poseidon = 0
+                        Oasis_Boots = 0
                         Well = 0
                         Pyramid_Main = 0
                         Pyramid_Extra = 0 
@@ -997,7 +1028,7 @@ def generateRom():
 
                         Progression_Items = [37,40,
                                              7,15,23,31,
-                                             5,25,26,27,41,41,
+                                             5,25,26,27,41,41,41,
                                              49,50,
                                              51,52,53,
                                              54,55,
@@ -1027,17 +1058,8 @@ def generateRom():
                                                 while Random_Check == "Bracelet_Item":
                                                         Random_Check = random.choice(Can_Reach)        
                                         else:
-                                                while Random_Item not in [54,55,58]:
-                                                        Random_Item = random.choice(Progression_Items)
-                                                
-                                if Random_Item in [49, 50, 51, 52, 53, 54, 55, 57, 58]:
-                                        while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
-                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
-                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
-                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
-                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
-                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop"]:
-                                                Random_Check = random.choice(Can_Reach)
+                                                Random_Item = random.choice([54,55,58])
+                                
 
                                 for att in Attributes:
                                         if att.name == Random_Check:
@@ -1055,26 +1077,26 @@ def generateRom():
                                                 Heart_Chest = 1
                                         
                                 if Random_Item == 5:
-                                        
-                                        if Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
-                                                            "Ocarina_Reward","Heart_Chest",
-                                                            "Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5"]:
+                                        if Random_Check in ["Heart_Chest","Potion","Quake","Power","Elixer_Chests"]:
+                                                Trident_Location = "Somewhere"
+                                                
+                                        elif Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
+                                                            "Ocarina_Reward","Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5"]:
                                                Trident_Location = "Alsedo"
                                                 
-                                        elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots",
-                                                              "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Full_Health_1","Quake"]:
+                                        elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Ladder_Boots",
+                                                              "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Full_Health_1"]:
                                                Trident_Location = "Pura"
                                                
-                                        elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward","Elixer_Chests",
-                                                               "Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6",
-                                                               "Trident"]:
+                                        elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward",
+                                                               "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6"]:
                                                Trident_Location = "Lilly"
                                                
                                         elif Random_Check in ["Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water",
                                                              "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe"]:
                                                Trident_Location = "Childam"
                                                
-                                        elif Random_Check in ["Shield_Magic_Chest","Power",
+                                        elif Random_Check in ["Shield_Magic_Chest",
                                                               "Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
                                                               "Pygmy_Shield", "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
                                                               "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
@@ -1097,17 +1119,19 @@ def generateRom():
                                         if Charm == 2:
                                                 Can_Reach = Can_Reach + ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5"]                                        
                                 if Random_Item == 26:
-                                        if Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
-                                                            "Ocarina_Reward","Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5","Heart_Chest"]:
+                                        if Random_Check in ["Heart_Chest","Potion","Quake","Elixer_Chests"]:
+                                                Oasis_Boots_Location = "Somewhere"
+                                                
+                                        elif Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
+                                                            "Ocarina_Reward","Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5"]:
                                                Oasis_Boots_Location = "Alsedo"
                                                 
-                                        elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots",
-                                                              "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Full_Health_1","Quake"]:
+                                        elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Ladder_Boots",
+                                                              "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Full_Health_1"]:
                                                Oasis_Boots_Location = "Pura"
                                                 
-                                        elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward","Elixer_Chests",
-                                                              "Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6",
-                                                              "Trident"]:
+                                        elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward",
+                                                              "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6"]:
                                                Oasis_Boots_Location = "Lilly"
                                         elif Random_Check in ["First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
                                                               "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet",
@@ -1135,7 +1159,7 @@ def generateRom():
                                                 Can_Reach = Can_Reach + ['Quake']
                                                 Quake = 1
                                 if Random_Item == 49:
-                                        Can_Reach = Can_Reach + ["Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6","Trident"]
+                                        Can_Reach = Can_Reach + ["Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6",]
                                         if Elixer == 0:
                                                 Can_Reach = Can_Reach + ['Elixer_Chests']
                                                 Elixer = 1
@@ -1166,10 +1190,18 @@ def generateRom():
                                 if Random_Item == 5 or Random_Item == 50:
                                         Poseidon = Poseidon + 1
                                         if Poseidon == 2:
-                                                Can_Reach = Can_Reach + ["Oasis_Boots","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8"]
+                                                Can_Reach = Can_Reach + ["Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8"]
                                                 if Elixer == 0:
                                                         Can_Reach = Can_Reach + ['Elixer_Chests']
-                                                        Elixer = 1                                        
+                                                        Elixer = 1
+                                if Random_Item == 5 or Random_Item == 50 or Random_Item == 27 or Random_Item == 37:
+                                        if Random_Item == 5 or Random_Item == 50:
+                                                Oasis_Boots = Oasis_Boots + 1
+                                        if Random_Item == 27 or Random_Item == 37:
+                                                Oasis_Boots = Oasis_Boots + .5        
+                                        if Oasis_Boots >= 2.5:
+                                                Can_Reach = Can_Reach + ["Oasis_Boots"]
+                                                
                                 if Random_Item == 26 or Random_Item == 5:
                                         Well = Well + 1
                                         if Well == 2:
@@ -1216,7 +1248,7 @@ def generateRom():
                                         Blacksmith = Blacksmith + 1
                                         if Blacksmith == 6:
                                                 Can_Reach = Can_Reach + ["Legend_Sword"]
-                                if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31 or Random_Item == 54 or Random_Item == 55 or Random_Item == 58:                                        
+                                if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31 or Random_Item == 54 or Random_Item == 						55 or Random_Item == 58:                                        
                                         Teh_Urn = Teh_Urn + 1
                                         if Teh_Urn == 9:
                                                 Can_Reach = Can_Reach + ["Fire_Urn"]
@@ -1244,7 +1276,7 @@ def generateRom():
                                 All_Checks.remove(Random_Check)                        
                                 All_Items.remove(Random_Item)
 
-                        Other_Healing = [42,43,44,45]
+                        Other_Healing = [42,42,43,44,45]
                         
                         while len(Other_Healing) > 0:
                                 Random_Item = random.choice(Other_Healing)
@@ -1326,9 +1358,6 @@ def generateRom():
 
                                        All_Items.remove(Random_Weapon)
                                        All_Checks.remove("Init_Weapon")
-
-                        
-
 
                         Starting_Items = ["Init_Heart1","Init_Heart2","Init_Heart3"]
 
@@ -1431,7 +1460,7 @@ def generateRom():
                                 elif Random_Item == 35:
                                         for att in Attributes:          
                                                 if att.name == "Init_Thunder_Power":
-                                                        att.value = att.value + 3
+                                                        att.value = att.value + 2
                                         
                                 elif Random_Item == 36:
                                         for att in Attributes:          
@@ -1511,7 +1540,7 @@ def generateRom():
                                                                   "Flame_Armor","Hi_Potion","Elixer_Shop",
                                                                   "elder_elixer","elder_firestorm",
                                                                   "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
-                                                                  "Legend_Sword","Ocarina_Reward",'Fire_Urn',"Oasis_Boots","Power","Full_Health_1","Trident",
+                                                                  "Legend_Sword","Ocarina_Reward",'Fire_Urn',"Oasis_Boots","Power","Full_Health_1","bat_reward"
                                                                   "Bracelet_Item","Sphinx_Bonus_Item"]:
                                                 Random_Check = random.choice(All_Checks)
                                 if Random_Item == 64 :
@@ -1522,8 +1551,8 @@ def generateRom():
                                                                   "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
                                                                   "Flame_Armor","Hi_Potion","Elixer_Shop",
                                                                   "elder_elixer","elder_firestorm",
-                                                                  "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
-                                                                  "Legend_Sword","Ocarina_Reward","Bracelet_Item","Sphinx_Bonus_Item","Heart_Chest","bat_reward"]:
+                                                                  "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","bat_reward",
+                                                                  "Legend_Sword","Ocarina_Reward","Bracelet_Item","Sphinx_Bonus_Item","Heart_Chest"]:
                                                 Random_Check = random.choice(All_Checks)
                                 
                                 for att in Attributes:
@@ -1549,10 +1578,11 @@ def generateRom():
                                                          10,11,12,13,14,15,16,17,18,19,
                                                          20,21,22,23,24,25,26,27,28,29,
                                                          30,31,32,33,34,35,36,37,
-                                                         40,41,42,43,44,45,46, 59      
+                                                         40,41,42,43,44,45,46,      49,
+						         50,51,52,53,54,55,56,57,58,59      
                                                          ]
                         
-                                ## Blargh and Glargh Item ###
+                                ## Bat Item ###
                         Sphinx_Question_Three_Possible =  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
                                                          10,11,12,13,14,15,16,17,18,19,
                                                          20,21,22,23,24,25,26,27,28,29,
@@ -1581,8 +1611,21 @@ def generateRom():
                         
 
                         for att_1 in Attributes:
-                                
-                                        
+
+                                if att_1.name == "Legend_Sword_Location":
+                                        if Legend_Sword_Location == "Underwater":
+                                                att_1.value =   219
+                                        if Legend_Sword_Location == "Bracelet":
+                                                att_1.value =   68
+                                        if Legend_Sword_Location == "Desert":
+                                                att_1.value =   74
+                                        if Legend_Sword_Location == "Pura":
+                                                att_1.value =   90
+                                        if Legend_Sword_Location == "Alsedo":
+                                                att_1.value =   64   
+                                        if Legend_Sword_Location == "Lilly":
+                                                att_1.value =   81         
+                            
                                 if att_1.name == "Oasis_Boots_Hint_LOCATION":
                                         if Oasis_Boots_Location == "Alsedo":
                                                 att_1.value =   64
@@ -1593,7 +1636,9 @@ def generateRom():
                                         if Oasis_Boots_Location == "Underwater":
                                                 att_1.value =   219
                                         if Oasis_Boots_Location == "Childam":
-                                                att_1.value = 65
+                                                att_1.value = 68
+                                        if Oasis_Boots_Location == "Somewhere":
+                                                att_1.value = 201
 
                                 if att_1.name == "Trident_Hint_LOCATION":
                                         if Trident_Location == "Alsedo":
@@ -1603,9 +1648,11 @@ def generateRom():
                                         if Trident_Location == "Lilly":
                                                 att_1.value =   81
                                         if Trident_Location == "Childam":
-                                                att_1.value = 65
+                                                att_1.value = 68
                                         if Trident_Location == "Desert":
                                                 att_1.value = 74
+                                        if Trident_Location == "Somewhere":
+                                                att_1.value = 201
 
                                 if att_1.name == "Oasis_Boots_Name_1":
                                         if Random_Boot_Name == 0:
@@ -1807,6 +1854,10 @@ def generateRom():
                                                         att_2.value = att_1.value
                                                 if att_2.name =="Ocarina_Cave_Sprite":
                                                         att_2.value = 2*att_1.value
+                                if att_1.name == "Demo_Hearts":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Init_Hearts":
+                                                        att_1.value = att_2.value
                                 if att_1.name == "Fire_Urn":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Fire_Urn_Text":
@@ -2003,7 +2054,7 @@ def generateRom():
                                                 Sphinx_Question_Two_Possible.remove(att_1.value)
                                 if att_1.name == "Sphinx_Question_Three_Correct":
                                         for att_2 in Attributes:
-                                                if att_2.name =="Trident":
+                                                if att_2.name =="bat_reward":
                                                         att_1.value = att_2.value
                                         if att_1.value in Sphinx_Question_Three_Possible:
                                                 Sphinx_Question_Three_Possible.remove(att_1.value)
@@ -2834,7 +2885,7 @@ def generateRom():
                                 
                                         
                                 Shift_Up = ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5","Heart_Chest","bat_reward","Elixer_Chests",
-                                              "Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6","Trident",
+                                              "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6",
                                               "First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
                                               "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",                              
                                               "Oasis_Boots","Return","Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
@@ -2865,6 +2916,7 @@ def generateRom():
                 for newRom in allNewRoms:
                         remove(newRom)
                 return (False, "At least one ROM failed to generate.")
+                generateRom
         return (True, "")
 
 # Generate a text log containing the Attribute values.
