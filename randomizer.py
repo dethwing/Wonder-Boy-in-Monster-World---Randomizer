@@ -17,8 +17,9 @@
 # Version 1.E, Updated on 5/29/2026. Added Initial equips and initial hearts to pool. Revamped code to make generation significantly
 #                                    More likely. Removed Sphinx Question about weapons. Will return at some point. [Maybe] #
 # Version 1.F, Updated on 6/04/26. Changed Oasis/Key Questions to be easier. Now it just changes the names of the item. #
-# Version 2.0. Updated on 6/19/26. Swapped large chests around to harder to reach areas. 
-
+# Version 2.0. Updated on 6/19/26. Swapped large chests around to harder to reach areas.
+# Version 2.1. Updated on 8/30/26. Fixed issue preventing Non equippable progression items from having prices in stores. Also swaped GG Sphinx question to Bat, which allowed me to move
+#                                  the 6-chest item from Hard Armor to Trident. 
 from classes import *
 
 def value(name):
@@ -48,10 +49,8 @@ Slow_Mode = False
 
 
 Attributes = [    
-        
-        
-        
-        
+
+	
         
         
         
@@ -350,7 +349,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Hard_Shield_1",
+                name="Trident_1",
                 addresses=[0xa784],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -358,7 +357,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Hard_Shield_2",
+                name="Trident_2",
                 addresses=[0xa786],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -366,7 +365,7 @@ Attributes = [
                                  ]
                 ),        
         Attribute(
-                name="Hard_Shield_3",
+                name="Trident_3",
                 addresses=[0xa788],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -374,7 +373,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Hard_Shield_4",
+                name="Trident_4",
                 addresses=[0xa78a],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -382,7 +381,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Hard_Shield_5",
+                name="Trident_5",
                 addresses=[0xa78c],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -390,7 +389,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Hard_Shield_6",
+                name="Trident_6",
                 addresses=[0xa78e],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -398,8 +397,8 @@ Attributes = [
                                  ]
                 ),        
         Attribute(
-                name="Trident",
-                addresses=[0xA756],
+                name="Hard_Shield",
+                addresses=[0xA74e],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[  5
@@ -960,96 +959,34 @@ Attributes = [
                                  ]                                 
                 ),
         ### Initial Items ###
-        Attribute(
-                name="Jumping1",
-                addresses=[0xEBB4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 103
-                                 ] 
-                ),
-        Attribute(
-                name="Jumping2",
-                addresses=[0xEBB5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 18
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Rapid_Pad",
-                addresses=[0x8e54],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ] 
-                ),
         
+
         Attribute(
-                name="Init_Boots",
-                addresses=[0x8e51],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 32
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Shield",
-                addresses=[0x8e50],
+                name="Init_Money3",
+                addresses=[0x8e46],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[
                                  0
-                                 ] 
+                                 ]
                 ),
         Attribute(
-                name="Init_Armor",
-                addresses=[0x8e4f],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 32
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Weapon",
-                addresses=[0x8e4e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 8
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Shield_Return",
-                addresses=[0x8e4d],
+                name="Init_Money2",
+                addresses=[0x8e47],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[
                                  0
-                                 ] 
+                                 ]
                 ),
         Attribute(
-                name="Init_Thunder_Power",
-                addresses=[0x8e4c],
+                name="Init_Money",
+                addresses=[0x8e48],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[
                                  0
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Fire_Quake",
-                addresses=[0x8e4b],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ] 
+                                 ]
                 ),
         Attribute(
                 name="Init_Charms",
@@ -1070,31 +1007,366 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Init_Money",
-                addresses=[0x8e48],
+                name="Init_Fire_Quake",
+                addresses=[0x8e4b],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[
                                  0
-                                 ]
+                                 ] 
                 ),
         Attribute(
-                name="Init_Money2",
-                addresses=[0x8e47],
+                name="Init_Thunder_Power",
+                addresses=[0x8e4c],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[
                                  0
-                                 ]
+                                 ] 
                 ),
+        Attribute(
+                name="Init_Shield_Return",
+                addresses=[0x8e4d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Weapon",
+                addresses=[0x8e4e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 8
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Armor",
+                addresses=[0x8e4f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 32
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Shield",
+                addresses=[0x8e50],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Boots",
+                addresses=[0x8e51],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 32
+                                 ] 
+                ),
+
+
+        ### Secret Stuff ###
+        Attribute(
+                name="Jumping1",
+                addresses=[0xEBB4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 103
+                                 ] 
+                ),
+        Attribute(
+                name="Jumping2",
+                addresses=[0xEBB5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 18
+                                 ] 
+                ), 
+        Attribute(
+                name="Init_Rapid_Pad",
+                addresses=[0x8e54],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ] 
+                ),
+        
+	###Demo Items####
+        Attribute(
+                name="Demo_Hearts",
+                addresses=[0x4F20],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 3
+                                 ] 
+                ),
+        
         
 
         
         ###Prices####
 
-        ### Weapons 40/100/200/500/2000/5000/750 ###
+
+        ### FIXES ###
+    Attribute(
+                name="Price_Fix_Code_1",
+                addresses=[0x1DA6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 227      
+                                 ]                                 
+                ),   
+	Attribute(
+                name="Price_Fix_Code_2",
+                addresses=[0x1DA7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 136      
+                                 ]                                 
+                ), 
+	Attribute(
+                name="Price_Fix_Code_3",
+                addresses=[0x1DA8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 48      
+                                 ]                                 
+                ), 
+	Attribute(
+                name="Price_Fix_Code_4",
+                addresses=[0x1DA9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 59      
+                                 ]                                 
+                ), 
+
+        ### Weapons 40/100/200/500/2000/5000/750
+        Attribute(
+                name="LegendSword_Price1",
+                addresses=[0x1dae],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=19,
+		max_value=19,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="LegendSword_Price2",
+                addresses=[0x1daf],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=136,
+		max_value=136,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Excalibur_Price1",
+                addresses=[0x1db0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=1,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Excalibur_Price2",
+                addresses=[0x1db1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=244,
+		max_value=244,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Knight_Sword_Price",
+                addresses=[0x1db3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=100,
+		max_value=100,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Gradius_Price0",
+                addresses=[0x1db4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=0,
+		max_value=0,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Gradius_Price",
+                addresses=[0x1db5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=1,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="BattleSpear_Price1",
+                addresses=[0x1db6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=7,
+		max_value=7,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="BattleSpear_Price2",
+                addresses=[0x1db7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=208,
+		max_value=208,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Trident_Price1",
+                addresses=[0x1db8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=0,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Trident_Price2",
+                addresses=[0x1db9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=200,
+		max_value=200,
+		min_max_interval=1,
+                ),        
         Attribute(
                 name="SmallSpear_Price",
+                addresses=[0x1dbb],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=40,
+		max_value=40,
+		min_max_interval=1,
+                ),     
+        Attribute(
+                name="PygmySword_Price1",
+                addresses=[0x1dbc],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=2,
+		max_value=2,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="PygmySword_Price2",
+                addresses=[0x1dbd],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=238,
+		max_value=238,
+		min_max_interval=1,
+                ),
+        ### Armor 40/100/400/1000/2000/4000/750 ###
+        Attribute(
+                name="LegendArmor_Price1",
+                addresses=[0x1dbe],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=15,
+		max_value=15,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="LegendArmor_Price2",
+                addresses=[0x1dbf],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=160,
+		max_value=160,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="FlameArmor_Price1",
+                addresses=[0x1dc0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=7,
+		max_value=7,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="FlameArmor_Price2",
+                addresses=[0x1dc1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=208,
+		max_value=208,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="KnightArmor_Price1",
+                addresses=[0x1dc2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=3,
+		max_value=3,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="KnightArmor_Price2",
+                addresses=[0x1dc3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=232,
+		max_value=232,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="SteelArmor_Price1",
+                addresses=[0x1dc4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=1,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="SteelArmor_Price2",
+                addresses=[0x1dc5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=144,
+		max_value=144,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="HardArmor_Price",
+                addresses=[0x1dc7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=100,
+		max_value=100,
+		min_max_interval=1,
+                ), 
+        Attribute(
+                name="Chain_Price",
                 addresses=[0x1dc9],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -1104,89 +1376,17 @@ Attributes = [
 		min_max_interval=1,
                 ),
         Attribute(
-                name="Knight_Sword_Price",
-                addresses=[0x1db9],
+                name="LeatherArmor_Price",
+                addresses=[0x1dcb],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=None,
-		min_value=100,
-		max_value=100,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Trident_Price1",
-                addresses=[0x1dc4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Trident_Price2",
-                addresses=[0x1dc5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=200,
-		max_value=200,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Excalibur_Price1",
-                addresses=[0x1db4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=1,
+		min_value=1,
 		max_value=1,
 		min_max_interval=1,
-                ),
+                ), 
         Attribute(
-                name="Excalibur_Price2",
-                addresses=[0x1db5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=244,
-		max_value=244,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="BattleSpear_Price1",
-                addresses=[0x1dc0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=7,
-		max_value=7,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="BattleSpear_Price2",
-                addresses=[0x1dc1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=208,
-		max_value=208,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendSword_Price1",
-                addresses=[0x1db0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=19,
-		max_value=19,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendSword_Price2",
-                addresses=[0x1db1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=136,
-		max_value=136,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmySword_Price1",
+                name="PygmyArmor_Price1",
                 addresses=[0x1dcc],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -1195,232 +1395,8 @@ Attributes = [
 		min_max_interval=1,
                 ),
         Attribute(
-                name="PygmySword_Price2",
-                addresses=[0x1dcd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=238,
-		max_value=238,
-		min_max_interval=1,
-                ),
-
-        ### Boots 15/25/100/250/1000/4000/750  ###
-        Attribute(
-                name="LeatherBoots_Price",
-                addresses=[0x1e25],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=15,
-		max_value=15,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Ladder_Price",
-                addresses=[0x1e21],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=25,
-		max_value=25,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Marine_Price1",
-                addresses=[0x1e1c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Marine_Price2",
-                addresses=[0x1e1d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=100,
-		max_value=100,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Oasis_Price1",
-                addresses=[0x1e18],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Oasis_Price2",
-                addresses=[0x1e19],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=250,
-		max_value=250,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Ceramic_Price1",
-                addresses=[0x1e14],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=3,
-		max_value=3,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Ceramic_Price2",
-                addresses=[0x1e15],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=232,
-		max_value=232,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendBoots_Price1",
-                addresses=[0x1e10],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=15,
-		max_value=15,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendBoots_Price2",
-                addresses=[0x1e11],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=160,
-		max_value=160,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmyBoots_Price1",
-                addresses=[0x1e2c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=2,
-		max_value=2,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmyBoots_Price2",
-                addresses=[0x1e2d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=238,
-		max_value=238,
-		min_max_interval=1,
-                ),
-
-        ### Armor 40/100/400/1000/2000/4000/750 ###
-        Attribute(
-                name="Chain_Price",
-                addresses=[0x1de5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=40,
-		max_value=40,
-		min_max_interval=1,
-                ), 
-        Attribute(
-                name="HardArmor_Price",
-                addresses=[0x1de1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=100,
-		max_value=100,
-		min_max_interval=1,
-                ),        
-        Attribute(
-                name="SteelArmor_Price1",
-                addresses=[0x1ddc],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=1,
-		max_value=1,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="SteelArmor_Price2",
-                addresses=[0x1ddd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=144,
-		max_value=144,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="KnightArmor_Price1",
-                addresses=[0x1dd8],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=3,
-		max_value=3,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="KnightArmor_Price2",
-                addresses=[0x1dd9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=232,
-		max_value=232,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="FlameArmor_Price1",
-                addresses=[0x1dd4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=7,
-		max_value=7,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="FlameArmor_Price2",
-                addresses=[0x1dd5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=208,
-		max_value=208,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendArmor_Price1",
-                addresses=[0x1dd0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=15,
-		max_value=15,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="LegendArmor_Price2",
-                addresses=[0x1dd1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=160,
-		max_value=160,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="PygmyArmor_Price1",
-                addresses=[0x1dec],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=2,
-		max_value=2,
-		min_max_interval=1,
-                ),
-        Attribute(
                 name="PygmyArmor_Price2",
-                addresses=[0x1ded],
+                addresses=[0x1dcd],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=238,
@@ -1430,92 +1406,8 @@ Attributes = [
 
         ### Shield 10/25/50/500/1000/2000/4000/750 ###
         Attribute(
-                name="Wood_Shield_Price",
-                addresses=[0x1e09],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=10,
-		max_value=10,
-		min_max_interval=1,
-                ),        
-        Attribute(
-                name="ShellShield_Price",
-                addresses=[0x1e05],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=25,
-		max_value=25,
-		min_max_interval=1,
-                ),               
-        Attribute(
-                name="HardShield_Price",
-                addresses=[0x1e01],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=None,
-		min_value=50,
-		max_value=50,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="SteelShield_Price1",
-                addresses=[0x1dfc],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=1,
-		max_value=1,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="SteelShield_Price2",
-                addresses=[0x1dfd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=244,
-		max_value=244,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Knight_Shield_Price1",
-                addresses=[0x1df8],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=3,
-		max_value=3,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Knight_Shield_Price2",
-                addresses=[0x1df9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=232,
-		max_value=232,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="FlameShield_Price1",
-                addresses=[0x1df4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=7,
-		max_value=7,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="FlameShield_Price2",
-                addresses=[0x1df5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=208,
-		max_value=208,
-		min_max_interval=1,
-                ),
-        Attribute(
                 name="LegendShield_Price1",
-                addresses=[0x1df0],
+                addresses=[0x1dce],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=15,
@@ -1524,7 +1416,7 @@ Attributes = [
                 ),
         Attribute(
                 name="LegendShield_Price2",
-                addresses=[0x1df1],
+                addresses=[0x1dcf],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=160,
@@ -1532,8 +1424,102 @@ Attributes = [
 		min_max_interval=1,
                 ),
         Attribute(
+                name="FlameShield_Price1",
+                addresses=[0x1dd0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=7,
+		max_value=7,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="FlameShield_Price2",
+                addresses=[0x1dd1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=208,
+		max_value=208,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Knight_Shield_Price1",
+                addresses=[0x1dd2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=3,
+		max_value=3,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Knight_Shield_Price2",
+                addresses=[0x1dd3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=232,
+		max_value=232,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="SteelShield_Price1",
+                addresses=[0x1dd4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=1,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="SteelShield_Price2",
+                addresses=[0x1dd5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=244,
+		max_value=244,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="HardShield_Price",
+                addresses=[0x1dd7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=50,
+		max_value=50,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="ShellShield_Price0",
+                addresses=[0x1dd8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=0,
+		max_value=0,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="ShellShield_Price",
+                addresses=[0x1dd9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=25,
+		max_value=25,
+		min_max_interval=1,
+                ), 
+        Attribute(
+                name="Wood_Shield_Price",
+                addresses=[0x1ddb],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=10,
+		max_value=10,
+		min_max_interval=1,
+                ),            
+        Attribute(
                 name="PygmyShield_Price1",
-                addresses=[0x1e0c],
+                addresses=[0x1ddc],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=2,
@@ -1542,18 +1528,54 @@ Attributes = [
                 ),
         Attribute(
                 name="PygmyShield_Price2",
-                addresses=[0x1e0d],
+                addresses=[0x1ddd],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=238,
 		max_value=238,
 		min_max_interval=1,
                 ),
-        
-        ### Other 30 5/25/100/2000/2000/3000 200 ### 
+
+        ### Boots 15/25/100/250/1000/4000/750  ###
         Attribute(
-                name="Ocarina_Price1",
-                addresses=[0x1e50],
+                name="LegendBoots_Price1",
+                addresses=[0x1dde],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=15,
+		max_value=15,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="LegendBoots_Price2",
+                addresses=[0x1ddf],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=160,
+		max_value=160,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Ceramic_Price1",
+                addresses=[0x1de0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=3,
+		max_value=3,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Ceramic_Price2",
+                addresses=[0x1de1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=232,
+		max_value=232,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Oasis_Price1",
+                addresses=[0x1de2],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
@@ -1561,27 +1583,35 @@ Attributes = [
 		min_max_interval=1,
                 ),
         Attribute(
-                name="Ocarina_Price2",
-                addresses=[0x1e51],
+                name="Oasis_Price2",
+                addresses=[0x1de3],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=30,
-		max_value=30,
+                min_value=250,
+		max_value=250,
 		min_max_interval=1,
                 ),
         Attribute(
-                name="Medecine_Price",
-                addresses=[0x1e5d],
+                name="Marine_Price1",
+                addresses=[0x1de4],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=None,
-		min_value=5,
-		max_value=5,
+                min_value=0,
+		max_value=0,
 		min_max_interval=1,
                 ),
         Attribute(
-                name="Potion_Price",
-                addresses=[0x1e61],
+                name="Marine_Price2",
+                addresses=[0x1de5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=100,
+		max_value=100,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Ladder_Price",
+                addresses=[0x1de7],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=None,
@@ -1590,81 +1620,48 @@ Attributes = [
 		min_max_interval=1,
                 ),
         Attribute(
-                name="HolyWater_Price",
-                addresses=[0x1e65],
+                name="LeatherBoots_Price",
+                addresses=[0x1de9],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=None,
-		min_value=100,
-		max_value=100,
-		min_max_interval=1,
-                ),        
-        Attribute(
-                name="HiPotion_Price1",
-                addresses=[0x1e68],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=7,
-		max_value=7,
+		min_value=15,
+		max_value=15,
 		min_max_interval=1,
                 ),
         Attribute(
-                name="HiPotion_Price2",
-                addresses=[0x1e69],
+                name="Cloth_Price",
+                addresses=[0x1deb],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=208,
-		max_value=208,
+                possible_values=None,
+		min_value=1,
+		max_value=1,
 		min_max_interval=1,
                 ),
         Attribute(
-                name="Elixer_Price1",
-                addresses=[0x1e58],
+                name="PygmyBoots_Price1",
+                addresses=[0x1dec],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=7,
-		max_value=7,
+                min_value=2,
+		max_value=2,
 		min_max_interval=1,
                 ),
         Attribute(
-                name="Elixer_Price2",
-                addresses=[0x1e59],
+                name="PygmyBoots_Price2",
+                addresses=[0x1ded],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=208,
-		max_value=208,
+                min_value=238,
+		max_value=238,
 		min_max_interval=1,
                 ),
-        Attribute(
-                name="Charmstone_Price1",
-                addresses=[0x1e53],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=0,
-		max_value=0,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Charmstone_Price2",
-                addresses=[0x1e54],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=11,
-		max_value=11,
-		min_max_interval=1,
-                ),
-        Attribute(
-                name="Charmstone_Price3",
-                addresses=[0x1e55],
-                number_of_bytes=1,
-                is_little_endian=False,
-                min_value=184,
-		max_value=184,
-		min_max_interval=1,
-                ),
-        Attribute(
+        
+        ### Other 30 5/25/100/2000/2000/3000 200 ###
+         Attribute(
                 name="Firestorm_Price1",
-                addresses=[0x1e30],
+                addresses=[0x1dee],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=None,
@@ -1674,7 +1671,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Firestorm_Price2",
-                addresses=[0x1e31],
+                addresses=[0x1def],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=None,
@@ -1684,7 +1681,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Quake_Price1",
-                addresses=[0x1e34],
+                addresses=[0x1df0],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
@@ -1693,7 +1690,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Quake_Price2",
-                addresses=[0x1e35],
+                addresses=[0x1df1],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=200,
@@ -1702,7 +1699,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Thunder_Price1",
-                addresses=[0x1e38],
+                addresses=[0x1df2],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
@@ -1711,7 +1708,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Thunder_Price2",
-                addresses=[0x1e39],
+                addresses=[0x1df3],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=200,
@@ -1720,7 +1717,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Power_Price1",
-                addresses=[0x1e3c],
+                addresses=[0x1df4],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
@@ -1729,7 +1726,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Power_Price2",
-                addresses=[0x1e3d],
+                addresses=[0x1df5],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=200,
@@ -1738,7 +1735,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Shield_Price1",
-                addresses=[0x1e40],
+                addresses=[0x1df6],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
@@ -1747,7 +1744,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Shield_Price2",
-                addresses=[0x1e41],
+                addresses=[0x1df7],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=200,
@@ -1756,7 +1753,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Return_Price1",
-                addresses=[0x1e44],
+                addresses=[0x1df8],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
@@ -1765,13 +1762,277 @@ Attributes = [
                 ),
         Attribute(
                 name="Return_Price2",
-                addresses=[0x1e45],
+                addresses=[0x1df9],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=200,
 		max_value=200,
 		min_max_interval=1,
                 ),       
+        Attribute(
+                name="Ocarina_Price1",
+                addresses=[0x1dfe],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=0,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Ocarina_Price2",
+                addresses=[0x1dff],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=100,
+		max_value=100,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Charmstone_Price2",
+                addresses=[0x1e00],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=11,
+		max_value=11,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Charmstone_Price3",
+                addresses=[0x1e01],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=184,
+		max_value=184,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Elixer_Price1",
+                addresses=[0x1e02],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=7,
+		max_value=7,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Elixer_Price2",
+                addresses=[0x1e03],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=208,
+		max_value=208,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Medecine_Price",
+                addresses=[0x1e05],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=5,
+		max_value=5,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Potion_Price",
+                addresses=[0x1e07],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=25,
+		max_value=25,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="HolyWater_Price",
+                addresses=[0x1e09],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=None,
+		min_value=100,
+		max_value=100,
+		min_max_interval=1,
+                ),        
+        Attribute(
+                name="HiPotion_Price1",
+                addresses=[0x1e0a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=7,
+		max_value=7,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="HiPotion_Price2",
+                addresses=[0x1e0b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=208,
+		max_value=208,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Lamp_Price_1",
+                addresses=[0x1e10],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=0,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Lamp_Price_2",
+                addresses=[0x1e11],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=100,
+		max_value=100,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Amulet_Price_1",
+                addresses=[0x1e12],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=1,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Amulet_Price_2",
+                addresses=[0x1e13],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=244,
+		max_value=244,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Sun_Price_1",
+                addresses=[0x1e14],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=1,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Sun_Price_2",
+                addresses=[0x1e15],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=244,
+		max_value=244,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Moon_Price_1",
+                addresses=[0x1e16],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=1,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Moon_Price_2",
+                addresses=[0x1e17],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=144,
+		max_value=144,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Star_Price_1",
+                addresses=[0x1e18],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=1,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Star_Price_2",
+                addresses=[0x1e19],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=244,
+		max_value=244,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Gold_Price_1",
+                addresses=[0x1e1a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=1,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Gold_Price_2",
+                addresses=[0x1e1b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=44,
+		max_value=44,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Blue_Price_1",
+                addresses=[0x1e1c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=1,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Blue_Price_2",
+                addresses=[0x1e1d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=44,
+		max_value=44,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Teh_Urn_Price_1",
+                addresses=[0x1e20],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=7,
+		max_value=7,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Ten_Urn_Price_2",
+                addresses=[0x1e21],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=208,
+		max_value=208,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Bracelet_Price_1",
+                addresses=[0x1e22],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=0,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Bracelet_Price_2",
+                addresses=[0x1e23],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=100,
+		max_value=100,
+		min_max_interval=1,
+                ),
      
         ###Quality of Life Stuff####
         #Attribute(
@@ -2205,6 +2466,34 @@ Attributes = [
                 is_little_endian=False,
                 possible_values=[8]
                 ),
+	Attribute(
+                name="SRAM_1",
+                addresses=[0x1b2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[248]
+                ),
+        Attribute(
+                name="SRAM_2",
+                addresses=[0x1b3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="SRAM_3",
+                addresses=[0x1ba],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[3]
+                ),
+        Attribute(
+                name="SRAM_4",
+                addresses=[0x1bb],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[255]
+                ),
         Attribute(
                 name="Prince_Speech_Speed_1",
                 addresses=[0x20C13],
@@ -2240,36 +2529,6 @@ Attributes = [
                 is_little_endian=False,
                 possible_values=[8] 
                 ),
-
-        Attribute(
-                name="SRAM_1",
-                addresses=[0x1b2],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[248]
-                ),
-        Attribute(
-                name="SRAM_2",
-                addresses=[0x1b3],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="SRAM_3",
-                addresses=[0x1ba],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[3]
-                ),
-        Attribute(
-                name="SRAM_4",
-                addresses=[0x1bb],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[255]
-                ),
-
         Attribute(
                 name="Ocarina_Sonia_Check",
                 addresses=[0x1e5a7],
@@ -3692,6 +3951,14 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[0] 
+                ),
+        Attribute(
+                name="Legend_Sword_Location",
+                addresses=[0x1F3BA],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 211
+                                 ]  
                 ),
         ### Bracelet Stuff ###
        # Attribute(
@@ -7447,6 +7714,105 @@ Attributes = [
                 ),
 
         Attribute(
+                name="Sphinx_Question_GG_1",
+                addresses=[0x21513],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[116] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_2",
+                addresses=[0x21514],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[104] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_3",
+                addresses=[0x21515],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[101] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_4",
+                addresses=[0x21516],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_5",
+                addresses=[0x21517],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[66] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_6",
+                addresses=[0x21518],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[97] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_7",
+                addresses=[0x21519],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[116] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_8",
+                addresses=[0x2151a],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[44] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_9",
+                addresses=[0x2151b],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_10",
+                addresses=[0x2151c],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_11",
+                addresses=[0x2151d],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_12",
+                addresses=[0x2151e],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Sphinx_Question_GG_13",
+                addresses=[0x2151f],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+	Attribute(
+                name="Sphinx_Question_GG_14",
+                addresses=[0x21520],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+
+        Attribute(
                 name="Rapid_Pad_1",
                 addresses=[0x219F5],
                 number_of_bytes=1,
@@ -7795,8 +8161,8 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="HardShield_Chest_Swap",
-                addresses=[0xA6F9],
+                name="Trident_Chest_Swap",
+                addresses=[0xA701],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[
@@ -7827,7 +8193,7 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[
-                                 132
+                                 140
                                  ]
                 ),
         Attribute(
