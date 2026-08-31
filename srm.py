@@ -895,7 +895,7 @@ def generateRom():
 
                               "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6",
 
-                              "First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
+                              "Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
 
                               "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet",
 
@@ -1109,7 +1109,7 @@ def generateRom():
                                                Trident_Location = "Error!"
 
                                                
-                                        Can_Reach = Can_Reach + ["First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
+                                        Can_Reach = Can_Reach + ["Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
                                                                       "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet"]
                                         if Heart_Chest == 0:
                                                 Can_Reach = Can_Reach + ['Heart_Chest']
@@ -1133,7 +1133,7 @@ def generateRom():
                                         elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward",
                                                               "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6"]:
                                                Oasis_Boots_Location = "Lilly"
-                                        elif Random_Check in ["First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
+                                        elif Random_Check in ["Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
                                                               "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet",
                                                               "Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",
                                                               "Oasis_Boots"]:
@@ -2886,7 +2886,7 @@ def generateRom():
                                         
                                 Shift_Up = ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5","Heart_Chest","bat_reward","Elixer_Chests",
                                               "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6",
-                                              "First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
+                                              "Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
                                               "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",                              
                                               "Oasis_Boots","Return","Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
                                               "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key",
@@ -2941,8 +2941,8 @@ def generateTextLog():
                 hexStr = "[0x"+str(hex(att.value))[2:].rjust(maxHexLen, "0").upper()+"]"
                 Text_String = ""
                 Chest = ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5","Heart_Chest","bat_reward","Elixer_Chests",
-                                              "Hard_Shield_1","Hard_Shield_2","Hard_Shield_3","Hard_Shield_4","Hard_Shield_5","Hard_Shield_6","Trident",
-                                              "First_Money","Water_Money_Chest_1","Water_Money_Chest_2","Water_Money_Chest_3",
+                                              "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6",
+                                              "Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
                                               "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",                              
                                               "Oasis_Boots","Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
                                               "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key",
