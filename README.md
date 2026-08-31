@@ -6,7 +6,7 @@ First of all, I want to say huge thanks to both Mode8fx and PaddyCo for making t
 In case you don't know, Mode8fx created the program "Simple Randomizer Maker" which is incredibly easy to use. All you need is the hex addresses and values and the program does the rest.
 I've uploaded it as part of the repository, but you can also find it here : https://github.com/Mode8fx/SimpleRandomizerMaker
 
-Update : To make certain things work, I needed to directly edit the SRM file. So use the one listed here, rather than the other one. 
+Update : To make certain things work, I needed to directly edit the SRM file. So use the one listed here, rather than the one on Mode8FX's Git Hub. 
 
 
 In addition, I couldn't have made any progress without the ground work that PaddyCo laid out. He started this project over 4 years ago and provided me with the addresses for around 10 checks, along with all the values.
@@ -16,26 +16,59 @@ You can find his work here : https://github.com/PaddyCo/mw3rando
 
 With that out of the way, here's what this randomizer does and does not do.
 
-There are currently 105 objcets randomized in the "Pool". They are :
+There are currently 107 Checks randomized in the "Pool". 
+There are two kinds of items. Equipment [Anything that can be found on Equipment screen. Weapons, Armor, Shield, Boots, Spells, Other]
+Non-Equipment. [Hearts, Money, Health/Magic Refills]
 
-(1). All 25 Shop Items. Non-Equippable items such as Keys cost billions of coins, and adjusting their prices causes the game to crash. So they cannot be found in Shops. All other equippable items can be found in shops. This includes Ocarina, Trident, Oasis Boots, Pygmy Items, Legend Items, and Spells. It does not include a Heart.
+(1). All 25 Shop Items. Equipment Only
 
-(2). The "Elder" items at the beginning of the game. These can be any item, except for a Heart.
+(2). The 2 "Elder" items at the beginning of the game. Equipment Only
 
-(3). The "Sonia" item, left in the cave. This can be any item, except for a heart.
+(3). The "Sonia" item, left in the cave. Equipment Only
 
-(4). The "Blacksmith" item (Legend Sword in Vanilla). This can be any item, except for a heart. 
+(4). The "Blacksmith" item (Legend Sword in Vanilla). Equipment Only
 
-(5). The Charmstone Items [For TWO Charmstones. One still gives you a heart]. These can be any items, except for a heart.
+(5). The "Dragon" item (Bracelet in Vanilla). Equipment Only [The Only "Progression" items it can be is Blue Gem, Gold Gem, and Bracelet] 
 
-(5). 62 Chest items. This includes all 4 water money chests. (They have 1, 5, 6, and 8 Items respectively). This also includes the pyramid money chests. They have 8 items. 
+(6). The 5 "Charmstone Guy" Items [For TWO Charmstones. One still gives you a heart]. Equipment Only
 
-(6). 9 new items since I made this list. 3 of the mini-bosses in the Ice Castle. Starting Equipment. Starting Hearts. 
+(7). Sphinx Quiz Bonus. Non-Progression Equipment Only
 
-*The Bracelet item is bugged, and does not work if you USE the bracelet before talking to the Elder Dragon. His item is completed random and may be a duplicate of something you already have.
-*It will never be -needed- to beat the game, but it might be helpful. 
+(8). 3 Initial Equipment items [Weapon/Armor/Boots]
 
-The item pool consists of a corresponding 105 items.
+(9). 3 Initial Hearts [Can be Hearts or Random Non-Progression Bonus Items]
+
+(10). Four "Enemy Drop" items. 2nd Dungeon Bat, Three Yetis in Ice Castle Last Room. Can be anything
+
+(11). 61 Chest items. Can be anything
+
+The following checks have been swapped with multi-item chests to increase item balance.
+
+Myconid <-> 5 Item Water Chest 
+
+Gragg and Glagg <-> 6 Item Water Chest
+
+Return Magic <-> 8 Item Water Chest 
+
+This reduces the overall important of Trident and increases the value in other checks. 
+
+The item pool consists of a corresponding 107 items.
+
+One of each Weapon/Armor/Shield/Boots [32]
+
+3 of each spell except for Shield and Return [14] 
+
+5 Charmstones, 3 Elixers, 1 of Each Potion [12]
+
+Progression Items, including Ocarina [10]
+
+Hearts [14]
+
+Money and Refills [24]
+
+Jet Pack [1] (No, Really. I'm serious. But it only does something if you happen to start the game with it)
+
+
 
 "Go-Mode" requirements --
    
@@ -43,27 +76,22 @@ The item pool consists of a corresponding 105 items.
    
       (b). Have access to Begonia. Requires Oasis Boots and Star-Key.
    
-      (c). The Fire-Urn. Talk to the Blacksmith.
+      (c). The Fire-Urn. 
 
       (d). Legend Sword, Legend Shield, Legend Armor. (Technically you don't need Shield/Armor, but good luck without 'em)
 
       (e). In addition, I highly recomend you stock yourself with Power, Thunder, Elixer, and Hi-Potion.
    
   
-
-If you talk to the Dragon Elder after using the Bracelet to enter Childam, the door back to Purapill will not spawn. You may need to walk back. 
-
-
 If you find any issues or logical progression problems, please reach out to me.
-
 
 In addition to the random elements, many Quality of Life improvements are in place. In general, all items are cheaper than they would be in Vanilla, so less grinding is needed. 
 
-Sonia's text synchs with her correpsonding item, so you can skip it if it's useless. The blacksmith's language is also synched, so you know what you're getting.
+Sonia's text synchs with her corresponding item, so you can skip it if it's useless. The blacksmith's language is also synched, so you know what you're getting.
 
 There are now 9 hints currently in the game. 
 
-At the top of purapill stairs, on the first screen, the lady to the left will hint about the "Leap of Faith". This is the POWER chest.
+At the top of Purapill stairs, on the first screen, the lady to the left will hint about the "Leap of Faith". This is the POWER chest.
 
 The lady on the right will hint about the "Trident and Amulet Item". This is the OASIS BOOTS chest.
 
@@ -76,8 +104,6 @@ One NPC in each village will hint a "Charmstone" item.
 As many text speed ups are in place as I could find. The following texts can be skipped by holding C and mashing A : The Intro, Ocarina Activation, The Dwarf, The Sphinx, the Gems, the Ice Melting, and both Prince speaches.
 
 Be very careful when skipping the text with the Sphinx! I'm not responsible if you skip a question! :-P
-
-Some 1-way Entrances are randomized. Sleeping at an Inn will always send you someplace new. 
 
 The Sphinx now contains 9/10 random questions! Be careful!
 
