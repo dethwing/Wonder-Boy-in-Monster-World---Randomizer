@@ -264,15 +264,23 @@ Attributes = [
 
         ### [Trident] ###
         Attribute(
-                name="First_Money",
+                name="Alsedo_Left_Money",
                 addresses=[0xa75e],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 130
                                  ]
-                ),        
+                ),                
         Attribute(
-                name="Water_Money_Chest_1",
+                name="Alsedo_Mid_Money",
+                addresses=[0xA756],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 130
+                                 ]
+                ),
+        Attribute(
+                name="Alsedo_Right_Money",
                 addresses=[0xa752],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -280,15 +288,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Water_Money_Chest_2",
-                addresses=[0xA74E],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 130
-                                 ]
-                ),
-        Attribute(
-                name="Water_Money_Chest_3",
+                name="Poseidon_Money",
                 addresses=[0xA736],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -958,8 +958,8 @@ Attributes = [
                 possible_values=[255      
                                  ]                                 
                 ),
-        ### Initial Items ###
         
+        ### Initial Items ###        
 
         Attribute(
                 name="Init_Money3",
@@ -1118,7 +1118,7 @@ Attributes = [
 
 
         ### FIXES ###
-    Attribute(
+        Attribute(
                 name="Price_Fix_Code_1",
                 addresses=[0x1DA6],
                 number_of_bytes=1,
