@@ -93,11 +93,9 @@ There are now 9 hints currently in the game.
 
 At the top of Purapill stairs, on the first screen, the lady to the left will hint about the "Leap of Faith". This is the POWER chest.
 
-The lady on the right will hint about the "Trident and Amulet Item". This is the OASIS BOOTS chest.
+The lady on the right will hint about the "Sewer Item". This is the Full Healt chest.
 
 The wandering Dragon in Begonia will hint about the "Volcano item". This is the FIRE-URN chest. 
-
-The second NPC in Alsedo [Left] hints about a "Sewer" item. This is the "FULL_HEAL" chest.
 
 One NPC in each village will hint a "Charmstone" item. 
 
