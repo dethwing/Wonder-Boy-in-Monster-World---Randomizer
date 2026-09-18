@@ -878,7 +878,7 @@ def generateRom():
 
 
 
-                        ### CURRENT COUNT = 107 ###
+                        ### CURRENT COUNT = 108 ###
 
                         
                         All_Checks = [
@@ -897,15 +897,15 @@ def generateRom():
 
                               "Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
 
-                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet",
+                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Hint_Lady",
 
-                              "Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",
-                              
-                              "Oasis_Boots","Full_Health_1","Quake","Battle_Spear",
-                              
-                              "Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
+                              "Oasis_1","Oasis_2","Oasis_3","Oasis_4","Oasis_5","Oasis_6","Oasis_7","Oasis_8","Return",
 
-                              "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
+                              "Full_Health_1","Quake","Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water",
+
+                              "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe",
+
+                              "Shield_Magic_Chest","Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
 
                               "Pygmy_Shield","Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword","Charm_Guy_1","Charm_Guy_2",
 
@@ -913,13 +913,12 @@ def generateRom():
                                                                 
                               "Pyramid_Item_8","Charmstone_Chest","Legend_Boots","Legend_Shield","Legend_Armor","Bracelet_Item","Sphinx_Bonus_Item"
                                       ]
-
-
+                        
                         All_Items = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31, ## 32 Equipment ##
 
                                      32,32,32, 33,33,33 ,34,34,34, 35,35,35, 36,37, ## 14 Spells ##
 
-                                     41,41,41,41,41 ,42,42,42, 43,44,45,46, ## 5 Charms, 3 Elixers, 4 Health = 12 ##
+                                     41,41,41,41,41 ,42,42,42,42, 43,44,45,46, ## 5 Charms, 4 Elixers, 4 Health = 13 ##
 
                                      40,49,50,51,52, 53,54,55,57,58, ## 10 Progression Items ###
 
@@ -932,369 +931,29 @@ def generateRom():
                                      59 ### Rapid Pad -- Secret Item! What does it do if you get it to start!? ###
 
                                      ]
-
                         
                         print(len(All_Checks))
                         print(len(All_Items))
-                        
-                        Can_Reach = ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine","Ocarina_Reward",
-                                     "Full_Health_1","Hard_Armor","Knight_Sword","Charmstone_Purchase","Potion","Ladder_Boots",
-                                                 "Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward"                                        
-                                     ]
+
+                        Starting_Items = ["Init_Heart1","Init_Heart2","Init_Heart3"]
+
+                        Possible_Starter_Items = [2,3,6,
+                                                  9,10,11,12,13,14,
+                                                  17,18,19,20,21,22,
+                                                  28,29,30,
+                                                  32,32,32,33,33,33,34,34,34,35,35,36,
+                                                  41,41,41,41,41,
+                                                  64,64,64,64,64, 64,64,64,64,64, 64,64,64,64,
+                                                  128,130,132, 134,136,138, 140,142,144, 146,148,150, 
+                                                  146,146,146,148,148,148,150,150,150,
+                                                  59
+                                                  ]
 
                         
-
-
-                        Deep_Checks = ["Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8","Oasis_Boots",
-
-                                      "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe",
-
-                                      "Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid","Pygmy_Shield",
-
-                                      "Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword",
-
-                                      "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
-
-                                      "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
-                                                                
-                                      "Pyramid_Item_8","Charmstone_Chest",
-					
-				      "leather_boots","small_spear","chain_mail","wood_shield","medicine","Hard_Armor","Knight_Sword",
-
-				      "excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop",
-
-			              "Steel_Armor","Shell_Shield","Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water"
-
-					]
-
-                        Legend_Items = [0,8,16,24]
-
-                        Legend_Sword_Location = "Blank"
+                        Problem_Items = [64,64,64,64,64, 64,64,64,64,64, 64,64,64,64,                                         
+                                         128,130,132, 134,136,138, 140,142,144, 146,148,150, 152,154,156,
+                                         146,146,146,148,148,148,150,150,150] 
                         
-                        while len(Legend_Items) > 0:
-                                random_check = random.choice(Deep_Checks)
-                                random_item = random.choice(Legend_Items)
-                                      
-                                for att in Attributes:
-                                        if att.name == random_check:
-                                                att.value = random_item                                        
-                                        
-                                All_Checks.remove(random_check)    
-                                All_Items.remove(random_item)
-                                
-                                Deep_Checks.remove(random_check)    
-                                Legend_Items.remove(random_item)
-
-                                if random_item == 0:
-                                        if random_check in ["Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8","Oasis_Boots"]:
-                                                Legend_Sword_Location = "Underwater"
-
-                                        elif random_check in ["Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe",
-								"Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water"]:
-                                                Legend_Sword_Location = "Bracelet"
-
-                                        elif random_check in ["Sun_Key","Power","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5",
-                                                              "Secret_Pyramid","Pygmy_Shield","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop",
-                                                              "Fire_Urn","Legend_Sword","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
-							      "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest"]:
-                                                Legend_Sword_Location = "Desert"
-
-                                        elif random_check in ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
-							      "Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots"]:
-                                                Legend_Sword_Location = "Pura"
-                                        elif random_check in ["leather_boots","small_spear","chain_mail","wood_shield","medicine"]:
-                                                Legend_Sword_Location = "Alsedo"
-						
-                                        elif random_check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield"]:
-                                                Legend_Sword_Location = "Lilly" 
-                        
-                        Heart_Chest = 0
-                        Quake = 0
-                        Elixer = 0
-                        Poseidon = 0
-                        Oasis_Boots = 0
-                        Well = 0
-                        Pyramid_Main = 0
-                        Pyramid_Extra = 0 
-                        Moon = 0
-                        Star = 0
-                        Bomber = 0
-                        Begonia = 0
-                        Blacksmith = 0
-                        Teh_Urn = 0
-                        Sky = 0
-                        Charm = 0
-                        Ice_Castle = 0 
-
-                        Progression_Items = [37,40,
-                                             7,15,23,31,
-                                             5,25,26,27,41,41,41,
-                                             49,50,
-                                             51,52,53,
-                                             54,55,
-                                             57,58                                             
-                                             ]
-
-                        
-                        Long_Checks = ["Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
-                                       "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest",
-                                       "Oasis_Boots","Oasis_Boots","Oasis_Boots","Oasis_Boots","Oasis_Boots","Oasis_Boots",
-                                       "Fire_Urn","Fire_Urn","Fire_Urn"]
-                        
-                        Random_Long_Check = random.choice(Long_Checks)
-                        
-                        while len(Progression_Items) > 0:
-
-                                if Random_Long_Check in Can_Reach:
-                                        Random_Check = Random_Long_Check
-
-                                else:                                
-                                        Random_Check = random.choice(Can_Reach)
-
-                                Random_Item = random.choice(Progression_Items)
-
-                                if Random_Check == "Bracelet_Item":
-                                        if (54 not in Progression_Items) and (55 not in Progression_Items) and (58 not in Progression_Items):
-                                                while Random_Check == "Bracelet_Item":
-                                                        Random_Check = random.choice(Can_Reach)        
-                                        else:
-                                                Random_Item = random.choice([54,55,58])
-                                
-
-                                for att in Attributes:
-                                        if att.name == Random_Check:
-                                                att.value = Random_Item
-                                                
-                                All_Checks.remove(Random_Check)
-                                Can_Reach.remove(Random_Check)
-                                Progression_Items.remove(Random_Item)                                
-                                All_Items.remove(Random_Item)
-
-                                if Random_Item == 40:
-                                        Can_Reach = Can_Reach + ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5",]
-                                        if Heart_Chest == 0:
-                                                Can_Reach = Can_Reach + ['Heart_Chest']
-                                                Heart_Chest = 1
-                                        
-                                if Random_Item == 5:
-                                        if Random_Check in ["Heart_Chest","Potion","Quake","Power","Elixer_Chests"]:
-                                                Trident_Location = "Somewhere"
-                                                
-                                        elif Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
-                                                            "Ocarina_Reward","Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5"]:
-                                               Trident_Location = "Alsedo"
-                                                
-                                        elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Ladder_Boots",
-                                                              "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Full_Health_1"]:
-                                               Trident_Location = "Pura"
-                                               
-                                        elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward",
-                                                               "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6"]:
-                                               Trident_Location = "Lilly"
-                                               
-                                        elif Random_Check in ["Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water",
-                                                             "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe"]:
-                                               Trident_Location = "Childam"
-                                               
-                                        elif Random_Check in ["Shield_Magic_Chest",
-                                                              "Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
-                                                              "Pygmy_Shield", "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
-                                                              "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
-                                                              "Pyramid_Item_8","Charmstone_Chest",
-                                                              "Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword"
-                                                              ]:
-                                               Trident_Location = "Desert"
-                                        else:
-                                               print("ERROR!")
-                                               Trident_Location = "Error!"
-
-                                               
-                                        Can_Reach = Can_Reach + ["Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
-                                                                      "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet"]
-                                        if Heart_Chest == 0:
-                                                Can_Reach = Can_Reach + ['Heart_Chest']
-                                                Heart_Chest = 1
-                                if Random_Item == 41:
-                                        Charm = Charm + 1
-                                        if Charm == 2:
-                                                Can_Reach = Can_Reach + ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5"]                                        
-                                if Random_Item == 26:
-                                        if Random_Check in ["Heart_Chest","Potion","Quake","Elixer_Chests"]:
-                                                Oasis_Boots_Location = "Somewhere"
-                                                
-                                        elif Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
-                                                            "Ocarina_Reward","Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5"]:
-                                               Oasis_Boots_Location = "Alsedo"
-                                                
-                                        elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Ladder_Boots",
-                                                              "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Full_Health_1"]:
-                                               Oasis_Boots_Location = "Pura"
-                                                
-                                        elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward",
-                                                              "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6"]:
-                                               Oasis_Boots_Location = "Lilly"
-                                        elif Random_Check in ["Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
-                                                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet",
-                                                              "Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",
-                                                              "Oasis_Boots"]:
-                                               Oasis_Boots_Location = "Underwater"
-                                        elif Random_Check in ["Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water",
-                                                             "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
-                                                              "Old_Axe"]:
-                                               Oasis_Boots_Location = "Childam"
-                                        else:
-                                               print("ERROR!")
-                                               Oasis_Boots_Location = "Error!"
-                                               
-                                        Can_Reach = Can_Reach + ["Shield_Magic_Chest","excalibur","steel_shield"]
-                                        if Quake == 0:
-                                                Can_Reach = Can_Reach + ['Quake']
-                                                Quake = 1
-                                if Random_Item == 27:
-                                        if Quake == 0:
-                                                Can_Reach = Can_Reach + ['Quake']
-                                                Quake = 1
-                                if Random_Item == 25:
-                                        if Quake == 0:
-                                                Can_Reach = Can_Reach + ['Quake']
-                                                Quake = 1
-                                if Random_Item == 49:
-                                        Can_Reach = Can_Reach + ["Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6",]
-                                        if Elixer == 0:
-                                                Can_Reach = Can_Reach + ['Elixer_Chests']
-                                                Elixer = 1
-                                        if Heart_Chest == 0:
-                                                Can_Reach = Can_Reach + ['Heart_Chest']
-                                                Heart_Chest = 1
-
-                                if Random_Item == 37:
-                                        Ice_Castle = Ice_Castle + 1
-                                        if Ice_Castle == 2:
-                                                Can_Reach  = Can_Reach + ["Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti"]
-                                                
-                                                if Heart_Chest == 0:
-                                                        Can_Reach = Can_Reach + ['Heart_Chest']
-                                                        Heart_Chest = 1
-                                                        
-                                if Random_Item == 58:
-                                        Ice_Castle = Ice_Castle + 1
-                                        Can_Reach = Can_Reach + ["Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water"]
- 
-                                        if Ice_Castle == 2:
-                                                Can_Reach  = Can_Reach + ["Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti"]
-                                                
-                                                if Heart_Chest == 0:
-                                                        Can_Reach = Can_Reach + ['Heart_Chest']
-                                                        Heart_Chest = 1
-                                                        
-                                if Random_Item == 5 or Random_Item == 50:
-                                        Poseidon = Poseidon + 1
-                                        if Poseidon == 2:
-                                                Can_Reach = Can_Reach + ["Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8"]
-                                                if Elixer == 0:
-                                                        Can_Reach = Can_Reach + ['Elixer_Chests']
-                                                        Elixer = 1
-                                if Random_Item == 5 or Random_Item == 50 or Random_Item == 27 or Random_Item == 37:
-                                        if Random_Item == 5 or Random_Item == 50:
-                                                Oasis_Boots = Oasis_Boots + 1
-                                        if Random_Item == 27 or Random_Item == 37:
-                                                Oasis_Boots = Oasis_Boots + .5        
-                                        if Oasis_Boots >= 2.5:
-                                                Can_Reach = Can_Reach + ["Oasis_Boots"]
-                                                
-                                if Random_Item == 26 or Random_Item == 5:
-                                        Well = Well + 1
-                                        if Well == 2:
-                                                Can_Reach = Can_Reach + ["Sun_Key"]
-                                                
-                                if Random_Item == 26 or Random_Item == 51:
-                                        Pyramid_Main = Pyramid_Main + 1
-                                        if Pyramid_Main == 2 and Pyramid_Extra < 6:
-                                                Can_Reach = Can_Reach + ["Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid"]
-                                                if Elixer == 0:
-                                                        Can_Reach = Can_Reach + ['Elixer_Chests']
-                                                        Elixer = 1
-                                                        
-                                if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31:
-                                        Pyramid_Extra = Pyramid_Extra + 1
-                                        if Pyramid_Extra == 6:
-                                                Can_Reach = Can_Reach + ["Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
-                                                                         "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest"]
-                                                if Pyramid_Main < 2:
-                                                        Can_Reach = Can_Reach + ["Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3"
-                                                                                 ,"Star_Key_4","Star_Key_5","Secret_Pyramid",]
-                                                        Pyramid_Main = 3
-                                                        if Elixer == 0:
-                                                                Can_Reach = Can_Reach + ['Elixer_Chests']
-                                                                Elixer = 1
-                                                                
-                                if Random_Item == 26 or Random_Item == 52:
-                                        Moon = Moon + 1
-                                        if Moon == 2:
-                                                Can_Reach = Can_Reach + ["Pygmy_Shield"]
-                                if Random_Item == 26 or Random_Item == 53:
-                                        Star = Star + 1
-                                        if Star == 2:
-                                                Can_Reach = Can_Reach + ["Power","Bracelet_Item"]
-                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58:
-                                        Bomber = Bomber + 1
-                                        if Bomber == 3:
-                                                Can_Reach = Can_Reach + ["Old_Axe"]
-                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53:
-                                        Begonia = Begonia + 1
-                                        if Begonia == 5:
-                                                Can_Reach = Can_Reach + ["Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop"]
-                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53 or Random_Item == 57:
-                                        Blacksmith = Blacksmith + 1
-                                        if Blacksmith == 6:
-                                                Can_Reach = Can_Reach + ["Legend_Sword"]
-                                if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31 or Random_Item == 54 or Random_Item == 						55 or Random_Item == 58:                                        
-                                        Teh_Urn = Teh_Urn + 1
-                                        if Teh_Urn == 9:
-                                                Can_Reach = Can_Reach + ["Fire_Urn"]
-
-
-                        Healing_Items = [42,46]
-                        
-                        while len(Healing_Items) > 0:
-                                Random_Item = random.choice(Healing_Items)
-                                Random_Check = random.choice(All_Checks)
-                                        
-                                while Random_Check not in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
-                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
-                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
-                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
-                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
-                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop"
-                                                                  ]:
-                                                Random_Check = random.choice(All_Checks)
-                                for att in Attributes:
-                                        if att.name == Random_Check:
-                                                att.value = Random_Item
-                                                
-                                Healing_Items.remove(Random_Item)
-                                All_Checks.remove(Random_Check)                        
-                                All_Items.remove(Random_Item)
-
-                        Other_Healing = [42,42,43,44,45]
-                        
-                        while len(Other_Healing) > 0:
-                                Random_Item = random.choice(Other_Healing)
-                                Random_Check = random.choice(All_Checks)
-                                        
-                                while Random_Check  in ["Init_Weapon","Init_Boots","Init_Armor","Init_Heart1","Init_Heart2","Init_Heart3"]:
-                                                Random_Check = random.choice(All_Checks)
-                                                
-                                for att in Attributes:
-                                        if att.name == Random_Check:
-                                                att.value = Random_Item
-                                                
-                                Other_Healing.remove(Random_Item)
-                                All_Checks.remove(Random_Check)                        
-                                All_Items.remove(Random_Item)
-
-
-
                         for att in Attributes:
                                 if att.name == "Init_Boots":
                                         if Initial_Equipment_Randomizer == 0:
@@ -1310,6 +969,7 @@ def generateRom():
                                                 att.value = 64
 
                                         All_Items.remove(Random_Boots)
+                                        Possible_Starter_Items.remove(Random_Boots)
                                         All_Checks.remove("Init_Boots")
                                                                 
                                                 
@@ -1336,6 +996,7 @@ def generateRom():
 
 
                                         All_Items.remove(Random_Armor)
+                                        Possible_Starter_Items.remove(Random_Armor)
                                         All_Checks.remove("Init_Armor")
                                                 
                                 if att.name == "Init_Weapon":
@@ -1343,7 +1004,7 @@ def generateRom():
                                        if Initial_Equipment_Randomizer == 0:
                                                Random_Weapon = 3
                                        else:
-                                               Random_Weapon = random.choice([1,2,3,4,6])
+                                               Random_Weapon = random.choice([2,3,6])
                                                 
                                        if Random_Weapon == 1:                                               
                                                att.value = 2
@@ -1357,9 +1018,8 @@ def generateRom():
                                                att.value = 64
 
                                        All_Items.remove(Random_Weapon)
+                                       Possible_Starter_Items.remove(Random_Weapon)                                       
                                        All_Checks.remove("Init_Weapon")
-
-                        Starting_Items = ["Init_Heart1","Init_Heart2","Init_Heart3"]
 
                         while len(Starting_Items) > 0:
                                 
@@ -1370,13 +1030,9 @@ def generateRom():
                                         if len(Starting_Items) == 3:
                                                 Random_Item = 64
                                         else:
-                                                Random_Item = random.choice(All_Items)                                                
+                                                Random_Item = random.choice(Possible_Starter_Items)                                                
                                 else:                                
-                                        Random_Item = random.choice(All_Items)
-
-
-                                while Random_Item > 150:
-                                        Random_Item = random.choice(All_Items)        
+                                        Random_Item = random.choice(Possible_Starter_Items)
 
                                 if Random_Item < 8:
                                         for att in Attributes:          
@@ -1470,6 +1126,7 @@ def generateRom():
                                         for att in Attributes:          
                                                 if att.name == "Init_Charms":
                                                         att.value = att.value + 1
+                                        Progression_Items.remove(Random_Item)
 
                                 elif Random_Item == 59:
                                         ### SUPER SECRET ####
@@ -1506,54 +1163,447 @@ def generateRom():
                                 elif Random_Item in [146,148,150]:
                                         for att in Attributes:          
                                                 if att.name == "Init_Money2":
-                                                        att.value = att.value + 2
+                                                        att.value = att.value + 3
 
 
-                                        
-                                All_Items.remove(Random_Item)
                                 All_Checks.remove(Starter)
-                                Starting_Items.remove(Starter)
+                                Starting_Items.remove(Starter)                                        
+                                
+                                All_Items.remove(Random_Item)
+                                Possible_Starter_Items.remove(Random_Item)
+
+                                if Random_Item in Problem_Items:
+                                        Problem_Items.remove(Random_Item)
+                                        
+                        
+
+
+                        Progression_Items = [37,40,
+                                             7,15,23,31,
+                                             5,25,26,27,41,41,
+                                             49,50,
+                                             51,52,53,
+                                             54,55,
+                                             57,58,
+                                             1,4
+                                             ]
+
+                        
+
+                        Can_Reach = ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine","Ocarina_Reward",
+                                     "Full_Health_1","Hard_Armor","Knight_Sword","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                 "Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward"                                        
+                                     ]
+
+                        Heart_Chest = 0
+                        Quake = 0
+                        Elixer = 0
+                        Poseidon = 0
+                        Oasis_Boots = 0
+                        Well = 0
+                        Pyramid_Main = 0
+                        Pyramid_Extra = 0 
+                        Moon = 0
+                        Star = 0
+                        
+                        Begonia = 0
+                        Blacksmith = 0
+                        Teh_Urn = 0
+                        Sky = 0
+                        Charm = 0
+                        
+                        Childam = 0
+                        Ice_Castle = 0
+                        Bomber = 0
+
+                        
+
+                        Bracelet_Items = [54,55,58]
+                        Hint_Lady_Items = [40,49,50,51,52,53,54,55,57,58]
+
+
+                        
+                        
+                        while len(Progression_Items) > 0:
+
+                                Random_Check = random.choice(Can_Reach)
+
+                                Random_Item = random.choice(Progression_Items)
+                                        
+
+                                if Random_Check == "Bracelet_Item":
+                                        if len(Bracelet_Items) > 0:
+                                                Random_Item = random.choice(Bracelet_Items)
+                                        else:
+                                                while (Random_Check == "Bracelet_Item"):
+                                                        Random_Check = random.choice(Can_Reach)
+                                                        
+                                                        
+                                                
+                                if Random_Check == "Hint_Lady":
+                                        if len(Hint_Lady_Items) > 0:
+                                                Random_Item = random.choice(Hint_Lady_Items)
+                                        else:
+                                                while(Random_Check == "Hint_Lady"):
+                                                        Random_Check = random.choice(Can_Reach)
+                                                        
+
+                                if Random_Item == 41:
+                                        while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
+                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
+                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
+                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
+                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop","Ocarina_Reward","bat_reward"]:
+                                                Random_Check = random.choice(Can_Reach)
+                                                
+                                                
+                                for att in Attributes:
+                                        if att.name == Random_Check:
+                                                att.value = Random_Item
+
+                                                
+                                All_Checks.remove(Random_Check)
+                                Can_Reach.remove(Random_Check)
+
+                                
+                                Progression_Items.remove(Random_Item)                                
+                                All_Items.remove(Random_Item)
+
+
+                                if Random_Item in Bracelet_Items:
+                                        Bracelet_Items.remove(Random_Item)
+                                if Random_Item in Hint_Lady_Items:
+                                        Hint_Lady_Items.remove(Random_Item)
+
+                                
+
+                                if Random_Item == 40:
+                                        Can_Reach = Can_Reach + ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5"]
+                                        if Heart_Chest == 0:
+                                                Can_Reach = Can_Reach + ['Heart_Chest']
+                                                Heart_Chest = 1
+                                        
+                                if Random_Item == 5:
+                                        if Random_Check in ["Heart_Chest","Potion","Quake","Power","Elixer_Chests"]:
+                                                Trident_Location = "Somewhere"
+                                                
+                                        elif Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
+                                                            "Ocarina_Reward","Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5"]:
+                                               Trident_Location = "Alsedo"
+                                                
+                                        elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Ladder_Boots",
+                                                              "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Full_Health_1"]:
+                                               Trident_Location = "Pura"
+                                               
+                                        elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward",
+                                                               "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6"]:
+                                               Trident_Location = "Lilly"
+                                               
+                                        elif Random_Check in ["Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water",
+                                                             "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe"]:
+                                               Trident_Location = "Childam"
+                                               
+                                        elif Random_Check in ["Shield_Magic_Chest",
+                                                              "Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
+                                                              "Pygmy_Shield", "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
+                                                              "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
+                                                              "Pyramid_Item_8","Charmstone_Chest",
+                                                              "Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword"
+                                                              ]:
+                                               Trident_Location = "Desert"
+                                        else:
+                                               print("ERROR!")
+                                               Trident_Location = "Error!"
+
+                                               
+                                        Can_Reach = Can_Reach + ["Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
+                                                                      "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Hint_Lady"]
+                                        if Heart_Chest == 0:
+                                                Can_Reach = Can_Reach + ['Heart_Chest']
+                                                Heart_Chest = 1
+                                if Random_Item == 41:
+                                        Charm = Charm + 1
+                                        if Charm == 2:
+                                                Can_Reach = Can_Reach + ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5"]                                        
+                                if Random_Item == 26:
+                                        if Random_Check in ["Heart_Chest","Potion","Quake","Elixer_Chests"]:
+                                                Oasis_Boots_Location = "Somewhere"
+                                                
+                                        elif Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
+                                                            "Ocarina_Reward","Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5"]:
+                                               Oasis_Boots_Location = "Alsedo"
+                                                
+                                        elif Random_Check in ["Hard_Armor","Knight_Sword","excalibur","steel_shield","Charmstone_Purchase","Ladder_Boots",
+                                                              "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","Full_Health_1"]:
+                                               Oasis_Boots_Location = "Pura"
+                                                
+                                        elif Random_Check in ["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward",
+                                                              "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6"]:
+                                               Oasis_Boots_Location = "Lilly"
+                                        elif Random_Check in ["Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
+                                                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Hint_Lady",
+                                                              "Oasis_1","Oasis_2","Oasis_3","Oasis_4","Oasis_5","Oasis_6","Oasis_7","Oasis_8","Return"]:
+                                               Oasis_Boots_Location = "Underwater"
+                                        elif Random_Check in ["Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water",
+                                                             "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
+                                                              "Old_Axe"]:
+                                               Oasis_Boots_Location = "Childam"
+                                        else:
+                                               print("ERROR!")
+                                               Oasis_Boots_Location = "Error!"
+                                               
+                                        Can_Reach = Can_Reach + ["Shield_Magic_Chest","excalibur","steel_shield"]
+                                        if Quake == 0:
+                                                Can_Reach = Can_Reach + ['Quake']
+                                                Quake = 1
+                                if Random_Item == 27:
+                                        if Quake == 0:
+                                                Can_Reach = Can_Reach + ['Quake']
+                                                Quake = 1
+                                if Random_Item == 25:
+                                        if Quake == 0:
+                                                Can_Reach = Can_Reach + ['Quake']
+                                                Quake = 1
+                                if Random_Item == 49:
+                                        Can_Reach = Can_Reach + ["Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6"]
+                                        if Elixer == 0:
+                                                Can_Reach = Can_Reach + ['Elixer_Chests']
+                                                Elixer = 1
+                                        if Heart_Chest == 0:
+                                                Can_Reach = Can_Reach + ['Heart_Chest']
+                                                Heart_Chest = 1
+
+                                if Random_Item == 58 or Random_Item == 37 or Random_Item == 1 or Random_Item == 4 or Random_Item == 54 or Random_Item == 55:                                        
+                                        if Random_Item == 58:
+                                                Childam = Childam + 1
+                                                Ice_Castle = Ice_Castle + 1
+                                                Bomber = Bomber + 1
+                                                
+                                        if Random_Item == 1 or Random_Item == 4:
+                                                Childam = Childam + .5
+                                                Ice_Castle = Ice_Castle + .5
+                                                Bomber = Bomber + .5
+                                                
+                                        if Random_Item == 37:
+                                                Ice_Castle = Ice_Castle + 1
+                                                
+                                        if Random_Item == 54 or Random_Item == 55:
+                                                Bomber = Bomber + 1
+
+                                        if Childam >= 1.5:   
+                                                Can_Reach = Can_Reach + ["Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water"]
+ 
+                                        if Ice_Castle >= 2.5:
+                                                Can_Reach  = Can_Reach + ["Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti"]                                                
+                                                if Heart_Chest == 0:
+                                                        Can_Reach = Can_Reach + ['Heart_Chest']
+                                                        Heart_Chest = 1
+                                                        
+                                        if Bomber >= 3.5:
+                                                Can_Reach = Can_Reach + ["Old_Axe"]
+                                                        
+                                if Random_Item == 5 or Random_Item == 50:
+                                        Poseidon = Poseidon + 1
+                                        if Poseidon == 2:
+                                                Can_Reach = Can_Reach + ["Return"]
+                                                
+                                                        
+                                if Random_Item == 5 or Random_Item == 50 or Random_Item == 27 or Random_Item == 37:
+                                        if Random_Item == 5 or Random_Item == 50:
+                                                Oasis_Boots = Oasis_Boots + 1
+                                        if Random_Item == 27 or Random_Item == 37:
+                                                Oasis_Boots = Oasis_Boots + .5        
+                                        if Oasis_Boots >= 2.5:
+                                                Can_Reach = Can_Reach + ["Oasis_1","Oasis_2","Oasis_3","Oasis_4","Oasis_5","Oasis_6","Oasis_7","Oasis_8"]
+                                        if Elixer == 0:
+                                                Can_Reach = Can_Reach + ['Elixer_Chests']                                                        
+                                                Elixer = 1
+                                                
+                                if Random_Item == 26 or Random_Item == 5:
+                                        Well = Well + 1
+                                        if Well == 2:
+                                                Can_Reach = Can_Reach + ["Sun_Key"]
+                                                
+                                if Random_Item == 26 or Random_Item == 51:
+                                        Pyramid_Main = Pyramid_Main + 1
+                                        if Pyramid_Main == 2 and Pyramid_Extra < 6:
+                                                Can_Reach = Can_Reach + ["Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid"]
+                                                if Elixer == 0:
+                                                        Can_Reach = Can_Reach + ['Elixer_Chests']
+                                                        Elixer = 1
+                                                        
+                                if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31:
+                                        Pyramid_Extra = Pyramid_Extra + 1
+                                        if Pyramid_Extra == 6:
+                                                Can_Reach = Can_Reach + ["Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
+                                                                         "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest"]
+                                                if Pyramid_Main < 2:
+                                                        Can_Reach = Can_Reach + ["Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3"
+                                                                                 ,"Star_Key_4","Star_Key_5","Secret_Pyramid"]
+                                                        Pyramid_Main = 3
+                                                        if Elixer == 0:
+                                                                Can_Reach = Can_Reach + ['Elixer_Chests']
+                                                                Elixer = 1
+                                                                
+                                if Random_Item == 26 or Random_Item == 52:
+                                        Moon = Moon + 1
+                                        if Moon == 2:
+                                                Can_Reach = Can_Reach + ["Pygmy_Shield"]
+                                if Random_Item == 26 or Random_Item == 53:
+                                        Star = Star + 1
+                                        if Star == 2:
+                                                Can_Reach = Can_Reach + ["Power","Bracelet_Item"]
+                                
+                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53:
+                                        Begonia = Begonia + 1
+                                        if Begonia == 5:
+                                                Can_Reach = Can_Reach + ["Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop"]
+                                if Random_Item == 54 or Random_Item == 55 or Random_Item == 58 or Random_Item == 26 or Random_Item == 53 or Random_Item == 57:
+                                        Blacksmith = Blacksmith + 1
+                                        if Blacksmith == 6:
+                                                Can_Reach = Can_Reach + ["Legend_Sword"]
+                                                
+                                if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31 or Random_Item == 54 or Random_Item == 						55 or Random_Item == 58:                                        
+                                        Teh_Urn = Teh_Urn + 1
+                                        if Teh_Urn == 9:
+                                                Can_Reach = Can_Reach + ["Fire_Urn"]  
+ 
+                        
+                                
+                        Problem_Checks_Ok = ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5","Elixer_Chests",
+                                                              "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6",
+                                                              "Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
+                                                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet",
+                                                              "Oasis_1","Oasis_2","Oasis_3","Oasis_4","Oasis_5","Oasis_6","Oasis_7","Oasis_8","Return",
+                                                              "Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe",
+                                                              "Shield_Magic_Chest","Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
+                                                              "Fire_Urn","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
+                                                              "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest",
+                                                              "Legend_Boots","Legend_Shield","Legend_Armor"]
+
+
+
+                        while len(Problem_Items) > 0:
+                                Random_Item = random.choice(Problem_Items)
+                                Random_Check = random.choice(Problem_Checks_Ok)
+
+                                
+                                while Random_Check not in All_Checks:
+                                        Random_Check = random.choice(Problem_Checks_Ok)
+                                                
+                                for att in Attributes:
+                                        if att.name == Random_Check:
+                                                att.value = Random_Item
+
+                                
+                                     
+                                Problem_Items.remove(Random_Item)
+                                
+                                Problem_Checks_Ok.remove(Random_Check)
+                              
+                                All_Items.remove(Random_Item)
+
+                                All_Checks.remove(Random_Check)
+
+
+
+                        
+
+                                
+
+                        Healing_Items = [41,42,46]
+                        Shops = ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
+                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
+                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
+                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
+                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
+                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop"
+                                                                  ]
+                        
+                        while len(Healing_Items) > 0:
+                                Random_Item = random.choice(Healing_Items)
+                                Random_Check = random.choice(Shops)
+                                        
+                                while Random_Check not in All_Checks:
+                                                Random_Check = random.choice(Shops)
+                                                
+                                for att in Attributes:
+                                        if att.name == Random_Check:
+                                                att.value = Random_Item
+                                                
+                                Healing_Items.remove(Random_Item)
+                                Shops.remove(Random_Check)
+                                
+                                All_Items.remove(Random_Item)                                
+                                All_Checks.remove(Random_Check)
+
 
 
 
                                 
-                
+
+                        Deep_Checks = ["Oasis_1","Oasis_2","Oasis_3","Oasis_4","Oasis_5","Oasis_6","Oasis_7","Oasis_8","Return",
+
+                                      "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Old_Axe",
+
+                                      "Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid","Pygmy_Shield",
+
+                                      "Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword",
+
+                                      "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
+
+                                      "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4","Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
+                                                                
+                                      "Pyramid_Item_8","Charmstone_Chest",
+					
+				      "leather_boots","small_spear","chain_mail","wood_shield","medicine","Hard_Armor","Knight_Sword",
+
+				      "excalibur","steel_shield","Charmstone_Purchase","Potion","Ladder_Boots","Marine_Boots","Shield_Magic_Shop",
+
+			              "Steel_Armor","Shell_Shield","Battle_Spear","Ceramic_Boots","Knight_Armor","Knight_Shield","Holy_Water"
+
+					]
+
+                        Legend_Items = [0,8,16,24]
+
+                        
+                        while len(Legend_Items) > 0:
+                                Random_Check = random.choice(Deep_Checks)
+                                Random_Item = random.choice(Legend_Items)
+                                
+                                while Random_Check not in All_Checks:
+                                                Random_Check = random.choice(Deep_Checks)
+                                      
+                                for att in Attributes:
+                                        if att.name == Random_Check:
+                                                att.value = Random_Item                                        
+
+                                Deep_Checks.remove(Random_Check)
+                                Legend_Items.remove(Random_Item)
+                                
+                                All_Items.remove(Random_Item)
+                                All_Checks.remove(Random_Check)
+
+
+
+
+                        if "Hint_Lady" in All_Checks:
+                                for att in Attributes:
+                                        if att.name == "Hint_Lady":
+                                                att.value = 42
+                                                All_Checks.remove("Hint_Lady")                        
+                                                All_Items.remove(42)
+
+
                         
                         while len(All_Checks) > 0:
                                 Random_Item = random.choice(All_Items)
                                 Random_Check = random.choice(All_Checks)
 
-                                if max(All_Items)>=64:
-                                
-                                        while(Random_Item)<64:
-                                                Random_Item = random.choice(All_Items)
-
-                                
-
-                                                
-                                if Random_Item > 70 :
-                                        while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
-                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
-                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
-                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
-                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
-                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop",
-                                                                  "elder_elixer","elder_firestorm",
-                                                                  "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5",
-                                                                  "Legend_Sword","Ocarina_Reward",'Fire_Urn',"Oasis_Boots","Power","Full_Health_1","bat_reward"
-                                                                  "Bracelet_Item","Sphinx_Bonus_Item"]:
-                                                Random_Check = random.choice(All_Checks)
-                                if Random_Item == 64 :
-                                        while Random_Check in ["leather_boots","medicine","small_spear","chain_mail","wood_shield",
-                                                                  "Knight_Sword","Hard_Armor","Charmstone_Purchase","Potion","Ladder_Boots",
-                                                                  "Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
-                                                                  "excalibur","steel_shield","Ceramic_Boots","Battle_Spear",
-                                                                  "Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield",
-                                                                  "Flame_Armor","Hi_Potion","Elixer_Shop",
-                                                                  "elder_elixer","elder_firestorm",
-                                                                  "Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5","bat_reward",
-                                                                  "Legend_Sword","Ocarina_Reward","Bracelet_Item","Sphinx_Bonus_Item","Heart_Chest"]:
-                                                Random_Check = random.choice(All_Checks)
+                                if Random_Item == 41:
+                                        while (Random_Check == "Ocarina_Reward") or (Random_Check == "bat_reward"):
+                                                Random_Check = random.choice(All_Checks)                                
                                 
                                 for att in Attributes:
                                         if att.name == Random_Check:
@@ -1561,6 +1611,9 @@ def generateRom():
                                                 
                                 All_Checks.remove(Random_Check)
                                 All_Items.remove(Random_Item)
+
+                        
+
                                 
 
                         
@@ -1587,8 +1640,8 @@ def generateRom():
                                                          10,11,12,13,14,15,16,17,18,19,
                                                          20,21,22,23,24,25,26,27,28,29,
                                                          30,31,32,33,34,35,36,37,
-                                                         40,41,42,43,44,45,46,      
-                                                         50,51,52,53,54,55,56,57,58,59 ,64      
+                                                         40,41,42,43,44,45,46,49,      
+                                                         50,51,52,53,54,55,56,57,58,59      
                                                          ]
 
                         Charmstone_Price = [0,1,2]
@@ -1611,20 +1664,7 @@ def generateRom():
                         
 
                         for att_1 in Attributes:
-
-                                if att_1.name == "Legend_Sword_Location":
-                                        if Legend_Sword_Location == "Underwater":
-                                                att_1.value =   219
-                                        if Legend_Sword_Location == "Bracelet":
-                                                att_1.value =   68
-                                        if Legend_Sword_Location == "Desert":
-                                                att_1.value =   74
-                                        if Legend_Sword_Location == "Pura":
-                                                att_1.value =   90
-                                        if Legend_Sword_Location == "Alsedo":
-                                                att_1.value =   64   
-                                        if Legend_Sword_Location == "Lilly":
-                                                att_1.value =   81         
+                                        
                             
                                 if att_1.name == "Oasis_Boots_Hint_LOCATION":
                                         if Oasis_Boots_Location == "Alsedo":
@@ -1864,16 +1904,18 @@ def generateRom():
                                                         att_2.value = att_1.value
                                 if att_1.name == "Full_Health_1":
                                         for att_2 in Attributes:
-                                                if att_2.name =="Sewer_Hint_13":
-                                                        att_2.value = att_1.value
-                                if att_1.name == "Oasis_Boots":
-                                        for att_2 in Attributes:
-                                                if att_2.name =="Poss_Hint_Text17":
+                                                if att_2.name =="Sewer_HINT":
                                                         att_2.value = att_1.value
                                 if att_1.name == "Power":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Sphinx_Hint_Text34":
                                                         att_2.value = att_1.value
+                                if att_1.name == "Hint_Lady":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Hint_Lady_Item_TEXT":
+                                                        att_2.value = att_1.value
+                                                if att_2.name =="Hint_Lady_Intro_ITEM_SYNCH":
+                                                        att_2.value = att_1.value                                                        
                                 if att_1.name == "Legend_Sword":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Legend_Item":
@@ -2026,7 +2068,7 @@ def generateRom():
                                         for att_2 in Attributes:
                                                 if att_2.name =="Charm_Items_26":
                                                         att_2.value = att_1.value
-                                                if att_2.name =="Charm_Hint_Five_28":
+                                                if att_2.name =="Charm_HINT_FIVE":
                                                         att_2.value = att_1.value
                                 if att_1.name == "Sphinx_Question_One_Wrong1":
                                         for att_2 in Attributes:
@@ -2887,8 +2929,9 @@ def generateRom():
                                 Shift_Up = ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5","Heart_Chest","bat_reward","Elixer_Chests",
                                               "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6",
                                               "Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
-                                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",                              
-                                              "Oasis_Boots","Return","Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
+                                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet",
+                                              "Oasis_1","Oasis_2","Oasis_3","Oasis_4","Oasis_5","Oasis_6","Oasis_7","Oasis_8","Return",                              
+                                              "Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
                                               "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key",
                                               "Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
                                               "Pygmy_Shield","Power","Fire_Urn","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
@@ -2943,8 +2986,9 @@ def generateTextLog():
                 Chest = ["Myconid_1","Myconid_2","Myconid_3","Myconid_4","Myconid_5","Heart_Chest","bat_reward","Elixer_Chests",
                                               "Hard_Shield","Trident_1","Trident_2","Trident_3","Trident_4","Trident_5","Trident_6",
                                               "Alsedo_Left_Money","Alsedo_Right_Money","Alsedo_Mid_Money","Poseidon_Money",
-                                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Return_1","Return_2","Return_3","Return_4","Return_5","Return_6","Return_7","Return_8",                              
-                                              "Oasis_Boots","Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
+                                              "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Full_Health_1","Quake",
+                                              "Oasis_1","Oasis_2","Oasis_3","Oasis_4","Oasis_5","Oasis_6","Oasis_7","Oasis_8","Return",
+                                              "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti",
                                               "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key",
                                               "Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
                                               "Pygmy_Shield","Power","Fire_Urn","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
@@ -2952,6 +2996,16 @@ def generateTextLog():
                                               "Legend_Boots","Legend_Shield","Legend_Armor"]
                 flag = any (x == att.name for x in Chest)
                 if flag:
+                        if att.value == 0 or att.value == 2 or att.value == 4:
+                                Text_String = "Small Coin"
+                        if att.value == 6 or att.value == 8 or att.value == 10:
+                                Text_String = "Large Coin"
+                        if att.value == 12 or att.value == 14 or att.value == 16:
+                                Text_String = "Small Bag"
+                        if att.value == 18 or att.value == 20 or att.value == 22:
+                                Text_String = "Large Bag"
+                        if att.value == 24 or att.value == 26 or att.value == 28:
+                                Text_String = "Refillable"
                         if att.value == 128:
                                 Text_String = "Legend Sword"
                         if att.value == 129:
@@ -3075,7 +3129,7 @@ def generateTextLog():
                         
                         
                 Shop = ["leather_boots","medicine","small_spear","chain_mail","wood_shield","Knight_Sword","Hard_Armor","Charmstone_Purchase",
-                        "Potion","Ladder_Boots","excalibur","steel_shield","Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor",
+                        "Potion","Ladder_Boots","excalibur","steel_shield","Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor","Hint_Lady",
                         "Ceramic_Boots","Battle_Spear","Knight_Armor","Knight_Shield","Holy_Water","Flame_Shield","Flame_Armor","Hi_Potion",
                         "Elixer_Shop","elder_elixer","elder_firestorm","Legend_Sword","Ocarina_Reward",
                         'Charm_Guy_1','Charm_Guy_2','Charm_Guy_3','Charm_Guy_4','Charm_Guy_5',"Bracelet_Item","Sphinx_Bonus_Item"]
@@ -3167,7 +3221,7 @@ def generateTextLog():
                         if att.value == 41:
                                 Text_String = "Charmstone"
                         if att.value == 42:
-                                Text_String = "Elixer (Shop)"
+                                Text_String = "Elixer"
                         if att.value == 43:
                                 Text_String = "Medicine"
                         if att.value == 44:
