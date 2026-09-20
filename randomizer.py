@@ -20,6 +20,7 @@
 # Version 2.0. Updated on 6/19/26. Swapped large chests around to harder to reach areas.
 # Version 2.1. Updated on 8/30/26. Fixed issue preventing Non equippable progression items from having prices in stores. Also swaped GG Sphinx question to Bat, which allowed me to move
 #                                  the 6-chest item from Hard Armor to Trident. 
+# Version 2.2. Updated on 9/20/26. Added in code to allow for Easy Biomeka fight. H/T to Psicopompo #
 from classes import *
 
 def value(name):
@@ -48,8 +49,118 @@ Slow_Mode = False
 
 
 
-Attributes = [    
+Attributes = [
+        
+        ### Initial Items ###        
 
+        Attribute(
+                name="Init_Money3",
+                addresses=[0x8e46],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ]
+                ),
+        Attribute(
+                name="Init_Money2",
+                addresses=[0x8e47],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ]
+                ),
+        Attribute(
+                name="Init_Money",
+                addresses=[0x8e48],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ]
+                ),
+        Attribute(
+                name="Init_Charms",
+                addresses=[0x8e49],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ]
+                ),
+        Attribute(
+                name="Init_Hearts",
+                addresses=[0x8e4a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ]
+                ),
+        Attribute(
+                name="Init_Fire_Quake",
+                addresses=[0x8e4b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Thunder_Power",
+                addresses=[0x8e4c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Shield_Return",
+                addresses=[0x8e4d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Weapon",
+                addresses=[0x8e4e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 8
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Armor",
+                addresses=[0x8e4f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 32
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Shield",
+                addresses=[0x8e50],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 0
+                                 ] 
+                ),
+        Attribute(
+                name="Init_Boots",
+                addresses=[0x8e51],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 32
+                                 ] 
+                ),
 	
         
         
@@ -289,7 +400,7 @@ Attributes = [
                 ),
         Attribute(
                 name="Poseidon_Money",
-                addresses=[0xA736],
+                addresses=[0xA732],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 130
@@ -309,6 +420,14 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 7
+                                 ]
+                ),
+        Attribute(
+                name="Hint_Lady",
+                addresses=[0x1FD1E],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 40
                                  ]
                 ),
         Attribute(
@@ -525,7 +644,15 @@ Attributes = [
 
         ### Trident + Amulet  ##
         Attribute(
-                name="Return_1",
+                name="Return",
+                addresses=[0xA736],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 165
+                                 ]
+                ),
+        Attribute(
+                name="Oasis_1",
                 addresses=[0xa774],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -533,7 +660,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Return_2",
+                name="Oasis_2",
                 addresses=[0xa776],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -541,7 +668,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Return_3",
+                name="Oasis_3",
                 addresses=[0xa778],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -549,7 +676,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Return_4",
+                name="Oasis_4",
                 addresses=[0xa77a],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -557,7 +684,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Return_5",
+                name="Oasis_5",
                 addresses=[0xa77c],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -565,7 +692,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Return_6",
+                name="Oasis_6",
                 addresses=[0xa77e],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -573,7 +700,7 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Return_7",
+                name="Oasis_7",
                 addresses=[0xa780],
                 number_of_bytes=1,
                 is_little_endian=False,
@@ -581,21 +708,14 @@ Attributes = [
                                  ]
                 ),
         Attribute(
-                name="Return_8",
+                name="Oasis_8",
                 addresses=[0xa782],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 130
                                  ]
                 ),
-        Attribute(
-                name="Oasis_Boots",
-                addresses=[0xA732],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[ 26
-                                 ]
-                ),        
+                
         
 
         ### Trident + Oasis ###
@@ -959,116 +1079,7 @@ Attributes = [
                                  ]                                 
                 ),
         
-        ### Initial Items ###        
-
-        Attribute(
-                name="Init_Money3",
-                addresses=[0x8e46],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ]
-                ),
-        Attribute(
-                name="Init_Money2",
-                addresses=[0x8e47],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ]
-                ),
-        Attribute(
-                name="Init_Money",
-                addresses=[0x8e48],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ]
-                ),
-        Attribute(
-                name="Init_Charms",
-                addresses=[0x8e49],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ]
-                ),
-        Attribute(
-                name="Init_Hearts",
-                addresses=[0x8e4a],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ]
-                ),
-        Attribute(
-                name="Init_Fire_Quake",
-                addresses=[0x8e4b],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Thunder_Power",
-                addresses=[0x8e4c],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Shield_Return",
-                addresses=[0x8e4d],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Weapon",
-                addresses=[0x8e4e],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 8
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Armor",
-                addresses=[0x8e4f],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 32
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Shield",
-                addresses=[0x8e50],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 0
-                                 ] 
-                ),
-        Attribute(
-                name="Init_Boots",
-                addresses=[0x8e51],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 32
-                                 ] 
-                ),
+        
 
 
         ### Secret Stuff ###
@@ -1117,7 +1128,7 @@ Attributes = [
         ###Prices####
 
 
-        ### FIXES ###
+        ### PRICE FIXES ###
         Attribute(
                 name="Price_Fix_Code_1",
                 addresses=[0x1DA6],
@@ -1151,14 +1162,14 @@ Attributes = [
                                  ]                                 
                 ), 
 
-        ### Weapons 40/100/200/500/2000/5000/750
+        ### Weapons 7500 / 2000 / 500 / 250 / 100 / 40 / 500 ## 
         Attribute(
                 name="LegendSword_Price1",
                 addresses=[0x1dae],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=19,
-		max_value=19,
+                min_value=29,
+		max_value=29,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1166,8 +1177,8 @@ Attributes = [
                 addresses=[0x1daf],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=136,
-		max_value=136,
+                min_value=76,
+		max_value=76,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1250,8 +1261,8 @@ Attributes = [
                 addresses=[0x1db9],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=200,
-		max_value=200,
+                min_value=250,
+		max_value=250,
 		min_max_interval=1,
                 ),        
         Attribute(
@@ -1269,8 +1280,8 @@ Attributes = [
                 addresses=[0x1dbc],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=2,
-		max_value=2,
+                min_value=1,
+		max_value=1,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1278,18 +1289,19 @@ Attributes = [
                 addresses=[0x1dbd],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=238,
-		max_value=238,
+                min_value=244,
+		max_value=244,
 		min_max_interval=1,
                 ),
-        ### Armor 40/100/400/1000/2000/4000/750 ###
+        
+        ### Armor 5000 / 2000 / 1000 / 400 / 100 / 40 / 500 ###
         Attribute(
                 name="LegendArmor_Price1",
                 addresses=[0x1dbe],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=15,
-		max_value=15,
+                min_value=19,
+		max_value=19,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1297,8 +1309,8 @@ Attributes = [
                 addresses=[0x1dbf],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=160,
-		max_value=160,
+                min_value=136,
+		max_value=136,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1390,8 +1402,8 @@ Attributes = [
                 addresses=[0x1dcc],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=2,
-		max_value=2,
+                min_value=1,
+		max_value=1,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1399,19 +1411,20 @@ Attributes = [
                 addresses=[0x1dcd],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=238,
-		max_value=238,
+                min_value=244,
+		max_value=244,
 		min_max_interval=1,
                 ),  
 
-        ### Shield 10/25/50/500/1000/2000/4000/750 ###
+        ### Shield 5000 / 2000 / 1000 / 500 / 50 / 25 / 10 / 500 ###
+        
         Attribute(
                 name="LegendShield_Price1",
                 addresses=[0x1dce],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=15,
-		max_value=15,
+                min_value=19,
+		max_value=19,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1419,8 +1432,8 @@ Attributes = [
                 addresses=[0x1dcf],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=160,
-		max_value=160,
+                min_value=136,
+		max_value=136,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1522,8 +1535,8 @@ Attributes = [
                 addresses=[0x1ddc],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=2,
-		max_value=2,
+                min_value=1,
+		max_value=1,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1531,19 +1544,19 @@ Attributes = [
                 addresses=[0x1ddd],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=238,
-		max_value=238,
+                min_value=244,
+		max_value=244,
 		min_max_interval=1,
                 ),
 
-        ### Boots 15/25/100/250/1000/4000/750  ###
+        ### Boots 5000 / 1000 / 250 / 100 / 25 / 15 / 500  ###
         Attribute(
                 name="LegendBoots_Price1",
                 addresses=[0x1dde],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=15,
-		max_value=15,
+                min_value=19,
+		max_value=19,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1551,8 +1564,8 @@ Attributes = [
                 addresses=[0x1ddf],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=160,
-		max_value=160,
+                min_value=136,
+		max_value=136,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1587,8 +1600,8 @@ Attributes = [
                 addresses=[0x1de3],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=250,
-		max_value=250,
+                min_value=200,
+		max_value=200,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1644,8 +1657,8 @@ Attributes = [
                 addresses=[0x1dec],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=2,
-		max_value=2,
+                min_value=1,
+		max_value=1,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1653,12 +1666,12 @@ Attributes = [
                 addresses=[0x1ded],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=238,
-		max_value=238,
+                min_value=244,
+		max_value=244,
 		min_max_interval=1,
                 ),
         
-        ### Other 30 5/25/100/2000/2000/3000 200 ###
+        ### Spells 200/200/200/200/200/200###
          Attribute(
                 name="Firestorm_Price1",
                 addresses=[0x1dee],
@@ -1768,7 +1781,10 @@ Attributes = [
                 min_value=200,
 		max_value=200,
 		min_max_interval=1,
-                ),       
+                ),
+
+        ### Ocarina/Stone/Elixer/Healing: 75 / 3000 / 2000 / 5 / 25 / 100 / 2000 ##
+        
         Attribute(
                 name="Ocarina_Price1",
                 addresses=[0x1dfe],
@@ -1783,8 +1799,8 @@ Attributes = [
                 addresses=[0x1dff],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=100,
-		max_value=100,
+                min_value=75,
+		max_value=75,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1871,6 +1887,8 @@ Attributes = [
 		max_value=208,
 		min_max_interval=1,
                 ),
+
+        ### Non-Equipable Progression Items 75/500/500/400/500/250/250/4000/75 ###
         Attribute(
                 name="Lamp_Price_1",
                 addresses=[0x1e10],
@@ -1885,8 +1903,8 @@ Attributes = [
                 addresses=[0x1e11],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=100,
-		max_value=100,
+                min_value=75,
+		max_value=75,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1966,8 +1984,8 @@ Attributes = [
                 addresses=[0x1e1a],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=1,
-		max_value=1,
+                min_value=0,
+		max_value=0,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1975,8 +1993,8 @@ Attributes = [
                 addresses=[0x1e1b],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=44,
-		max_value=44,
+                min_value=250,
+		max_value=250,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1984,8 +2002,8 @@ Attributes = [
                 addresses=[0x1e1c],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=1,
-		max_value=1,
+                min_value=0,
+		max_value=0,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -1993,8 +2011,8 @@ Attributes = [
                 addresses=[0x1e1d],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=44,
-		max_value=44,
+                min_value=250,
+		max_value=250,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -2002,8 +2020,8 @@ Attributes = [
                 addresses=[0x1e20],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=7,
-		max_value=7,
+                min_value=15,
+		max_value=15,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -2011,8 +2029,8 @@ Attributes = [
                 addresses=[0x1e21],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=208,
-		max_value=208,
+                min_value=160,
+		max_value=160,
 		min_max_interval=1,
                 ),
         Attribute(
@@ -2029,8 +2047,8 @@ Attributes = [
                 addresses=[0x1e23],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=100,
-		max_value=100,
+                min_value=75,
+		max_value=75,
 		min_max_interval=1,
                 ),
      
@@ -3086,311 +3104,243 @@ Attributes = [
 		max_value=100,
 		min_max_interval=1 
                 ),
+        
         Attribute(
-                name="Poss_Text_1",
-                addresses=[0x20AE4],
+                name="Sewer_Hint_1",
+                addresses=[0x20ADB],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[11]
+                possible_values=[84]
                 ),
         Attribute(
-                name="Poss_Text_2",
-                addresses=[0x20AE5],
+                name="Sewer_Hint_2",
+                addresses=[0x20ADc],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[10]
+                possible_values=[104]
                 ),
         Attribute(
-                name="Poss_Text_3",
-                addresses=[0x20AE6],
+                name="Sewer_Hint_3",
+                addresses=[0x20ADd],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[5]
+                possible_values=[101]
                 ),
         Attribute(
-                name="Poss_Text_4",
-                addresses=[0x20AE7],
+                name="Sewer_Hint_4",
+                addresses=[0x20ADe],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[12]
+                possible_values=[114]
                 ),
         Attribute(
-                name="Poss_Text_5",
-                addresses=[0x20AE8],
+                name="Sewer_Hint_5",
+                addresses=[0x20ADf],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[2]
+                possible_values=[101]
                 ),
         Attribute(
-                name="Poss_Text_6",
-                addresses=[0x20AE9],
+                name="Sewer_Hint_6",
+                addresses=[0x20Ae0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[39]
+                ),
+        Attribute(
+                name="Sewer_Hint_7",
+                addresses=[0x20Ae1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[115]
+                ),
+        Attribute(
+                name="Sewer_Hint_8",
+                addresses=[0x20Ae2],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[32]
                 ),
         Attribute(
-                name="Poss_Text_6.5",
+                name="Sewer_Hint_9",
+                addresses=[0x20Ae3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[97]
+                ),
+        Attribute(
+                name="Sewer_Hint_10",
+                addresses=[0x20AE4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32]
+                ),
+        Attribute(
+                name="Sewer_Hint_11",
+                addresses=[0x20AE5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[11],
+                ),
+        Attribute(
+                name="Sewer_Hint_12",
+                addresses=[0x20AE6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[10],
+                ),
+        Attribute(
+                name="Sewer_HINT",
+                addresses=[0x20AE7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+                max_value=100,
+                min_max_interval=1  
+                ),
+        Attribute(
+                name="Sewer_Hint_14",
+                addresses=[0x20AE8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[12]
+                ),
+        Attribute(
+                name="Sewer_Hint_15",
+                addresses=[0x20AE9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[2]
+                ),
+        Attribute(
+                name="Sewer_Hint_16",
                 addresses=[0x20AEa],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[32]
                 ),
         Attribute(
-                name="Poss_Text_7",
+                name="Sewer_Hint_17",
                 addresses=[0x20AEb],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[97]
+                possible_values=[105]
                 ),
         Attribute(
-                name="Poss_Text_8",
+                name="Sewer_Hint_18",
                 addresses=[0x20AEc],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[110]
                 ),
         Attribute(
-                name="Poss_Text_9",
+                name="Sewer_Hint_19",
                 addresses=[0x20AEd],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[100]
+                possible_values=[32]
                 ),
         Attribute(
-                name="Poss_Text_10",
+                name="Sewer_Hint_20",
                 addresses=[0x20AEe],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Poss_Text_10.1",
-                addresses=[0x20AEf],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Poss_Text_10.2",
-                addresses=[0x20Af0],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[97]
-                ),
-        Attribute(
-                name="Poss_Text_10.3",
-                addresses=[0x20Af1],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[110]
-                ),
-        Attribute(
-                name="Poss_Text_10.4",
-                addresses=[0x20Af2],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),        
-        Attribute(
-                name="Poss_Text_11",
-                addresses=[0x20Af3],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[11]
-                ),
-        Attribute(
-                name="Poss_Text_12",
-                addresses=[0x20Af4],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[10]
-                ),
-        Attribute(
-                name="Poss_Text_13",
-                addresses=[0x20Af5],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[50]
-                ),
-        Attribute(
-                name="Poss_Text_14",
-                addresses=[0x20Af6],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[12]
-                ),
-        Attribute(
-                name="Poss_Text_15",
-                addresses=[0x20Af7],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[2]
-                ),
-        Attribute(
-                name="Poss_Text_16",
-                addresses=[0x20Af8],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        
-        
-        Attribute(
-                name="Poss_Hint_Text1",
-                addresses=[0x20AF9],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[121]
-                ),
-        Attribute(
-                name="Poss_Hint_Text2",
-                addresses=[0x20AFa],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[111]
-                ),
-        Attribute(
-                name="Poss_Hint_Text3",
-                addresses=[0x20AFb],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[117]
-                ),
-        Attribute(
-                name="Poss_Hint_Text4",
-                addresses=[0x20AFc],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Poss_Hint_Text5",
-                addresses=[0x20AFd],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[99]
-                ),
-        Attribute(
-                name="Poss_Hint_Text6",
-                addresses=[0x20AFe],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[97]
-                ),
-        Attribute(
-                name="Poss_Hint_Text7",
-                addresses=[0x20AFf],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[110]
-                ),
-        Attribute(
-                name="Poss_Hint_Text8",
-                addresses=[0x20b00],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[32]
-                ),
-        Attribute(
-                name="Poss_Hint_Text9",
-                addresses=[0x20b01],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[103]
-                ),
-        Attribute(
-                name="Poss_Hint_Text10",
-                addresses=[0x20b02],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[101]
-                ),
-        Attribute(
-                name="Poss_Hint_Text11",
-                addresses=[0x20b03],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[116]
                 ),
         Attribute(
-                name="Poss_Hint_Text12",
-                addresses=[0x20b04],
+                name="Sewer_Hint_21",
+                addresses=[0x20AEf],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[104]
+                ),
+        Attribute(
+                name="Sewer_Hint_22",
+                addresses=[0x20Af0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[101]
+                ),
+        Attribute(
+                name="Sewer_Hint_23",
+                addresses=[0x20Af1],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[32]
                 ),
         Attribute(
-                name="Poss_Hint_Text13",
-                addresses=[0x20b05],
+                name="Sewer_Hint_24",
+                addresses=[0x20Af2],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[97]
-                ),
+                possible_values=[115]
+                ),        
         Attribute(
-                name="Poss_Hint_Text14",
-                addresses=[0x20b06],
+                name="Sewer_Hint_25",
+                addresses=[0x20Af3],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[32]
+                possible_values=[101]
                 ),
         Attribute(
-                name="Poss_Hint_Text15",
-                addresses=[0x20b07],
+                name="Sewer_Hint_26",
+                addresses=[0x20Af4],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[11]
+                possible_values=[119]
                 ),
         Attribute(
-                name="Poss_Hint_Text16",
-                addresses=[0x20b08],
+                name="Sewer_Hint_27",
+                addresses=[0x20Af5],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[10]
+                possible_values=[101]
                 ),
         Attribute(
-                name="Poss_Hint_Text17",
-                addresses=[0x20b09],
+                name="Sewer_Hint_28",
+                addresses=[0x20Af6],
                 number_of_bytes=1,
                 is_little_endian=False,
-                min_value=0,
-		max_value=100,
-		min_max_interval=1
+                possible_values=[114]
                 ),
         Attribute(
-                name="Poss_Hint_Text18",
-                addresses=[0x20b0a],
+                name="Sewer_Hint_29",
+                addresses=[0x20Af7],
                 number_of_bytes=1,
                 is_little_endian=False,
-                possible_values=[12]
+                possible_values=[115]
                 ),
         Attribute(
-                name="Poss_Hint_Text19",
-                addresses=[0x20b0b],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[2]
-                ),
-        Attribute(
-                name="Poss_Hint_Text20",
-                addresses=[0x20b0c],
+                name="Sewer_Hint_30",
+                addresses=[0x20Af8],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[46]
+                ),        
+        Attribute(
+                name="Sewer_Hint_31",
+                addresses=[0x20AF9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[9]
                 ),
         Attribute(
-                name="Poss_Hint_Text21",
-                addresses=[0x20b0d],
+                name="Sewer_Hint_32",
+                addresses=[0x20AFa],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[5]
                 ),
         Attribute(
-                name="Poss_Hint_Text22",
-                addresses=[0x20b0e],
+                name="Sewer_Hint_33",
+                addresses=[0x20AFb],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[0]
                 ),
+
+        
+        
         Attribute(
                 name="Sphinx_Hint_Text1",
                 addresses=[0x20aaa],
@@ -5357,469 +5307,251 @@ Attributes = [
 		possible_values=[0] 
                 ),
 
-        Attribute(
-                name="Charm_Hint_Five_1",
-                addresses=[0x1EC2c],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[84] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_2",
-                addresses=[0x1EC2d],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[119] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_3",
-                addresses=[0x1EC2e],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[111] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_4",
-                addresses=[0x1EC2f],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_5",
-                addresses=[0x1EC30],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[11] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_6",
-                addresses=[0x1EC31],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[10] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_7",
-                addresses=[0x1EC32],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[41] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_8",
-                addresses=[0x1EC33],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[12] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_9",
-                addresses=[0x1EC34],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[2] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_10",
-                addresses=[0x1EC35],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[115] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_11",
-                addresses=[0x1EC36],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_12",
-                addresses=[0x1EC37],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[119] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_13",
-                addresses=[0x1EC38],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[105] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_14",
-                addresses=[0x1EC39],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[108] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_15",
-                addresses=[0x1EC3a],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[108] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_16",
-                addresses=[0x1EC3b],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_17",
-                addresses=[0x1EC3c],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[103] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_18",
-                addresses=[0x1EC3d],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[101] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_19",
-                addresses=[0x1EC3e],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[116] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_20",
-                addresses=[0x1EC3f],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_21",
-                addresses=[0x1EC40],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[121] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_22",
-                addresses=[0x1EC41],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[111] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_23",
-                addresses=[0x1EC42],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[117] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_24",
-                addresses=[0x1EC43],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_24",
-                addresses=[0x1EC44],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[97] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_25",
-                addresses=[0x1EC45],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_26",
-                addresses=[0x1EC46],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[11] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_27",
-                addresses=[0x1EC47],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[10] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_28",
-                addresses=[0x1EC48],
-                number_of_bytes=1,
-                is_little_endian=False,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_29",
-                addresses=[0x1EC49],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[12] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_30",
-                addresses=[0x1EC4a],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[2] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_31",
-                addresses=[0x1EC4b],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[46]
-                ),
-        Attribute(
-                name="Charm_Hint_Five_32",
-                addresses=[0x1EC4c],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[5] 
-                ),
-        Attribute(
-                name="Charm_Hint_Five_33",
-                addresses=[0x1EC4d],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[0] 
-                ),
+        
         
         Attribute(
-                name="Sewer_Hint_1",
+                name="Charm_Hint_Five_1",
                 addresses=[0x1e88B],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[84] 
                 ),
         Attribute(
-                name="Sewer_Hint_2",
+                name="Charm_Hint_Five_2",
                 addresses=[0x1e88c],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[104] 
+		possible_values=[119] 
                 ),
         Attribute(
-                name="Sewer_Hint_3",
+                name="Charm_Hint_Five_3",
                 addresses=[0x1e88d],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[101] 
+		possible_values=[111] 
                 ),
         Attribute(
-                name="Sewer_Hint_4",
+                name="Charm_Hint_Five_4",
                 addresses=[0x1e88e],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[114] 
+		possible_values=[32] 
                 ),
         Attribute(
-                name="Sewer_Hint_5",
+                name="Charm_Hint_Five_5",
                 addresses=[0x1e88f],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[101] 
-                ),
-        Attribute(
-                name="Sewer_Hint_6",
-                addresses=[0x1e890],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[39] 
-                ),
-        Attribute(
-                name="Sewer_Hint_7",
-                addresses=[0x1e891],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[115] 
-                ),
-        Attribute(
-                name="Sewer_Hint_8",
-                addresses=[0x1e892],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sewer_Hint_9",
-                addresses=[0x1e893],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[97] 
-                ),
-        Attribute(
-                name="Sewer_Hint_10",
-                addresses=[0x1e894],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sewer_Hint_11",
-                addresses=[0x1e895],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[11] 
                 ),
         Attribute(
-                name="Sewer_Hint_12",
-                addresses=[0x1e896],
+                name="Charm_Hint_Five_6",
+                addresses=[0x1e890],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[10] 
                 ),
         Attribute(
-                name="Sewer_Hint_13",
-                addresses=[0x1e897],
+                name="Charm_Hint_Five_7",
+                addresses=[0x1e891],
                 number_of_bytes=1,
                 is_little_endian=False,
-		min_value=0,
-		max_value=100,
-		min_max_interval=1  
+		possible_values=[41] 
                 ),
         Attribute(
-                name="Sewer_Hint_14",
-                addresses=[0x1e898],
+                name="Charm_Hint_Five_8",
+                addresses=[0x1e892],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[12] 
                 ),
         Attribute(
-                name="Sewer_Hint_15",
-                addresses=[0x1e899],
+                name="Charm_Hint_Five_9",
+                addresses=[0x1e893],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[2] 
                 ),
         Attribute(
-                name="Sewer_Hint_16",
+                name="Charm_Hint_Five_10",
+                addresses=[0x1e894],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[115] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_11",
+                addresses=[0x1e895],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[32] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_12",
+                addresses=[0x1e896],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[119] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_13",
+                addresses=[0x1e897],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[105]  
+                ),
+        Attribute(
+                name="Charm_Hint_Five_14",
+                addresses=[0x1e898],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[108] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_15",
+                addresses=[0x1e899],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[108] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_16",
                 addresses=[0x1e89a],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sewer_Hint_17",
+                name="Charm_Hint_Five_17",
                 addresses=[0x1e89b],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[105] 
+		possible_values=[103] 
                 ),
         Attribute(
-                name="Sewer_Hint_18",
+                name="Charm_Hint_Five_18",
                 addresses=[0x1e89c],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[110] 
+		possible_values=[101] 
                 ),
         Attribute(
-                name="Sewer_Hint_19",
+                name="Charm_Hint_Five_19",
                 addresses=[0x1e89d],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[32] 
-                ),
-        Attribute(
-                name="Sewer_Hint_20",
-                addresses=[0x1e89e],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[116] 
                 ),
         Attribute(
-                name="Sewer_Hint_21",
-                addresses=[0x1e89f],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[104] 
-                ),
-        Attribute(
-                name="Sewer_Hint_22",
-                addresses=[0x1e8a0],
-                number_of_bytes=1,
-                is_little_endian=False,
-		possible_values=[101] 
-                ),
-        Attribute(
-                name="Sewer_Hint_23",
-                addresses=[0x1e8a1],
+                name="Charm_Hint_Five_20",
+                addresses=[0x1e89e],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[32] 
                 ),
         Attribute(
-                name="Sewer_Hint_24",
+                name="Charm_Hint_Five_21",
+                addresses=[0x1e89f],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[121] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_22",
+                addresses=[0x1e8a0],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[111] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_23",
+                addresses=[0x1e8a1],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[117] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_24",
                 addresses=[0x1e8a2],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[115] 
+		possible_values=[32] 
                 ),
         Attribute(
-                name="Sewer_Hint_25",
+                name="Charm_Hint_Five_25",
                 addresses=[0x1e8a3],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[101] 
+		possible_values=[97] 
                 ),
         Attribute(
-                name="Sewer_Hint_26",
+                name="Charm_Hint_Five_26",
                 addresses=[0x1e8a4],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[119] 
+		possible_values=[32] 
                 ),
         Attribute(
-                name="Sewer_Hint_27",
+                name="Charm_Hint_Five_27",
                 addresses=[0x1e8a5],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[101] 
+		possible_values=[11] 
                 ),
         Attribute(
-                name="Sewer_Hint_28",
+                name="Charm_Hint_Five_28",
                 addresses=[0x1e8a6],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[114] 
+		possible_values=[10] 
                 ),
         Attribute(
-                name="Sewer_Hint_29",
+                name="Charm_HINT_FIVE",
                 addresses=[0x1e8a7],
                 number_of_bytes=1,
                 is_little_endian=False,
-		possible_values=[115] 
+		min_value=0,
+                max_value=100,
+                min_max_interval=1  
                 ),
         Attribute(
-                name="Sewer_Hint_30",
+                name="Charm_Hint_Five_30",
                 addresses=[0x1e8a8],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[12] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_31",
+                addresses=[0x1e8a9],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[2] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_32",
+                addresses=[0x1e8aa],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[46] 
                 ),
         Attribute(
-                name="Sewer_Hint_31",
-                addresses=[0x1e8a9],
+                name="Charm_Hint_Five_33",
+                addresses=[0x1e8ab],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[9] 
+                ),
+        Attribute(
+                name="Charm_Hint_Five_34",
+                addresses=[0x1e8ac],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[5] 
                 ),
         Attribute(
-                name="Sewer_Hint_32",
-                addresses=[0x1e8aa],
+                name="Charm_Hint_Five_35",
+                addresses=[0x1e8ad],
                 number_of_bytes=1,
                 is_little_endian=False,
 		possible_values=[0] 
@@ -8169,9 +7901,10 @@ Attributes = [
                                  186
                                  ]
                 ),
+        
         Attribute(
-                name="Return_Chest_Swap",
-                addresses=[0xA6E1],
+                name="Oaisis_Chest_Swap",
+                addresses=[0xA6DD],
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[
@@ -8184,9 +7917,11 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[
-                                 108
+                                 104
                                  ]
                 ),
+
+        
         Attribute(
                 name="6Money_Chest_Swap",
                 addresses=[0xA70F],
@@ -8444,6 +8179,15 @@ Attributes = [
         Attribute(
                 name="At_Least_One_Heart",
                 addresses=[0xBFFF3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=1,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Easy_BioMeka",
+                addresses=[0xBFFF4],
                 number_of_bytes=1,
                 is_little_endian=False,
                 min_value=0,
@@ -8937,7 +8681,1190 @@ Attributes = [
                                  ]                                 
                 ),
 
+        Attribute(
+                name="Hint_Lady_Item_1",
+                addresses=[0x1FD2A],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[69  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_2",
+                addresses=[0x1FD2b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[110  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_3",
+                addresses=[0x1FD2c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[106  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_4",
+                addresses=[0x1FD2d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[111  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_5",
+                addresses=[0x1FD2e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[121  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_6",
+                addresses=[0x1FD2f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_7",
+                addresses=[0x1FD30],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[121  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_8",
+                addresses=[0x1FD31],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[111  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_9",
+                addresses=[0x1FD32],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[117  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_10",
+                addresses=[0x1FD33],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[114  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_11",
+                addresses=[0x1FD34],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[32  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_12",
+                addresses=[0x1FD35],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[11  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_13",
+                addresses=[0x1FD36],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[10  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_TEXT",
+                addresses=[0x1FD37],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=64,
+		min_max_interval=1,                                
+                ),
+        Attribute(
+                name="Hint_Lady_Item_15",
+                addresses=[0x1FD38],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[12  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_16",
+                addresses=[0x1FD39],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[2  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_17",
+                addresses=[0x1FD3a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[33  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_18",
+                addresses=[0x1FD3b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[9  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_19",
+                addresses=[0x1FD3c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[5  
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Item_20",
+                addresses=[0x1FD3d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[0  
+                                 ]                                 
+                ),
 
+        Attribute(
+                name="Hint_Lady_Intro_1",
+                addresses=[0x1FC9A],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 12 
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_2",
+                addresses=[0x1FC9b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 104 
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_3",
+                addresses=[0x1FC9c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 32 
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_4",
+                addresses=[0x1FC9d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  12
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_5",
+                addresses=[0x1FC9e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 228 
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_6",
+                addresses=[0x1FC9f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_7",
+                addresses=[0x1FCa0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  12
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_8",
+                addresses=[0x1FCa1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  171
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_9",
+                addresses=[0x1FCa2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_10",
+                addresses=[0x1FCa3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  109
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_11",
+                addresses=[0x1FCa4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  121
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_12",
+                addresses=[0x1FCa5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_13",
+                addresses=[0x1FCa6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  12
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_14",
+                addresses=[0x1FCa7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  147
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_15",
+                addresses=[0x1FCa8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_16",
+                addresses=[0x1FCa9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  116
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_17",
+                addresses=[0x1FCaa],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  111
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_18",
+                addresses=[0x1FCab],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_19",
+                addresses=[0x1FCac],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  115
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_20",
+                addresses=[0x1FCad],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  97
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_21",
+                addresses=[0x1FCae],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  118
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_22",
+                addresses=[0x1FCaf],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  101
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_23",
+                addresses=[0x1FCb0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_24",
+                addresses=[0x1FCb1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  12
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_25",
+                addresses=[0x1FCb2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  84
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_26",
+                addresses=[0x1FCb3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_27",
+                addresses=[0x1FCb4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  12
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_28",
+                addresses=[0x1FCb5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  103
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_29",
+                addresses=[0x1FCb6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  46
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_30",
+                addresses=[0x1FCb7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  5
+                                 ]                                 
+                ),
+        
+        Attribute(
+                name="Hint_Lady_Intro_31",
+                addresses=[0x1FCb8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  12
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_32",
+                addresses=[0x1FCb9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  87
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_33",
+                addresses=[0x1FCba],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_34",
+                addresses=[0x1FCbb],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  12
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_35",
+                addresses=[0x1FCbc],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  207
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_36",
+                addresses=[0x1FCbd],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_37",
+                addresses=[0x1FCbe],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  12
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_38",
+                addresses=[0x1FCbf],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  216
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_38.5",
+                addresses=[0x1FCc0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_39",
+                addresses=[0x1FCc1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  11
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_40",
+                addresses=[0x1FCc2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  10
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_ITEM_SYNCH",
+                addresses=[0x1FCc3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=64,
+		min_max_interval=1,                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_42",
+                addresses=[0x1FCc4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  12
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_43",
+                addresses=[0x1FCc5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  2
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_44",
+                addresses=[0x1FCc6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  46
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_45",
+                addresses=[0x1FCc7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_46",
+                addresses=[0x1FCc8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_47",
+                addresses=[0x1FCc9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_48",
+                addresses=[0x1FCca],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_49",
+                addresses=[0x1FCcb],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_50",
+                addresses=[0x1FCcc],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_51",
+                addresses=[0x1FCcd],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_52",
+                addresses=[0x1FCce],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_53",
+                addresses=[0x1FCcf],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_54",
+                addresses=[0x1FCd0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_55",
+                addresses=[0x1FCd1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_56",
+                addresses=[0x1FCd2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_57",
+                addresses=[0x1FCd3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_58",
+                addresses=[0x1FCd4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_59",
+                addresses=[0x1FCd5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_60",
+                addresses=[0x1FCd6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_61",
+                addresses=[0x1FCd7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_62",
+                addresses=[0x1FCd8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_63",
+                addresses=[0x1FCd9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_64",
+                addresses=[0x1FCda],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_65",
+                addresses=[0x1FCdb],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_66",
+                addresses=[0x1FCdc],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_67",
+                addresses=[0x1FCdd],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_68",
+                addresses=[0x1FCde],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_69",
+                addresses=[0x1FCdf],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_70",
+                addresses=[0x1FCe0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_71",
+                addresses=[0x1FCe1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_72",
+                addresses=[0x1FCe2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_73",
+                addresses=[0x1FCe3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_74",
+                addresses=[0x1FCe4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_75",
+                addresses=[0x1FCe5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_76",
+                addresses=[0x1FCe6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_77",
+                addresses=[0x1FCe7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_78",
+                addresses=[0x1FCe8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_79",
+                addresses=[0x1FCe9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_80",
+                addresses=[0x1FCea],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_81",
+                addresses=[0x1FCeb],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_82",
+                addresses=[0x1FCec],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_83",
+                addresses=[0x1FCed],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_84",
+                addresses=[0x1FCee],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_85",
+                addresses=[0x1FCef],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_86",
+                addresses=[0x1FCf0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_87",
+                addresses=[0x1FCf1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_88",
+                addresses=[0x1FCf2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_89",
+                addresses=[0x1FCf3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_90",
+                addresses=[0x1FCf4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_91",
+                addresses=[0x1FCf5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_92",
+                addresses=[0x1FCf6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_93",
+                addresses=[0x1FCf7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_94",
+                addresses=[0x1FCf8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_95",
+                addresses=[0x1FCf9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_96",
+                addresses=[0x1FCfa],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_97",
+                addresses=[0x1FCfb],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_98",
+                addresses=[0x1FCfc],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_99",
+                addresses=[0x1FCfd],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_100",
+                addresses=[0x1FCfe],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_101",
+                addresses=[0x1FCff],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_102",
+                addresses=[0x1Fd00],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_103",
+                addresses=[0x1Fd01],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Hint_Lady_Intro_104",
+                addresses=[0x1Fd02],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+
+        ### Final Boss Mode ###
+
+        
+        Attribute(
+                name="Boss_Mode_7",
+                addresses=[0x1979C],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  74
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_8",
+                addresses=[0x1979d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  56
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_9",
+                addresses=[0x1979e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  163
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_10",
+                addresses=[0x1979f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  142
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_11",
+                addresses=[0x197a0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  102
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_12",
+                addresses=[0x197a1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[   2
+                                    ]
+                ),
+        Attribute(
+                name="Boss_Mode_13",
+                addresses=[0x19810],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  74
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_14",
+                addresses=[0x19811],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  44
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_15",
+                addresses=[0x19812],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  212
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_16",
+                addresses=[0x19813],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  1
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_17",
+                addresses=[0x19814],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  102
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_18",
+                addresses=[0x19815],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  26
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_19",
+                addresses=[0x19816],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  84
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_20",
+                addresses=[0x19817],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  44
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_21",
+                addresses=[0x19818],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  212
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_22",
+                addresses=[0x19819],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  1
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_23",
+                addresses=[0x1981a],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  25
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_24",
+                addresses=[0x1981b],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  124
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_25",
+                addresses=[0x1981c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  0
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_26",
+                addresses=[0x1981d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  192
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_27",
+                addresses=[0x1981e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  192
+                                 ]                                 
+                ),
+        Attribute(
+                name="Boss_Mode_28",
+                addresses=[0x1981f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  0
+                                 ]                                 
+                ),
         
         
         
@@ -9042,6 +9969,30 @@ Optional_Rulesets = [
 			Rule(
 				description="Do not force 1 starting heart",
 				left_side=[value("At_Least_One_Heart"), 1],
+				rule_type="==",
+				right_side=None,
+			),
+		],
+	),
+        Ruleset(
+		name="Standard Biomeka Fight",
+		description="Select this to ensure Standard Biomeka Fight with Belt/Saw",
+		rules=[
+			Rule(
+				description="Keep Final Fight Standard",
+				left_side=[value("Easy_BioMeka"), 0],
+				rule_type="==",
+				right_side=None,
+			),
+		],
+	),
+        Ruleset(
+		name="Easy Biomeka Fight",
+		description="Select this to ensure Standard Biomeka Fight without Belt/Saw",
+		rules=[
+			Rule(
+				description="Make Final Fight Easy",
+				left_side=[value("Easy_BioMeka"), 1],
 				rule_type="==",
 				right_side=None,
 			),
