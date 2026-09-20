@@ -359,7 +359,13 @@ def generateRom():
                                         if att.value == 0:
                                                 Force_First_Heart = 0
                                         else:
-                                                Force_First_Heart = 1        
+                                                Force_First_Heart = 1
+                                if att.name == "Easy_BioMeka":
+                                        if att.value == 0:
+                                                BioMeka = 0
+                                        else:
+                                                BioMeka = 1
+                                
 
 
 
@@ -875,6 +881,59 @@ def generateRom():
 
                                         Exits.remove(Random_Exit)
                                         Entrances.remove(Random_Entrance)
+
+                        ### Edit Final Boss ###
+
+                        if BioMeka == 1:
+                                for att in Attributes:
+                                        
+
+                                        if att.name == "Boss_Mode_7":
+                                                att.value = 66
+                                        if att.name == "Boss_Mode_8":
+                                                att.value = 184
+                                        if att.name == "Boss_Mode_9":
+                                                att.value = 158
+                                        if att.name == "Boss_Mode_10":
+                                                att.value = 218
+                                        if att.name == "Boss_Mode_11":
+                                                att.value = 78
+                                        if att.name == "Boss_Mode_12":
+                                                att.value = 117
+                                                
+                                        if att.name == "Boss_Mode_13":
+                                                att.value = 49
+                                        if att.name == "Boss_Mode_14":
+                                                att.value = 124
+                                        if att.name == "Boss_Mode_15":
+                                                att.value = 19
+                                        if att.name == "Boss_Mode_16":
+                                                att.value = 0
+                                        if att.name == "Boss_Mode_17":
+                                                att.value = 200
+                                        if att.name == "Boss_Mode_18":
+                                                att.value = 0
+                                        if att.name == "Boss_Mode_19":
+                                                att.value = 49
+                                        if att.name == "Boss_Mode_20":
+                                                att.value = 124
+                                        if att.name == "Boss_Mode_21":
+                                                att.value = 0
+                                        if att.name == "Boss_Mode_22":
+                                                att.value = 0
+                                        if att.name == "Boss_Mode_23":
+                                                att.value = 202
+                                        if att.name == "Boss_Mode_24":
+                                                att.value = 0
+                                        if att.name == "Boss_Mode_25":
+                                                att.value = 78
+                                        if att.name == "Boss_Mode_26":
+                                                att.value = 117
+                                        if att.name == "Boss_Mode_27":
+                                                att.value = 78
+                                        if att.name == "Boss_Mode_28":
+                                                att.value = 113
+                                                
 
 
 
