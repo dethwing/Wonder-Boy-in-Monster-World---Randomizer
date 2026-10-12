@@ -21,6 +21,7 @@
 # Version 2.1. Updated on 8/30/26. Fixed issue preventing Non equippable progression items from having prices in stores. Also swaped GG Sphinx question to Bat, which allowed me to move
 #                                  the 6-chest item from Hard Armor to Trident. 
 # Version 2.2. Updated on 9/20/26. Added in code to allow for Easy Biomeka fight. H/T to Psicopompo #
+# Version 2.3. Updated on 10/12/26. Fixed issue related to ladder boots shop item after talking to Elder Dragon ###
 from classes import *
 
 def value(name):
@@ -50,6 +51,28 @@ Slow_Mode = False
 
 
 Attributes = [
+	
+        
+        #### Initial Location ###
+
+        Attribute(
+                name="Start_Game1",
+                addresses=[0x224c2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 1
+                                 ] 
+                ),
+        Attribute(
+                name="Start_Game2",
+                addresses=[0x224c3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 20
+                                 ] 
+                ),
         
         ### Initial Items ###        
 
@@ -2585,7 +2608,43 @@ Attributes = [
                 is_little_endian=False,
                 possible_values=[39] 
                 ),
+	Attribute(
+                name="Ladder_Boots_Control",
+                addresses=[0x22BCD],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[39] 
+                ),
+
         ###Sprites####
+        Attribute(
+                name="CharmGuy_Sprite_1",
+                addresses=[0x22C16],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 196
+                                 ] 
+                ),
+
+	Attribute(
+                name="CharmGuy_Sprite_2",
+                addresses=[0x22C10],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 192
+                                 ] 
+                ),
+	Attribute(
+                name="CharmGuy_Sprite_3",
+                addresses=[0x22C1C],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[
+                                 194
+                                 ] 
+                ),
         Attribute(
                 name="Leather_Boots_Sprite",
                 addresses=[0x22b08],
@@ -8324,24 +8383,7 @@ Attributes = [
                                  ] 
                 ),
         
-        Attribute(
-                name="Start_Game1",
-                addresses=[0x224c2],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 1
-                                 ] 
-                ),
-        Attribute(
-                name="Start_Game2",
-                addresses=[0x224c3],
-                number_of_bytes=1,
-                is_little_endian=False,
-                possible_values=[
-                                 20
-                                 ] 
-                ),
+        
         Attribute(
                 name="Alsedo_Inn1",
                 addresses=[0x22570],
