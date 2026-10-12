@@ -580,82 +580,110 @@ def generateRom():
                                  "Pura_To_Lilly_Inside","Pura_From_Lilly","Exit_Temple","Enter_Temple",
                                  "Demo"                                 
                                  ]
+
+                        Start_Location = ""
                         
                         Random_Exit = random.choice(Ok_Start_Exit)
                         if Random_Exit == "Start":
                                 Value_1 = 1
                                 Value_2 = 20
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Alsedo_Inn":
                                 Value_1 = 3
                                 Value_2 = 32
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Pura_Inn":
                                 Value_1 = 3
-                                Value_2 = 40                        
+                                Value_2 = 40
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Lilly_Inn":
                                 Value_1 = 3
                                 Value_2 = 48
+                                Start_Location = "Left_Swamp"
                         elif Random_Exit == "Pura_Castle_Out":
                                 Value_1 = 1
                                 Value_2 = 28
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Pura_Castle_In":
                                 Value_1 = 1
                                 Value_2 = 150
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Alsedo_Tele_Bot":
                                 Value_1 = 1
                                 Value_2 = 34
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Alsedo_Tele_Top":
                                 Value_1 = 1
-                                Value_2 = 40                                
+                                Value_2 = 40
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Sewers_Start_Out":
                                 Value_1 = 1
                                 Value_2 = 46
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Sewers_Start_In":
                                 Value_1 = 1
                                 Value_2 = 64
+                                Start_Location = "Right_Swamp"
                                 
                         elif Random_Exit == "Alsedo_Forest":
                                 Value_1 = 1
                                 Value_2 = 94
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Sewers_Waterfall":
                                 Value_1 = 1
                                 Value_2 = 100
+                                Start_Location = "Right_Swamp"
+                                Detailed_Start_Location = "Puraprill"
                         elif Random_Exit == "Tower_Bot":
                                 Value_1 = 1
                                 Value_2 = 112
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Tower_Top_Outside":
                                 Value_1 = 1
-                                Value_2 = 106                                
+                                Value_2 = 106
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Tower_Top_Inside":
                                 Value_1 = 1
                                 Value_2 = 124
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Tower_Mid_Inside":
                                 Value_1 = 1
                                 Value_2 = 118
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Pura_To_Tower":
                                 Value_1 = 1
                                 Value_2 = 144
+                                Start_Location = "Right_Swamp"
                         elif Random_Exit == "Lilly_From_Pura":
                                 Value_1 = 1
                                 Value_2 = 164
+                                Start_Location = "Left_Swamp"
                         elif Random_Exit == "Lilly_To_Pura_Inside":
                                 Value_1 = 1
                                 Value_2 = 176
+                                Start_Location = "Either_Swamp"
                         elif Random_Exit == "Pura_To_Lilly_Inside":
                                 Value_1 = 1
                                 Value_2 = 182
+                                Start_Location = "Either_Swamp"
                                 
                         elif Random_Exit == "Pura_From_Lilly":
                                 Value_1 = 1
                                 Value_2 = 130
+                                Start_Location = "Right_Swamp"
+                                Detailed_Start_Location = "Puraprill"
                         elif Random_Exit == "Exit_Temple":
                                 Value_1 = 1
                                 Value_2 = 170
+                                Start_Location = "Left_Swamp"
                         elif Random_Exit == "Enter_Temple":
                                 Value_1 = 1
-                                Value_2 = 188                        
+                                Value_2 = 188
+                                Start_Location = "Left_Swamp"
                         elif Random_Exit == "Demo":
                                 Value_1 = 3
                                 Value_2 = 76
+                                Start_Location = "Right_Swamp"
 
                         else:
                                 print("ERROR!")
@@ -996,6 +1024,8 @@ def generateRom():
 
                         Starting_Items = ["Init_Heart1","Init_Heart2","Init_Heart3"]
 
+                        Starting_Money = 0
+
                         Possible_Starter_Items = [2,3,6,
                                                   9,10,11,12,13,14,
                                                   17,18,19,20,21,22,
@@ -1011,7 +1041,9 @@ def generateRom():
                         
                         Problem_Items = [64,64,64,64,64, 64,64,64,64,64, 64,64,64,64,                                         
                                          128,130,132, 134,136,138, 140,142,144, 146,148,150, 152,154,156,
-                                         146,146,146,148,148,148,150,150,150] 
+                                         146,146,146,148,148,148,150,150,150]
+
+                        Leather_Boots_Type = ""
                         
                         for att in Attributes:
                                 if att.name == "Init_Boots":
@@ -1022,10 +1054,13 @@ def generateRom():
                                         
                                         if Random_Boots == 28:                                               
                                                 att.value = 16
+                                                Leather_Boots_Type = "Good"
                                         if Random_Boots == 29:                                               
                                                 att.value = 32
+                                                Leather_Boots_Type = "Good"
                                         if Random_Boots == 30:                                               
                                                 att.value = 64
+                                                Leather_Boots_Type = "Bad"
 
                                         All_Items.remove(Random_Boots)
                                         Possible_Starter_Items.remove(Random_Boots)
@@ -1080,18 +1115,21 @@ def generateRom():
                                        Possible_Starter_Items.remove(Random_Weapon)                                       
                                        All_Checks.remove("Init_Weapon")
 
+                        Num_Hearts = 0 
+
                         while len(Starting_Items) > 0:
                                 
                                 Starter = random.choice(Starting_Items)
                                 if Initial_Hearts_Randomizer == 0:
                                         Random_Item = 64
                                 elif Force_First_Heart == 0:
-                                        if len(Starting_Items) == 3:
+                                        if len(Starting_Items) == 1 and Num_Hearts == 0:
                                                 Random_Item = 64
                                         else:
                                                 Random_Item = random.choice(Possible_Starter_Items)                                                
                                 else:                                
                                         Random_Item = random.choice(Possible_Starter_Items)
+
 
                                 if Random_Item < 8:
                                         for att in Attributes:          
@@ -1150,8 +1188,10 @@ def generateRom():
                                                 if att.name == "Init_Boots":
                                                         if Random_Item == 28:                                               
                                                                att.value = att.value+16
+                                                               Leather_Boots_Type = "Good"
                                                         if Random_Item == 29:                                               
                                                                att.value = att.value+32
+                                                               Leather_Boots_Type = "Good"
                                                         if Random_Item == 30:                                               
                                                                att.value = att.value+64
 
@@ -1202,27 +1242,33 @@ def generateRom():
                                         for att in Attributes:          
                                                 if att.name == "Init_Hearts":
                                                         att.value = att.value + 1
+                                                        Num_Hearts = Num_Hearts + 1
 
-                                elif Random_Item in [128,130,132]:
-                                        for att in Attributes:          
-                                                if att.name == "Init_Money":
-                                                        att.value = att.value + 10
+                                elif Random_Item == 128:
+                                        Starting_Money = Starting_Money + 1
+                                elif Random_Item == 130:
+                                        Starting_Money = Starting_Money + 4
+                                elif Random_Item == 132:
+                                        Starting_Money = Starting_Money + 7
+                                elif Random_Item == 134:
+                                        Starting_Money = Starting_Money + 15
+                                elif Random_Item == 136:
+                                        Starting_Money = Starting_Money + 25
+                                elif Random_Item == 138:
+                                        Starting_Money = Starting_Money + 35
+                                elif Random_Item == 140:
+                                        Starting_Money = Starting_Money + 70
+                                elif Random_Item == 142:
+                                        Starting_Money = Starting_Money + 125
+                                elif Random_Item == 144:
+                                        Starting_Money = Starting_Money + 175
+                                elif Random_Item == 146:
+                                        Starting_Money = Starting_Money + 500
+                                elif Random_Item == 148:
+                                        Starting_Money = Starting_Money + 1000
+                                elif Random_Item == 150:
+                                        Starting_Money = Starting_Money + 1700
                                                                     
-                                elif Random_Item in [134,136,138]:
-                                        for att in Attributes:          
-                                                if att.name == "Init_Money":
-                                                        att.value = att.value + 50
-                                                        
-                                elif Random_Item in [140,142,144]:
-                                        for att in Attributes:          
-                                                if att.name == "Init_Money":
-                                                        att.value = att.value + 100
-
-
-                                elif Random_Item in [146,148,150]:
-                                        for att in Attributes:          
-                                                if att.name == "Init_Money2":
-                                                        att.value = att.value + 3
 
 
                                 All_Checks.remove(Starter)
@@ -1236,7 +1282,19 @@ def generateRom():
                                         
                         
 
-
+                        while Starting_Money > 0:
+                                if Starting_Money > 255:
+                                        Starting_Money = Starting_Money - 256
+                                        for att in Attributes:          
+                                                if att.name == "Init_Money2":
+                                                        att.value = att.value + 1
+                                else:
+                                        for att in Attributes:          
+                                                if att.name == "Init_Money":
+                                                        att.value = Starting_Money
+                                        Starting_Money = 0
+                                                
+                                        
                         Progression_Items = [37,40,
                                              7,15,23,31,
                                              5,25,26,27,41,41,
@@ -1253,6 +1311,35 @@ def generateRom():
                                      "Full_Health_1","Hard_Armor","Knight_Sword","Charmstone_Purchase","Potion","Ladder_Boots",
                                                  "Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward"                                        
                                      ]
+
+                        if Leather_Boots_Type == "Bad":
+                                if Start_Location == "Right_Swamp":
+                                        Random_Check = random.choice(["elder_elixer","elder_firestorm","leather_boots",
+                                                                      "small_spear","chain_mail","wood_shield","medicine","Ocarina_Reward",
+                                                                      "Full_Health_1","Hard_Armor","Knight_Sword","Charmstone_Purchase","Potion","Ladder_Boots"])
+                                        for att in Attributes:
+                                                if att.name == Random_Check:
+                                                        att.value = 29
+                                                        
+                                elif Start_Location == "Left_Swamp":
+                                        Random_Check = random.choice(["Marine_Boots","Shield_Magic_Shop","Steel_Armor","Shell_Shield","bat_reward"])
+                                        for att in Attributes:
+                                                if att.name == Random_Check:
+                                                        att.value = 29
+                                else:
+                                        Random_Check = random.choice(Can_Reach)
+                                        for att in Attributes:
+                                                if att.name == Random_Check:
+                                                        att.value = 29
+                                                        
+                                All_Checks.remove(Random_Check)
+                                Can_Reach.remove(Random_Check)
+                                                               
+                                All_Items.remove(29)
+                                        
+                                        
+                                        
+                                
 
                         Heart_Chest = 0
                         Quake = 0
@@ -1277,8 +1364,13 @@ def generateRom():
 
                         
 
+
+                        
+
                         Bracelet_Items = [54,55,58]
                         Hint_Lady_Items = [40,49,50,51,52,53,54,55,57,58]
+
+                        Charm_Guy_Items = []
 
 
                         
@@ -1328,6 +1420,10 @@ def generateRom():
                                 
                                 Progression_Items.remove(Random_Item)                                
                                 All_Items.remove(Random_Item)
+
+                                if Random_Check in ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5"]:
+                                        if len(Charm_Guy_Items) < 3:
+                                                Charm_Guy_Items = Charm_Guy_Items + [Random_Check]
 
 
                                 if Random_Item in Bracelet_Items:
@@ -1386,7 +1482,7 @@ def generateRom():
                                         if Charm == 2:
                                                 Can_Reach = Can_Reach + ["Charm_Guy_1","Charm_Guy_2","Charm_Guy_3","Charm_Guy_4","Charm_Guy_5"]                                        
                                 if Random_Item == 26:
-                                        if Random_Check in ["Heart_Chest","Potion","Quake","Elixer_Chests"]:
+                                        if Random_Check in ["Heart_Chest","Potion","Quake","Elixer_Chests","Power"]:
                                                 Oasis_Boots_Location = "Somewhere"
                                                 
                                         elif Random_Check in ["elder_elixer","elder_firestorm","leather_boots","small_spear","chain_mail","wood_shield","medicine",
@@ -1526,7 +1622,29 @@ def generateRom():
                                 if Random_Item == 26 or Random_Item == 53 or Random_Item == 7 or Random_Item == 15 or Random_Item == 23 or Random_Item == 31 or Random_Item == 54 or Random_Item == 						55 or Random_Item == 58:                                        
                                         Teh_Urn = Teh_Urn + 1
                                         if Teh_Urn == 9:
-                                                Can_Reach = Can_Reach + ["Fire_Urn"]  
+                                                Can_Reach = Can_Reach + ["Fire_Urn"]
+
+                        
+
+
+
+                        if len(Charm_Guy_Items) < 3:
+                                if "Charm_Guy_1" not in Charm_Guy_Items:
+                                        Charm_Guy_Items = Charm_Guy_Items + ["Charm_Guy_1"]
+                        if len(Charm_Guy_Items) < 3:
+                                if "Charm_Guy_2" not in Charm_Guy_Items:
+                                        Charm_Guy_Items = Charm_Guy_Items + ["Charm_Guy_2"]
+                        if len(Charm_Guy_Items) < 3:
+                                if "Charm_Guy_3" not in Charm_Guy_Items:
+                                        Charm_Guy_Items = Charm_Guy_Items + ["Charm_Guy_3"]
+                        if len(Charm_Guy_Items) < 3:
+                                if "Charm_Guy_4" not in Charm_Guy_Items:
+                                        Charm_Guy_Items = Charm_Guy_Items + ["Charm_Guy_4"]
+                        if len(Charm_Guy_Items) < 3:
+                                if "Charm_Guy_5" not in Charm_Guy_Items:
+                                        Charm_Guy_Items = Charm_Guy_Items + ["Charm_Guy_5"]
+                                        
+
  
                         
                                 
@@ -2104,7 +2222,7 @@ def generateRom():
                                                 if att_2.name =="Charm_Items_3":
                                                         att_2.value = att_1.value
                                                 if att_2.name =="Charm_Hint_One_28":
-                                                        att_2.value = att_1.value
+                                                        att_2.value = att_1.value                                      
                                 if att_1.name == "Charm_Guy_2":
                                         for att_2 in Attributes:
                                                 if att_2.name =="Charm_Items_9":
@@ -2129,6 +2247,93 @@ def generateRom():
                                                         att_2.value = att_1.value
                                                 if att_2.name =="Charm_HINT_FIVE":
                                                         att_2.value = att_1.value
+                                                        
+                                if att_1.name == "CharmGuy_Sprite_1":
+                                        if "Charm_Guy_1" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_1":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_1")
+                                                
+                                        elif "Charm_Guy_2" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_2":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_2")
+                                        elif "Charm_Guy_3" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_3":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_3")
+                                        elif "Charm_Guy_4" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_4":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_4")
+                                        elif "Charm_Guy_5" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_5":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_5")
+
+                                if att_1.name == "CharmGuy_Sprite_2":
+                                        if "Charm_Guy_1" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_1":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_1")
+                                                
+                                        elif "Charm_Guy_2" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_2":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_2")
+                                        elif "Charm_Guy_3" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_3":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_3")
+                                        elif "Charm_Guy_4" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_4":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_4")
+                                        elif "Charm_Guy_5" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_5":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_5")
+
+                                if att_1.name == "CharmGuy_Sprite_3":
+                                        if "Charm_Guy_1" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_1":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_1")
+                                                
+                                        elif "Charm_Guy_2" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_2":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_2")
+                                        elif "Charm_Guy_3" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_3":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_3")
+                                        elif "Charm_Guy_4" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_4":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_4")
+                                        elif "Charm_Guy_5" in Charm_Guy_Items:
+                                                for att_2 in Attributes:
+                                                        if att_2.name == "Charm_Guy_5":
+                                                                att_1.value = 2*att_2.value
+                                                Charm_Guy_Items.remove("Charm_Guy_5")
+                                        
+                                        
+                                        
                                 if att_1.name == "Sphinx_Question_One_Wrong1":
                                         for att_2 in Attributes:
                                                 if att_2.name =="elder_elixer":
@@ -3055,14 +3260,30 @@ def generateTextLog():
                                               "Legend_Boots","Legend_Shield","Legend_Armor"]
                 flag = any (x == att.name for x in Chest)
                 if flag:
-                        if att.value == 0 or att.value == 2 or att.value == 4:
-                                Text_String = "Small Coin"
-                        if att.value == 6 or att.value == 8 or att.value == 10:
-                                Text_String = "Large Coin"
-                        if att.value == 12 or att.value == 14 or att.value == 16:
-                                Text_String = "Small Bag"
-                        if att.value == 18 or att.value == 20 or att.value == 22:
-                                Text_String = "Large Bag"
+                        if att.value == 0:
+                                Text_String = "Small Coin 1"
+                        if att.value == 2:
+                                Text_String = "Small Coin 2"
+                        if att.value == 4:
+                                Text_String = "Small Coin 3"
+                        if att.value == 6:
+                                Text_String = "Large Coin 1"
+                        if att.value == 8:
+                                Text_String = "Large Coin 2"
+                        if att.value == 10:
+                                Text_String = "Large Coin 3"
+                        if att.value == 12:
+                                Text_String = "Small Bag 1"
+                        if att.value == 14:
+                                Text_String = "Small Bag 2"
+                        if att.value == 16:
+                                Text_String = "Small Bag 3"
+                        if att.value == 18:
+                                Text_String = "Large Bag 1"
+                        if att.value == 20:
+                                Text_String = "Large Bag 2"
+                        if att.value == 22:
+                                Text_String = "Large Bag 3"                                
                         if att.value == 24 or att.value == 26 or att.value == 28:
                                 Text_String = "Refillable"
                         if att.value == 128:
@@ -3185,7 +3406,6 @@ def generateTextLog():
 
                         if att.value == 192:
                                 Text_String = "Heart"
-                        
                         
                 Shop = ["leather_boots","medicine","small_spear","chain_mail","wood_shield","Knight_Sword","Hard_Armor","Charmstone_Purchase",
                         "Potion","Ladder_Boots","excalibur","steel_shield","Marine_Boots","Shield_Magic_Shop","Shell_Shield","Steel_Armor","Hint_Lady",
