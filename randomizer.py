@@ -21,7 +21,8 @@
 # Version 2.1. Updated on 8/30/26. Fixed issue preventing Non equippable progression items from having prices in stores. Also swaped GG Sphinx question to Bat, which allowed me to move
 #                                  the 6-chest item from Hard Armor to Trident. 
 # Version 2.2. Updated on 9/20/26. Added in code to allow for Easy Biomeka fight. H/T to Psicopompo #
-# Version 2.3. Updated on 10/12/26. Fixed issue related to ladder boots shop item after talking to Elder Dragon ###
+# Version 2.3. Updated on 10/12/26. Fixed issue related to ladder boots shop item after talking to Elder Dragon #
+# Version 2.4. Updated on 11/14/26. Changed the lock to wanderer shop from Oasis boots to Old Axe [Old Key now]. Added checks for Big Fish and Big Blue Bear #
 from classes import *
 
 def value(name):
@@ -422,6 +423,38 @@ Attributes = [
                                  ]
                 ),
         Attribute(
+                name="Big_Fish_1",
+                addresses=[0x1c1a0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  26
+                                 ]
+                ),
+        Attribute(
+                name="Big_Fish_2",
+                addresses=[0x1c1a1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  18
+                                 ]
+                ),
+        Attribute(
+                name="Big_Fish_3",
+                addresses=[0x1c1a2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  26
+                                 ]
+                ),
+        Attribute(
+                name="Big_Fish_4",
+                addresses=[0x1c1a3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  20
+                                 ]
+                ),
+        Attribute(
                 name="Poseidon_Money",
                 addresses=[0xA732],
                 number_of_bytes=1,
@@ -644,6 +677,38 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 130
+                                 ]                                 
+                ),
+        Attribute(
+                name="Big_Bear1",
+                addresses=[0x1c21c],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 18
+                                 ]                                 
+                ),
+        Attribute(
+                name="Big_Bear2",
+                addresses=[0x1c21d],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 18
+                                 ]                                 
+                ),
+        Attribute(
+                name="Big_Bear3",
+                addresses=[0x1c21e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 18
+                                 ]                                 
+                ),
+        Attribute(
+                name="Big_Bear4",
+                addresses=[0x1c21f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 18
                                  ]                                 
                 ),
         Attribute(
@@ -2039,6 +2104,24 @@ Attributes = [
 		min_max_interval=1,
                 ),
         Attribute(
+                name="Old_Axe_Price_1",
+                addresses=[0x1e1e],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=0,
+		max_value=0,
+		min_max_interval=1,
+                ),
+        Attribute(
+                name="Old_Axe_Price_2",
+                addresses=[0x1e1f],
+                number_of_bytes=1,
+                is_little_endian=False,
+                min_value=25,
+		max_value=25,
+		min_max_interval=1,
+                ),
+        Attribute(
                 name="Teh_Urn_Price_1",
                 addresses=[0x1e20],
                 number_of_bytes=1,
@@ -2595,6 +2678,13 @@ Attributes = [
                 possible_values=[39]
                 ),
         Attribute(
+                name="Old_Key_Spawn",
+                addresses=[0x1Ed92],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[0] 
+                ),
+        Attribute(
                 name="First_Money_Control",
                 addresses=[0xa75f],
                 number_of_bytes=1,
@@ -2614,6 +2704,13 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[39] 
+                ),
+        Attribute(
+                name="Wanderer_Shop_Control",
+                addresses=[0x2A000],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[56] 
                 ),
 
         ###Sprites####
@@ -7604,6 +7701,28 @@ Attributes = [
                 ),
 
         Attribute(
+                name="Old_Axe_Name_1",
+                addresses=[0x219DF],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[75] 
+                ),
+        Attribute(
+                name="Old_Axe_Name_2",
+                addresses=[0x219E0],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[101] 
+                ),
+        Attribute(
+                name="Old_Axe_Name_3",
+                addresses=[0x219E1],
+                number_of_bytes=1,
+                is_little_endian=False,
+		possible_values=[121] 
+                ),
+
+        Attribute(
                 name="Rapid_Pad_1",
                 addresses=[0x219F5],
                 number_of_bytes=1,
@@ -9725,6 +9844,175 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[  32
+                                 ]                                 
+                ),
+
+        Attribute(
+                name="Wanderer_Shop_1",
+                addresses=[0x1FAAC],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  89
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_2",
+                addresses=[0x1FAAd],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  111
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_3",
+                addresses=[0x1FAAe],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  117
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_3.5",
+                addresses=[0x1FAAf],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_4",
+                addresses=[0x1FAB0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  110
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_5",
+                addresses=[0x1FAB1],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  101
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_6",
+                addresses=[0x1FAB2],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  101
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_7",
+                addresses=[0x1FAB3],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  100
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_8",
+                addresses=[0x1FAB4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_9",
+                addresses=[0x1FAB5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  116
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_10",
+                addresses=[0x1FAB6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  104
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_11",
+                addresses=[0x1FAB7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  101
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_12",
+                addresses=[0x1FAB8],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  32
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_13",
+                addresses=[0x1FAB9],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  11
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_14",
+                addresses=[0x1FABa],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  10
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_15",
+                addresses=[0x1FABb],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  56
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_16",
+                addresses=[0x1FABc],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  12
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_17",
+                addresses=[0x1FABd],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  2
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_18",
+                addresses=[0x1FABe],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  33
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_19",
+                addresses=[0x1FABf],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  5
+                                 ]                                 
+                ),
+        Attribute(
+                name="Wanderer_Shop_20",
+                addresses=[0x1FAc0],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[  0
                                  ]                                 
                 ),
 
