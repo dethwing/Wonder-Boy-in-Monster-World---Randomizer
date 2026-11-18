@@ -22,7 +22,7 @@
 #                                  the 6-chest item from Hard Armor to Trident. 
 # Version 2.2. Updated on 9/20/26. Added in code to allow for Easy Biomeka fight. H/T to Psicopompo #
 # Version 2.3. Updated on 10/12/26. Fixed issue related to ladder boots shop item after talking to Elder Dragon #
-# Version 2.4. Updated on 11/14/26. Changed the lock to wanderer shop from Oasis boots to Old Axe [Old Key now]. Added checks for Big Fish and Big Blue Bear #
+# Version 2.4. Updated on 11/14/26. Changed the lock to wanderer shop from Oasis boots to Old Axe [Old Key now]. Added checks for Big Fish and Big Blue Bear and Big Mummy #
 from classes import *
 
 def value(name):
@@ -879,6 +879,38 @@ Attributes = [
                 number_of_bytes=1,
                 is_little_endian=False,
                 possible_values=[ 53
+                                 ]
+                ),
+        Attribute(
+                name="Big_Mummy_1",
+                addresses=[0x1c1c4],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 140
+                                 ]
+                ),
+        Attribute(
+                name="Big_Mummy_2",
+                addresses=[0x1c1c5],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 140
+                                 ]
+                ),
+        Attribute(
+                name="Big_Mummy_3",
+                addresses=[0x1c1c6],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 140
+                                 ]
+                ),
+        Attribute(
+                name="Big_Mummy_4",
+                addresses=[0x1c1c7],
+                number_of_bytes=1,
+                is_little_endian=False,
+                possible_values=[ 140
                                  ]
                 ),
 
