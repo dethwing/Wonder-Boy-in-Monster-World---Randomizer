@@ -965,7 +965,7 @@ def generateRom():
 
 
 
-                        ### CURRENT COUNT = 110 ###
+                        ### CURRENT COUNT = 111 ###
 
                         
                         All_Checks = [
@@ -992,7 +992,7 @@ def generateRom():
 
                               "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Big_Bear1","Old_Axe",
 
-                              "Shield_Magic_Chest","Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
+                              "Shield_Magic_Chest","Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid","Big_Mummy_1",
 
                               "Pygmy_Shield","Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword","Charm_Guy_1","Charm_Guy_2",
 
@@ -1013,7 +1013,7 @@ def generateRom():
 
                                      128,130,132, 134,136,138, 140,142,144, 146,148,150, 152,154,156, ### 15 Money, Health, Magic Refills ###
 
-                                     146,146,146,148,148,148,150,150,150, ### 9 Extra Money ###
+                                     146,146,146,148,148,148,150,150,150,150, ### 10 Extra Money ###
                                      
                                      59 ### Rapid Pad -- Secret Item! What does it do if you get it to start!? ###
 
@@ -1034,14 +1034,14 @@ def generateRom():
                                                   41,41,41,41,41,
                                                   64,64,64,64,64, 64,64,64,64,64, 64,64,64,64,
                                                   128,130,132, 134,136,138, 140,142,144, 146,148,150, 
-                                                  146,146,146,148,148,148,150,150,150,
+                                                  146,146,146,148,148,148,150,150,150,150,
                                                   59
                                                   ]
 
                         
                         Problem_Items = [64,64,64,64,64, 64,64,64,64,64, 64,64,64,64,                                         
                                          128,130,132, 134,136,138, 140,142,144, 146,148,150, 152,154,156,
-                                         146,146,146,148,148,148,150,150,150]
+                                         146,146,146,148,148,148,150,150,150,150]
 
                         Leather_Boots_Type = ""
                         
@@ -1460,7 +1460,7 @@ def generateRom():
                                                Trident_Location = "Childam"
                                                
                                         elif Random_Check in ["Shield_Magic_Chest",
-                                                              "Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
+                                                              "Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid","Big_Mummy_1",
                                                               "Pygmy_Shield", "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
                                                               "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7",                                
                                                               "Pyramid_Item_8","Charmstone_Chest",
@@ -1585,7 +1585,7 @@ def generateRom():
                                 if Random_Item == 26 or Random_Item == 51:
                                         Pyramid_Main = Pyramid_Main + 1
                                         if Pyramid_Main == 2 and Pyramid_Extra < 6:
-                                                Can_Reach = Can_Reach + ["Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid"]
+                                                Can_Reach = Can_Reach + ["Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid","Big_Mummy_1"]
                                                 if Elixer == 0:
                                                         Can_Reach = Can_Reach + ['Elixer_Chests']
                                                         Elixer = 1
@@ -1657,7 +1657,7 @@ def generateRom():
                                                               "Oasis_1","Oasis_2","Oasis_3","Oasis_4","Oasis_5","Oasis_6","Oasis_7","Oasis_8","Return",
                                                               "Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Big_Bear1","Old_Axe",
                                                               "Shield_Magic_Chest","Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
-                                                              "Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
+                                                              "Big_Mummy_1","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
                                                               "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest",
                                                               "Legend_Boots","Legend_Shield","Legend_Armor"]
 
@@ -1726,7 +1726,7 @@ def generateRom():
 
                                       "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Big_Bear1","Old_Axe",
 
-                                      "Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid","Pygmy_Shield",
+                                      "Sun_Key","Moon_Key","Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid","Big_Mummy_1","Pygmy_Shield",
 
                                       "Power","Flame_Shield","Flame_Armor","Hi_Potion","Elixer_Shop","Fire_Urn","Legend_Sword",
 
@@ -2104,6 +2104,14 @@ def generateRom():
                                                 if att_2.name =="Big_Fish_3":
                                                         att_2.value = att_1.value
                                                 if att_2.name =="Big_Fish_4":
+                                                        att_2.value = att_1.value
+                                if att_1.name == "Big_Mummy_1":
+                                        for att_2 in Attributes:
+                                                if att_2.name =="Big_Mummy_2":
+                                                        att_2.value = att_1.value
+                                                if att_2.name =="Big_Mummy_3":
+                                                        att_2.value = att_1.value
+                                                if att_2.name =="Big_Mummy_4":
                                                         att_2.value = att_1.value
                                 if att_1.name == "Hint_Lady":
                                         for att_2 in Attributes:
@@ -3215,7 +3223,7 @@ def generateRom():
                                               "Oasis_1","Oasis_2","Oasis_3","Oasis_4","Oasis_5","Oasis_6","Oasis_7","Oasis_8","Return",                              
                                               "Full_Health_1","Quake","Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Big_Bear1",
                                               "Big_Bear2","Big_Bear3","Big_Bear4",                                            
-                                              "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key",
+                                              "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key","Big_Mummy_1","Big_Mummy_2","Big_Mummy_3","Big_Mummy_4",
                                               "Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
                                               "Pygmy_Shield","Power","Fire_Urn","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
                                               "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest",
@@ -3272,7 +3280,7 @@ def generateTextLog():
                                               "Pygmy_Armor","Pygmy_Sword","Thunder","Amulet","Full_Health_1","Quake",
                                               "Oasis_1","Oasis_2","Oasis_3","Oasis_4","Oasis_5","Oasis_6","Oasis_7","Oasis_8","Return",
                                               "Pygmy_Boots","Blue_Gem","Gold_Gem","Big_Yeti","Left_Yeti","Right_Yeti","Big_Bear1",
-                                              "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key",
+                                              "Old_Axe","Shield_Magic_Chest","Sun_Key","Moon_Key","Big_Mummy_1",
                                               "Star_Key_1","Star_Key_2","Star_Key_3","Star_Key_4","Star_Key_5","Secret_Pyramid",
                                               "Pygmy_Shield","Power","Fire_Urn","Pyramid_Item_1","Pyramid_Item_2","Pyramid_Item_3","Pyramid_Item_4",
                                               "Pyramid_Item_5","Pyramid_Item_6","Pyramid_Item_7","Pyramid_Item_8","Charmstone_Chest",
